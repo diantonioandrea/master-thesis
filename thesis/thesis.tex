@@ -20,12 +20,21 @@
 \input{../latex-include/include/code.tex} % Code.
 \input{../latex-include/include/math.tex} % Math.
 
+% Non-template packages.
 % Some default packages.
 \usepackage{nameref}
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{enumerate}
+
+% Graphics.
 \usepackage{graphicx}
+
+% Chapters styling.
+\usepackage[Glenn]{fncychap}
+
+% Epigraph.
+\usepackage{epigraph}
 
 \title{\documenttitle}
 \author{\documentauthor}
@@ -34,14 +43,32 @@
 \begin{document}
     % Title.
 	\input{title.tex}
+    \pagenumbering{roman}
+    \newpage
+
+    % Epigraph.
+    \begin{epigraphs}
+        \qitem{Till human voices wake us, and we drown.}{The Love Song of J. Alfred Prufrock \\ Thomas Stearns Eliot}
+    \end{epigraphs}
+
+    \thispagestyle{empty}
+    \newpage
 
     % Abstract.
     \chapter*{Abstract}
+    \addcontentsline{toc}{chapter}{Abstract}
     \input{abstract.tex}
 
     % Table of Contents.
 	\newpage
-    \pagenumbering{roman}
 	\tableofcontents
 	\thispagestyle{fancy}
+
+    \chapter{Introduction}
+    \thispagestyle{fancy}
+    \pagenumbering{arabic}
+
+    % Acknowledgements.
+    % \chapter*{Acknowledgements}
+    % \addcontentsline{toc}{chapter}{Acknowledgements}
 \end{document}
