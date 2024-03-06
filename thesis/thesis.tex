@@ -3,9 +3,10 @@
 % Variables.
 
 % Document title.
-\newcommand{\documenttitle}{Title}
-\newcommand{\documentauthor}{Author}
-\newcommand{\documentdate}{Date}
+\newcommand{\documenttitle}{TBA}
+\newcommand{\documentauthor}{Andrea Di Antonio}
+\newcommand{\documentdate}{Academic Year 2023-2024}
+\newcommand{\logo}{../gallery/unimibLogoCover.pdf}
 
 % Colors.
 \newcommand{\accentcolor}{solarized-red} % localization.tex
@@ -24,6 +25,7 @@
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{enumerate}
+\usepackage{graphicx}
 
 \title{\documenttitle}
 \author{\documentauthor}
@@ -31,11 +33,14 @@
 
 \begin{document}
     % Title.
-	% Needs a title page.
-	\pagenumbering{roman}
+	\input{title.tex}
+
+    % Abstract.
+    \chapter*{Abstract}
 
     % Table of Contents.
 	\newpage
+    \pagenumbering{roman}
 	\tableofcontents
 	\thispagestyle{fancy}
 \end{document}
