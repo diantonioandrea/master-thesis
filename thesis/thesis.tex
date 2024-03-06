@@ -3,7 +3,7 @@
 % Variables.
 
 % Document title.
-\newcommand{\documenttitle}{TBA}
+\newcommand{\documenttitle}{Master Thesis}
 \newcommand{\documentauthor}{Andrea Di Antonio}
 \newcommand{\documentdate}{Academic Year 2023-2024}
 \newcommand{\logo}{../gallery/unimibLogoCover.pdf}
@@ -31,7 +31,7 @@
 \usepackage{graphicx}
 
 % Chapters styling.
-\usepackage[Glenn]{fncychap}
+\usepackage[Bjarne]{fncychap}
 
 % Epigraph.
 \usepackage{epigraph}
@@ -57,6 +57,7 @@
     % Abstract.
     \chapter*{Abstract}
     \addcontentsline{toc}{chapter}{Abstract}
+    \thispagestyle{fancy}
     \input{abstract.tex}
 
     % Table of Contents.
@@ -64,9 +65,10 @@
 	\tableofcontents
 	\thispagestyle{fancy}
 
-    \chapter{TBA}
+    \chapter{First Chapter}
     \thispagestyle{fancy}
     \pagenumbering{arabic}
+    \input{content/first.tex}
 
     % Bibliography.
     % \chapter*{Bibliography}
