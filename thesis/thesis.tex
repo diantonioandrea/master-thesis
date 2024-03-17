@@ -20,21 +20,9 @@
 \input{./include/code.tex} % Code.
 \input{./include/math.tex} % Math.
 
-% Non-template packages.
-% Some default packages.
-\usepackage{nameref}
-\usepackage{multicol}
-\usepackage{titlesec}
-\usepackage{enumerate}
-
 % Graphics.
 \usepackage{graphicx}
-
-% Chapters styling.
-\usepackage[Bjarne]{fncychap}
-
-% Epigraph.
-\usepackage{epigraph}
+\graphicspath{../gallery/}
 
 \title{\documenttitle}
 \author{\documentauthor}
@@ -44,19 +32,10 @@
     % Title.
 	\input{title.tex}
     \pagenumbering{roman}
-    \newpage
 
     % Epigraph.
-    \vspace*{\fill}
-
-    \begin{epigraphs}
-        \qitem{Till human voices wake us, and we drown.}{The Love Song of J. Alfred Prufrock \\ Thomas S. Eliot}
-    \end{epigraphs}
-
-    \vspace*{\fill}
-
-    \thispagestyle{empty}
     \newpage
+    \input{epigraph.tex}
 
     % Abstract.
     \chapter*{Abstract}
