@@ -2,11 +2,15 @@
 
 % Variables.
 
-% Document title.
+% Document's main variables.
 \newcommand{\documenttitle}{Master's Thesis - TBA}
 \newcommand{\documentauthor}{Andrea Di Antonio}
 \newcommand{\documentdate}{Academic Year 2023-2024}
 \newcommand{\logo}{../gallery/unimibLogoCover.pdf}
+
+\title{\documenttitle}
+\author{\documentauthor}
+\date{\documentdate}
 
 % Colors.
 \newcommand{\accentcolor}{solarized-red} % localization.tex
@@ -14,19 +18,11 @@
 \newcommand{\operatorcolor}{solarized-green} % math.tex
 
 % Includes.
-\input{./include/geometry.tex} % Geometry.
+\input{./include/geometry.tex} % Geometry and graphics.
 \input{./include/localization.tex} % Localization.
 \input{./include/style.tex} % Style.
 \input{./include/code.tex} % Code.
 \input{./include/math.tex} % Math.
-
-% Graphics.
-\usepackage{graphicx}
-\graphicspath{../gallery/}
-
-\title{\documenttitle}
-\author{\documentauthor}
-\date{\documentdate}
 
 \begin{document}
     % Title.
