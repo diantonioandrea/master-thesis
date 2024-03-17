@@ -1,0 +1,50 @@
+% Math operators and symbols.
+
+% Packages
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+
+% Sets.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RT}{\mathbb{R}^2}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\PK}[1]{\mathbb{P}_{#1}}
+
+\newcommand{\LT}{\mathscr{L}^2}
+\newcommand{\HO}{\mathscr{H}^1}
+\newcommand{\Tau}{\mathcal{T}}
+
+% Vectors and operators.
+\newcommand{\Vector}[1]{\bm{#1}}
+\newcommand{\Operator}[1]{\textcolor{\operatorcolor}{#1}}
+
+% Matrices.
+\newcommand{\MA}{\mathcal{A}}
+\newcommand{\MB}{\mathcal{B}}
+\newcommand{\VF}{\mathcal{F}}
+
+% Gradient and divergence.
+\newcommand{\grad}{\Vector{\nabla}}
+\newcommand{\diver}{\text{div }}
+
+% Span.
+\newcommand{\Span}[1]{\text{span} \left\{ #1 \right\}}
+
+% Bilinear operators.
+\newcommand{\boa}[2]{\Operator{a}(#1, #2)}
+\newcommand{\bob}[2]{\Operator{b}(#1, #2)}
+
+% Fortin.
+\newcommand{\tfortin}{\Operator{\tilde{\Pi}}}
+\newcommand{\fortin}{\Operator{\Pi}}
+\newcommand{\fortinptpz}{\Operator{\Pi^2_0}}
+
+% Redefinitions.
+\newcommand{\Exists}{\exists ~}
+\newcommand{\Forall}{\forall ~}
