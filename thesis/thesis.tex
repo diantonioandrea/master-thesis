@@ -3,7 +3,7 @@
 % Variables.
 
 % Document title.
-\newcommand{\documenttitle}{Master Thesis}
+\newcommand{\documenttitle}{Master's Thesis - TBA}
 \newcommand{\documentauthor}{Andrea Di Antonio}
 \newcommand{\documentdate}{Academic Year 2023-2024}
 \newcommand{\logo}{../gallery/unimibLogoCover.pdf}
@@ -30,23 +30,35 @@
 
 \begin{document}
     % Title.
+
 	\input{title.tex}
     \pagenumbering{roman}
 
+    % Dedication.
+
+    % \newpage
+    % \input{dedication.tex}
+
     % Epigraph.
+    % May be moved and/or changed.
+
     \newpage
     \input{epigraph.tex}
 
     % Abstract.
+
     \chapter*{Abstract}
     \addcontentsline{toc}{chapter}{Abstract}
     \thispagestyle{fancy}
     \input{abstract.tex}
 
     % Table of Contents.
+
 	\newpage
 	\tableofcontents
 	\thispagestyle{fancy}
+
+    % Chapter one.
 
     \chapter{First Chapter}
     \thispagestyle{fancy}
@@ -54,11 +66,14 @@
     \input{content/first.tex}
 
     % Bibliography.
+
     % \chapter*{Bibliography}
     % \addcontentsline{toc}{chapter}{Bibliography}
     % \bibliography{references.bib}
 
     % Acknowledgements.
+
     % \chapter*{Acknowledgements}
     % \addcontentsline{toc}{chapter}{Acknowledgements}
+    % \input{acknowledgements.tex}
 \end{document}
