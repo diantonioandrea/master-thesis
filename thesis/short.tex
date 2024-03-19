@@ -1,10 +1,10 @@
-\documentclass[12pt, oneside]{book}
+\documentclass[12pt]{report}
 
 \input{include/variables.tex}
 
-\title{\documenttitle}
+\title{\documenttitle \\ Short version.}
 \author{\documentauthor}
-\date{\documentdate}
+\date{\documentdate \\ Updated on \today}
 
 % Colors.
 \newcommand{\accentcolor}{solarized-red} % localization.tex
@@ -21,28 +21,10 @@
 \begin{document}
     % Title.
 
-	\input{title.tex}
+	\maketitle
     \pagenumbering{roman}
-
-    % Dedication.
-    % May not be in the final version.
-
-    % \newpage
-    % \input{dedication.tex}
-
-    % Epigraph.
-    % May be moved and/or changed.
-
-    \newpage
-    \input{epigraph.tex}
 
     % Content (Abstract, TOC, Chapters and Bibliography).
 
     \input{content/content.tex}
-
-    % Acknowledgements.
-
-    % \chapter*{Acknowledgements}
-    % \addcontentsline{toc}{chapter}{Acknowledgements}
-    % \input{acknowledgements.tex}
 \end{document}
