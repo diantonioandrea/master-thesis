@@ -31,6 +31,7 @@
     \pagenumbering{roman}
 
     % Dedication.
+    % May not be in the final version.
 
     % \newpage
     % \input{dedication.tex}
@@ -41,31 +42,9 @@
     \newpage
     \input{epigraph.tex}
 
-    % Abstract.
+    % Content (Abstract, TOC, Chapters and Bibliography).
 
-    \chapter*{Abstract}
-    \addcontentsline{toc}{chapter}{Abstract}
-    \thispagestyle{fancy}
-    \input{abstract.tex}
-
-    % Table of Contents.
-
-	\newpage
-	\tableofcontents
-	\thispagestyle{fancy}
-
-    % Chapter one.
-
-    \chapter{First Chapter}
-    \thispagestyle{fancy}
-    \pagenumbering{arabic}
-    \input{content/first.tex}
-
-    % Bibliography.
-
-    % \chapter*{Bibliography}
-    % \addcontentsline{toc}{chapter}{Bibliography}
-    % \bibliography{references.bib}
+    \input{content/content.tex}
 
     % Acknowledgements.
 
