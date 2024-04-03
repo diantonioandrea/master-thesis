@@ -19,30 +19,34 @@
 \input{./include/math.tex} % Math.
 
 \begin{document}
-    % Title.
+    %% Title.
 
 	\input{title/title.tex}
     \pagenumbering{roman}
 
-    % Dedication.
-    % May not be in the final version.
+    %% Dedication.
 
     % \newpage
     % \input{extra/dedication.tex}
 
-    % Epigraph.
-    % May be moved and/or changed.
+    %% Epigraph.
 
     \newpage
     \input{extra/epigraph.tex}
 
-    % Content (Abstract, TOC, Chapters and Bibliography).
+    %% Content (Abstract, TOC, Chapters and Bibliography).
 
+    \newpage
     \input{content/content.tex}
 
-    % Acknowledgements.
+    %% Acknowledgements.
 
     % \chapter*{Acknowledgements}
     % \addcontentsline{toc}{chapter}{Acknowledgements}
     % \input{extra/acknowledgements.tex}
+
+    %% End.
+
+    \newpage
+    \input{extra/end.tex}
 \end{document}
