@@ -1,0 +1,124 @@
+This chapter develops the mathematical basics behind the theory of \acrlong{pdes} and of the \acrlong{dgm}.
+
+\section{Function Spaces}
+
+The function spaces introduced in this section turn out to be the ideal setting to study and characterize the solutions of \acrshort{pdes}.
+
+\subsection{Lebesgue Spaces}
+
+Let $(\Omega, \MA, \mu)$ denote a measure space where $\Omega \subseteq \Rd$, $\MA$ is a $\sigma$-algebra in $\Omega$ and $\mu$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \N} \subset \MA$ such that:
+\begin{gather}
+    \Omega = \bigcup_{n \in \N} \Omega_n, \\
+    \mu(\Omega_n) < +\infty \text{ for all } n \in \N.
+\end{gather}
+
+\begin{definition}[$\Lp{1}(\Omega, \MA, \mu)$]
+    \begin{gather}
+        \Lp{1}(\Omega, \MA, \mu) = \left\{ f \colon \Omega \rightarrow \R \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \mu < \infty \right\},
+    \end{gather}
+    with:
+    \begin{gather}
+    \lVert f \rVert_{\Lp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert d \mu.
+    \end{gather}
+\end{definition}
+
+Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in what follows.
+
+\subsubsection{Known Results}
+
+\begin{theorem}[Beppo Levi, or Monotone Convergence]
+    Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ such that:
+    \begin{gather}
+        0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        \sup_{n \in \N} \int_\Omega f_n(\Vector{x}) ~ d \mu < +\infty,
+    \end{gather}
+    then there exists $f \in \Lp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}),
+    \end{gather}
+    and
+    \begin{gather}
+        \lim_{n \rightarrow \infty} \lVert f_n - f \rVert_1 = 0.
+    \end{gather}
+\end{theorem}
+
+\begin{theorem}[Lebesgue, or Dominated Convergence]
+    Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ for which there exists $g \in \Lp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}), \\
+        \lvert f_n(\Vector{x}) \rvert < g(\Vector{x}),
+    \end{gather}
+    then $f \in \Lp{1}(\Omega)$ and:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} \lVert f_n - f \rVert_1 = 0.
+    \end{gather}
+\end{theorem}
+
+\begin{lemma}[Fatou]
+    Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ such that:
+    \begin{gather}
+        f_n(x) \geq 0 \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        \sup_{n \in \N} \int_{\Omega} f_n(\Vector{x}) ~ d \mu < +\infty,
+    \end{gather}
+    then:
+    \begin{gather}
+        \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vector{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vector{x}).
+    \end{gather}
+\end{lemma}
+
+\subsubsection{Definition and elementary properties}
+
+\begin{definition}[$\Lp{p}(\Omega)$]
+    Let $1 < p < +\infty$,
+    \begin{gather}
+        \Lp{p}(\Omega) = \left\{ f \colon \Omega \rightarrow \R \text{ such that } \left| f \right|^p \in \Lp{1}(\Omega) \right\},
+    \end{gather}
+    with:
+    \begin{gather}
+    \lVert f \rVert_{\Lp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \mu \right)^{1/p}.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$\Lp{\infty}(\Omega)$]
+    Let $C \geq 0$,
+    \begin{gather}
+        \Lp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \R \text{ measurable such that } \lvert f(\Vector{x}) \rvert < C \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega \right\},
+    \end{gather}
+    with:
+    \begin{gather}
+    \lVert f \rVert_{\Lp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vector{x}) \rvert < C \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega \right\}.
+    \end{gather}
+\end{definition}
+
+\begin{theorem}
+    Let $1 \leq p \leq +\infty$, then $\Lp{p}(\Omega)$ is a vector space and $\lVert \cdot \rVert_p$ is a norm.
+\end{theorem}
+
+\begin{theorem}[Fischer-Riesz]
+    Let $1 \leq p \leq +\infty$, then $(\Lp{p}(\Omega), \lVert \cdot \rVert_p)$ is a Banach space.
+\end{theorem}
+
+\begin{theorem}[Hölder's inequality]
+    Let $1 \leq p \leq +\infty$ and denote by $p^{\prime}$ the conjugate exponent, that is:
+    \begin{gather}
+        \frac{1}{p} + \frac{1}{p^{\prime}} = 1,
+    \end{gather}
+    then, for $f \in \Lp{p}(\Omega)$ and $g \in \Lp{p^{\prime}}(\Omega)$ it follows that $fg \in \Lp{1}(\Omega)$ and:
+    \begin{gather}
+        \lVert fg \rVert_1 \leq \lVert f \rVert_p \lVert g \rVert_{p^{\prime}}.
+    \end{gather}
+\end{theorem}
+
+\subsubsection{Characterizations}
+
+% [!]
+
+\newpage
+\subsection{Sobolev Spaces}
+
+% [!]
+
+\newpage
+\subsection{Bochner Spaces}
+
+% [!]

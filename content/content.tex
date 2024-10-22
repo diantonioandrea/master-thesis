@@ -13,9 +13,10 @@
 
 %% Chapters.
 
-% First chapter.
+% Introduction.
 
-\chapter{First Chapter}
+\newpage
+\chapter{Introduction}
 \thispagestyle{fancy}
 \pagenumbering{arabic}
 
@@ -23,10 +24,47 @@
 %     \qitem{TBA}{TBA}
 % \end{epigraphs}
 
-\input{content/chapters/first.tex}
+\input{content/chapters/introduction.tex}
+
+% Preliminaries.
+
+\newpage
+\chapter{Preliminaries}
+\thispagestyle{fancy}
+
+\input{content/chapters/preliminaries.tex}
+
+% Galërkin Methods.
+
+\newpage
+\chapter{Galërkin Methods}
+\thispagestyle{fancy}
+
+% STDG Method.
+
+\newpage
+\chapter{The Space-Time Discontinuous Galërkin Method}
+\thispagestyle{fancy}
+
+% Numerical results.
+
+\newpage
+\chapter{Numerical Results}
+\thispagestyle{fancy}
+
+% %% Acronyms.
+
+% \chapter*{Acronyms}
+% \addcontentsline{toc}{chapter}{Acronyms}
+% \thispagestyle{fancy}
+
+% \printglossary
+% \printglossary[type=\acronymtype]
 
 %% Bibliography.
 
-% \chapter*{Bibliography}
-% \addcontentsline{toc}{chapter}{Bibliography}
-% \bibliography{bibliography/references.bib}
+\newpage
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\printbibliography
+\thispagestyle{fancy}
