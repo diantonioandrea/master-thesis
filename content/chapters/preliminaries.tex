@@ -98,12 +98,15 @@ Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in wh
     Let $1 \leq p \leq +\infty$, then $(\Lp{p}(\Omega), \lVert \cdot \rVert_p)$ is a Banach space.
 \end{theorem}
 
-\begin{theorem}[Hölder's inequality]
-    Let $1 \leq p \leq +\infty$ and denote by $p^{\prime}$ the conjugate exponent, that is:
+\begin{definition}[Conjugate Exponent]
+    Let $1 \leq p \leq +\infty$, denote by $1 \leq p^{\prime} \leq +\infty$ its conjugate exponent such that:
     \begin{gather}
         \frac{1}{p} + \frac{1}{p^{\prime}} = 1,
     \end{gather}
-    then, for $f \in \Lp{p}(\Omega)$ and $g \in \Lp{p^{\prime}}(\Omega)$ it follows that $fg \in \Lp{1}(\Omega)$ and:
+\end{definition}
+
+\begin{theorem}[Hölder's inequality]
+    Let $1 \leq p \leq +\infty$, $f \in \Lp{p}(\Omega)$, and $g \in \Lp{p^{\prime}}(\Omega)$, then $fg \in \Lp{1}(\Omega)$ and:
     \begin{gather}
         \lVert fg \rVert_1 \leq \lVert f \rVert_p \lVert g \rVert_{p^{\prime}}.
     \end{gather}
