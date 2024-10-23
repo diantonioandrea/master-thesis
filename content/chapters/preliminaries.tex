@@ -6,15 +6,15 @@ The function spaces introduced in this section turn out to be the ideal setting 
 
 \subsection{Lebesgue Spaces}
 
-Following \cite[p. 89]{Brezis2010}, let $(\Omega, \MA, \mu)$ denote a measure space, where $\Omega \subseteq \Rd$, $\MA$ is a $\sigma$-algebra on $\Omega$, and $\mu$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \N} \subset \MA$ such that:
-\begin{gather}
-    \Omega = \bigcup_{n \in \N} \Omega_n, \\
-    \mu(\Omega_n) < +\infty \text{ for all } n \in \N.
-\end{gather}
+Following \cite[p. 89]{Brezis2010}, let $(\Omega, \SA, \mu)$ denote a measure space, where $\Omega \subseteq \Rd{d}$, $\SA$ is a $\sigma$-algebra on $\Omega$, and $\mu$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \N} \subset \SA$ such that:
+\begin{align}
+    & \Omega = \bigcup_{n \in \N} \Omega_n, \\
+    & \mu(\Omega_n) < +\infty \text{ for all } n \in \N.
+\end{align}
 
-\begin{definition}[$\Lp{1}(\Omega, \MA, \mu)$]
+\begin{definition}[$\Lp{1}(\Omega, \SA, \mu)$]
     \begin{gather}
-        \Lp{1}(\Omega, \MA, \mu) = \left\{ f \colon \Omega \rightarrow \R \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \mu < \infty \right\},
+        \Lp{1}(\Omega, \SA, \mu) = \left\{ f \colon \Omega \rightarrow \R \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \mu < \infty \right\},
     \end{gather}
     with:
     \begin{gather}
@@ -22,16 +22,16 @@ Following \cite[p. 89]{Brezis2010}, let $(\Omega, \MA, \mu)$ denote a measure sp
     \end{gather}
 \end{definition}
 
-Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in what follows.
+Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \SA, \mu)$ in what follows.
 
 \subsubsection{Known Results}
 
-\begin{theorem}[Beppo Levi, or Monotone Convergence]
+\begin{theorem}[Beppo Levi, or monotone convergence]
     Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ such that:
-    \begin{gather}
-        0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
-        \sup_{n \in \N} \int_\Omega f_n(\Vector{x}) ~ d \mu < +\infty,
-    \end{gather}
+    \begin{align}
+        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        & \sup_{n \in \N} \int_\Omega f_n(\Vector{x}) ~ d \mu < +\infty,
+    \end{align}
     then there exists $f \in \Lp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
     \begin{gather}
         \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}),
@@ -42,12 +42,12 @@ Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in wh
     \end{gather}
 \end{theorem}
 
-\begin{theorem}[Lebesgue, or Dominated Convergence]
+\begin{theorem}[Lebesgue, or dominated convergence]
     Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ for which there exists $g \in \Lp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
-    \begin{gather}
-        \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}), \\
-        \lvert f_n(\Vector{x}) \rvert < g(\Vector{x}),
-    \end{gather}
+    \begin{align}
+        & \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}), \\
+        & \lvert f_n(\Vector{x}) \rvert < g(\Vector{x}),
+    \end{align}
     then $f \in \Lp{1}(\Omega)$ and:
     \begin{gather}
         \lim_{n \rightarrow \infty} \lVert f_n - f \rVert_1 = 0.
@@ -56,17 +56,17 @@ Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in wh
 
 \begin{lemma}[Fatou]
     Let $\left\{ f_n \right\}_{n \in \N} \subset \Lp{1}(\Omega)$ such that:
-    \begin{gather}
-        f_n(x) \geq 0 \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
-        \sup_{n \in \N} \int_{\Omega} f_n(\Vector{x}) ~ d \mu < +\infty,
-    \end{gather}
+    \begin{align}
+        & f_n(x) \geq 0 \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        & \sup_{n \in \N} \int_{\Omega} f_n(\Vector{x}) ~ d \mu < +\infty,
+    \end{align}
     then:
     \begin{gather}
         \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vector{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vector{x}).
     \end{gather}
 \end{lemma}
 
-\subsubsection{Definition and elementary properties}
+\subsubsection{Definition and Elementary Properties}
 
 \begin{definition}[$\Lp{p}(\Omega)$]
     Let $1 < p < +\infty$,
@@ -98,10 +98,10 @@ Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in wh
     Let $1 \leq p \leq +\infty$, then $(\Lp{p}(\Omega), \lVert \cdot \rVert_p)$ is a Banach space.
 \end{theorem}
 
-\begin{definition}[Conjugate Exponent]
-    Let $1 \leq p \leq +\infty$, denote by $1 \leq p^{\prime} \leq +\infty$ its conjugate exponent such that:
+\begin{definition}[Conjugate exponent]
+    Let $1 \leq p \leq +\infty$, denote by $p^{\prime}$ its conjugate exponent defined by:
     \begin{gather}
-        \frac{1}{p} + \frac{1}{p^{\prime}} = 1,
+        \frac{1}{p} + \frac{1}{p^{\prime}} = 1.
     \end{gather}
 \end{definition}
 
@@ -114,12 +114,278 @@ Without losing generality, let $\Lp{1}(\Omega) = \Lp{1}(\Omega, \MA, \mu)$ in wh
 
 \subsubsection{Characterizations}
 
-% [!]
+\begin{theorem}
+    Let $1 < p < +\infty$, then $\Lp{p}(\Omega)$ is reflexive.
+\end{theorem}
+
+\begin{theorem}[Riesz representation theorem for $1 < p < +\infty$] \label{theorem:riesz_p}
+    Let $1 < p < +\infty$ and $\phi \in (\Lp{p}(\Omega))^*$, then for all $f \in \Lp{p}(\Omega)$ there exists a unique $u \in \Lp{p^{\prime}}(\Omega)$ such that:
+    \begin{gather}
+        \langle f, \phi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+    \end{gather}
+    and:
+    \begin{gather}
+        \lVert u \rVert_{p^{\prime}} = \lVert \phi \rVert_{p^{*}},
+    \end{gather}
+    where:
+    \begin{gather}
+        \lVert \phi \rVert_{p^{*}} = \lVert \phi \rVert_{(\Lp{p})^*}.
+    \end{gather}
+\end{theorem}
+
+As a consequence of \autoref{theorem:riesz_p}, the following identification result can be stated:
+
+\begin{theorem}
+    Let $1 < p < +\infty$, then:
+    \begin{gather}
+        (\Lp{p}(\Omega))^* = \Lp{p^{\prime}}(\Omega).
+    \end{gather}
+\end{theorem}
+
+\begin{theorem}[Riesz representation theorem for $p = 1$] \label{theorem:riesz_1}
+    Let $\phi \in (\Lp{1}(\Omega))^*$, then for all $f \in \Lp{1}(\Omega)$ there exists a unique $u \in \Lp{\infty}(\Omega)$ such that:
+    \begin{gather}
+        \langle f, \phi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+    \end{gather}
+    and:
+    \begin{gather}
+        \lVert u \rVert_{\infty} = \lVert \phi \rVert_{1^{*}}.
+    \end{gather}
+\end{theorem}
+
+As a consequence of \autoref{theorem:riesz_1}, the following identification result can be stated:
+
+\begin{theorem}
+    \begin{gather}
+        (\Lp{1}(\Omega))^* = \Lp{\infty}(\Omega).
+    \end{gather}
+\end{theorem}
+
+\begin{theorem}
+    Let $1 \leq p < +\infty$, then $C_c(\Rd{d})$ is dense in $\Lp{p}(\Rd{d})$.
+\end{theorem}
+
+\begin{theorem}
+    let $1 \leq p < +\infty$ and assume that $(\Omega, \SA, \mu)$ is a separable measure space, that is there exist $\left\{ E_n \right\}_{n \in \N} \subset \SA$ such that $\sigma \left( \left\{ E_n \right\}_{n \in \N} \right) = \SA$, then $\Lp{p}(\Omega)$ is separable.
+\end{theorem}
+
+\newpage
+\subsection{Hilbert Spaces}
+
+Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
+
+\begin{definition}[Scalar product]
+    A scalar product $\left( \cdot, \cdot \right)_H$ is a bilinear form in $H \times H$ with values in $\R$ such that:
+    \begin{align}
+        & (u, v)_H = (v, u)_H \text{ for all } u, v \in H, \\
+        & (u, u)_H \geq 0 \text{ for all } u \in H, \\
+        & (u, u)_H \neq 0 \text{ for all } u \in H \text{ such that } u \neq 0_H.
+    \end{align}
+    Moreover, $\lvert \cdot \rvert_H$, defined for $u \in H$ as:
+    \begin{gather}
+        \lvert u \rvert_H = (u, u)_H^{1/2},
+    \end{gather}
+    is a norm.
+\end{definition}
+
+\subsubsection{Definition}
+
+\begin{definition}[Hilbert space]
+    A Hilbert space is a vector space $(H, (\cdot, \cdot)_H)$ such that $H$ is complete for the norm $\lvert \cdot \rvert_H$.
+\end{definition}
+
+\begin{remark}
+    The space $\Lp{2}(\Omega)$ equipped with $(\cdot, \cdot)_{\Lp{2}(\Omega)}$ such that, for all $u, v \in \Lp{2}(\Omega)$:
+    \begin{gather}
+        (u, v)_{\Lp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \mu,
+    \end{gather}
+    is a Hilbert space. Moreover, for all $u \in \Lp{2}(\Omega)$:
+    \begin{gather}
+        (u, u)_{\Lp{2}(\Omega)} = \lVert u \rVert_2^2.
+    \end{gather}
+\end{remark}
+
+\subsubsection{Characterizations}
+
+\begin{theorem}
+    $H$ is uniformly convex, and thus it is reflexive.
+\end{theorem}
+
+\begin{theorem}[Riesz-Fréchet representation theorem for Hilbert spaces]
+    Let $\phi \in (H)^*$, then for all $u \in H$ there exists a unique $f \in H$ such that:
+    \begin{gather}
+        \langle u, \phi \rangle = (u, f)_H,
+    \end{gather}
+    and:
+    \begin{gather}
+        \lvert f \rvert_H = \lVert \phi \rVert_{H^{*}}.
+    \end{gather}
+\end{theorem}
+
+\subsubsection{Notable Results}
+
+\begin{definition}[Continuous bilinear form]
+    A bilinear form $a \colon H \times H \rightarrow \R$ is said to be continuous if there exists $C \geq 0$ such that for all $u, v \in H$:
+    \begin{gather}
+        \lvert a(u, v) \rvert \leq C \lvert u \rvert_H \lvert v \rvert_H.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[Coercive bilinear form]
+    A bilinear form $a \colon H \times H \rightarrow \R$ is said to be coercive if there exists $\alpha > 0$ such that for all $u \in H$:
+    \begin{gather}
+        \lvert a(u, u) \rvert \geq \alpha \lvert u \rvert_H^2.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[Symmetric bilinear form]
+    A bilinear form $a \colon H \times H \rightarrow \R$ is said to be symmetric if for all $u, v \in H$:
+    \begin{gather}
+        a(u, v) = a(u, v).
+    \end{gather}
+\end{definition}
+
+\begin{theorem}[Stampacchia]
+    Let $a \colon H \times H \rightarrow \R$ be a continuous a coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\phi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
+    \begin{gather}
+        a(u, v - u) \geq \langle u - v, \phi \rangle.
+    \end{gather}
+    Morever, if $a(\cdot, \cdot)$ is symmetric, then:
+    \begin{gather}
+        \frac{1}{2} a(u, u) - \langle u, \phi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \phi \rangle \right\}.
+    \end{gather}
+\end{theorem}
+
+\begin{corollary}[Lax-Milgram]
+    Let $a \colon H \times H \rightarrow \R$ be a continuous a coercive bilinear form on $H$, for all $\phi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
+    \begin{gather}
+        a(u, v) = \langle v, \phi \rangle.
+    \end{gather}
+    Morever, if $a(\cdot, \cdot)$ is symmetric, then:
+    \begin{gather}
+        \frac{1}{2} a(u, u) - \langle u, \phi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \phi \rangle \right\}.
+    \end{gather}
+\end{corollary}
 
 \newpage
 \subsection{Sobolev Spaces}
 
-% [!]
+Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SA, \mu)$ denote the same measure space introduced with Lebesgue spaces.
+
+\subsubsection{Definition and Elementary Properties}
+
+\begin{definition}[$\Wkp{1}{p}(\Omega)$]
+    Let $1 \leq p \leq +\infty$, then:
+    \begin{gather}
+        \Wkp{1}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \Lp{p}(\Omega) \text{ for which there exist } \left\{ g_j \right\}_{j = 1}^{d} \subset \Lp{p}(\Omega) \text{ such that } \right. \notag \\ 
+        \left. \int_{\Omega} u \phi_{x_j} = - \int_{\Omega} g_j \phi \right. \notag \\
+        \left. \text{ for all } \phi \in C_c^{\infty}(\Omega) \text{ and for all } j = 1, \dots, d \vphantom{\int_{\Omega}} \right\}.
+    \end{gather}
+    Define, for all $j = 1, \dots, d$:
+    \begin{gather}
+        u_{x_j} = g_j,
+    \end{gather}
+    Therefore:
+    \begin{gather}
+        \grad u = \left( u_{x_1}, \dots, u_{x_d} \right).
+    \end{gather}
+    Moreover, $\Wkp{1}{p}(\Omega)$ is equipped with the norm $\lVert \cdot \rVert_{\Wkp{1}{p}}$, such that for all $u \in \Wkp{1}{p}(\Omega)$:
+    \begin{gather}
+        \lVert u \rVert_{\Wkp{1}{p}(\Omega)} = \lVert u \rVert_{1, p} = \lVert u \rVert_p + \sum_{j = 1}^d \lVert u_{x_j} \rVert_p.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$\Hk{1}(\Omega)$]
+    \begin{gather}
+        \Hk{1}(\Omega) = \Wkp{1}{2}(\Omega).
+    \end{gather}
+    $\Hk{1}(\Omega)$ is equipped with the scalar product $(\cdot, \cdot)_{\Hk{1}(\Omega)}$, such that for all $u, v \in \Hk{1}(\Omega)$:
+    \begin{gather}
+        (u, v)_{\Hk{1}(\Omega)} = (u, v)_1 = (u, v)_{\Lp{2}(\Omega)} + \sum_{j = 1}^d (u_{x_j}, v_{x_j})_{\Lp{2}(\Omega)}.
+    \end{gather}
+\end{definition}
+
+\begin{theorem}
+    Let $1 \leq p < +\infty$ and $u \in \Wkp{1}{p}(\Omega)$, then there exist $\left\{ u_n \right\}_{n \in \N} \subset C_c^{\infty}(\Omega)$ such that:
+    \begin{align}
+        & \lim_{n \rightarrow \infty} u_{n \mid \Omega} = u_{\mid \Omega} \text { in } \Lp{p}(\Omega)\\
+        & \lim_{n \rightarrow \infty} \grad u_{n \mid K} = \grad u_{\mid K} \text { in } \Lp{p}(K) \text{ for all } K \subset \subset \Omega.
+    \end{align}
+\end{theorem}
+
+\subsubsection{Generalisations}
+
+\begin{definition}[$\Wkp{k}{p}(\Omega)$]
+    Let $k \geq 2$ integer and let $1 \leq p \leq +\infty$, then:
+    \begin{gather}
+        \Wkp{k}{p}(\Omega) = \left\{ u \in \Wkp{k - 1}{p}(\Omega) \text{ for which } u_{x_j} \in \Wkp{k - 1}{p}(\Omega) \text{ for all } j = 1, \dots, d \right\}.
+    \end{gather}
+    Alternatively:
+    \begin{gather}
+        \Wkp{k}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \Lp{p}(\Omega) \text{ such that there exists } g_{\alpha} \in \Lp{p}(\Omega) \text{ such that } \right. \notag \\ 
+        \left. \int_{\Omega} u \phi_{x_{\alpha}} = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \phi \right. \notag \\
+        \left. \text{ for all } \alpha \text{ with } \lvert \alpha \rvert \leq k \text{ and for all }\phi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
+    \end{gather}
+    Define, for all $\alpha \text{ with } \lvert \alpha \rvert \leq k$:
+    \begin{gather}
+        u_{x_{\alpha}} = g_{\alpha}.
+    \end{gather}
+    Moreover, $\Wkp{k}{p}(\Omega)$ is equipped with the norm $\lVert \cdot \rVert_{\Wkp{k}{p}}$, such that for all $u \in \Wkp{k}{p}(\Omega)$:
+    \begin{gather}
+        \lVert u \rVert_{\Wkp{k}{p}(\Omega)} = \lVert u \rVert_{k, p} = \sum_{\lvert \alpha \rvert \leq k} \lVert u_{x_{\alpha}} \rVert_p.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$\Hk{k}(\Omega)$]
+    Let $k \geq 2$ integer, then:
+    \begin{gather}
+        \Hk{k}(\Omega) = \Wkp{k}{2}(\Omega).
+    \end{gather}
+    $\Hk{k}(\Omega)$ is equipped with the scalar product $(\cdot, \cdot)_{\Hk{k}(\Omega)}$, such that for all $u, v \in \Hk{k}(\Omega)$:
+    \begin{gather}
+        (u, v)_{\Hk{k}(\Omega)} = (u, v)_k = \sum_{\lvert \alpha \rvert \leq k} (u_{x_{\alpha}}, v_{x_{\alpha}})_{\Lp{2}(\Omega)}.
+    \end{gather}
+\end{definition}
+
+\begin{remark}
+    Let $k \geq 1$ integer and let $1 \leq p \leq +\infty$, $(\Wkp{k}{p}(\Omega), \lVert \cdot \rVert_{k, p})$ is a Banach space.
+\end{remark}
+
+\begin{remark}
+    Let $k \geq 1$ integer, $(\Hk{k}(\Omega), (\cdot, \cdot)_k)$ is a Hilbert space.
+\end{remark}
+
+\subsubsection{Notable Results}
+
+\begin{definition}[Critical Sobolev exponent]
+    Let $d \geq 2$ and $1 \leq p < d$, denote by $p^{\star}$ its associated critical Sobolev exponent defined by:
+    \begin{gather}
+        \frac{1}{p^{\star}} = \frac{1}{p} - frac{1}{d}.
+    \end{gather}
+\end{definition}
+
+\begin{theorem}[Sobolev-Gagliardo-Nirenberg's inequality]
+    Let $1 \leq p < d$, then:
+    \begin{gather}
+        \Wkp{1}{p}(\Rd{d}) \subset \Lp{p^{\star}}(\Rd{d}),
+    \end{gather}
+    and there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Rd{d})$:
+    \begin{gather}
+        \lVert u \rVert_{p^{\star}} \leq C \lVert \grad u \rVert_p,
+    \end{gather}
+    where $p^{\star}$ is defined by:
+    \begin{gather}
+        \frac{1}{p^{\star}} = \frac{1}{p} - \frac{1}{d}.
+    \end{gather}
+\end{theorem}
+
+\begin{corollary}
+    % [!]
+\end{corollary}
+
+\begin{corollary}
+    % [!]
+\end{corollary}
 
 \newpage
 \subsection{Bochner Spaces}

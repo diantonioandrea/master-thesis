@@ -1,6 +1,6 @@
 % Math operators and symbols.
 
-% Packages
+% General math packages
 \usepackage{bm}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
@@ -9,33 +9,42 @@
 \usepackage{amssymb}
 \usepackage{stmaryrd}
 
-% Theorems.
-\newtheorem{theorem}{Theorem}[section]
+%% Theorems.
+
+% Theorems and corollaries.
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[theorem]
+
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{proposition}{Proposition}[section]
+
+
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
 
 % Sets.
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\RT}{\mathbb{R}^2}
-\newcommand{\Rd}{\mathbb{R}^d}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 
-\newcommand{\PK}[1]{\mathbb{P}_{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rd}[1]{\mathbb{R}^{#1}}
 
-\newcommand{\LT}{\mathscr{L}^2}
 \newcommand{\Lp}[1]{\mathscr{L}^{#1}}
-\newcommand{\HO}{\mathscr{H}^1}
+\newcommand{\Wkp}[2]{\mathscr{W}^{#1, #2}}
+\newcommand{\Hk}[1]{\mathscr{H}^{#1}}
+
 \newcommand{\Tau}{\mathcal{T}}
+\newcommand{\Pk}[1]{\mathbb{P}_{#1}}
 
 % Vectors and operators.
 \newcommand{\Vector}[1]{\bm{#1}}
-\newcommand{\Operator}[1]{\textcolor{\operatorcolor}{#1}}
 
-% Matrices, ...
-\newcommand{\MA}{\mathcal{A}}
-\newcommand{\MB}{\mathcal{B}}
+% Sigma-algebras.
+\newcommand{\SA}{\mathcal{A}}
+
+% Matrices and vectors.
+\newcommand{\MM}{\mathcal{M}}
 \newcommand{\VF}{\mathcal{F}}
 
 % Gradient and divergence.
@@ -44,16 +53,3 @@
 
 % Span.
 \newcommand{\Span}[1]{\text{span} \left\{ #1 \right\}}
-
-% Bilinear operators.
-\newcommand{\boa}[2]{\Operator{a}(#1, #2)}
-\newcommand{\bob}[2]{\Operator{b}(#1, #2)}
-
-% Fortin.
-\newcommand{\tfortin}{\Operator{\tilde{\Pi}}}
-\newcommand{\fortin}{\Operator{\Pi}}
-\newcommand{\fortinptpz}{\Operator{\Pi^2_0}}
-
-% Redefinitions.
-\newcommand{\Exists}{\exists ~}
-\newcommand{\Forall}{\forall ~}
