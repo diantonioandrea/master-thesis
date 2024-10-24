@@ -357,10 +357,12 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SA, \mu)$ denote the same me
 
 \subsubsection{Notable Results}
 
+Consider the case in which $\Omega = \Rd{d}$.
+
 \begin{definition}[Critical Sobolev exponent]
     Let $d \geq 2$ and $1 \leq p < d$, denote by $p^{\star}$ its associated critical Sobolev exponent defined by:
     \begin{gather}
-        \frac{1}{p^{\star}} = \frac{1}{p} - frac{1}{d}.
+        \frac{1}{p^{\star}} = \frac{1}{p} - \frac{1}{d}.
     \end{gather}
 \end{definition}
 
@@ -371,20 +373,87 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SA, \mu)$ denote the same me
     \end{gather}
     and there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Rd{d})$:
     \begin{gather}
-        \lVert u \rVert_{p^{\star}} \leq C \lVert \grad u \rVert_p,
-    \end{gather}
-    where $p^{\star}$ is defined by:
-    \begin{gather}
-        \frac{1}{p^{\star}} = \frac{1}{p} - \frac{1}{d}.
+        \lVert u \rVert_{p^{\star}} \leq C \lVert \grad u \rVert_p.
     \end{gather}
 \end{theorem}
 
 \begin{corollary}
-    % [!]
+    Let $1 \leq p < d$, then:
+    \begin{gather}
+        \Wkp{1}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}) \text{ for all } p \leq q \leq p^{\star},
+    \end{gather}
+    with continuous injection.
 \end{corollary}
 
 \begin{corollary}
-    % [!]
+    \begin{gather}
+        \Wkp{1}{d}(\Rd{d}) \subset \Lp{q}(\Rd{d}) \text{ for all } N \leq q < +\infty.
+    \end{gather}
+\end{corollary}
+
+\begin{theorem}[Morrey's inequality]
+    Let $p > d$, then:
+    \begin{gather}
+        \Wkp{1}{p}(\Rd{d}) \subset \Lp{\infty}(\Rd{d}),
+    \end{gather}
+    with continuous injection.
+
+    Furthermore, there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Rd{d})$:
+    \begin{gather}
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \grad u \rVert_p \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \Rd{d},
+    \end{gather}
+    where:
+    \begin{gather}
+        \alpha = 1 - \frac{d}{p}.
+    \end{gather}
+\end{theorem}
+
+\begin{remark}
+    Let $p > d$, then for all $u \in \Wkp{1}{p}(\Rd{d})$ there exists $\tilde{u} \in C(\Rd{d})$ such that $u = \tilde{u}$ for $\mu$-a.e $\Vector{x} \in \Rd{d}$.
+\end{remark}
+
+\begin{corollary} \label{corollary:embedding}
+    Let $k \geq 1$ integer and $1 \leq p < +\infty$, then:
+    \begin{align}
+        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}), \text{ where } \frac{1}{q} = \frac{1}{p} - \frac{k}{d} & \text{ if } \frac{1}{p} - \frac{k}{d} > 0, \\
+        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}), \text{ for all } p \leq q < +\infty & \text{ if } \frac{1}{p} - \frac{k}{d} = 0, \\
+        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{\infty}(\Rd{d}), & \text{ if } \frac{1}{p} - \frac{k}{d} < 0,
+    \end{align}
+    all with continuous injection.
+
+    Moreover, if $k - d/p > 0$ is not an integer, set:
+    \begin{align}
+        & m = \left[ k - d/p \right], \\
+        & \theta = k - d/p - m,
+    \end{align}
+    then there exists $C \geq 0$ such that for all $u \in \Wkp{k}{p}(\Rd{d})$ for all $\alpha$ with $\lvert \alpha \rvert \leq m$:
+    \begin{gather}
+        \lVert u_{x_{\alpha}} \rVert_{\infty} \leq \lVert u \rVert_{k, p},
+    \end{gather}
+    and
+    \begin{gather}
+        \lvert u_{x_{\alpha}}(\Vector{x}) - u_{x_{\alpha}}(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \Rd{d}.
+    \end{gather}
+
+    In particular:
+    \begin{gather}
+        \Wkp{k}{p}(\Rd{d}) \subset C^m(\Rd{d}).
+    \end{gather}
+\end{corollary}
+
+Consider now the case in which $\Omega \subset \Rd{d}$.
+
+\begin{corollary}
+    Let $1 \leq p \leq +\infty$, then:
+    \begin{align}
+        & \Wkp{1}{p}(\Omega) \subset \Lp{p^{\star}}(\Omega), & \text{ if } p < d, \\
+        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        & \Wkp{1}{p}(\Omega) \subset \Lp{\infty}(\Omega), & \text{ if } p > d,
+    \end{align}
+\end{corollary}
+
+\begin{corollary}
+    Results in \autoref{corollary:embedding} remain true for $\Omega \subset \Rd{d}$.
 \end{corollary}
 
 \newpage
