@@ -406,11 +406,12 @@ Consider the case in which $\Omega = \Rd{d}$.
     \begin{gather}
         \alpha = 1 - \frac{d}{p}.
     \end{gather}
-\end{theorem}
 
-\begin{remark}
-    Let $p > d$, then for all $u \in \Wkp{1}{p}(\Rd{d})$ there exists $\tilde{u} \in C(\Rd{d})$ such that $u = \tilde{u}$ for $\mu$-a.e $\Vector{x} \in \Rd{d}$.
-\end{remark}
+    In particular\footnote{Up to the choice of a continuous representative.}:
+    \begin{gather}
+        \Wkp{1}{p}(\Rd{d}) \subset C(\Rd{d}).
+    \end{gather}
+\end{theorem}
 
 \begin{corollary} \label{corollary:embedding}
     Let $k \geq 1$ integer and $1 \leq p < +\infty$, then:
@@ -450,11 +451,42 @@ Consider now the case in which $\Omega \subset \Rd{d}$.
         & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
         & \Wkp{1}{p}(\Omega) \subset \Lp{\infty}(\Omega), & \text{ if } p > d,
     \end{align}
+    all with continuous injection.
+
+    Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Omega)$:
+    \begin{gather}
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \Rd{d},
+    \end{gather}
+    where:
+    \begin{gather}
+        \alpha = 1 - \frac{d}{p}.
+    \end{gather}
+
+    In particular:
+    \begin{gather}
+        \Wkp{1}{p}(\Omega) \subset C(\overline{\Omega}).
+    \end{gather}
 \end{corollary}
 
 \begin{corollary}
-    Results in \autoref{corollary:embedding} remain true for $\Omega \subset \Rd{d}$.
+    Results in \ref{corollary:embedding} remain true for $\Omega \subset \Rd{d}$.
 \end{corollary}
+
+\begin{theorem}[Rellich-Kondrachov]
+    Let $1 \leq p \leq +\infty$ and assume that $\Omega$ is bounded and of class $C^1$, then:
+    \begin{align}
+        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < p^{\star} & \text{ if } p < d, \\
+        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        & \Wkp{1}{p}(\Omega) \subset C(\overline{\Omega}), & \text{ if } p > d,
+    \end{align}
+    with compact injection.
+
+    In particular:
+    \begin{gather}
+        \Wkp{1}{p}(\Omega) \subset \Lp{p}(\Omega),
+    \end{gather}
+    with compact injection.
+\end{theorem}
 
 \newpage
 \subsection{Bochner Spaces}
