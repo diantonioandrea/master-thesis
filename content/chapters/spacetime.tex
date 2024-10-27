@@ -7,85 +7,101 @@ The Bochner spaces introduced in this section provide an ideal setting for study
 Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. Moreover, equip $I$ with its own $\sigma$-algebra $\SI$ and with the Lebesgue measure $\lambda$.
 
 \begin{definition}[Simple functions]
-    A function $f\colon I \rightarrow V$ is said to be a simple function if there exist $N \in \N$, $\left\{ v_n \right\}_{n = 1}^N \subset V$ and $\left\{ A_n \right\}_{n = 1}^N \subset \SI$ disjoint such that:
+    A function $u\colon I \rightarrow V$ is said to be a simple function if there exist $N \in \N$, $\left\{ v_n \right\}_{n = 1}^N \subset V$ and $\left\{ A_n \right\}_{n = 1}^N \subset \SI$ disjoint such that:
     \begin{gather}
-        f(t) = \sum_{n = 1}^N v_n \characteristic{A_n} \text{ for all } t \in I.
+        u(t) = \sum_{n = 1}^N v_n \characteristic{A_n} \text{ for all } t \in I.
     \end{gather}
 
     Moreover, the Bochner integral of a simple function is defined as:
     \begin{gather}
-        \int_I f(t) ~ d \lambda  = \sum_{n = 1}^N v_n \lambda(A_n) \in V.
+        \int_I u(t) ~ d \lambda  = \sum_{n = 1}^N v_n \lambda(A_n) \in V.
     \end{gather}
 \end{definition}
 
 \begin{lemma}
     \begin{gather}
-        \lVert \int_I f(t) ~ d \lambda \rVert_V \leq \int_I \lVert f(t) \rVert_V ~ d \lambda \text{ for all simple functions } f.
+        \lVert \int_I u(t) ~ d \lambda \rVert_V \leq \int_I \lVert u(t) \rVert_V ~ d \lambda \text{ for all simple functions } u.
     \end{gather}
 \end{lemma}
 
 \begin{definition}[Strongly measurable function]
-    A function $f\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    A function $u\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \lVert f(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I.
+        \lim_{n \rightarrow \infty} \lVert u(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I.
     \end{gather}
 \end{definition}
 
 \begin{lemma}
-    Let $f\colon I \rightarrow V$ be a strongly measurable function, then $\lVert f(\cdot) \rVert_V \colon I \rightarrow \R$ is Lebesgue-measurable.
+    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $\lVert u(\cdot) \rVert_V \colon I \rightarrow \R$ is Lebesgue-measurable.
 \end{lemma}
 
 \begin{definition}[Bochner integrable function] \label{definition:bochner_integrable}
-    A function $f\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    A function $u\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \lVert f(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I,
+        \lim_{n \rightarrow \infty} \lVert u(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I,
     \end{gather}
-    that is  $f$ is strongly measurable, and:
+    that is  $u$ is strongly measurable, and:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \int_I \lVert f(t) - f_n(t) \rVert_V ~ d \lambda = 0.
+        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - f_n(t) \rVert_V ~ d \lambda = 0.
     \end{gather}
 \end{definition}
 
 \begin{lemma}
-    Let $f\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ d \lambda \right\}_{n \in \N}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ d \lambda \right\}_{n \in \N}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
-    Let $f\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $f$ is defined as:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
     \begin{gather}
-        \int_I f(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I f_n(t) ~ d \lambda.
+        \int_I u(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I f_n(t) ~ d \lambda.
     \end{gather}
 \end{definition}
 
 \begin{theorem}[Bochner]
-    Let $f\colon I \rightarrow V$ be a strongly measurable function, then $f$ is Bochner integrable if and only if:
+    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $u$ is Bochner integrable if and only if:
     \begin{gather}
-        \int_I \lVert f(t) \rVert_V ~ d \lambda < + \infty.
+        \int_I \lVert u(t) \rVert_V ~ d \lambda < + \infty.
     \end{gather}
 \end{theorem}
 
+\newpage
 \subsection{Definition and Main Properties}
 
 \begin{corollary}[Linear maps]
-    Let $V, W$ be Banach spaces and $F$ be a bounded linear operator from $V$ to $W$. Let $f\colon I \rightarrow V$ be a Bochner integrable function and define $F(f) \colon I \rightarrow W$ for which:
+    Let $W$ be a Banach space and $F$ be a bounded linear operator from $V$ to $W$. Let $u\colon I \rightarrow V$ be a Bochner integrable function and define $F(u) \colon I \rightarrow W$ for which:
     \begin{gather}
-        F(f)(t) = F(f(t)) \text{ for } \lambda \text{-a.e. } t \in I,
+        F(u)(t) = F(u(t)) \text{ for } \lambda \text{-a.e. } t \in I,
     \end{gather}
-    then $F(f)$ is a Bochner integrable function and:
+    then $F(u)$ is a Bochner integrable function and:
     \begin{gather}
-        \int_I F(f)(t) ~ d \lambda = F\left( \int_I f(t) ~ d \lambda \right).
+        \int_I F(u)(t) ~ d \lambda = F\left( \int_I u(t) ~ d \lambda \right).
     \end{gather}
 \end{corollary}
+
+\begin{remark} % [!] Ugly \left and \right with \langle and \rangle.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\phi \in V^{*}$, then:
+    \begin{gather}
+        \int_I \left\langle (u)(t), \phi \right\rangle ~ d \lambda = \left\langle \int_I u(t) ~ d \lambda, \phi \right\rangle.
+    \end{gather}
+\end{remark}
+
+\begin{remark}[Embedding]
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $W$ be a Banach space such that $V \hookrightarrow W$. Denote by $F_{V \rightarrow W} \colon V \rightarrow W$ the canonical embedding, then:
+    \begin{gather}
+        \int_I F_{V \rightarrow W}(u)(t) ~ d \lambda = F_{V \rightarrow W}\left( \int_I u(t) ~ d \lambda \right),
+    \end{gather}
+    leading to a useful identification between the $V$-valued and the $W$-valued integrals.
+\end{remark}
 
 \begin{definition}[$\Lp{p}(I; V)$]
     Let $1 \leq p \leq +\infty$, then:
     \begin{gather}
-        \Lp{p}(I; V) = \left\{ f \colon I \rightarrow V \text{ strongly measurable such that } \lVert f \rVert_{\Lp{p}(I; V)} < +\infty \right\},
+        \Lp{p}(I; V) = \left\{ u \colon I \rightarrow V \text{ strongly measurable such that } \lVert u \rVert_{\Lp{p}(I; V)} < +\infty \right\},
     \end{gather}
     where:
     \begin{align}
-        & \lVert f \rVert_{\Lp{p}(I; V)} = \left( \int_I \lVert f(t) \rVert_V^p ~ d \lambda \right)^{1/p} & \text{ if } p < +\infty, \\
-        & \lVert f \rVert_{\Lp{\infty}(I; V)} = \esssup_{t \in I} \lVert f(t) \rVert_V & \text{ if } p = +\infty.
+        & \lVert u \rVert_{\Lp{p}(I; V)} = \left( \int_I \lVert u(t) \rVert_V^p ~ d \lambda \right)^{1/p} & \text{ if } p < +\infty, \\
+        & \lVert u \rVert_{\Lp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \lVert u(t) \rVert_V \right\} & \text{ if } p = +\infty.
     \end{align}
 \end{definition}
 
@@ -100,67 +116,86 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \end{theorem}
 
 \newpage
-\section{Weak Time Derivative}
+\subsection{Weak Time Derivative}
 
 Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 
 \begin{definition}[Continuity]
-    A function $f\colon I \rightarrow V$ is said to be continuous at $t \in I$ if for every $\left\{ t_n \right\}_{n \in \N}$ which converges to $t$, the sequence $\left\{ f(t_n) \right\}_{n \in \N}$ converges to $f(t)$ in $V$.
+    A function $u\colon I \rightarrow V$ is said to be continuous at $t \in I$ if for every $\left\{ t_n \right\}_{n \in \N}$ which converges to $t$, the sequence $\left\{ u(t_n) \right\}_{n \in \N}$ converges to $u(t)$ in $V$.
 
-    Moreover, $f$ is said to be continuous if it is continuous for all $t \in I$.
+    Moreover, $u$ is said to be continuous if it is continuous for all $t \in I$.
 \end{definition}
 
 \begin{definition}[Strongly differentiable function]
-    A function $f\colon I \rightarrow V$ is said to be strongly differentiable at $t \in I$ if it is continuous in a neighbourhood of $t$ and the ratio:
+    A function $u\colon I \rightarrow V$ is said to be strongly differentiable at $t \in I$ if it is continuous in a neighbourhood of $t$ and the ratio:
     \begin{gather}
-        \frac{f(t + \tau) - f(t)}{\tau}
+        \frac{u(t + \tau) - u(t)}{\tau}
     \end{gather}
     converges in $V$ as $\tau \rightarrow 0$.
 
-    The limit is then denoted by $f_t(t) \in V$.
+    The limit is then denoted by $u_t(t) \in V$.
 \end{definition}
 
 \begin{theorem}[Lebesgue's differentiation]
-    Let $f \in \Lp{1}(I; V)$ and:
+    Let $u \in \Lp{1}(I; V)$ and:
     \begin{gather}
-        F(t) = \int_0^t f(s) ~ d \lambda \text{ for all } t \in I,
+        F(t) = \int_0^t u(s) ~ d \lambda \text{ for all } t \in I,
     \end{gather}
-    then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $F_t(t) = f(t)$ for $\lambda$-a.e. $t \in I$.
+    then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $F_t(t) = u(t)$ for $\lambda$-a.e. $t \in I$.
 \end{theorem}
 
 \begin{definition}[$\Lp{1}_{loc}(I; V)$]
     \begin{gather}
-        \Lp{1}_{loc}(I; V) = \left\{ f\colon I \rightarrow V  \text{ such that } f \in \Lp{1}(K; V) \text{ for all } K \subset \subset I \right\}.
+        \Lp{1}_{loc}(I; V) = \left\{ u\colon I \rightarrow V  \text{ such that } u \in \Lp{1}(K; V) \text{ for all } K \subset \subset I \right\}.
     \end{gather}
 \end{definition}
 
 \begin{corollary}[Vanishing integrals]
-    Let $f \in \Lp{1}_{loc}(I; V)$ be such that:
+    Let $u \in \Lp{1}_{loc}(I; V)$ be such that:
     \begin{gather}
-        \int_I f(t) \phi(t) ~ d \lambda = 0 \text{ for all } \phi \in C_c^{\infty}(I; \R),
+        \int_I u(t) \phi(t) ~ d \lambda = 0 \text{ for all } \phi \in C_c^{\infty}(I; \R),
     \end{gather}
-    then $f(t) = 0$ for $\lambda$-a.e. $t \in I$.
+    then $u(t) = 0$ for $\lambda$-a.e. $t \in I$.
 \end{corollary}
 
 \begin{definition}[Weakly differentiable function]
-    A function $f \in \Lp{1}_{loc}(I; V)$ is said to be weakly differentiable if there exists $g \in \Lp{1}_{loc}(I; V)$ such that:
+    A function $u \in \Lp{1}_{loc}(I; V)$ is said to be weakly differentiable if there exists $v \in \Lp{1}_{loc}(I; V)$ such that:
     \begin{gather}
-        - \int_I \phi^{\prime}(t) f(t) = \int_I \phi(t) g(t) \text{ for all } \phi \in C_c^{\infty}(I; \R).
+        - \int_I \phi^{\prime}(t) u(t) = \int_I \phi(t) v(t) \text{ for all } \phi \in C_c^{\infty}(I; \R).
     \end{gather}
-    Its weak derivative is denoted by $f_t$ when unambiguous.
+    Its weak derivative is denoted by $u_t$ when unambiguous.
 \end{definition}
 
 \begin{lemma}
-    Let $f \in \Lp{1}_{loc}(I; V)$ weakly differentiable be such that $f_t(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $f(t) = a$ for $\lambda$-a.e. $t \in I$.
+    Let $u \in \Lp{1}_{loc}(I; V)$ weakly differentiable be such that $u_t(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $u(t) = a$ for $\lambda$-a.e. $t \in I$.
 \end{lemma}
 
 \begin{theorem}[Fundamental theorem of calculus]
-    Let $f, g \in \Lp{1}(I; V)$, then $f$ is weakly differentiable with $g = f_t$ if and only if there exists $a \in V$ such that:
+    Let $u, v \in \Lp{1}(I; V)$, then $u$ is weakly differentiable with $v = u_t$ if and only if there exists $a \in V$ such that:
     \begin{gather}
-        f(t) = a + \int_0^t g(s) ~ d \lambda \text{ for } \lambda \text{-a.e.} t \in I.
+        u(t) = a + \int_0^t v(s) ~ d \lambda \text{ for } \lambda \text{-a.e.} t \in I.
     \end{gather}
 \end{theorem}
 
 \begin{corollary}
-    Let $f \in \Lp{1}(I; V)$ be weakly differentiable, then it is strongly differentiable for $\lambda$-a.e. $t \in I$ and its strong and weak derivatives coincide.
+    Let $u \in \Lp{1}(I; V)$ be weakly differentiable, then it is strongly differentiable for $\lambda$-a.e. $t \in I$ and its strong and weak derivatives coincide.
 \end{corollary}
+
+\begin{lemma}[Linear maps]
+    Let $W$ be a Banach space and $F$ be a linear operator from $V$ to $W$, then for all $u \in \Lp{1}_{loc}(I; V)$ weakly differentiable, $F(u) \in \Lp{1}_{loc}(I; W)$ is weakly differentiable and:
+    \begin{gather}
+        F(u_t) = F_t(u) \in \Lp{1}_{loc}(I; W).
+    \end{gather}
+\end{lemma}
+
+\newpage
+\subsection{Function Spaces with Weak Time Derivative}
+
+Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow W}$ canonical embedding.
+
+\begin{definition}[$\Xpq{P}{q}(I; V, W)$]
+    Let $1 \leq p, q \leq +\infty$, then:
+    \begin{gather}
+        \Xpq{p}{q}(I; V, W) = \left\{ u \in \Lp{p}(I; V) \text{ for which } u_t \in \Lp{q}(I; W) \right\}
+    \end{gather}
+\end{definition}
