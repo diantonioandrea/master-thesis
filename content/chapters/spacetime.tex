@@ -79,7 +79,7 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \end{corollary}
 
 \begin{remark} % [!] Ugly \left and \right with \langle and \rangle.
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\phi \in V^{*}$, then:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\phi \in V^*$, then:
     \begin{gather}
         \int_I \left\langle (u)(t), \phi \right\rangle ~ d \lambda = \left\langle \int_I u(t) ~ d \lambda, \phi \right\rangle.
     \end{gather}
@@ -110,7 +110,7 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \end{theorem}
 
 \begin{theorem}
-    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \Lp{p}(I; V) \right)^{*}$ is a isometrically isomorphic to $\Lp{p^{\prime}}(I; V^{*})$.
+    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \Lp{p}(I; V) \right)^*$ is a isometrically isomorphic to $\Lp{p^{\prime}}(I; V^*)$.
 
     Furthermore, $\Lp{p}(I; V)$ is reflexive for all $1 < p < +\infty$.
 \end{theorem}
@@ -193,9 +193,55 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 
 Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow W}$ canonical embedding.
 
-\begin{definition}[$\Xpq{P}{q}(I; V, W)$]
+\begin{definition}[$\Xpq{}{q}(I; V, W)$]
     Let $1 \leq p, q \leq +\infty$, then:
     \begin{gather}
         \Xpq{p}{q}(I; V, W) = \left\{ u \in \Lp{p}(I; V) \text{ for which } u_t \in \Lp{q}(I; W) \right\}
     \end{gather}
+
+    Moreover, $\Xpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\Xpq{}{q}(I; V, W)}$, such that for all $u \in \\Xpq{P}{q}(I; V, W)$:
+    \begin{gather}
+        \lVert u \rVert_{\Xpq{}{q}(I; V, W)} = \lVert u \rVert_{\Lp{p}(I; V)} + \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\Lp{q}(I; W)}.
+    \end{gather}
 \end{definition}
+
+\begin{theorem}
+    $C^{\infty}(\overline{I}; V)$ is dense in $\Xpq{}{q}(I; V, W)$.
+\end{theorem}
+
+\begin{lemma} % [!] Fix embedding for Sobolev spaces.
+    \begin{align}
+        & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0, 1 - \frac{1}{q}}(\overline{I}; W) & \text{ if q > 1}, \\
+        & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0}(\overline{I}; W) & \text{ if q = 1}.
+    \end{align}
+\end{lemma}
+
+\begin{theorem}
+    Let $Y$ be a Banach space such that $V \hookrightarrow Y \hookrightarrow W$ and assume that $V \hookrightarrow \hookrightarrow Y$, then:
+    \begin{gather}
+        \Xpq{p}{q}(I; V, W) \hookrightarrow \hookrightarrow \Lp{p}(I; Y) \text{ for all } 1 \leq p, q < +\infty,\\
+        \Xpq{\infty}{q}(I; V, W) \hookrightarrow \hookrightarrow C^0(\overline{I}; Y) \text{ for all } q > 1.
+    \end{gather}
+\end{theorem}
+
+Let now $V, W$ be separable Hilbert spaces such that $V \hookrightarrow W$ and $V$ is dense in $W$. Moreover, identify $W$ with its dual space $W^*$ so that the triple $(V, W \equiv W^*, V^*)$ forms a \textit{Gelfand triple}.
+
+\begin{definition}[Gelfand triple]
+    Let now $V, W$ be separable Hilbert spaces such that $V \hookrightarrow W$ and $V$ is dense in $W$. Moreover, identify $W$ with its dual space $W^*$. A triple $\left( V, W \equiv W^*, V^* \right)$ is said to be a Gelfand triple.
+\end{definition}
+
+\begin{definition}[$\X(I; V, V^*)$]
+    \begin{gather}
+        \X(I; V, V^*) = \Xpq{2}{2}(I; V, V^*) = \left\{ u \in \Lp{2}(I; V) \text{ for which } u_t \in \Lp{2}(I; V^*) \right\}
+    \end{gather}
+\end{definition}
+
+\begin{theorem}[Time trace and integration by parts]
+    Let $\left( V, W \equiv W^*, V^* \right)$ be a Gelfand triple, then $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$ and the map which to $u \in \X(I; V, V^*)$ associates $u(0) \in W$ is surjective.
+
+    Moreover, for all $u, v \in \X(I; V, V^*)$:
+    \begin{align}
+        \int_I \langle u_t(t), v(t) \rangle ~ d \lambda = & - \int_I \langle v_t(t), u(t) \rangle ~ d \lambda \\
+        & + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
+    \end{align}
+\end{theorem}
