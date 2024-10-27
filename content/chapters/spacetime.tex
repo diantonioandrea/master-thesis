@@ -1,0 +1,65 @@
+\section{Bochner Spaces}
+
+The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p. 111]{Ern2021}, functions defined on a bounded time interval $I \subset \R$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \Rd{d}$.
+
+\subsection{Bochner Integral}
+
+Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. Moreover, equip $I$ with its own $\sigma$-algebra $\SI$ and with the Lebesgue measure $\lambda$.
+
+\begin{definition}[Simple functions]
+    A function $f\colon I \rightarrow V$ is said to be a simple function if there exist $N \in \N$, $\left\{ v_n \right\}_{n = 1}^N \subset V$ and $\left\{ A_n \right\}_{n = 1}^N \subset \SI$ disjoint such that:
+    \begin{gather}
+        f(t) = \sum_{n = 1}^N v_n \characteristic{A_n} \text{ for all } t \in I.
+    \end{gather}
+
+    Moreover, the Bochner integral of a simple function is defined as:
+    \begin{gather}
+        \int_I f(t) ~ dt  = \sum_{n = 1}^N v_n \lambda(A_n) \in V.
+    \end{gather}
+\end{definition}
+
+\begin{lemma}
+    \begin{gather}
+        \lVert \int_I f(t) ~ dt \rVert_V \leq \int_I \lVert f(t) \rVert_V ~ dt \text{ for all simple functions } f.
+    \end{gather}
+\end{lemma}
+
+\begin{definition}[Strongly measurable function]
+    A function $f\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} \lVert f(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I.
+    \end{gather}
+\end{definition}
+
+\begin{lemma}
+    Let $f\colon I \rightarrow V$ be a strongly measurable function, then $\lVert f(\cdot) \rVert_V \colon I \rightarrow \R$ is Lebesgue-measurable.
+\end{lemma}
+
+\begin{definition}[Bochner integrable function] \label{definition:bochner_integrable}
+    A function $f\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} \lVert f(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I,
+    \end{gather}
+    that is  $f$ is strongly measurable, and:
+    \begin{gather}
+        \lim_{n \rightarrow \infty} \int_I \lVert f(t) - f_n(t) \rVert_V ~ dt = 0.
+    \end{gather}
+\end{definition}
+
+\begin{lemma}
+    Let $f\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ dt \right\}_{n \in \N}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+\end{lemma}
+
+\begin{definition}[Bochner integral]
+    Let $f\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $f$ is defined as:
+    \begin{gather}
+        \int_I f(t) ~ dt = \lim_{n \rightarrow \infty} \int_I f_n(t) ~ dt.
+    \end{gather}
+\end{definition}
+
+\begin{theorem}[Bochner]
+    Let $f\colon I \rightarrow V$ be a strongly measurable function, then $f$ is Bochner integrable if and only if:
+    \begin{gather}
+        \int_I \lVert f(t) \rVert_V ~ dt < + \infty.
+    \end{gather}
+\end{theorem}
