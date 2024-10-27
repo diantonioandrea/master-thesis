@@ -63,3 +63,38 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
         \int_I \lVert f(t) \rVert_V ~ dt < + \infty.
     \end{gather}
 \end{theorem}
+
+\subsection{Definition and Main Properties}
+
+\begin{corollary}[Linear maps]
+    Let $V, W$ be Banach spaces and $F$ be a bounded linear operator from $V$ to $W$. Let $f\colon I \rightarrow V$ be a Bochner integrable function and define $F(f) \colon I \rightarrow W$ for which:
+    \begin{gather}
+        F(f)(t) = F(f(t)) \text{ for } \lambda \text{-a.e. } t \in I,
+    \end{gather}
+    then $F(f)$ is a Bochner integrable function and:
+    \begin{gather}
+        \int_I F(f)(t) ~ dt = F\left( \int_I f(t) ~ dt \right).
+    \end{gather}
+\end{corollary}
+
+\begin{definition}[$\Lp{p}(I; V)$]
+    Let $1 \leq p \leq +\infty$, then:
+    \begin{gather}
+        \Lp{p}(I; V) = \left\{ f \colon I \rightarrow V \text{ strongly measurable such that } \lVert f \rVert_{\Lp{p}(I; V)} < +\infty \right\},
+    \end{gather}
+    where:
+    \begin{align}
+        & \lVert f \rVert_{\Lp{p}(I; V)} = \left( \int_I \lVert f(t) \rVert_V^p ~ dt \right)^{1/p} & \text{ if } p < +\infty, \\
+        & \lVert f \rVert_{\Lp{\infty}(I; V)} = \esssup_{t \in I} \lVert f(t) \rVert_V & \text{ if } p = +\infty.
+    \end{align}
+\end{definition}
+
+\begin{theorem}
+    Let $1 \leq p \leq +\infty$, then $\Lp{p}(I; V)$ is a Banach space.
+\end{theorem}
+
+\begin{theorem}
+    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \Lp{p}(I; V) \right)^{*}$ is a isometrically isomorphic to $\Lp{p^{\prime}}(I; V^{*})$.
+
+    Furthermore, $\Lp{p}(I; V)$ is reflexive for all $1 < p < +\infty$.
+\end{theorem}
