@@ -383,20 +383,24 @@ Consider the case in which $\Omega = \Rd{d}$.
         \Wkp{1}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}) \text{ for all } p \leq q \leq p^{\star},
     \end{gather}
     with continuous injection.
+
+    This is also denoted with:
+    \begin{gather}
+        \Wkp{1}{p}(\Rd{d}) \hookrightarrow \Lp{q}(\Rd{d}).
+    \end{gather}
 \end{corollary}
 
 \begin{corollary}
     \begin{gather}
-        \Wkp{1}{d}(\Rd{d}) \subset \Lp{q}(\Rd{d}) \text{ for all } N \leq q < +\infty.
+        \Wkp{1}{d}(\Rd{d}) \hookrightarrow \Lp{q}(\Rd{d}) \text{ for all } N \leq q < +\infty.
     \end{gather}
 \end{corollary}
 
 \begin{theorem}[Morrey's inequality]
     Let $p > d$, then:
     \begin{gather}
-        \Wkp{1}{p}(\Rd{d}) \subset \Lp{\infty}(\Rd{d}),
+        \Wkp{1}{p}(\Rd{d}) \hookrightarrow \Lp{\infty}(\Rd{d}).
     \end{gather}
-    with continuous injection.
 
     Furthermore, there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Rd{d})$:
     \begin{gather}
@@ -416,11 +420,10 @@ Consider the case in which $\Omega = \Rd{d}$.
 \begin{corollary} \label{corollary:embedding}
     Let $k \geq 1$ integer and $1 \leq p < +\infty$, then:
     \begin{align}
-        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}), \text{ where } \frac{1}{q} = \frac{1}{p} - \frac{k}{d} & \text{ if } \frac{1}{p} - \frac{k}{d} > 0, \\
-        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{q}(\Rd{d}), \text{ for all } p \leq q < +\infty & \text{ if } \frac{1}{p} - \frac{k}{d} = 0, \\
-        & \Wkp{k}{p}(\Rd{d}) \subset \Lp{\infty}(\Rd{d}), & \text{ if } \frac{1}{p} - \frac{k}{d} < 0,
+        & \Wkp{k}{p}(\Rd{d}) \hookrightarrow \Lp{q}(\Rd{d}), \text{ where } \frac{1}{q} = \frac{1}{p} - \frac{k}{d} & \text{ if } \frac{1}{p} - \frac{k}{d} > 0, \\
+        & \Wkp{k}{p}(\Rd{d}) \hookrightarrow \Lp{q}(\Rd{d}), \text{ for all } p \leq q < +\infty & \text{ if } \frac{1}{p} - \frac{k}{d} = 0, \\
+        & \Wkp{k}{p}(\Rd{d}) \hookrightarrow \Lp{\infty}(\Rd{d}), & \text{ if } \frac{1}{p} - \frac{k}{d} < 0.
     \end{align}
-    all with continuous injection.
 
     Moreover, if $k - d/p > 0$ is not an integer, set:
     \begin{align}
@@ -447,11 +450,10 @@ Consider now the case in which $\Omega \subset \Rd{d}$.
 \begin{corollary}
     Let $1 \leq p \leq +\infty$, then:
     \begin{align}
-        & \Wkp{1}{p}(\Omega) \subset \Lp{p^{\star}}(\Omega), & \text{ if } p < d, \\
-        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
-        & \Wkp{1}{p}(\Omega) \subset \Lp{\infty}(\Omega), & \text{ if } p > d,
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \Lp{p^{\star}}(\Omega), & \text{ if } p < d, \\
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \Lp{\infty}(\Omega), & \text{ if } p > d.
     \end{align}
-    all with continuous injection.
 
     Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}(\Omega)$:
     \begin{gather}
@@ -475,17 +477,15 @@ Consider now the case in which $\Omega \subset \Rd{d}$.
 \begin{theorem}[Rellich-Kondrachov]
     Let $1 \leq p \leq +\infty$ and assume that $\Omega$ is bounded and of class $C^1$, then:
     \begin{align}
-        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < p^{\star} & \text{ if } p < d, \\
-        & \Wkp{1}{p}(\Omega) \subset \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
-        & \Wkp{1}{p}(\Omega) \subset C(\overline{\Omega}), & \text{ if } p > d,
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow \Lp{q}(\Omega), \text{ for all } p \leq q < p^{\star} & \text{ if } p < d, \\
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow \Lp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        & \Wkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow C(\overline{\Omega}), & \text{ if } p > d.
     \end{align}
-    with compact injection.
 
     In particular:
     \begin{gather}
-        \Wkp{1}{p}(\Omega) \subset \Lp{p}(\Omega),
+        \Wkp{1}{p}(\Omega) \hookrightarrow \Lp{p}(\Omega).
     \end{gather}
-    with compact injection.
 \end{theorem}
 
 \begin{definition}[$\Wkp{1}{p}_0(\Omega)$]
