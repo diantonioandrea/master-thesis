@@ -488,6 +488,32 @@ Consider now the case in which $\Omega \subset \Rd{d}$.
     with compact injection.
 \end{theorem}
 
+\begin{definition}[$\Wkp{1}{p}_0(\Omega)$]
+    Let $1 \leq p < +\infty$, $\Wkp{1}{p}_0(\Omega)$ denotes the closure of $C_c^{\infty}(\Omega)$ in $\Wkp{1}{p}(\Omega)$.
+
+    Moreover, set $\Hk{1}_0(\Omega) = \Wkp{1}{2}_0(\Omega)$.
+\end{definition}
+
+\begin{theorem}
+    Let $1 \leq p < +\infty$ and assume that $\Omega$ is of class $C^1$. Then, for $u \in \Wkp{1}{p}(\Omega) \cap C(\overline{\Omega})$, $u = 0$ on $\partial \Omega$ if and only if $u \in \Wkp{1}{p}_0(\Omega)$.
+\end{theorem}
+
+\begin{theorem}[Poincaré's inequality]
+    Let $1 \leq p < +\infty$ and assume that $\Omega$ is a bounded open set. Then there exists $C \geq 0$ such that for all $u \in \Wkp{1}{p}_0(\Omega)$:
+    \begin{gather}
+        \lVert u \rVert_p \leq C \lVert \grad u \rVert_p.
+    \end{gather}
+\end{theorem}
+
+\begin{definition}[$\Wkp{-1}{p^{\prime}}(\Omega)$]
+    Let $1 \leq p < +\infty$, $\Wkp{-1}{p^{\prime}}(\Omega)$ denotes the dual space of $\Wkp{1}{p}_0(\Omega)$ and $\Hk{-1}(\Omega)$ the dual space of $\Hk{1}_0(\Omega)$.
+
+    Moreover:
+    \begin{gather}
+        \Hk{1}_0(\Omega) \subset \Lp{2}(\Omega) \subset \Hk{-1}(\Omega).
+    \end{gather}
+\end{definition}
+
 \newpage
 \subsection{Bochner Spaces}
 
