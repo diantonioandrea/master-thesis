@@ -246,7 +246,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \newpage
 \section{Weak Formulation of the Model Parabolic Problem}
 
-Let $V, W$ and $\X$ as in \ref{definition:gelfand} and \ref{definition:x}.
+Following \cite[p. 124]{Ern2021}, let $V, W$ and $\X$ as in \ref{definition:gelfand} and \ref{definition:x}.
 
 \subsection{Model Problem}
 
@@ -338,7 +338,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 
 \subsection{Conforming Semi-Discretization in Space}
 
-Set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
+Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
 
 \begin{definition}[$b$ and $l$]
     Let $b \colon \TX \times \TY \rightarrow \R$ and $l \colon \TY \rightarrow \R$ be such that for all $u \in \TX$ and all $y = (y_0, y_1) \in \TY$:
@@ -402,7 +402,7 @@ with $y_j \in \Lp{2}(I)$ for all $j \in \Js$.
 
 \subsubsection{Setting}
 
-Let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \Ns}$ partition of $I$ where $\Ns = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
+Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \Ns}$ partition of $I$ where $\Ns = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
 
 \begin{definition}[Mapping]
     Let $T_n \colon \hat{I} \rightarrow I_n$ for $\hat{I} = (-1, 1]$ be such that:
@@ -430,12 +430,36 @@ Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\Pk{q}(\hat{I}; \R)$, th
 
 \begin{definition}[$\Pk{q}^b(I_{\tau}; H)$]
     \begin{gather}
-        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \Pk{q}(I_n; H) \text{ for all } n \in \Ns \right\}.
+        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \Pk{q}(I_n; H) \text{ for all } n \in \Ns \right\},
     \end{gather}
+    that is the space of the $H$-valued functions that are piecewise polynomials of degree at most $q$ on the time mesh $I_{\tau}$.
 \end{definition}
 
-\begin{definition}[$\Pk{q}^b(\overline{I_{\tau}}; H)$]
+\begin{definition}[$\Pk{q}^b(\overline{I}_{\tau}; H)$]
     \begin{gather}
         \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \Pk{q}^b(I_{\tau}; H) \right\}.
     \end{gather}
 \end{definition}
+
+% Note that every function $u_{\tau} \in \Pk{q}^b(\overline{I}_{\tau}; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \Pk{q}^b(I_{\tau}; H)$, meaning that $\Pk{q}^b(\overline{I}_{\tau}; H)$ is isomorphic to $H \times \Pk{q}^b(I_{\tau}; H)$.
+
+By definition, every $u_{\tau} \in \Pk{q}^b(\overline{I}_{\tau}; H)$ is left-continuous at the discrete time nodes $t_n$.
+
+\begin{definition}[Time jumps]
+    \begin{gather}
+        \llbracket u_{\tau} \rrbracket_{n - 1} = u_{\tau}(t_{n - 1}^+) - u_{\tau}(t_{n - 1}),
+    \end{gather}
+    where:
+    \begin{gather}
+        u_{\tau}(t_{n - 1}^+) = \lim_{\varepsilon \rightarrow 0^+} u_{\tau}(t_{n - 1} + \varepsilon).
+    \end{gather}
+\end{definition}
+
+Another useful space is the subspace of $\Pk{q}^b(\overline{I}_{\tau}; H)$ composed of the $H$-valued functions that are continuous in time.
+
+\begin{definition}[$\Pk{q}^g(\overline{I}_{\tau}; H)$]
+    \begin{gather}
+        \Pk{q}^g(I_{\tau}; H) = \Pk{q}^b(\overline{I}_{\tau}; H) \cap C^0(\overline{I}; H).
+    \end{gather}
+\end{definition}
+
