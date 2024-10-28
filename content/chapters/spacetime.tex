@@ -81,7 +81,7 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \begin{remark} % [!] Ugly \left and \right with \langle and \rangle.
     Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\phi \in V^*$, then:
     \begin{gather}
-        \int_I \left\langle (u)(t), \phi \right\rangle ~ d \lambda = \left\langle \int_I u(t) ~ d \lambda, \phi \right\rangle.
+        \int_I \left\langle \phi, (u)(t) \right\rangle_{V^*, V} ~ d \lambda = \left\langle \phi, \int_I u(t) ~ d \lambda \right\rangle_{V^*, V}.
     \end{gather}
 \end{remark}
 
@@ -226,22 +226,89 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 
 Let now $V, W$ be separable Hilbert spaces such that $V \hookrightarrow W$ and $V$ is dense in $W$. Moreover, identify $W$ with its dual space $W^*$ so that the triple $(V, W \equiv W^*, V^*)$ forms a \textit{Gelfand triple}.
 
-\begin{definition}[Gelfand triple]
+\begin{definition}[Gelfand triple] \label{definition:gelfand}
     Let now $V, W$ be separable Hilbert spaces such that $V \hookrightarrow W$ and $V$ is dense in $W$. Moreover, identify $W$ with its dual space $W^*$. A triple $\left( V, W \equiv W^*, V^* \right)$ is said to be a Gelfand triple.
 \end{definition}
 
-\begin{definition}[$\X(I; V, V^*)$]
+\begin{definition}[$\X(I; V, V^*)$] \label{definition:x}
     \begin{gather}
         \X(I; V, V^*) = \Xpq{2}{2}(I; V, V^*) = \left\{ u \in \Lp{2}(I; V) \text{ for which } u_t \in \Lp{2}(I; V^*) \right\}
     \end{gather}
 \end{definition}
 
 \begin{theorem}[Time trace and integration by parts]
-    Let $\left( V, W \equiv W^*, V^* \right)$ be a Gelfand triple, then $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$ and the map which to $u \in \X(I; V, V^*)$ associates $u(0) \in W$ is surjective.
+    Let $\left( V, W \equiv W^*, V^* \right)$ be a Gelfand triple. Then $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \X(I; V, V^*)$ is surjective.
 
     Moreover, for all $u, v \in \X(I; V, V^*)$:
-    \begin{align}
-        \int_I \langle u_t(t), v(t) \rangle ~ d \lambda = & - \int_I \langle v_t(t), u(t) \rangle ~ d \lambda \\
-        & + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
-    \end{align}
+    \begin{gather}
+        \int_I \langle u_t(t), v(t) \rangle_{V^*, V} ~ d \lambda = - \int_I \langle v_t(t), u(t) \rangle_{V^*, V} ~ d \lambda + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
+    \end{gather}
 \end{theorem}
+
+\newpage
+\section{Weak Formulation of the Model Parabolic Problem}
+
+Let $V, W$ and $\X$ as in \ref{definition:gelfand} and \ref{definition:x}.
+
+\subsection{Model Problem}
+
+\begin{definition}[A] \label{definition:a}
+    Let $A \colon I \rightarrow \mathcal{L}(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $C, \alpha > 0$ such that:
+    \begin{align} \label{equation:a}
+        & \lVert A(t)(u) \rVert_{V^*} \leq C \lVert u \rVert_V \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
+        & \langle A(t)(u), u \rangle_{V^*, V} \geq \alpha \lVert u \rVert_V^2 \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
+    \end{align}
+\end{definition}
+
+\begin{lemma}
+    Let $1 \leq p \leq +\infty$ and  $A$ as in \ref{definition:a}, then for all $u \in \Lp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \Lp{p}(I; V^*)$ with:
+    \begin{gather}
+        \lVert A(u) \rVert_{\Lp{p}(I; V^*)} \leq C \lVert u \rVert_{\Lp{p}(I; V)}.
+    \end{gather}
+\end{lemma}
+
+\begin{definition}[Model problem] \label{definition:model}
+    Let $f \in \Lp{2}(I; V^*)$, the model problem is to find $u \in \X(I; V, V^*)$ such that:
+    \begin{gather}
+        \begin{cases}
+            u_t(t) + A(u)(t) = f(t) & \text{ in } \Lp{2}(I; V^*), \\
+            u(0) = u_0 & \text{ in } W.
+        \end{cases}
+    \end{gather}
+\end{definition}
+
+\newpage
+\subsection{Weak Formulation}
+
+\begin{definition}[Trial and test spaces]
+    Let $\TX = \X(I; V, V^*)$ be the trial space and let $\TY = \TY_0 \times \TY_1$ be the test space where $\TY_0 = W$ and $\TY_1 = \Lp{2}(I; V)$.
+\end{definition}
+
+\begin{definition}[$b$]
+    Let $b \colon \TX \times \TY \rightarrow \R$ be such that for all $u \in \TX$ and all $y = (y_0, y_1) \in \TY$:
+    \begin{gather}
+        b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle u_t(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$l$]
+    Let $l \colon \TY \rightarrow \R$ be such that for all $y \in \TY$:
+    \begin{gather}
+        l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[Weak formulation]
+    The weak formulation of \ref{definition:model} is to find $u \in \TX$ such that:
+    \begin{gather}
+        b(u, y) = l(y) \text{ for all } y \in \TY. \label{equation:weak}
+    \end{gather}
+\end{definition}
+
+\begin{definition}[Parabolic equation]
+    Let $f \in \Lp{2}(I; V^*)$ and $u_0 \in W$, then \eqref{equation:weak} is said to be parabolic if $A$ satisfies \eqref{equation:a}.
+\end{definition}
+
+\begin{lemma}[Weak solution]
+    Let $u \in \TX$ solution of \eqref{equation:weak}, then $u_t(t) + A(u)(t) = f(t)$ for $\lambda$-a.e. $t \in I$ and $u(0) = u_0$ in $W$.
+\end{lemma}
