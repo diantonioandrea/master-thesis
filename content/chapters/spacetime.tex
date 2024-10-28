@@ -350,7 +350,7 @@ Set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and 
 
 Let $\left\{ V_h \right\}_{h \in \Hs}$ be a sequence of finite-dimensional subspaces of $V$ constructed using a finite element and a shape-regular mesh family $\left\{ \Tau_h \right\}_{h \in \Hs}$, which is fixed in time, such that each mesh exactly covers $\Omega$.
 
-Let $\left\{ \varphi_j \right\}_{j \in J_h}$ be a basis for $V_h$.
+Let $\left\{ \varphi_j \right\}_{j \in \Js}$ be a basis for $V_h$.
 
 \begin{definition}[Semi-discrete trial and test spaces]
     Let $\TX_h = \X(I; V, V^*) = \Hk{1}(I; V_h)$ be the semi-discrete trial space and let $\TY_h = V_h \times \Lp{2}(I; V_h)$ be the semi-discrete test space.
@@ -358,17 +358,17 @@ Let $\left\{ \varphi_j \right\}_{j \in J_h}$ be a basis for $V_h$.
 
 Observe that $\TX_h \subset \TX$, $\TY_h \subset \TY$, and a generic $u_h \in \TX_h$ is of the form of:
 \begin{gather}
-    u_h(t, \Vector{x}) = \sum_{j \in J_h} u_j(t) \varphi_j(\Vector{x}),
+    u_h(t, \Vector{x}) = \sum_{j \in \Js} u_j(t) \varphi_j(\Vector{x}),
 \end{gather}
 and:
 \begin{gather}
-    u_{t, h}(t, \Vector{x}) = \sum_{j \in J_h} u_j^{\prime}(t) \varphi_j(\Vector{x}),
+    u_{t, h}(t, \Vector{x}) = \sum_{j \in \Js} u_j^{\prime}(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $u_j \in \Hk{1}(I)$ for all $j \in J_h$. Similarly, a generic $y_h \in \TY_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
+with $u_j \in \Hk{1}(I)$ for all $j \in \Js$. Similarly, a generic $y_h \in \TY_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
 \begin{gather}
-    y_{1h}(t, \Vector{x}) = \sum_{j \in J_h} y_j(t) \varphi_j(\Vector{x}),
+    y_{1h}(t, \Vector{x}) = \sum_{j \in \Js} y_j(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $y_j \in \Lp{2}(I)$ for all $j \in J_h$.
+with $y_j \in \Lp{2}(I)$ for all $j \in \Js$.
 
 \begin{definition}[Semi-discrete weak formulation]
     The semi-discrete weak formulation of \ref{definition:model} is to find $u_h \in \TX_h$ such that:
@@ -396,3 +396,46 @@ with $y_j \in \Lp{2}(I)$ for all $j \in J_h$.
 
     Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \mathcal{L}(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
 \end{proposition}
+
+\newpage
+\subsection{Discontinuous Galërkin Discretization in Time}
+
+\subsubsection{Setting}
+
+Let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \Ns}$ partition of $I$ where $\Ns = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
+
+\begin{definition}[Mapping]
+    Let $T_n \colon \hat{I} \rightarrow I_n$ for $\hat{I} = (-1, 1]$ be such that:
+    \begin{gather}
+        T_n(t) = \frac{1}{2}(t_{n - 1} + t_n) + \frac{1}{2} \tau t \text{ for all } t \in \hat{I}.
+    \end{gather}
+\end{definition}
+
+Let $H$ be a real Hilbert space composed of functions defined on the space domain $\Omega \subset \Rd{d}$, and let $q \geq 0$ the polynomial degree for the time approximation of the functions in $\Lp{1}(I; H)$.
+
+\begin{definition}[$\Pk{q}(I_n; H)$]
+    \begin{gather}
+        \Pk{q}(I_n; H) = \Pk{q}(I_n; \R) \otimes H,
+    \end{gather}
+    that is $u \in \Pk{q}(I_n; H)$ if there exist $M \in \N$ and $\left\{ (u_j, p_j) \right\}_{j = 1}^M \subset H \times \Pk{q}(I_n; \R)$ such that:
+    \begin{gather}
+        u(t) = \sum_{j = 1}^M u_j p_j(t).
+    \end{gather}
+\end{definition}
+
+Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\Pk{q}(\hat{I}; \R)$, then $u \in \Pk{q}(I_n; H)$ if there exist $\left\{ u_i \right\}_{i = 0}^q \subset H$ such that:
+\begin{gather}
+    u = \sum_{i = 1}^q u_i (\psi_i \circ T_n^{-1}).
+\end{gather}
+
+\begin{definition}[$\Pk{q}^b(I_{\tau}; H)$]
+    \begin{gather}
+        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \Pk{q}(I_n; H) \text{ for all } n \in \Ns \right\}.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$\Pk{q}^b(\overline{I_{\tau}}; H)$]
+    \begin{gather}
+        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \Pk{q}^b(I_{\tau}; H) \right\}.
+    \end{gather}
+\end{definition}
