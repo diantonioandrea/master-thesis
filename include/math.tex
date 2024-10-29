@@ -23,52 +23,55 @@
 \newtheorem{remark}{Remark}[section]
 
 % Sets.
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\NaturalNumbers}{\mathbb{N}}
+\newcommand{\IntegerNumbers}{\mathbb{Z}}
+\newcommand{\RationalNumbers}{\mathbb{Q}}
 
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Rd}[1]{\mathbb{R}^{#1}}
+\newcommand{\RealNumbers}{\mathbb{R}}
+\newcommand{\RealNumbersTo}[1]{\mathbb{R}^{#1}}
 
-\newcommand{\Lp}[1]{\mathscr{L}^{#1}}
-\newcommand{\Wkp}[2]{\mathscr{W}^{#1, #2}}
-\newcommand{\Hk}[1]{\mathscr{H}^{#1}}
-\newcommand{\Xpq}[2]{\mathscr{X}^{#1, #2}}
-\newcommand{\X}{\mathscr{X}}
+% Spaces.
+\newcommand{\SpaceLp}[1]{\mathscr{L}^{#1}}
+\newcommand{\SpaceWkp}[2]{\mathscr{W}^{#1, #2}}
+\newcommand{\SpaceHk}[1]{\mathscr{H}^{#1}}
+\newcommand{\SpaceXpq}[2]{\mathscr{X}^{#1, #2}}
+\newcommand{\SpaceX}{\mathscr{X}}
 
-\newcommand{\TX}{\mathcal{X}} % Trial space.
-\newcommand{\TY}{\mathcal{Y}} % Test space.
+\newcommand{\SpaceTrial}{\mathcal{X}} % Trial space.
+\newcommand{\SpaceTest}{\mathcal{Y}} % Test space.
 
-\newcommand{\Hs}{\mathcal{H}}
+\newcommand{\SpacePolynomials}[1]{\mathcal{P}_{#1}}
 
-\newcommand{\Js}{\mathcal{J}_h}
-\newcommand{\Ns}{\mathcal{N}_{\tau}}
+\newcommand{\Characteristic}[1]{\mathbbm{1}_{#1}}
 
-\newcommand{\Tau}{\mathcal{T}}
-\newcommand{\Pk}[1]{\mathcal{P}_{#1}}
+% Meshes.
+\newcommand{\TimeMesh}{I_{\tau}}
+\newcommand{\SpaceMesh}{\Omega_{h}}
 
-\newcommand{\characteristic}[1]{\mathbbm{1}_{#1}}
+% Indices.
+\newcommand{\SpatialIndices}{\mathcal{J}_h}
+\newcommand{\TimeIndices}{\mathcal{N}_{\tau}}
+
+\newcommand{\hIndices}{\mathcal{H}}
+\newcommand{\tIndices}{\mathcal{T}}
 
 % Projection.
-\newcommand{\proj}[1]{\pi_{#1}}
+\newcommand{\ProjectionOnto}[1]{\pi_{#1}}
 
 % Vectors and operators.
 \newcommand{\Vector}[1]{\bm{#1}}
 
 % Sigma-algebras.
-\newcommand{\SA}{\mathcal{A}}
-\newcommand{\SI}{\mathcal{I}}
+\newcommand{\SigmaAlgebraA}{\mathcal{A}}
+\newcommand{\SigmaAlgebraI}{\mathcal{I}}
 
 % Matrices and vectors.
-\newcommand{\MM}{\mathcal{M}}
-\newcommand{\VF}{\mathcal{F}}
+\newcommand{\MatrixM}{\mathcal{M}}
+\newcommand{\VectorF}{\mathcal{F}}
 
 % Gradient and divergence.
-\newcommand{\grad}{\Vector{\nabla}}
-\newcommand{\diver}{\text{div }}
-
-% Span.
-\newcommand{\Span}[1]{\text{span} \left\{ #1 \right\}}
+\newcommand{\Gradient}{\Vector{\nabla}}
+\newcommand{\Divergence}{\text{div }}
 
 % Others.
 \DeclareMathOperator*{\esssup}{ess\,sup}

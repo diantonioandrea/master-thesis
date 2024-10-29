@@ -1,15 +1,15 @@
 \section{Bochner Spaces}
 
-The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p. 111]{Ern2021}, functions defined on a bounded time interval $I \subset \R$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \Rd{d}$.
+The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p. 111]{Ern2021}, functions defined on a bounded time interval $I \subset \RealNumbers$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \RealNumbersTo{d}$.
 
 \subsection{Bochner Integral}
 
-Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. Moreover, equip $I$ with its own $\sigma$-algebra $\SI$ and with the Lebesgue measure $\lambda$.
+Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Banach space. Moreover, equip $I$ with its own $\sigma$-algebra $\SigmaAlgebraI$ and with the Lebesgue measure $\lambda$.
 
 \begin{definition}[Simple functions]
-    A function $u\colon I \rightarrow V$ is said to be a simple function if there exist $N \in \N$, $\left\{ v_n \right\}_{n = 1}^N \subset V$ and $\left\{ A_n \right\}_{n = 1}^N \subset \SI$ disjoint such that:
+    A function $u\colon I \rightarrow V$ is said to be a simple function if there exist $N \in \NaturalNumbers$, $\left\{ v_n \right\}_{n = 1}^N \subset V$ and $\left\{ A_n \right\}_{n = 1}^N \subset \SigmaAlgebraI$ disjoint such that:
     \begin{gather}
-        u(t) = \sum_{n = 1}^N v_n \characteristic{A_n} \text{ for all } t \in I.
+        u(t) = \sum_{n = 1}^N v_n \Characteristic{A_n} \text{ for all } t \in I.
     \end{gather}
 
     Moreover, the Bochner integral of a simple function is defined as:
@@ -32,7 +32,7 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $\lVert u(\cdot) \rVert_V \colon I \rightarrow \R$ is Lebesgue-measurable.
+    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $\lVert u(\cdot) \rVert_V \colon I \rightarrow \RealNumbers$ is Lebesgue-measurable.
 \end{lemma}
 
 \begin{definition}[Bochner integrable function] \label{definition:bochner_integrable}
@@ -47,11 +47,11 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ d \lambda \right\}_{n \in \N}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ d \lambda \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \N}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
     \begin{gather}
         \int_I u(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I f_n(t) ~ d \lambda.
     \end{gather}
@@ -93,26 +93,26 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
     leading to a useful identification between the $V$-valued and the $W$-valued integrals.
 \end{remark}
 
-\begin{definition}[$\Lp{p}(I; V)$]
+\begin{definition}[$\SpaceLp{p}(I; V)$]
     Let $1 \leq p \leq +\infty$, then:
     \begin{gather}
-        \Lp{p}(I; V) = \left\{ u \colon I \rightarrow V \text{ strongly measurable such that } \lVert u \rVert_{\Lp{p}(I; V)} < +\infty \right\},
+        \SpaceLp{p}(I; V) = \left\{ u \colon I \rightarrow V \text{ strongly measurable such that } \lVert u \rVert_{\SpaceLp{p}(I; V)} < +\infty \right\},
     \end{gather}
     where:
     \begin{align}
-        & \lVert u \rVert_{\Lp{p}(I; V)} = \left( \int_I \lVert u(t) \rVert_V^p ~ d \lambda \right)^{1/p} & \text{ if } p < +\infty, \\
-        & \lVert u \rVert_{\Lp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \lVert u(t) \rVert_V \right\} & \text{ if } p = +\infty.
+        & \lVert u \rVert_{\SpaceLp{p}(I; V)} = \left( \int_I \lVert u(t) \rVert_V^p ~ d \lambda \right)^{1/p} & \text{ if } p < +\infty, \\
+        & \lVert u \rVert_{\SpaceLp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \lVert u(t) \rVert_V \right\} & \text{ if } p = +\infty.
     \end{align}
 \end{definition}
 
 \begin{theorem}
-    Let $1 \leq p \leq +\infty$, then $\Lp{p}(I; V)$ is a Banach space.
+    Let $1 \leq p \leq +\infty$, then $\SpaceLp{p}(I; V)$ is a Banach space.
 \end{theorem}
 
 \begin{theorem}
-    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \Lp{p}(I; V) \right)^*$ is a isometrically isomorphic to $\Lp{p^{\prime}}(I; V^*)$.
+    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \SpaceLp{p}(I; V) \right)^*$ is a isometrically isomorphic to $\SpaceLp{p^{\prime}}(I; V^*)$.
 
-    Furthermore, $\Lp{p}(I; V)$ is reflexive for all $1 < p < +\infty$.
+    Furthermore, $\SpaceLp{p}(I; V)$ is reflexive for all $1 < p < +\infty$.
 \end{theorem}
 
 \newpage
@@ -121,7 +121,7 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
 Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 
 \begin{definition}[Continuity]
-    A function $u\colon I \rightarrow V$ is said to be continuous at $t \in I$ if for every $\left\{ t_n \right\}_{n \in \N}$ which converges to $t$, the sequence $\left\{ u(t_n) \right\}_{n \in \N}$ converges to $u(t)$ in $V$.
+    A function $u\colon I \rightarrow V$ is said to be continuous at $t \in I$ if for every $\left\{ t_n \right\}_{n \in \NaturalNumbers}$ which converges to $t$, the sequence $\left\{ u(t_n) \right\}_{n \in \NaturalNumbers}$ converges to $u(t)$ in $V$.
 
     Moreover, $u$ is said to be continuous if it is continuous for all $t \in I$.
 \end{definition}
@@ -137,54 +137,54 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 \end{definition}
 
 \begin{theorem}[Lebesgue's differentiation]
-    Let $u \in \Lp{1}(I; V)$ and:
+    Let $u \in \SpaceLp{1}(I; V)$ and:
     \begin{gather}
         F(t) = \int_0^t u(s) ~ d \lambda \text{ for all } t \in I,
     \end{gather}
     then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $F_t(t) = u(t)$ for $\lambda$-a.e. $t \in I$.
 \end{theorem}
 
-\begin{definition}[$\Lp{1}_{loc}(I; V)$]
+\begin{definition}[$\SpaceLp{1}_{loc}(I; V)$]
     \begin{gather}
-        \Lp{1}_{loc}(I; V) = \left\{ u\colon I \rightarrow V  \text{ such that } u \in \Lp{1}(K; V) \text{ for all } K \subset \subset I \right\}.
+        \SpaceLp{1}_{loc}(I; V) = \left\{ u\colon I \rightarrow V  \text{ such that } u \in \SpaceLp{1}(K; V) \text{ for all } K \subset \subset I \right\}.
     \end{gather}
 \end{definition}
 
 \begin{corollary}[Vanishing integrals]
-    Let $u \in \Lp{1}_{loc}(I; V)$ be such that:
+    Let $u \in \SpaceLp{1}_{loc}(I; V)$ be such that:
     \begin{gather}
-        \int_I u(t) \phi(t) ~ d \lambda = 0 \text{ for all } \phi \in C_c^{\infty}(I; \R),
+        \int_I u(t) \phi(t) ~ d \lambda = 0 \text{ for all } \phi \in C_c^{\infty}(I; \RealNumbers),
     \end{gather}
     then $u(t) = 0$ for $\lambda$-a.e. $t \in I$.
 \end{corollary}
 
 \begin{definition}[Weakly differentiable function]
-    A function $u \in \Lp{1}_{loc}(I; V)$ is said to be weakly differentiable if there exists $v \in \Lp{1}_{loc}(I; V)$ such that:
+    A function $u \in \SpaceLp{1}_{loc}(I; V)$ is said to be weakly differentiable if there exists $v \in \SpaceLp{1}_{loc}(I; V)$ such that:
     \begin{gather}
-        - \int_I \phi^{\prime}(t) u(t) = \int_I \phi(t) v(t) \text{ for all } \phi \in C_c^{\infty}(I; \R).
+        - \int_I \phi^{\prime}(t) u(t) = \int_I \phi(t) v(t) \text{ for all } \phi \in C_c^{\infty}(I; \RealNumbers).
     \end{gather}
     Its weak derivative is denoted by $u_t$ when unambiguous.
 \end{definition}
 
 \begin{lemma}
-    Let $u \in \Lp{1}_{loc}(I; V)$ weakly differentiable be such that $u_t(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $u(t) = a$ for $\lambda$-a.e. $t \in I$.
+    Let $u \in \SpaceLp{1}_{loc}(I; V)$ weakly differentiable be such that $u_t(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $u(t) = a$ for $\lambda$-a.e. $t \in I$.
 \end{lemma}
 
 \begin{theorem}[Fundamental theorem of calculus]
-    Let $u, v \in \Lp{1}(I; V)$, then $u$ is weakly differentiable with $v = u_t$ if and only if there exists $a \in V$ such that:
+    Let $u, v \in \SpaceLp{1}(I; V)$, then $u$ is weakly differentiable with $v = u_t$ if and only if there exists $a \in V$ such that:
     \begin{gather}
         u(t) = a + \int_0^t v(s) ~ d \lambda \text{ for } \lambda \text{-a.e.} t \in I.
     \end{gather}
 \end{theorem}
 
 \begin{corollary}
-    Let $u \in \Lp{1}(I; V)$ be weakly differentiable, then it is strongly differentiable for $\lambda$-a.e. $t \in I$ and its strong and weak derivatives coincide.
+    Let $u \in \SpaceLp{1}(I; V)$ be weakly differentiable, then it is strongly differentiable for $\lambda$-a.e. $t \in I$ and its strong and weak derivatives coincide.
 \end{corollary}
 
 \begin{lemma}[Linear maps]
-    Let $W$ be a Banach space and $F$ be a linear operator from $V$ to $W$, then for all $u \in \Lp{1}_{loc}(I; V)$ weakly differentiable, $F(u) \in \Lp{1}_{loc}(I; W)$ is weakly differentiable and:
+    Let $W$ be a Banach space and $F$ be a linear operator from $V$ to $W$, then for all $u \in \SpaceLp{1}_{loc}(I; V)$ weakly differentiable, $F(u) \in \SpaceLp{1}_{loc}(I; W)$ is weakly differentiable and:
     \begin{gather}
-        F(u_t) = F_t(u) \in \Lp{1}_{loc}(I; W).
+        F(u_t) = F_t(u) \in \SpaceLp{1}_{loc}(I; W).
     \end{gather}
 \end{lemma}
 
@@ -193,34 +193,34 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 
 Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow W}$ canonical embedding.
 
-\begin{definition}[$\Xpq{}{q}(I; V, W)$]
+\begin{definition}[$\SpaceXpq{p}{q}(I; V, W)$]
     Let $1 \leq p, q \leq +\infty$, then:
     \begin{gather}
-        \Xpq{p}{q}(I; V, W) = \left\{ u \in \Lp{p}(I; V) \text{ for which } u_t \in \Lp{q}(I; W) \right\}
+        \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } u_t \in \SpaceLp{q}(I; W) \right\}
     \end{gather}
 
-    Moreover, $\Xpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\Xpq{}{q}(I; V, W)}$, such that for all $u \in \\Xpq{P}{q}(I; V, W)$:
+    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all $u \in \\SpaceXpq{P}{q}(I; V, W)$:
     \begin{gather}
-        \lVert u \rVert_{\Xpq{}{q}(I; V, W)} = \lVert u \rVert_{\Lp{p}(I; V)} + \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\Lp{q}(I; W)}.
+        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\SpaceLp{q}(I; W)}.
     \end{gather}
 \end{definition}
 
 \begin{theorem}
-    $C^{\infty}(\overline{I}; V)$ is dense in $\Xpq{}{q}(I; V, W)$.
+    $C^{\infty}(\overline{I}; V)$ is dense in $\SpaceXpq{p}{q}(I; V, W)$.
 \end{theorem}
 
 \begin{lemma}
     \begin{align}
-        & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0, 1 - \frac{1}{q}}(\overline{I}; W) & \text{ if q > 1}, \\
-        & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0}(\overline{I}; W) & \text{ if q = 1}.
+        & \SpaceXpq{p}{q}(I; V, W) \hookrightarrow C^{0, 1 - \frac{1}{q}}(\overline{I}; W) & \text{ if q > 1}, \\
+        & \SpaceXpq{p}{q}(I; V, W) \hookrightarrow C^{0}(\overline{I}; W) & \text{ if q = 1}.
     \end{align}
 \end{lemma}
 
 \begin{theorem}
     Let $Y$ be a Banach space such that $V \hookrightarrow Y \hookrightarrow W$ and assume that $V \hookrightarrow \hookrightarrow Y$, then:
     \begin{gather}
-        \Xpq{p}{q}(I; V, W) \hookrightarrow \hookrightarrow \Lp{p}(I; Y) \text{ for all } 1 \leq p, q < +\infty,\\
-        \Xpq{\infty}{q}(I; V, W) \hookrightarrow \hookrightarrow C^0(\overline{I}; Y) \text{ for all } q > 1.
+        \SpaceXpq{p}{q}(I; V, W) \hookrightarrow \hookrightarrow \SpaceLp{p}(I; Y) \text{ for all } 1 \leq p, q < +\infty,\\
+        \SpaceXpq{\infty}{q}(I; V, W) \hookrightarrow \hookrightarrow C^0(\overline{I}; Y) \text{ for all } q > 1.
     \end{gather}
 \end{theorem}
 
@@ -228,16 +228,16 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
     Let now $V, W$ be separable Hilbert spaces such that $V \hookrightarrow W$ and $V$ is dense in $W$. Moreover, identify $W$ with its dual space $W^*$. A triple $\left( V, W \equiv W^*, V^* \right)$ is said to be a Gelfand triple.
 \end{definition}
 
-\begin{definition}[$\X(I; V, V^*)$] \label{definition:x}
+\begin{definition}[$\SpaceX(I; V, V^*)$] \label{definition:x}
     \begin{gather}
-        \X(I; V, V^*) = \Xpq{2}{2}(I; V, V^*) = \left\{ u \in \Lp{2}(I; V) \text{ for which } u_t \in \Lp{2}(I; V^*) \right\}
+        \SpaceX(I; V, V^*) = \SpaceXpq{2}{2}(I; V, V^*) = \left\{ u \in \SpaceLp{2}(I; V) \text{ for which } u_t \in \SpaceLp{2}(I; V^*) \right\}
     \end{gather}
 \end{definition}
 
 \begin{theorem}[Time trace and integration by parts]
-    Let $V, W$ as in \ref{definition:gelfand}, then \newline \nobreak $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \X(I; V, V^*)$ is surjective.
+    Let $V, W$ as in \ref{definition:gelfand}, then \newline \nobreak $\SpaceX(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \SpaceX(I; V, V^*)$ is surjective.
 
-    Moreover, for all $u, v \in \X(I; V, V^*)$:
+    Moreover, for all $u, v \in \SpaceX(I; V, V^*)$:
     \begin{gather}
         \int_I \langle u_t(t), v(t) \rangle_{V^*, V} ~ d \lambda = - \int_I \langle v_t(t), u(t) \rangle_{V^*, V} ~ d \lambda + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
     \end{gather}
@@ -246,7 +246,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \newpage
 \section{Weak Formulation of the Model Parabolic Problem}
 
-Following \cite[p. 124]{Ern2021}, let $V, W$ and $\X$ as in \ref{definition:gelfand} and \ref{definition:x}.
+Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \ref{definition:gelfand} and \ref{definition:x}.
 
 \subsection{Model Problem}
 
@@ -259,17 +259,17 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\X$ as in \ref{definition:gelf
 \end{definition}
 
 \begin{lemma}
-    Let $1 \leq p \leq +\infty$ and  $A$ as in \ref{definition:A}, then for all $u \in \Lp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \Lp{p}(I; V^*)$ with:
+    Let $1 \leq p \leq +\infty$ and  $A$ as in \ref{definition:A}, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \SpaceLp{p}(I; V^*)$ with:
     \begin{gather}
-        \lVert A(u) \rVert_{\Lp{p}(I; V^*)} \leq C \lVert u \rVert_{\Lp{p}(I; V)}.
+        \lVert A(u) \rVert_{\SpaceLp{p}(I; V^*)} \leq C \lVert u \rVert_{\SpaceLp{p}(I; V)}.
     \end{gather}
 \end{lemma}
 
 \begin{definition}[Model problem] \label{definition:model}
-    Let $f \in \Lp{2}(I; V^*)$, the model problem is to find $u \in \X(I; V, V^*)$ such that:
+    Let $f \in \SpaceLp{2}(I; V^*)$, the model problem is to find $u \in \SpaceX(I; V, V^*)$ such that:
     \begin{gather}
         \begin{cases}
-            u_t(t) + A(u)(t) = f(t) & \text{ in } \Lp{2}(I; V^*), \\
+            u_t(t) + A(u)(t) = f(t) & \text{ in } \SpaceLp{2}(I; V^*), \\
             u(0) = u_0 & \text{ in } W.
         \end{cases}
     \end{gather}
@@ -279,11 +279,11 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\X$ as in \ref{definition:gelf
 \subsection{Weak Formulation}
 
 \begin{definition}[Trial and test spaces]
-    Let $\TX = \X(I; V, V^*)$ be the trial space and let $\TY = \TY_0 \times \TY_1$ be the test space where $\TY_0 = W$ and $\TY_1 = \Lp{2}(I; V)$.
+    Let $\SpaceTrial = \SpaceX(I; V, V^*)$ be the trial space and let $\SpaceTest = \SpaceTest_0 \times \SpaceTest_1$ be the test space where $\SpaceTest_0 = W$ and $\SpaceTest_1 = \SpaceLp{2}(I; V)$.
 \end{definition}
 
 \begin{definition}[$b$ and $l$]
-    Let $b \colon \TX \times \TY \rightarrow \R$ and $l \colon \TY \rightarrow \R$ be such that for all $u \in \TX$ and all $y = (y_0, y_1) \in \TY$:
+    Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
         & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle u_t(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda, \\
         & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
@@ -291,18 +291,18 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\X$ as in \ref{definition:gelf
 \end{definition}
 
 \begin{definition}[Weak formulation]
-    The weak formulation of \ref{definition:model} is to find $u \in \TX$ such that:
+    The weak formulation of \ref{definition:model} is to find $u \in \SpaceTrial$ such that:
     \begin{gather}
-        b(u, y) = l(y) \text{ for all } y \in \TY. \label{equation:weak}
+        b(u, y) = l(y) \text{ for all } y \in \SpaceTest. \label{equation:weak}
     \end{gather}
 \end{definition}
 
 \begin{definition}[Parabolic equation]
-    Let $f \in \Lp{2}(I; V^*)$ and $u_0 \in W$, then \eqref{equation:weak} is said to be parabolic if $A$ satisfies \eqref{equation:a}.
+    Let $f \in \SpaceLp{2}(I; V^*)$ and $u_0 \in W$, then \eqref{equation:weak} is said to be parabolic if $A$ satisfies \eqref{equation:a}.
 \end{definition}
 
 \begin{lemma}[Weak solution]
-    Let $u \in \TX$ solution of \eqref{equation:weak}, then $u_t(t) + A(u)(t) = f(t)$ for $\lambda$-a.e. $t \in I$ and $u(0) = u_0$ in $W$.
+    Let $u \in \SpaceTrial$ solution of \eqref{equation:weak}, then $u_t(t) + A(u)(t) = f(t)$ for $\lambda$-a.e. $t \in I$ and $u(0) = u_0$ in $W$.
 \end{lemma}
 
 \newpage
@@ -313,9 +313,9 @@ The objective of this section is to establish the well-posedness of the paraboli
 \subsubsection{Uniqueness}
 
 \begin{lemma}[Uniqueness and a priori estimate]
-    Let $u \in \TX$ solution of \eqref{equation:weak}, then \eqref{equation:weak} admits at most one solution and:
+    Let $u \in \SpaceTrial$ solution of \eqref{equation:weak}, then \eqref{equation:weak} admits at most one solution and:
     \begin{gather}
-        \alpha \lVert u \rVert_{\Lp{2}(I; V)}^2 + \lVert u(T) \rVert_W^2 \leq \frac{1}{\alpha} \lVert f \rVert_{\Lp{2}(I; V^*)}^2 + \lVert u_0 \rVert_W^2.
+        \alpha \lVert u \rVert_{\SpaceLp{2}(I; V)}^2 + \lVert u(T) \rVert_W^2 \leq \frac{1}{\alpha} \lVert f \rVert_{\SpaceLp{2}(I; V^*)}^2 + \lVert u_0 \rVert_W^2.
     \end{gather}
 \end{lemma}
 
@@ -328,7 +328,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 \subsubsection{Existence}
 
 \begin{lemma}[Existence]
-    There exists $u \in \TX$ solution of \eqref{equation:weak}.
+    There exists $u \in \SpaceTrial$ solution of \eqref{equation:weak}.
 \end{lemma}
 
 % [!] Proof to be included.
@@ -341,55 +341,55 @@ The objective of this section is to establish the well-posedness of the paraboli
 Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
 
 \begin{definition}[$b$ and $l$]
-    Let $b \colon \TX \times \TY \rightarrow \R$ and $l \colon \TY \rightarrow \R$ be such that for all $u \in \TX$ and all $y = (y_0, y_1) \in \TY$:
+    Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
         & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \left( \langle u_t(t), y_1(t) \rangle_{V^*, V} + a(t; u(t), y_1(t)) \right)~ d \lambda, \\
         & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
     \end{align}
 \end{definition}
 
-Let $\left\{ V_h \right\}_{h \in \Hs}$ be a sequence of finite-dimensional subspaces of $V$ constructed using a finite element and a shape-regular mesh family $\left\{ \Tau_h \right\}_{h \in \Hs}$, which is fixed in time, such that each mesh exactly covers $\Omega$.
+Let $\left\{ V_h \right\}_{h \in \hIndices}$ be a sequence of finite-dimensional subspaces of $V$ constructed using a finite element and a shape-regular mesh family $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$, which is fixed in time, such that each mesh exactly covers $\Omega$.
 
-Let $\left\{ \varphi_j \right\}_{j \in \Js}$ be a basis for $V_h$.
+Let $\left\{ \varphi_j \right\}_{j \in \SpatialIndices}$ be a basis for $V_h$.
 
 \begin{definition}[Semi-discrete trial and test spaces]
-    Let $\TX_h = \X(I; V, V^*) = \Hk{1}(I; V_h)$ be the semi-discrete trial space and let $\TY_h = V_h \times \Lp{2}(I; V_h)$ be the semi-discrete test space.
+    Let $\SpaceTrial_h = \SpaceX(I; V, V^*) = \SpaceHk{1}(I; V_h)$ be the semi-discrete trial space and let $\SpaceTest_h = V_h \times \SpaceLp{2}(I; V_h)$ be the semi-discrete test space.
 \end{definition}
 
-Observe that $\TX_h \subset \TX$, $\TY_h \subset \TY$, and a generic $u_h \in \TX_h$ is of the form of:
+Observe that $\SpaceTrial_h \subset \SpaceTrial$, $\SpaceTest_h \subset \SpaceTest$, and a generic $u_h \in \SpaceTrial_h$ is of the form of:
 \begin{gather}
-    u_h(t, \Vector{x}) = \sum_{j \in \Js} u_j(t) \varphi_j(\Vector{x}),
+    u_h(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j(t) \varphi_j(\Vector{x}),
 \end{gather}
 and:
 \begin{gather}
-    u_{t, h}(t, \Vector{x}) = \sum_{j \in \Js} u_j^{\prime}(t) \varphi_j(\Vector{x}),
+    u_{t, h}(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j^{\prime}(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $u_j \in \Hk{1}(I)$ for all $j \in \Js$. Similarly, a generic $y_h \in \TY_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
+with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpatialIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
 \begin{gather}
-    y_{1h}(t, \Vector{x}) = \sum_{j \in \Js} y_j(t) \varphi_j(\Vector{x}),
+    y_{1h}(t, \Vector{x}) = \sum_{j \in \SpatialIndices} y_j(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $y_j \in \Lp{2}(I)$ for all $j \in \Js$.
+with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
 
 \begin{definition}[Semi-discrete weak formulation]
-    The semi-discrete weak formulation of \ref{definition:model} is to find $u_h \in \TX_h$ such that:
+    The semi-discrete weak formulation of \ref{definition:model} is to find $u_h \in \SpaceTrial_h$ such that:
     \begin{gather} \label{equation:weak_h1}
-        b(u_h, y_h) = l(y_h) \text{ for all } y_h \in \TY_h.
+        b(u_h, y_h) = l(y_h) \text{ for all } y_h \in \SpaceTest_h.
     \end{gather}
 \end{definition}
 
-\begin{definition}[$\proj{V_h}$]
-    Let $\proj{V_h} \colon W \rightarrow V_h$ be the $W$-orthogonal projection, that is, for all $w \in W$, $\proj{V_h}(w)$ is the unique element in $V_h$ such that:
+\begin{definition}[$\ProjectionOnto{V_h}$]
+    Let $\ProjectionOnto{V_h} \colon W \rightarrow V_h$ be the $W$-orthogonal projection, that is, for all $w \in W$, $\ProjectionOnto{V_h}(w)$ is the unique element in $V_h$ such that:
     \begin{gather}
-        \left( w - \proj{V_h}(w), v_h \right)_W = 0 \text{ for all } v_h \in V_h.
+        \left( w - \ProjectionOnto{V_h}(w), v_h \right)_W = 0 \text{ for all } v_h \in V_h.
     \end{gather}
 \end{definition}
 
 \begin{proposition}[Equivalence]
-    $u_h \in \TX_h$ solves \eqref{equation:weak_h1} if and only if for all $v_h \in V_h$:
+    $u_h \in \SpaceTrial_h$ solves \eqref{equation:weak_h1} if and only if for all $v_h \in V_h$:
     \begin{gather}
         \begin{cases} \label{equation:weak_h2}
-            \left( u_{t, h}(t), v_h \right)_W + a(t; u_h(t), v_h) = \langle f(t), v_h \rangle_{V^*, V} \text{ in } \Lp{2}(I), \\
-            u_h(0) = \proj{V_h}(u_0),
+            \left( u_{t, h}(t), v_h \right)_W + a(t; u_h(t), v_h) = \langle f(t), v_h \rangle_{V^*, V} \text{ in } \SpaceLp{2}(I), \\
+            u_h(0) = \ProjectionOnto{V_h}(u_0),
         \end{cases}
     \end{gather}
     and both \eqref{equation:weak_h1} and \eqref{equation:weak_h2} are well-posed.
@@ -400,7 +400,7 @@ with $y_j \in \Lp{2}(I)$ for all $j \in \Js$.
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
 
-Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \Ns}$ partition of $I$ where $\Ns = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
+Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \TimeIndices}$ partition of $I$ where $\TimeIndices = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
 
 \begin{definition}[Mapping]
     Let $T_n \colon \hat{I} \rightarrow I_n$ for $\hat{I} = (-1, 1]$ be such that:
@@ -409,39 +409,39 @@ Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix 
     \end{gather}
 \end{definition}
 
-Let $H$ be a real Hilbert space composed of functions defined on the space domain $\Omega \subset \Rd{d}$, and let $q \geq 0$ the polynomial degree for the time approximation of the functions in $\Lp{1}(I; H)$.
+Let $H$ be a real Hilbert space composed of functions defined on the space domain $\Omega \subset \RealNumbersTo{d}$, and let $q \geq 0$ the polynomial degree for the time approximation of the functions in $\SpaceLp{1}(I; H)$.
 
-\begin{definition}[$\Pk{q}(I_n; H)$]
+\begin{definition}[$\SpacePolynomials{q}(I_n; H)$]
     \begin{gather}
-        \Pk{q}(I_n; H) = \Pk{q}(I_n; \R) \otimes H,
+        \SpacePolynomials{q}(I_n; H) = \SpacePolynomials{q}(I_n; \RealNumbers) \otimes H,
     \end{gather}
-    that is $u \in \Pk{q}(I_n; H)$ if there exist $M \in \N$ and $\left\{ (u_j, p_j) \right\}_{j = 1}^M \subset H \times \Pk{q}(I_n; \R)$ such that:
+    that is $u \in \SpacePolynomials{q}(I_n; H)$ if there exist $M \in \NaturalNumbers$ and $\left\{ (u_j, p_j) \right\}_{j = 1}^M \subset H \times \SpacePolynomials{q}(I_n; \RealNumbers)$ such that:
     \begin{gather}
         u(t) = \sum_{j = 1}^M u_j p_j(t).
     \end{gather}
 \end{definition}
 
-Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\Pk{q}(\hat{I}; \R)$, then $u \in \Pk{q}(I_n; H)$ if there exist $\left\{ u_i \right\}_{i = 0}^q \subset H$ such that:
+Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\hat{I}; \RealNumbers)$, then $u \in \SpacePolynomials{q}(I_n; H)$ if there exist $\left\{ u_i \right\}_{i = 0}^q \subset H$ such that:
 \begin{gather}
     u = \sum_{i = 1}^q u_i (\psi_i \circ T_n^{-1}).
 \end{gather}
 
-\begin{definition}[$\Pk{q}^b(I_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^b(I_{\tau}; H)$]
     \begin{gather}
-        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \Pk{q}(I_n; H) \text{ for all } n \in \Ns \right\},
+        \SpacePolynomials{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \SpacePolynomials{q}(I_n; H) \text{ for all } n \in \TimeIndices \right\},
     \end{gather}
     that is the space of the $H$-valued functions that are piecewise polynomials of degree at most $q$ on the time mesh $I_{\tau}$.
 \end{definition}
 
-\begin{definition}[$\Pk{q}^b(\overline{I}_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$]
     \begin{gather}
-        \Pk{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \Pk{q}^b(I_{\tau}; H) \right\}.
+        \SpacePolynomials{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \SpacePolynomials{q}^b(I_{\tau}; H) \right\}.
     \end{gather}
 \end{definition}
 
-% Note that every function $u_{\tau} \in \Pk{q}^b(\overline{I}_{\tau}; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \Pk{q}^b(I_{\tau}; H)$, meaning that $\Pk{q}^b(\overline{I}_{\tau}; H)$ is isomorphic to $H \times \Pk{q}^b(I_{\tau}; H)$.
+% Note that every function $u_{\tau} \in \SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \SpacePolynomials{q}^b(I_{\tau}; H)$, meaning that $\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ is isomorphic to $H \times \SpacePolynomials{q}^b(I_{\tau}; H)$.
 
-By definition, every $u_{\tau} \in \Pk{q}^b(\overline{I}_{\tau}; H)$ is left-continuous at the discrete time nodes $t_n$.
+By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ is left-continuous at the discrete time nodes $t_n$.
 
 \begin{definition}[Time jumps]
     \begin{gather}
@@ -453,24 +453,24 @@ By definition, every $u_{\tau} \in \Pk{q}^b(\overline{I}_{\tau}; H)$ is left-con
     \end{gather}
 \end{definition}
 
-Another useful space is the subspace of $\Pk{q}^b(\overline{I}_{\tau}; H)$ composed of the $H$-valued functions that are continuous in time.
+Another useful space is the subspace of $\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ composed of the $H$-valued functions that are continuous in time.
 
-\begin{definition}[$\Pk{q}^g(\overline{I}_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^g(\overline{I}_{\tau}; H)$]
     \begin{gather}
-        \Pk{q}^g(I_{\tau}; H) = \Pk{q}^b(\overline{I}_{\tau}; H) \cap C^0(\overline{I}; H).
+        \SpacePolynomials{q}^g(I_{\tau}; H) = \SpacePolynomials{q}^b(\overline{I}_{\tau}; H) \cap C^0(\overline{I}; H).
     \end{gather}
 \end{definition}
 
 \newpage
 \subsection{Method Formulation}
 
-\subsubsection{Quadratures}
+\subsubsection{Quadrature and Interpolation}
 
 Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\xi_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
 
 \begin{definition}[$\lambdagr_q$]
-    For all $g \in C^0(\overline{I}; \R)$:
+    For all $g \in C^0(\overline{I}; \RealNumbers)$:
     \begin{gather}
-        \int_I g(t) ~ d \lambdagr_q = \sum_{n \in \Ns} \int_{I_n} g(t) ~ d \lambdagr_q = \sum_{n \in \Ns} \sum_{i = 0}^q \omega_{n, i} g(t_{n, i}).
+        \int_I g(t) ~ d \lambdagr_q = \sum_{n \in \TimeIndices} \int_{I_n} g(t) ~ d \lambdagr_q = \sum_{n \in \TimeIndices} \sum_{i = 0}^q \omega_{n, i} g(t_{n, i}).
     \end{gather}
 \end{definition}
