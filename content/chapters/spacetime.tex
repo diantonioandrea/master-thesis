@@ -18,9 +18,9 @@ Let $I \subset \R$ be open, nonempty and bounded and let $V$ be a Banach space. 
     \end{gather}
 \end{definition}
 
-\begin{lemma}
+\begin{lemma} % [!] Ugly \left and \right with \lVert and \rVert.
     \begin{gather}
-        \lVert \int_I u(t) ~ d \lambda \rVert_V \leq \int_I \lVert u(t) \rVert_V ~ d \lambda \text{ for all simple functions } u.
+        \left\lVert \int_I u(t) ~ d \lambda \right\rVert_V \leq \int_I \left\lVert u(t) \right\rVert_V ~ d \lambda \text{ for all simple functions } u.
     \end{gather}
 \end{lemma}
 
@@ -209,7 +209,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
     $C^{\infty}(\overline{I}; V)$ is dense in $\Xpq{}{q}(I; V, W)$.
 \end{theorem}
 
-\begin{lemma} % [!] Fix embedding for Sobolev spaces.
+\begin{lemma}
     \begin{align}
         & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0, 1 - \frac{1}{q}}(\overline{I}; W) & \text{ if q > 1}, \\
         & \Xpq{p}{q}(I; V, W) \hookrightarrow C^{0}(\overline{I}; W) & \text{ if q = 1}.
@@ -235,7 +235,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \end{definition}
 
 \begin{theorem}[Time trace and integration by parts]
-    Let $\left( V, W \equiv W^*, V^* \right)$ be a Gelfand triple. Then $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \X(I; V, V^*)$ is surjective.
+    Let $V, W$ as in \ref{definition:gelfand}, then \newline \nobreak $\X(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \X(I; V, V^*)$ is surjective.
 
     Moreover, for all $u, v \in \X(I; V, V^*)$:
     \begin{gather}
@@ -400,8 +400,6 @@ with $y_j \in \Lp{2}(I)$ for all $j \in \Js$.
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
 
-\subsubsection{Setting}
-
 Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \Ns}$ partition of $I$ where $\Ns = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
 
 \begin{definition}[Mapping]
@@ -463,3 +461,16 @@ Another useful space is the subspace of $\Pk{q}^b(\overline{I}_{\tau}; H)$ compo
     \end{gather}
 \end{definition}
 
+\newpage
+\subsection{Method Formulation}
+
+\subsubsection{Quadratures}
+
+Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\xi_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
+
+\begin{definition}[$\lambdagr_q$]
+    For all $g \in C^0(\overline{I}; \R)$:
+    \begin{gather}
+        \int_I g(t) ~ d \lambdagr_q = \sum_{n \in \Ns} \int_{I_n} g(t) ~ d \lambdagr_q = \sum_{n \in \Ns} \sum_{i = 0}^q \omega_{n, i} g(t_{n, i}).
+    \end{gather}
+\end{definition}
