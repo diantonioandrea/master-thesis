@@ -400,7 +400,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
 
-Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $I_{\tau} = \left\{ I_n \right\}_{n \in \TimeIndices}$ partition of $I$ where $\TimeIndices = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
+Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $\TimeMesh = \left\{ I_n \right\}_{n \in \TimeIndices}$ partition of $I$ where $\TimeIndices = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
 
 \begin{definition}[Mapping]
     Let $T_n \colon \hat{I} \rightarrow I_n$ for $\hat{I} = (-1, 1]$ be such that:
@@ -426,22 +426,22 @@ Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\ha
     u = \sum_{i = 1}^q u_i (\psi_i \circ T_n^{-1}).
 \end{gather}
 
-\begin{definition}[$\SpacePolynomials{q}^b(I_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^b(\TimeMesh; H)$]
     \begin{gather}
-        \SpacePolynomials{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \SpacePolynomials{q}(I_n; H) \text{ for all } n \in \TimeIndices \right\},
+        \SpacePolynomials{q}^b(\TimeMesh; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \SpacePolynomials{q}(I_n; H) \text{ for all } n \in \TimeIndices \right\},
     \end{gather}
-    that is the space of the $H$-valued functions that are piecewise polynomials of degree at most $q$ on the time mesh $I_{\tau}$.
+    that is the space of the $H$-valued functions that are piecewise polynomials of degree at most $q$ on the time mesh $\TimeMesh$.
 \end{definition}
 
-\begin{definition}[$\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^b(\ClosedTimeMesh; H)$]
     \begin{gather}
-        \SpacePolynomials{q}^b(I_{\tau}; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \SpacePolynomials{q}^b(I_{\tau}; H) \right\}.
+        \SpacePolynomials{q}^b(\ClosedTimeMesh; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \SpacePolynomials{q}^b(\TimeMesh; H) \right\}.
     \end{gather}
 \end{definition}
 
-% Note that every function $u_{\tau} \in \SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \SpacePolynomials{q}^b(I_{\tau}; H)$, meaning that $\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ is isomorphic to $H \times \SpacePolynomials{q}^b(I_{\tau}; H)$.
+% Note that every function $u_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \SpacePolynomials{q}^b(\TimeMesh; H)$, meaning that $\SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ is isomorphic to $H \times \SpacePolynomials{q}^b(\TimeMesh; H)$.
 
-By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ is left-continuous at the discrete time nodes $t_n$.
+By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ is left-continuous at the discrete time nodes $t_n$.
 
 \begin{definition}[Time jumps]
     \begin{gather}
@@ -453,24 +453,95 @@ By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\overline{I}_{\tau}; H
     \end{gather}
 \end{definition}
 
-Another useful space is the subspace of $\SpacePolynomials{q}^b(\overline{I}_{\tau}; H)$ composed of the $H$-valued functions that are continuous in time.
+Another useful space is the subspace of $\SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ composed of the $H$-valued functions that are continuous in time.
 
-\begin{definition}[$\SpacePolynomials{q}^g(\overline{I}_{\tau}; H)$]
+\begin{definition}[$\SpacePolynomials{q}^g(\ClosedTimeMesh; H)$]
     \begin{gather}
-        \SpacePolynomials{q}^g(I_{\tau}; H) = \SpacePolynomials{q}^b(\overline{I}_{\tau}; H) \cap C^0(\overline{I}; H).
+        \SpacePolynomials{q}^g(\TimeMesh; H) = \SpacePolynomials{q}^b(\ClosedTimeMesh; H) \cap C^0(\overline{I}; H).
     \end{gather}
 \end{definition}
 
 \newpage
 \subsection{Method Formulation}
 
-\subsubsection{Quadrature and Interpolation}
+\subsubsection{Quadratures and Interpolation}
 
 Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\xi_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
 
-\begin{definition}[$\lambdagr_q$]
-    For all $g \in C^0(\overline{I}; \RealNumbers)$:
+\begin{definition}[$\lambdaGR_q$]
+    For all $u \in C^0(\overline{I}; \RealNumbers)$:
     \begin{gather}
-        \int_I g(t) ~ d \lambdagr_q = \sum_{n \in \TimeIndices} \int_{I_n} g(t) ~ d \lambdagr_q = \sum_{n \in \TimeIndices} \sum_{i = 0}^q \omega_{n, i} g(t_{n, i}).
+        \int_I u(t) ~ d \lambdaGR_q = \sum_{n \in \TimeIndices} \int_{I_n} u(t) ~ d \lambdaGR_q = \sum_{n \in \TimeIndices} \sum_{i = 0}^q \omega_{n, i} u(t_{n, i}).
     \end{gather}
 \end{definition}
+
+\begin{definition}
+    Let $\mathcal{L}$ defined as:
+    \begin{gather}
+        \mathcal{L}_i (\xi) = \prod_{\substack{l = 0 \\ l \neq i}}^q \frac{\xi - \xi_l}{\xi_i - \xi_l} \in \SpacePolynomials{q}(\hat{I}; \RealNumbers),
+    \end{gather}
+    be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\mathcal{L}_i (\xi_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
+\end{definition}
+
+\begin{definition}[$\InterpolantGR_q$]
+    Let $Z \in \left\{V_h, W, V^* \right\}$. Define $\InterpolantGR_q \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\TimeMesh; Z)$ as the Lagrange interpolation operator associated with the \acrshort{gr} nodes, such that for all $u \in \SpaceHk{1}(I; Z) \hookrightarrow C^0(\overline{I}; Z)$:
+    \begin{gather}
+        \InterpolantGR_q(u)_{\mid I_n} = \sum_{i = 0}^q u(t_n, i) \left( \mathcal{L}_i \circ T_n^{-1} \right).
+    \end{gather}
+
+    Moreover, there exists $C \geq 0$ such that:
+    \begin{gather}
+        \lVert u - \InterpolantGR_q(u) \rVert_{\SpaceLp{2}(I; Z)} \leq C \tau^{q + 1} \lvert u \rvert_{\SpaceHk{q + 1}(I; Z)}.
+    \end{gather}
+\end{definition}
+
+\begin{proposition}
+    For all $p \in \SpacePolynomials{q}^b(\TimeMesh; W)$ and for all $u, v \in \SpaceHk{1}(I; W)$:
+    \begin{align}
+        & \int_I \left( u, \InterpolantGR_q(v) \right)_W ~ d \lambdaGR_q = \int_I \left( u, v \right)_W ~ d \lambdaGR_q, \\
+        & \int_I \left( p, \InterpolantGR_q(v) \right)_W ~ d \lambda = \int_I \left( p, v \right)_W ~ d \lambdaGR_q
+    \end{align}
+\end{proposition}
+
+\subsubsection{Discretization}
+
+\begin{definition}[Discrete trial and test spaces]
+    Let $\SpaceTrial_{h \tau} = \SpacePolynomials{q}^b(\ClosedTimeMesh; V_h)$ be the discrete trial space and let $\SpaceTest_{h \tau} = \SpaceTrial_{h \tau}$ be the discrete test space.
+\end{definition}
+
+\begin{definition}[$b_{\tau}$ and $l_{\tau}$]
+    Let $b_{\tau} \colon \SpaceTrial_{h \tau} \times \SpaceTest_{h \tau} \rightarrow \RealNumbers$ and $l_{\tau} \colon \SpaceTest_{h \tau} \rightarrow \RealNumbers$ be such that for all $u_{h \tau} \in \SpaceTrial_{h \tau}$ and all $y_{h \tau} \in \SpaceTest_{h \tau}$:
+    \begin{align}
+        b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q \\
+        & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q, \\
+        l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambdaGR_q.
+    \end{align}
+\end{definition}
+
+\begin{remark}
+    \acrshort{gr} gives a quadrature of order $2q$, hence:
+    \begin{gather}
+        \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q = \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda \text{ for all } n \in \TimeIndices.
+    \end{gather}
+    
+    The same applies to:
+    \begin{gather}
+        \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q,
+    \end{gather}
+    if $a$ is time-independent.
+\end{remark}
+
+\begin{definition}[$dG(q)$ weak formulation]
+    The discrete weak formulation of \ref{definition:model} is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
+    \begin{gather} \label{equation:weak_ht}
+        b_{\tau}(u_{h \tau}, y_{h \tau}) = l_{\tau}(y_{h \tau}) \text{ for all } y_{h \tau} \in \SpaceTest_{h \tau}.
+    \end{gather}
+\end{definition}
+
+\begin{proposition}[Localization]
+    The $dG(q)$ solution $u_{h \tau}$ of \eqref{equation:weak_ht}, if it exists, is such that $u_{h \tau}(0) = \ProjectionOnto{V_h}(u_0)$ and for all $p \in \SpacePolynomials{q}(I_n; V_h)$:
+    \begin{align}
+        \int_{I_n} \left( u_{t, h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \\
+        + \int_{I_n} a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q & = \int_I \langle f(t), p(t) \rangle_{V^*, V} ~ d \lambdaGR_q \text{ for all } n \in \TimeIndices.
+    \end{align}
+\end{proposition}

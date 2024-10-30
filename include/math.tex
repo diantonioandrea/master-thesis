@@ -8,6 +8,7 @@
 \usepackage{bbm}
 \usepackage{bm}
 \usepackage{mathrsfs}
+\usepackage{nicefrac}
 \usepackage{stmaryrd}
 
 %% Theorems.
@@ -46,6 +47,7 @@
 
 % Meshes.
 \newcommand{\TimeMesh}{I_{\tau}}
+\newcommand{\ClosedTimeMesh}{\overline{I}_{\tau}}
 \newcommand{\SpaceMesh}{\Omega_{h}}
 
 % Indices.
@@ -55,8 +57,9 @@
 \newcommand{\hIndices}{\mathcal{H}}
 \newcommand{\tIndices}{\mathcal{T}}
 
-% Projection.
+% Projection and interpolant.
 \newcommand{\ProjectionOnto}[1]{\pi_{#1}}
+\newcommand{\InterpolantGR}{\pi^{\acrshort{gr}}}
 
 % Vectors and operators.
 \newcommand{\Vector}[1]{\bm{#1}}
@@ -75,4 +78,4 @@
 
 % Others.
 \DeclareMathOperator*{\esssup}{ess\,sup}
-\newcommand{\lambdagr}{\lambda^{\acrshort{gr}}}
+\newcommand{\lambdaGR}{\lambda^{\acrshort{gr}}}
