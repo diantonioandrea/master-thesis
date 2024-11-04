@@ -602,9 +602,9 @@ Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 Assume to have a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
 
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_ht}
-    Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$ as in \autoref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
+    Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta$ as in \autoref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
     \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert u_0 - \InterpolantH(u_0) \rVert_W + C C_1(u) \tau^{q + 1} \\
+        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W + C C_1(u) \tau^{q + 1} \\
         & + \frac{C}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + C C_2 \lVert \eta \rVert_{\SpaceLp{\infty}(I; V)}, \notag
     \end{align}
     where:
