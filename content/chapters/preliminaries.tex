@@ -225,16 +225,16 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \subsubsection{Notable Results}
 
 \begin{definition}[Continuous bilinear form]
-    A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be continuous if there exists $C \geq 0$ such that for all $u, v \in H$:
+    A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be continuous if there exists $\ContC{a} \geq 0$ such that for all $u, v \in H$:
     \begin{gather}
-        \lvert a(u, v) \rvert \leq C \lvert u \rvert_H \lvert v \rvert_H.
+        \lvert a(u, v) \rvert \leq \ContC{a} \lvert u \rvert_H \lvert v \rvert_H.
     \end{gather}
 \end{definition}
 
 \begin{definition}[Coercive bilinear form]
-    A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be coercive if there exists $\alpha > 0$ such that for all $u \in H$:
+    A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be coercive if there exists $\CoerC{a} > 0$ such that for all $u \in H$:
     \begin{gather}
-        \lvert a(u, u) \rvert \geq \alpha \lvert u \rvert_H^2.
+        \lvert a(u, u) \rvert \geq \CoerC{a} \lvert u \rvert_H^2.
     \end{gather}
 \end{definition}
 

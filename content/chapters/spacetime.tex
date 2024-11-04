@@ -199,7 +199,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
         \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } u_t \in \SpaceLp{q}(I; W) \right\}
     \end{gather}
 
-    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all $u \in \\SpaceXpq{P}{q}(I; V, W)$:
+    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
     \begin{gather}
         \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\SpaceLp{q}(I; W)}.
     \end{gather}
@@ -250,18 +250,18 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \ref{definition
 
 \subsection{Model Problem}
 
-\begin{definition}[A] \label{definition:A} % [!] Check instances of C_a
-    Let $A \colon I \rightarrow \mathcal{L}(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $C_a, \alpha > 0$ such that:
+\begin{definition}[A] \label{definition:A} % [!] Check instances of \ContC{a}
+    Let $A \colon I \rightarrow \mathcal{L}(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
     \begin{align} \label{equation:a}
-        & \lVert A(t)(u) \rVert_{V^*} \leq C_a \lVert u \rVert_V \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
-        & \langle A(t)(u), u \rangle_{V^*, V} \geq \alpha \lVert u \rVert_V^2 \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
+        & \lVert A(t)(u) \rVert_{V^*} \leq \ContC{a} \lVert u \rVert_V \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
+        & \langle A(t)(u), u \rangle_{V^*, V} \geq \CoerC{a} \lVert u \rVert_V^2 \text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
     \end{align}
 \end{definition}
 
 \begin{lemma}
     Let $1 \leq p \leq +\infty$ and  $A$ as in \ref{definition:A}, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \SpaceLp{p}(I; V^*)$ with:
     \begin{gather}
-        \lVert A(u) \rVert_{\SpaceLp{p}(I; V^*)} \leq C_a \lVert u \rVert_{\SpaceLp{p}(I; V)}.
+        \lVert A(u) \rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \lVert u \rVert_{\SpaceLp{p}(I; V)}.
     \end{gather}
 \end{lemma}
 
@@ -315,7 +315,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 \begin{lemma}[Uniqueness and a priori estimate]
     Let $u \in \SpaceTrial$ solution of \eqref{equation:weak}, then \eqref{equation:weak} admits at most one solution and:
     \begin{gather}
-        \alpha \lVert u \rVert_{\SpaceLp{2}(I; V)}^2 + \lVert u(T) \rVert_W^2 \leq \frac{1}{\alpha} \lVert f \rVert_{\SpaceLp{2}(I; V^*)}^2 + \lVert u_0 \rVert_W^2.
+        \CoerC{a} \lVert u \rVert_{\SpaceLp{2}(I; V)}^2 + \lVert u(T) \rVert_W^2 \leq \frac{1}{\CoerC{a}} \lVert f \rVert_{\SpaceLp{2}(I; V^*)}^2 + \lVert u_0 \rVert_W^2.
     \end{gather}
 \end{lemma}
 
@@ -396,6 +396,17 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
 
     Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \mathcal{L}(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
 \end{proposition}
+
+\subsubsection{Error Analysis}
+
+% [!] Expand here.
+
+\begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_h}
+    Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_h \in \SpaceX_h$ be the solution of \eqref{equation:weak_h1}. Let $\InterpolantH$ be any approximation operator and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$. Assume that $u \in \SpaceHk{1}(I; V)$, then:
+    \begin{align}
+        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq & \left( 1 + \frac{\ContC{a}}{\CoerC{a}} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W.
+    \end{align}
+\end{theorem}
 
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
@@ -513,7 +524,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
     Let $b_{\tau} \colon \SpaceTrial_{h \tau} \times \SpaceTest_{h \tau} \rightarrow \RealNumbers$ and $l_{\tau} \colon \SpaceTest_{h \tau} \rightarrow \RealNumbers$ be such that for all $u_{h \tau} \in \SpaceTrial_{h \tau}$ and all $y_{h \tau} \in \SpaceTest_{h \tau}$:
     \begin{align}
         b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q \\
-        & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q, \\
+        & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q, \notag \\
         l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambdaGR_q.
     \end{align}
 \end{definition}
@@ -541,7 +552,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \begin{proposition}[Localization]
     The $dG(q)$ solution $u_{h \tau}$ of \eqref{equation:weak_ht}, if it exists, is such that $u_{h \tau}(0) = \ProjectionOnto{V_h}(u_0)$ and for all $p \in \SpacePolynomials{q}(I_n; V_h)$:
     \begin{align}
-        \int_{I_n} \left( u_{t, h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \\
+        \int_{I_n} \left( u_{t, h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \notag \\
         + \int_{I_n} a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q & = \int_I \langle f(t), p(t) \rangle_{V^*, V} ~ d \lambdaGR_q \text{ for all } n \in \TimeIndices.
     \end{align}
 \end{proposition}
@@ -549,9 +560,9 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \newpage
 \subsection{Stability and Error Analysis}
 
-Following \cite[p. 186]{Ern2021}, recall that $\alpha$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
+Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
 \begin{gather}
-    \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \alpha} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right).
+    \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right).
 \end{gather}
 
 \subsubsection{Stability}
@@ -559,7 +570,7 @@ Following \cite[p. 186]{Ern2021}, recall that $\alpha$ is the coercivity constan
 \begin{lemma}[Coercivity]
     The discrete problem \eqref{equation:weak_ht} is well posed by:
     \begin{gather}
-        b_{\tau}(u_{h \tau}, u_{h \tau}) \geq \alpha \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 \text{ for all } u_{h \tau} \in \SpaceX_{h \tau}.
+        b_{\tau}(u_{h \tau}, u_{h \tau}) \geq \CoerC{a} \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 \text{ for all } u_{h \tau} \in \SpaceX_{h \tau}.
     \end{gather}
 \end{lemma}
 
@@ -588,14 +599,17 @@ Following \cite[p. 186]{Ern2021}, recall that $\alpha$ is the coercivity constan
     \end{gather}
 \end{lemma}
 
-% [!] Define \InterpolantH.
-% [!] Define C_*.
+Assume to have a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
 
-\begin{theorem}[$\SpaceLp{2}(I; W)$-estimate]
-    Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
+\begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_ht}
+    Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$ as in \autoref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
     \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\alpha}} \lVert u_0 - \InterpolantH(u_0) \rVert_W + \frac{C}{\alpha} \tau^{q + 1} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} \\
-        & + \frac{C C_a}{\alpha} \sqrt{T} \tau^{q + 1} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)} + \frac{C}{\alpha} \lVert u_t - \InterpolantH(u_t) \rVert_{\SpaceLp{2}(I; V^*)} \\
-        & + \frac{C C_a}{\alpha} C_* \lVert u - \InterpolantH(u) \rVert_{\SpaceLp{\infty}(I; V)}.
+        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert u_0 - \InterpolantH(u_0) \rVert_W + C C_1(u) \tau^{q + 1} \\
+        & + \frac{C}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + C C_2 \lVert \eta \rVert_{\SpaceLp{\infty}(I; V)}, \notag
+    \end{align}
+    where:
+    \begin{align}
+        C_1(u) & = \frac{1}{\CoerC{a}} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} + \frac{\ContC{a}}{\CoerC{a}} \sqrt{T} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
+        C_2 & = \frac{\ContC{a}}{\CoerC{a}} \max \left\{ \frac{2}{\CoerC{a}} \lVert F_{V \rightarrow W} \rVert^2_{\mathcal{L}(V;W)}, T \right\}^{\frac{1}{2}}.
     \end{align}
 \end{theorem}
