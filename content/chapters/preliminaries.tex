@@ -119,17 +119,17 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \end{theorem}
 
 \begin{theorem}[Riesz representation theorem for $1 < p < +\infty$] \label{theorem:riesz_p}
-    Let $1 < p < +\infty$ and $\phi \in (\SpaceLp{p}(\Omega))^*$, then for all $f \in \SpaceLp{p}(\Omega)$ there exists a unique $u \in \SpaceLp{p^{\prime}}(\Omega)$ such that:
+    Let $1 < p < +\infty$ and $\varphi \in (\SpaceLp{p}(\Omega))^*$, then for all $f \in \SpaceLp{p}(\Omega)$ there exists a unique $u \in \SpaceLp{p^{\prime}}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \phi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
     \end{gather}
     and:
     \begin{gather}
-        \lVert u \rVert_{p^{\prime}} = \lVert \phi \rVert_{p^*},
+        \lVert u \rVert_{p^{\prime}} = \lVert \varphi \rVert_{p^*},
     \end{gather}
     where:
     \begin{gather}
-        \lVert \phi \rVert_{p^*} = \lVert \phi \rVert_{(\SpaceLp{p})^*}.
+        \lVert \varphi \rVert_{p^*} = \lVert \varphi \rVert_{(\SpaceLp{p})^*}.
     \end{gather}
 \end{theorem}
 
@@ -143,13 +143,13 @@ As a consequence of \autoref{theorem:riesz_p}, the following identification resu
 \end{theorem}
 
 \begin{theorem}[Riesz representation theorem for $p = 1$] \label{theorem:riesz_1}
-    Let $\phi \in (\SpaceLp{1}(\Omega))^*$, then for all $f \in \SpaceLp{1}(\Omega)$ there exists a unique $u \in \SpaceLp{\infty}(\Omega)$ such that:
+    Let $\varphi \in (\SpaceLp{1}(\Omega))^*$, then for all $f \in \SpaceLp{1}(\Omega)$ there exists a unique $u \in \SpaceLp{\infty}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \phi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
     \end{gather}
     and:
     \begin{gather}
-        \lVert u \rVert_{\infty} = \lVert \phi \rVert_{1^*}.
+        \lVert u \rVert_{\infty} = \lVert \varphi \rVert_{1^*}.
     \end{gather}
 \end{theorem}
 
@@ -212,13 +212,13 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \end{theorem}
 
 \begin{theorem}[Riesz-Fréchet representation theorem for Hilbert spaces]
-    Let $\phi \in (H)^*$, then for all $u \in H$ there exists a unique $f \in H$ such that:
+    Let $\varphi \in (H)^*$, then for all $u \in H$ there exists a unique $f \in H$ such that:
     \begin{gather}
-        \langle u, \phi \rangle = (u, f)_H,
+        \langle u, \varphi \rangle = (u, f)_H,
     \end{gather}
     and:
     \begin{gather}
-        \lvert f \rvert_H = \lVert \phi \rVert_{H^*}.
+        \lvert f \rvert_H = \lVert \varphi \rVert_{H^*}.
     \end{gather}
 \end{theorem}
 
@@ -241,29 +241,29 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \begin{definition}[Symmetric bilinear form]
     A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be symmetric if for all $u, v \in H$:
     \begin{gather}
-        a(u, v) = a(u, v).
+        a(u, v) = a(v, u).
     \end{gather}
 \end{definition}
 
 \begin{theorem}[Stampacchia]
-    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\phi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
+    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\varphi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
     \begin{gather}
-        a(u, v - u) \geq \langle u - v, \phi \rangle.
+        a(u, v - u) \geq \langle u - v, \varphi \rangle.
     \end{gather}
     Morever, if $a(\cdot, \cdot)$ is symmetric, then:
     \begin{gather}
-        \frac{1}{2} a(u, u) - \langle u, \phi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \phi \rangle \right\}.
+        \frac{1}{2} a(u, u) - \langle u, \varphi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \varphi \rangle \right\}.
     \end{gather}
 \end{theorem}
 
 \begin{corollary}[Lax-Milgram]
-    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$, for all $\phi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
+    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$, for all $\varphi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
     \begin{gather}
-        a(u, v) = \langle v, \phi \rangle.
+        a(u, v) = \langle v, \varphi \rangle.
     \end{gather}
     Morever, if $a(\cdot, \cdot)$ is symmetric, then:
     \begin{gather}
-        \frac{1}{2} a(u, u) - \langle u, \phi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \phi \rangle \right\}.
+        \frac{1}{2} a(u, u) - \langle u, \varphi \rangle = \min_{v \in K} \left\{ a(v, v) - \langle v, \varphi \rangle \right\}.
     \end{gather}
 \end{corollary}
 
@@ -278,8 +278,8 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote 
     Let $1 \leq p \leq +\infty$, then:
     \begin{gather}
         \SpaceWkp{1}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \SpaceLp{p}(\Omega) \text{ for which there exist } \left\{ g_j \right\}_{j = 1}^{d} \subset \SpaceLp{p}(\Omega) \text{ such that } \right. \notag \\ 
-        \left. \int_{\Omega} u \phi_{x_j} = - \int_{\Omega} g_j \phi \right. \notag \\
-        \left. \text{ for all } \phi \in C_c^{\infty}(\Omega) \text{ and for all } j = 1, \dots, d \vphantom{\int_{\Omega}} \right\}.
+        \left. \int_{\Omega} u \varphi_{x_j} = - \int_{\Omega} g_j \varphi \right. \notag \\
+        \left. \text{ for all } \varphi \in C_c^{\infty}(\Omega) \text{ and for all } j = 1, \dots, d \vphantom{\int_{\Omega}} \right\}.
     \end{gather}
     Define, for all $j = 1, \dots, d$:
     \begin{gather}
@@ -323,8 +323,8 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote 
     Alternatively:
     \begin{gather}
         \SpaceWkp{k}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \SpaceLp{p}(\Omega) \text{ such that there exists } g_{\alpha} \in \SpaceLp{p}(\Omega) \text{ such that } \right. \notag \\ 
-        \left. \int_{\Omega} u \phi_{x_{\alpha}} = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \phi \right. \notag \\
-        \left. \text{ for all } \alpha \text{ with } \lvert \alpha \rvert \leq k \text{ and for all }\phi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
+        \left. \int_{\Omega} u \varphi_{x_{\alpha}} = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \varphi \right. \notag \\
+        \left. \text{ for all } \alpha \text{ with } \lvert \alpha \rvert \leq k \text{ and for all }\varphi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
     \end{gather}
     Define, for all $\alpha \text{ with } \lvert \alpha \rvert \leq k$:
     \begin{gather}
@@ -465,7 +465,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 \end{corollary}
 
 \begin{corollary}
-    Results in \ref{corollary:embedding} remain true for $\Omega \subset \RealNumbersTo{d}$.
+    Results stated in \ref{corollary:embedding} remain true for $\Omega \subset \RealNumbersTo{d}$.
 \end{corollary}
 
 \begin{theorem}[Rellich-Kondrachov]

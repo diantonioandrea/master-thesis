@@ -25,9 +25,9 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \end{lemma}
 
 \begin{definition}[Strongly measurable function]
-    A function $u\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    A function $u\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ u_n \right\}_{n \in N}$ simple functions such that:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \lVert u(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I.
+        \lim_{n \rightarrow \infty} \lVert u(t) - u_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I.
     \end{gather}
 \end{definition}
 
@@ -36,24 +36,24 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \end{lemma}
 
 \begin{definition}[Bochner integrable function] \label{definition:bochner_integrable}
-    A function $u\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ f_n \right\}_{n \in N}$ simple functions such that:
+    A function $u\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ u_n \right\}_{n \in N}$ simple functions such that:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \lVert u(t) - f_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I,
+        \lim_{n \rightarrow \infty} \lVert u(t) - u_n(t) \rVert_V = 0 \text{ for } \lambda \text{-a.e. } t \in I,
     \end{gather}
     that is  $u$ is strongly measurable, and:
     \begin{gather}
-        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - f_n(t) \rVert_V ~ d \lambda = 0.
+        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - u_n(t) \rVert_V ~ d \lambda = 0.
     \end{gather}
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I f_n(t) ~ d \lambda \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ f_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \ref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
     \begin{gather}
-        \int_I u(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I f_n(t) ~ d \lambda.
+        \int_I u(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I u_n(t) ~ d \lambda.
     \end{gather}
 \end{definition}
 
@@ -79,9 +79,9 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \end{corollary}
 
 \begin{remark} % [!] Ugly \left and \right with \langle and \rangle.
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\phi \in V^*$, then:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\varphi \in V^*$, then:
     \begin{gather}
-        \int_I \left\langle \phi, (u)(t) \right\rangle_{V^*, V} ~ d \lambda = \left\langle \phi, \int_I u(t) ~ d \lambda \right\rangle_{V^*, V}.
+        \int_I \left\langle \varphi, (u)(t) \right\rangle_{V^*, V} ~ d \lambda = \left\langle \varphi, \int_I u(t) ~ d \lambda \right\rangle_{V^*, V}.
     \end{gather}
 \end{remark}
 
@@ -109,8 +109,8 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
     Let $1 \leq p \leq +\infty$, then $\SpaceLp{p}(I; V)$ is a Banach space.
 \end{theorem}
 
-\begin{theorem}
-    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \SpaceLp{p}(I; V) \right)^*$ is a isometrically isomorphic to $\SpaceLp{p^{\prime}}(I; V^*)$.
+\begin{theorem} % [!] Check.
+    Let $1 \leq p \leq +\infty$ and let $V$ be reflexive, then $\left( \SpaceLp{p}(I; V) \right)^*$ is isometrically isomorphic to $\SpaceLp{p^{\prime}}(I; V^*)$.
 
     Furthermore, $\SpaceLp{p}(I; V)$ is reflexive for all $1 < p < +\infty$.
 \end{theorem}
@@ -153,7 +153,7 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 \begin{corollary}[Vanishing integrals]
     Let $u \in \SpaceLp{1}_{loc}(I; V)$ be such that:
     \begin{gather}
-        \int_I u(t) \phi(t) ~ d \lambda = 0 \text{ for all } \phi \in C_c^{\infty}(I; \RealNumbers),
+        \int_I u(t) \varphi(t) ~ d \lambda = 0 \text{ for all } \varphi \in C_c^{\infty}(I; \RealNumbers),
     \end{gather}
     then $u(t) = 0$ for $\lambda$-a.e. $t \in I$.
 \end{corollary}
@@ -161,7 +161,7 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 \begin{definition}[Weakly differentiable function]
     A function $u \in \SpaceLp{1}_{loc}(I; V)$ is said to be weakly differentiable if there exists $v \in \SpaceLp{1}_{loc}(I; V)$ such that:
     \begin{gather}
-        - \int_I \phi^{\prime}(t) u(t) = \int_I \phi(t) v(t) \text{ for all } \phi \in C_c^{\infty}(I; \RealNumbers).
+        - \int_I \varphi^{\prime}(t) u(t) = \int_I \varphi(t) v(t) \text{ for all } \varphi \in C_c^{\infty}(I; \RealNumbers).
     \end{gather}
     Its weak derivative is denoted by $u_t$ when unambiguous.
 \end{definition}
@@ -201,7 +201,11 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 
     Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
     \begin{gather}
-        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\SpaceLp{q}(I; W)}.
+        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\SpaceLp{q}(I; W)},
+    \end{gather}
+    where:
+    \begin{gather}
+        \iota_{V, W} = \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}.
     \end{gather}
 \end{definition}
 
@@ -350,7 +354,7 @@ Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{
 
 Let $\left\{ V_h \right\}_{h \in \hIndices}$ be a sequence of finite-dimensional subspaces of $V$ constructed using a finite element and a shape-regular mesh family $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$, which is fixed in time, such that each mesh exactly covers $\Omega$.
 
-Let $\left\{ \varphi_j \right\}_{j \in \SpatialIndices}$ be a basis for $V_h$.
+Furthermore, let $\left\{ \varphi_j \right\}_{j \in \SpatialIndices}$ be a basis for $V_h$.
 
 \begin{definition}[Semi-discrete trial and test spaces]
     Let $\SpaceTrial_h = \SpaceX(I; V, V^*) = \SpaceHk{1}(I; V_h)$ be the semi-discrete trial space and let $\SpaceTest_h = V_h \times \SpaceLp{2}(I; V_h)$ be the semi-discrete test space.
@@ -401,11 +405,17 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
 
 % [!] Expand here.
 
+
+
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_h}
     Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_h \in \SpaceX_h$ be the solution of \eqref{equation:weak_h1}. Let $\InterpolantH$ be any approximation operator and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$. Assume that $u \in \SpaceHk{1}(I; V)$, then:
-    \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq & \left( 1 + \frac{\ContC{a}}{\CoerC{a}} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W.
-    \end{align}
+    \begin{gather}
+        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W,
+    \end{gather}
+    where:
+    \begin{gather}
+        \CoCoR{a} = \frac{\ContC{a}}{\CoerC{a}}.
+    \end{gather}
 \end{theorem}
 
 \newpage
@@ -599,7 +609,7 @@ Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{gather}
 \end{lemma}
 
-Assume to have a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
+Consider a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
 
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_ht}
     Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta$ as in \autoref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
@@ -609,7 +619,7 @@ Assume to have a time-independent space approximation operator $\InterpolantH$ t
     \end{align}
     where:
     \begin{align}
-        C_1(u) & = \frac{1}{\CoerC{a}} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} + \frac{\ContC{a}}{\CoerC{a}} \sqrt{T} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
-        C_2 & = \frac{\ContC{a}}{\CoerC{a}} \max \left\{ \frac{2}{\CoerC{a}} \lVert F_{V \rightarrow W} \rVert^2_{\mathcal{L}(V;W)}, T \right\}^{\frac{1}{2}}.
+        C_1(u) & = \frac{1}{\CoerC{a}} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
+        C_2 & = \CoCoR{a} \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}^{\frac{1}{2}}.
     \end{align}
 \end{theorem}
