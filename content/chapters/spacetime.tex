@@ -507,7 +507,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \begin{definition}[$\InterpolantGR_q$]
     Let $Z \in \left\{V_h, W, V^* \right\}$. Define $\InterpolantGR_q \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\TimeMesh; Z)$ as the Lagrange interpolation operator associated with the \acrshort{gr} nodes, such that for all $u \in \SpaceHk{1}(I; Z) \hookrightarrow C^0(\overline{I}; Z)$:
     \begin{gather}
-        \InterpolantGR_q(u)_{\mid I_n} = \sum_{i = 0}^q u(t_n, i) \left( \mathcal{L}_i \circ T_n^{-1} \right).
+        \InterpolantGR_q(u)_{\mid I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \mathcal{L}_i \circ T_n^{-1} \right).
     \end{gather}
 
     Moreover, there exists $C \geq 0$ such that:
