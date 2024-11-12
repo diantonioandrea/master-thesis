@@ -366,7 +366,7 @@ Observe that $\SpaceTrial_h \subset \SpaceTrial$, $\SpaceTest_h \subset \SpaceTe
 \end{gather}
 and:
 \begin{gather}
-    u_{t, h}(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j^{\prime}(t) \varphi_j(\Vector{x}),
+    \partial_t u_h(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j^{\prime}(t) \varphi_j(\Vector{x}),
 \end{gather}
 with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpatialIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
 \begin{gather}
@@ -392,7 +392,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
     $u_h \in \SpaceTrial_h$ solves \eqref{equation:weak_h1} if and only if for all $v_h \in V_h$:
     \begin{gather}
         \begin{cases} \label{equation:weak_h2}
-            \left( u_{t, h}(t), v_h \right)_W + a(t; u_h(t), v_h) = \langle f(t), v_h \rangle_{V^*, V} \text{ in } \SpaceLp{2}(I), \\
+            \left( \partial_t u_h(t), v_h \right)_W + a(t; u_h(t), v_h) = \langle f(t), v_h \rangle_{V^*, V} \text{ in } \SpaceLp{2}(I), \\
             u_h(0) = \ProjectionOnto{V_h}(u_0),
         \end{cases}
     \end{gather}
@@ -533,7 +533,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \begin{definition}[$b_{\tau}$ and $l_{\tau}$]
     Let $b_{\tau} \colon \SpaceTrial_{h \tau} \times \SpaceTest_{h \tau} \rightarrow \RealNumbers$ and $l_{\tau} \colon \SpaceTest_{h \tau} \rightarrow \RealNumbers$ be such that for all $u_{h \tau} \in \SpaceTrial_{h \tau}$ and all $y_{h \tau} \in \SpaceTest_{h \tau}$:
     \begin{align}
-        b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q \\
+        b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q \\
         & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q, \notag \\
         l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambdaGR_q.
     \end{align}
@@ -542,7 +542,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \begin{remark}
     \acrshort{gr} gives a quadrature of order $2q$, hence:
     \begin{gather}
-        \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q = \int_{I_n} \left( u_{t, h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda \text{ for all } n \in \TimeIndices.
+        \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q = \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda \text{ for all } n \in \TimeIndices.
     \end{gather}
     
     The same applies to:
@@ -562,7 +562,7 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
 \begin{proposition}[Localization]
     The $dG(q)$ solution $u_{h \tau}$ of \eqref{equation:weak_ht}, if it exists, is such that $u_{h \tau}(0) = \ProjectionOnto{V_h}(u_0)$ and for all $p \in \SpacePolynomials{q}(I_n; V_h)$:
     \begin{align}
-        \int_{I_n} \left( u_{t, h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \notag \\
+        \int_{I_n} \left( \partial_t u_{h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \notag \\
         + \int_{I_n} a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q & = \int_I \langle f(t), p(t) \rangle_{V^*, V} ~ d \lambdaGR_q \text{ for all } n \in \TimeIndices.
     \end{align}
 \end{proposition}
