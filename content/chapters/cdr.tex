@@ -1,0 +1,11 @@
+Let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
+
+Following \cite{Feistauer2007}, consider the following problem, that is find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
+\begin{gather}
+    \begin{cases}
+        u_t + \Vector{v} \cdot \Gradient u - \varepsilon \Delta u + c u = g & \text{ in } I \times \Omega \\
+        u = u_D & \text{ in } I \times \partial \Omega^+ \\
+        \varepsilon u_{\Vector{n}} = u_N & \text{ in } I \times \partial \Omega^- \\
+        u(0, \Vector{x}) = u_0(\Vector{x}) & \text{ for all } \Vector{x} \in \Omega
+    \end{cases}.
+\end{gather}
