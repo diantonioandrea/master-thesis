@@ -133,7 +133,7 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
     \end{gather}
     converges in $V$ as $\tau \rightarrow 0$.
 
-    The limit is then denoted by $u_t(t) \in V$.
+    The limit is then denoted by $\partial_t u(t) \in V$.
 \end{definition}
 
 \begin{theorem}[Lebesgue's differentiation]
@@ -141,7 +141,7 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
     \begin{gather}
         F(t) = \int_0^t u(s) ~ d \lambda \text{ for all } t \in I,
     \end{gather}
-    then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $F_t(t) = u(t)$ for $\lambda$-a.e. $t \in I$.
+    then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $\partial_t F(t) = u(t)$ for $\lambda$-a.e. $t \in I$.
 \end{theorem}
 
 \begin{definition}[$\SpaceLp{1}_{loc}(I; V)$]
@@ -163,15 +163,15 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
     \begin{gather}
         - \int_I \varphi^{\prime}(t) u(t) = \int_I \varphi(t) v(t) \text{ for all } \varphi \in C_c^{\infty}(I; \RealNumbers).
     \end{gather}
-    Its weak derivative is denoted by $u_t$ when unambiguous.
+    Its weak derivative is denoted by $\partial_t u$ when unambiguous.
 \end{definition}
 
 \begin{lemma}
-    Let $u \in \SpaceLp{1}_{loc}(I; V)$ weakly differentiable be such that $u_t(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $u(t) = a$ for $\lambda$-a.e. $t \in I$.
+    Let $u \in \SpaceLp{1}_{loc}(I; V)$ weakly differentiable be such that $\partial_t u(t) = 0$ for $\lambda$-a.e. $t \in I$, then there exists $a \in V$ such that $u(t) = a$ for $\lambda$-a.e. $t \in I$.
 \end{lemma}
 
 \begin{theorem}[Fundamental theorem of calculus]
-    Let $u, v \in \SpaceLp{1}(I; V)$, then $u$ is weakly differentiable with $v = u_t$ if and only if there exists $a \in V$ such that:
+    Let $u, v \in \SpaceLp{1}(I; V)$, then $u$ is weakly differentiable with $v = \partial_t u$ if and only if there exists $a \in V$ such that:
     \begin{gather}
         u(t) = a + \int_0^t v(s) ~ d \lambda \text{ for } \lambda \text{-a.e.} t \in I.
     \end{gather}
@@ -184,7 +184,7 @@ Set $I = (0, T)$ for $T \in (0, +\infty)$ for the entirety of this section.
 \begin{lemma}[Linear maps]
     Let $W$ be a Banach space and $F$ be a linear operator from $V$ to $W$, then for all $u \in \SpaceLp{1}_{loc}(I; V)$ weakly differentiable, $F(u) \in \SpaceLp{1}_{loc}(I; W)$ is weakly differentiable and:
     \begin{gather}
-        F(u_t) = F_t(u) \in \SpaceLp{1}_{loc}(I; W).
+        F(\partial_t u) = \partial_t F(u) \in \SpaceLp{1}_{loc}(I; W).
     \end{gather}
 \end{lemma}
 
@@ -196,12 +196,12 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \begin{definition}[$\SpaceXpq{p}{q}(I; V, W)$]
     Let $1 \leq p, q \leq +\infty$, then:
     \begin{gather}
-        \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } u_t \in \SpaceLp{q}(I; W) \right\}
+        \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } \partial_t u \in \SpaceLp{q}(I; W) \right\}
     \end{gather}
 
     Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
     \begin{gather}
-        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert u_t \rVert_{\SpaceLp{q}(I; W)},
+        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert \partial_t u \rVert_{\SpaceLp{q}(I; W)},
     \end{gather}
     where:
     \begin{gather}
@@ -234,7 +234,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 
 \begin{definition}[$\SpaceX(I; V, V^*)$] \label{definition:x}
     \begin{gather}
-        \SpaceX(I; V, V^*) = \SpaceXpq{2}{2}(I; V, V^*) = \left\{ u \in \SpaceLp{2}(I; V) \text{ for which } u_t \in \SpaceLp{2}(I; V^*) \right\}
+        \SpaceX(I; V, V^*) = \SpaceXpq{2}{2}(I; V, V^*) = \left\{ u \in \SpaceLp{2}(I; V) \text{ for which } \partial_t u \in \SpaceLp{2}(I; V^*) \right\}
     \end{gather}
 \end{definition}
 
@@ -243,7 +243,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 
     Moreover, for all $u, v \in \SpaceX(I; V, V^*)$:
     \begin{gather}
-        \int_I \langle u_t(t), v(t) \rangle_{V^*, V} ~ d \lambda = - \int_I \langle v_t(t), u(t) \rangle_{V^*, V} ~ d \lambda + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
+        \int_I \langle \partial_t u(t), v(t) \rangle_{V^*, V} ~ d \lambda = - \int_I \langle \partial_t v(t), u(t) \rangle_{V^*, V} ~ d \lambda + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
     \end{gather}
 \end{theorem}
 
@@ -273,7 +273,7 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \ref{definition
     Let $f \in \SpaceLp{2}(I; V^*)$, the model problem is to find $u \in \SpaceX(I; V, V^*)$ such that:
     \begin{gather}
         \begin{cases} \label{equation:model}
-            u_t(t) + A(u)(t) = f(t) & \text{ in } \SpaceLp{2}(I; V^*), \\
+            \partial_t u(t) + A(u)(t) = f(t) & \text{ in } \SpaceLp{2}(I; V^*), \\
             u(0) = u_0 & \text{ in } W.
         \end{cases}
     \end{gather}
@@ -289,7 +289,7 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \ref{definition
 \begin{definition}[$b$ and $l$]
     Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
-        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle u_t(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda, \\
+        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle \partial_t u(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda, \\
         & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
     \end{align}
 \end{definition}
@@ -306,7 +306,7 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \ref{definition
 \end{definition}
 
 \begin{lemma}[Weak solution]
-    Let $u \in \SpaceTrial$ solution of \eqref{equation:weak}, then $u_t(t) + A(u)(t) = f(t)$ for $\lambda$-a.e. $t \in I$ and $u(0) = u_0$ in $W$.
+    Let $u \in \SpaceTrial$ solution of \eqref{equation:weak}, then $\partial_t u(t) + A(u)(t) = f(t)$ for $\lambda$-a.e. $t \in I$ and $u(0) = u_0$ in $W$.
 \end{lemma}
 
 \newpage
@@ -347,7 +347,7 @@ Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{
 \begin{definition}[$b$ and $l$]
     Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
-        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \left( \langle u_t(t), y_1(t) \rangle_{V^*, V} + a(t; u(t), y_1(t)) \right)~ d \lambda, \\
+        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \left( \langle \partial_t u(t), y_1(t) \rangle_{V^*, V} + a(t; u(t), y_1(t)) \right)~ d \lambda, \\
         & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
     \end{align}
 \end{definition}
@@ -410,7 +410,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_h}
     Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_h \in \SpaceX_h$ be the solution of \eqref{equation:weak_h1}. Let $\InterpolantH$ be any approximation operator and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$. Assume that $u \in \SpaceHk{1}(I; V)$, then:
     \begin{gather}
-        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W,
+        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \partial_t \eta \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W,
     \end{gather}
     where:
     \begin{gather}
@@ -605,7 +605,7 @@ Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \begin{lemma}[Orthogonality]
     For all $u \in \SpaceHk{1}(I; W)$, $y_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; W)$ and all $n \in \TimeIndices$:
     \begin{gather}
-        \int_{I_n} \left( \left( u - \InterpolantQT(u) \right)_t, y_{\tau} \right)_W ~ d \lambda - \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W = 0.
+        \int_{I_n} \left( \partial_t \left( u - \InterpolantQT(u) \right), y_{\tau} \right)_W ~ d \lambda - \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W = 0.
     \end{gather}
 \end{lemma}
 
@@ -615,7 +615,7 @@ Consider a time-independent space approximation operator $\InterpolantH$ to sepa
     Let $u \in \SpaceX$ be the solution of \eqref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \eqref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta$ as in \autoref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
     \begin{align}
         \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W + C C_1(u) \tau^{q + 1} \\
-        & + \frac{C}{\CoerC{a}} \lVert \eta_t \rVert_{\SpaceLp{2}(I; V^*)} + C C_2 \lVert \eta \rVert_{\SpaceLp{\infty}(I; V)}, \notag
+        & + \frac{C}{\CoerC{a}} \lVert \partial_t \eta \rVert_{\SpaceLp{2}(I; V^*)} + C C_2 \lVert \eta \rVert_{\SpaceLp{\infty}(I; V)}, \notag
     \end{align}
     where:
     \begin{align}

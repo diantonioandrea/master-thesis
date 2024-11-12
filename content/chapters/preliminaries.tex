@@ -323,16 +323,16 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote 
     Alternatively:
     \begin{gather}
         \SpaceWkp{k}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \SpaceLp{p}(\Omega) \text{ such that there exists } g_{\alpha} \in \SpaceLp{p}(\Omega) \text{ such that } \right. \notag \\ 
-        \left. \int_{\Omega} u \varphi_{x_{\alpha}} = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \varphi \right. \notag \\
+        \left. \int_{\Omega} u \partial^{\alpha} \varphi = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \varphi \right. \notag \\
         \left. \text{ for all } \alpha \text{ with } \lvert \alpha \rvert \leq k \text{ and for all }\varphi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
     \end{gather}
     Define, for all $\alpha \text{ with } \lvert \alpha \rvert \leq k$:
     \begin{gather}
-        u_{x_{\alpha}} = g_{\alpha}.
+        \partial^{\alpha} u = g_{\alpha}.
     \end{gather}
     Moreover, $\SpaceWkp{k}{p}(\Omega)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceWkp{k}{p}}$, such that for all $u \in \SpaceWkp{k}{p}(\Omega)$:
     \begin{gather}
-        \lVert u \rVert_{\SpaceWkp{k}{p}(\Omega)} = \lVert u \rVert_{k, p} = \sum_{\lvert \alpha \rvert \leq k} \lVert u_{x_{\alpha}} \rVert_p.
+        \lVert u \rVert_{\SpaceWkp{k}{p}(\Omega)} = \lVert u \rVert_{k, p} = \sum_{\lvert \alpha \rvert \leq k} \lVert \partial^{\alpha} u \rVert_p.
     \end{gather}
 \end{definition}
 
@@ -343,7 +343,7 @@ Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote 
     \end{gather}
     $\SpaceHk{k}(\Omega)$ is equipped with the scalar product $(\cdot, \cdot)_{\SpaceHk{k}(\Omega)}$, such that for all $u, v \in \SpaceHk{k}(\Omega)$:
     \begin{gather}
-        (u, v)_{\SpaceHk{k}(\Omega)} = (u, v)_k = \sum_{\lvert \alpha \rvert \leq k} (u_{x_{\alpha}}, v_{x_{\alpha}})_{\SpaceLp{2}(\Omega)}.
+        (u, v)_{\SpaceHk{k}(\Omega)} = (u, v)_k = \sum_{\lvert \alpha \rvert \leq k} (\partial^{\alpha} u, \partial^{\alpha} v)_{\SpaceLp{2}(\Omega)}.
     \end{gather}
 \end{definition}
 
@@ -426,11 +426,11 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
     \end{align}
     then there exists $C \geq 0$ such that for all $u \in \SpaceWkp{k}{p}(\RealNumbersTo{d})$ for all $\alpha$ with $\lvert \alpha \rvert \leq m$:
     \begin{gather}
-        \lVert u_{x_{\alpha}} \rVert_{\infty} \leq \lVert u \rVert_{k, p},
+        \lVert \partial^{\alpha} u \rVert_{\infty} \leq \lVert u \rVert_{k, p},
     \end{gather}
     and
     \begin{gather}
-        \lvert u_{x_{\alpha}}(\Vector{x}) - u_{x_{\alpha}}(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
+        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
     \end{gather}
 
     In particular:
