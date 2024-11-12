@@ -1,11 +1,61 @@
+\section{The Convection-Diffusion-Reaction Problem}
+
 Let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
 
-Following \cite{Feistauer2007}, consider the following problem, that is find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
+\subsection{Strong Formulation}
+
+Following \cite{Feistauer2007}, consider the following problem, that is to find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
 \begin{gather}
-    \begin{cases}
-        \partial_t u + \Vector{v} \cdot \Gradient u - \varepsilon \Delta u + c u = g & \text{ in } I \times \Omega \\
-        u = u_D & \text{ in } I \times \partial \Omega^+ \\
-        \varepsilon \partial_{\Vector{n}} u = u_N & \text{ in } I \times \partial \Omega^- \\
-        u(0, \Vector{x}) = u_0(\Vector{x}) & \text{ for all } \Vector{x} \in \Omega
-    \end{cases}.
+    \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u = g \quad \text{ in } I \times \Omega, \label{equation:cdr}
 \end{gather}
+with the following initial-boundary conditions:
+\begin{align}
+    u(t, \Vector{x}) &= u_D(t, \Vector{x}) \quad \text{for all } t, \Vector{x} \in I \times \partial \Omega^-, \label{equation:cdr_dirichlet} \\
+    \Diffusion \partial_{\Vector{n}} u(t, \Vector{x}) &= u_N(t, \Vector{x}) \quad \text{for all } t, \Vector{x} \in I \times \partial \Omega^+, \label{equation:cdr_neumann} \\
+    u(0, \Vector{x}) &= u_0(\Vector{x}) \quad \text{for all } \Vector{x} \in \Omega, \label{equation:cdr_initial}
+\end{align}
+and where:
+\begin{align}
+    \Convection & \colon I \times \Omega \rightarrow \RealNumbersTo{d}, \\
+    \Diffusion & \geq 0, \\
+    \Reaction & \colon I \times \Omega \rightarrow \RealNumbers,
+\end{align}
+are respectively the convection, diffusion and reaction coefficients, and:
+\begin{gather}
+    \Vector{n} \colon \partial \Omega \rightarrow \RealNumbersTo{d},
+\end{gather}
+is the unit outer normal with respect to $\partial \Omega$.
+
+Assume that $\partial \Omega = \partial \Omega^- \cup \partial \Omega^+$ where:
+\begin{align}
+    \partial \Omega^- = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) < 0 \text{ for all } t \in \overline{I} \right\}, \\
+    \partial \Omega^+ = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) \geq 0 \text{ for all } t \in \overline{I} \right\}.
+\end{align}
+
+\newpage
+\subsection{Assumptions on the Data} \label{assumptions}
+
+Assume that:
+\begin{align}
+    g & \in C^0(\overline{I}; \SpaceLp{2}(\Omega)), \\
+    u_0 & \in \SpaceLp{2}(\Omega), \\
+    u_N & \in C^0(\overline{I}; \SpaceLp{2}(\partial \Omega^+)),
+\end{align}
+and that $u_D$ is the trace on $I \times \partial \Omega^-$ of some function in $C^0(\overline{I}; \SpaceHk{1}(\Omega)) \cap \SpaceLp{\infty}(I \times \Omega)$.
+
+Moreover, assume that:
+\begin{align}
+    \Convection & \in \left[ C^0(\overline{I}; \SpaceWkp{1}{\infty}(\Omega)) \right]^2, \\
+    \Reaction & \in C^0(\overline{I}; \SpaceLp{\infty}(\Omega)),
+\end{align}
+and that there exist $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
+\begin{align}
+    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega, \\
+    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega, \\
+    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
+\end{align}
+
+Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that:
+\begin{align}
+    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
+\end{align}
