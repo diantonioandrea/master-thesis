@@ -6,33 +6,33 @@ The function spaces introduced in this section provide an ideal setting for stud
 
 \subsection{Lebesgue Spaces}
 
-Following \cite[p. 89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote a measure space, where $\Omega \subseteq \RealNumbersTo{d}$, $\SigmaAlgebraA$ is a $\sigma$-algebra on $\Omega$, and $\mu$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \NaturalNumbers} \subset \SigmaAlgebraA$ such that:
+Following \cite[p. 89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ denote a measure space, where $\Omega \subseteq \RealNumbersTo{d}$, $\SigmaAlgebraA$ is a $\sigma$-algebra on $\Omega$, and $\omega$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \NaturalNumbers} \subset \SigmaAlgebraA$ such that:
 \begin{align}
     \Omega & = \bigcup_{n \in \NaturalNumbers} \Omega_n, \\
-    \mu(\Omega_n) & < +\infty \quad \text{ for all } n \in \NaturalNumbers.
+    \omega(\Omega_n) & < +\infty \quad \text{ for all } n \in \NaturalNumbers.
 \end{align}
 
-\begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \mu)$]
+\begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$]
     \begin{gather}
-        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \mu) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \mu < \infty \right\},
+        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega < \infty \right\},
     \end{gather}
     with:
     \begin{gather}
-    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert d \mu.
+    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert d \omega.
     \end{gather}
 \end{definition}
 
-Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \SigmaAlgebraA, \mu)$ in what follows.
+Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$ in what follows.
 
 \subsubsection{Known Results}
 
 \begin{theorem}[Beppo Levi, or monotone convergence]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \quad \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
-        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \mu < +\infty,
+        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
+        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \omega < +\infty,
     \end{align}
-    then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
+    then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vector{x} \in \Omega$:
     \begin{gather}
         \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}),
     \end{gather}
@@ -43,7 +43,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \end{theorem}
 
 \begin{theorem}[Lebesgue, or dominated convergence]
-    Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
+    Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vector{x} \in \Omega$:
     \begin{align}
         \lim_{n \rightarrow \infty} f_n(\Vector{x}) & = f(\Vector{x}), \\
         \lvert f_n(\Vector{x}) \rvert & < g(\Vector{x}),
@@ -57,8 +57,8 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{lemma}[Fatou]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        f_n(x) & \geq 0 \quad \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
-        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \mu & < +\infty,
+        f_n(x) & \geq 0 \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
+        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \omega & < +\infty,
     \end{align}
     then:
     \begin{gather}
@@ -75,18 +75,18 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{gather}
     with:
     \begin{gather}
-    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \mu \right)^{1/p}.
+    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \omega \right)^{1/p}.
     \end{gather}
 \end{definition}
 
 \begin{definition}[$\SpaceLp{\infty}(\Omega)$]
     Let $C \geq 0$,
     \begin{gather}
-        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \lvert f(\Vector{x}) \rvert < C \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega \right\},
+        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \lvert f(\Vector{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega \right\},
     \end{gather}
     with:
     \begin{gather}
-    \lVert f \rVert_{\SpaceLp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vector{x}) \rvert < C \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega \right\}.
+    \lVert f \rVert_{\SpaceLp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vector{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega \right\}.
     \end{gather}
 \end{definition}
 
@@ -121,7 +121,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Riesz representation theorem for $1 < p < +\infty$] \label{theorem:riesz_p}
     Let $1 < p < +\infty$ and $\varphi \in (\SpaceLp{p}(\Omega))^*$, then for all $f \in \SpaceLp{p}(\Omega)$ there exists a unique $u \in \SpaceLp{p^{\prime}}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega,
     \end{gather}
     and:
     \begin{gather}
@@ -145,7 +145,7 @@ As a consequence of \autoref{theorem:riesz_p}, the following identification resu
 \begin{theorem}[Riesz representation theorem for $p = 1$] \label{theorem:riesz_1}
     Let $\varphi \in (\SpaceLp{1}(\Omega))^*$, then for all $f \in \SpaceLp{1}(\Omega)$ there exists a unique $u \in \SpaceLp{\infty}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \mu,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega,
     \end{gather}
     and:
     \begin{gather}
@@ -166,7 +166,7 @@ As a consequence of \autoref{theorem:riesz_1}, the following identification resu
 \end{theorem}
 
 \begin{theorem}
-    let $1 \leq p < +\infty$ and assume that $(\Omega, \SigmaAlgebraA, \mu)$ is a separable measure space, that is there exist $\left\{ E_n \right\}_{n \in \NaturalNumbers} \subset \SigmaAlgebraA$ such that $\sigma \left( \left\{ E_n \right\}_{n \in \NaturalNumbers} \right) = \SigmaAlgebraA$, then $\SpaceLp{p}(\Omega)$ is separable.
+    let $1 \leq p < +\infty$ and assume that $(\Omega, \SigmaAlgebraA, \omega)$ is a separable measure space, that is there exist $\left\{ E_n \right\}_{n \in \NaturalNumbers} \subset \SigmaAlgebraA$ such that $\sigma \left( \left\{ E_n \right\}_{n \in \NaturalNumbers} \right) = \SigmaAlgebraA$, then $\SpaceLp{p}(\Omega)$ is separable.
 \end{theorem}
 
 \newpage
@@ -197,7 +197,7 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \begin{remark}
     The space $\SpaceLp{2}(\Omega)$ equipped with $(\cdot, \cdot)_{\SpaceLp{2}(\Omega)}$ such that, for all $u, v \in \SpaceLp{2}(\Omega)$:
     \begin{gather}
-        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \mu,
+        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \omega,
     \end{gather}
     is a Hilbert space. Moreover, for all $u \in \SpaceLp{2}(\Omega)$:
     \begin{gather}
@@ -272,7 +272,7 @@ The following results concerning bilinear forms defined on Hilbert spaces are ce
 \newpage
 \subsection{Sobolev Spaces}
 
-Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote the same measure space introduced with Lebesgue spaces.
+Following \cite[p. 267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ denote the same measure space introduced with Lebesgue spaces.
 
 \subsubsection{Definition and Elementary Properties}
 
@@ -400,7 +400,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 
     Furthermore, there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\RealNumbersTo{d})$:
     \begin{gather}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p \quad \text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
     \end{gather}
     where:
     \begin{gather}
@@ -432,7 +432,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
     \end{gather}
     and
     \begin{gather}
-        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
+        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \quad \text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
     \end{gather}
 
     In particular:
@@ -453,7 +453,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 
     Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
     \begin{gather}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} \quad \text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
     \end{gather}
     where:
     \begin{gather}
