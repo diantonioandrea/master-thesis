@@ -8,8 +8,8 @@ The function spaces introduced in this section provide an ideal setting for stud
 
 Following \cite[p. 89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \mu)$ denote a measure space, where $\Omega \subseteq \RealNumbersTo{d}$, $\SigmaAlgebraA$ is a $\sigma$-algebra on $\Omega$, and $\mu$ is a measure. Assume that $\Omega$ is $\sigma$-finite, that is there exist $\left\{ \Omega_n \right\}_{n \in \NaturalNumbers} \subset \SigmaAlgebraA$ such that:
 \begin{align}
-    & \Omega = \bigcup_{n \in \NaturalNumbers} \Omega_n, \\
-    & \mu(\Omega_n) < +\infty \text{ for all } n \in \NaturalNumbers.
+    \Omega & = \bigcup_{n \in \NaturalNumbers} \Omega_n, \\
+    \mu(\Omega_n) & < +\infty \quad \text{ for all } n \in \NaturalNumbers.
 \end{align}
 
 \begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \mu)$]
@@ -29,7 +29,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Beppo Levi, or monotone convergence]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \quad \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
         & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \mu < +\infty,
     \end{align}
     then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
@@ -45,8 +45,8 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Lebesgue, or dominated convergence]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\mu$-a.e. $\Vector{x} \in \Omega$:
     \begin{align}
-        & \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}), \\
-        & \lvert f_n(\Vector{x}) \rvert < g(\Vector{x}),
+        \lim_{n \rightarrow \infty} f_n(\Vector{x}) & = f(\Vector{x}), \\
+        \lvert f_n(\Vector{x}) \rvert & < g(\Vector{x}),
     \end{align}
     then $f \in \SpaceLp{1}(\Omega)$ and:
     \begin{gather}
@@ -57,8 +57,8 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{lemma}[Fatou]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        & f_n(x) \geq 0 \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
-        & \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \mu < +\infty,
+        f_n(x) & \geq 0 \quad \text{ for } \mu \text{-a.e. } \Vector{x} \in \Omega, \\
+        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \mu & < +\infty,
     \end{align}
     then:
     \begin{gather}
@@ -177,9 +177,9 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \begin{definition}[Scalar product]
     A scalar product $\left( \cdot, \cdot \right)_H$ is a bilinear form in $H \times H$ with values in $\RealNumbers$ such that:
     \begin{align}
-        & (u, v)_H = (v, u)_H \text{ for all } u, v \in H, \\
-        & (u, u)_H \geq 0 \text{ for all } u \in H, \\
-        & (u, u)_H \neq 0 \text{ for all } u \in H \text{ such that } u \neq 0_H.
+        (u, v)_H & = (v, u)_H \quad \text{ for all } u, v \in H, \\
+        (u, u)_H & \geq 0 \quad \text{ for all } u \in H, \\
+        (u, u)_H & \neq 0 \quad \text{ for all } u \in H \text{ such that } u \neq 0_H.
     \end{align}
     Moreover, $\lvert \cdot \rvert_H$, defined for $u \in H$ as:
     \begin{gather}
@@ -382,13 +382,13 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 \begin{corollary}
     Let $1 \leq p < d$, then\footnote{$\hookrightarrow$ denotes a continuous embedding.}:
     \begin{gather}
-        \SpaceWkp{1}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \text{ for all } p \leq q \leq p^{\star}.
+        \SpaceWkp{1}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \quad \text{ for all } p \leq q \leq p^{\star}.
     \end{gather}
 \end{corollary}
 
 \begin{corollary}
     \begin{gather}
-        \SpaceWkp{1}{d}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \text{ for all } N \leq q < +\infty.
+        \SpaceWkp{1}{d}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \quad \text{ for all } N \leq q < +\infty.
     \end{gather}
 \end{corollary}
 
@@ -400,7 +400,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 
     Furthermore, there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\RealNumbersTo{d})$:
     \begin{gather}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
     \end{gather}
     where:
     \begin{gather}
@@ -416,15 +416,15 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 \begin{corollary} \label{corollary:embedding}
     Let $k \geq 1$ integer and $1 \leq p < +\infty$, then:
     \begin{align}
-        & \SpaceWkp{k}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}), \text{ where } \frac{1}{q} = \frac{1}{p} - \frac{k}{d} & \text{ if } \frac{1}{p} - \frac{k}{d} > 0, \\
-        & \SpaceWkp{k}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}), \text{ for all } p \leq q < +\infty & \text{ if } \frac{1}{p} - \frac{k}{d} = 0, \\
-        & \SpaceWkp{k}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{\infty}(\RealNumbersTo{d}), & \text{ if } \frac{1}{p} - \frac{k}{d} < 0.
+        \SpaceWkp{k}{p}(\RealNumbersTo{d}) & \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \quad \text{ where } \frac{1}{q} = \frac{1}{p} - \frac{k}{d} & \text{ if } \frac{1}{p} - \frac{k}{d} > 0, \\
+        \SpaceWkp{k}{p}(\RealNumbersTo{d}) & \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) \quad \text{ for all } p \leq q < +\infty & \text{ if } \frac{1}{p} - \frac{k}{d} = 0, \\
+        \SpaceWkp{k}{p}(\RealNumbersTo{d}) & \hookrightarrow \SpaceLp{\infty}(\RealNumbersTo{d}) & \text{ if } \frac{1}{p} - \frac{k}{d} < 0.
     \end{align}
 
-    Moreover, if $k - d/p > 0$ is not an integer, set:
+    Moreover, set:
     \begin{align}
-        & m = \left[ k - d/p \right], \\
-        & \theta = k - d/p - m,
+        & m = \left[ k - \frac{d}{p} \right], \\
+        & \theta = k - \frac{d}{p} - m,
     \end{align}
     then there exists $C \geq 0$ such that for all $u \in \SpaceWkp{k}{p}(\RealNumbersTo{d})$ for all $\alpha$ with $\lvert \alpha \rvert \leq m$:
     \begin{gather}
@@ -432,7 +432,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
     \end{gather}
     and
     \begin{gather}
-        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
+        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
     \end{gather}
 
     In particular:
@@ -446,14 +446,14 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 \begin{corollary}
     Let $1 \leq p \leq +\infty$, then:
     \begin{align}
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \SpaceLp{p^{\star}}(\Omega), & \text{ if } p < d, \\
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \SpaceLp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \SpaceLp{\infty}(\Omega), & \text{ if } p > d.
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \SpaceLp{p^{\star}}(\Omega) & \text{ if } p < d, \\
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \SpaceLp{q}(\Omega) \quad \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \SpaceLp{\infty}(\Omega) & \text{ if } p > d.
     \end{align}
 
     Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
     \begin{gather}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert \leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} \quad \text{ for } \mu \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
     \end{gather}
     where:
     \begin{gather}
@@ -473,9 +473,9 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 \begin{theorem}[Rellich-Kondrachov]
     Let $1 \leq p \leq +\infty$ and assume that $\Omega$ is bounded and of class $C^1$, then\footnote{$\hookrightarrow \hookrightarrow$ denotes a compact embedding.}:
     \begin{align}
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow \SpaceLp{q}(\Omega), \text{ for all } p \leq q < p^{\star} & \text{ if } p < d, \\
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow \SpaceLp{q}(\Omega), \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
-        & \SpaceWkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow C(\overline{\Omega}), & \text{ if } p > d.
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \hookrightarrow \SpaceLp{q}(\Omega) \quad \text{ for all } p \leq q < p^{\star} & \text{ if } p < d, \\
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \hookrightarrow \SpaceLp{q}(\Omega) \quad \text{ for all } p \leq q < +\infty & \text{ if } p = d, \\
+        \SpaceWkp{1}{p}(\Omega) & \hookrightarrow \hookrightarrow C(\overline{\Omega}) & \text{ if } p > d.
     \end{align}
 
     In particular:
