@@ -14,11 +14,11 @@ Following \cite[p. 89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ denot
 
 \begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$]
     \begin{gather}
-        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega < \infty \right\},
+        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega(\Vector{x}) < \infty \right\},
     \end{gather}
     with:
     \begin{gather}
-    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert d \omega.
+    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega(\Vector{x}).
     \end{gather}
 \end{definition}
 
@@ -30,7 +30,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
         & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
-        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \omega < +\infty,
+        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \omega(\Vector{x}) < +\infty,
     \end{align}
     then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vector{x} \in \Omega$:
     \begin{gather}
@@ -58,11 +58,11 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
         f_n(x) & \geq 0 \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
-        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \omega & < +\infty,
+        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \omega(\Vector{x}) & < +\infty,
     \end{align}
     then:
     \begin{gather}
-        \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vector{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vector{x}).
+        \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vector{x}) ~ d \omega(\Vector{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vector{x}) ~ d \omega(\Vector{x}).
     \end{gather}
 \end{lemma}
 
@@ -75,7 +75,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{gather}
     with:
     \begin{gather}
-    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \omega \right)^{1/p}.
+    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \omega(\Vector{x}) \right)^{1/p}.
     \end{gather}
 \end{definition}
 
@@ -121,7 +121,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Riesz representation theorem for $1 < p < +\infty$] \label{theorem:riesz_p}
     Let $1 < p < +\infty$ and $\varphi \in (\SpaceLp{p}(\Omega))^*$, then for all $f \in \SpaceLp{p}(\Omega)$ there exists a unique $u \in \SpaceLp{p^{\prime}}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega(\Vector{x}),
     \end{gather}
     and:
     \begin{gather}
@@ -145,7 +145,7 @@ As a consequence of \autoref{theorem:riesz_p}, the following identification resu
 \begin{theorem}[Riesz representation theorem for $p = 1$] \label{theorem:riesz_1}
     Let $\varphi \in (\SpaceLp{1}(\Omega))^*$, then for all $f \in \SpaceLp{1}(\Omega)$ there exists a unique $u \in \SpaceLp{\infty}(\Omega)$ such that:
     \begin{gather}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega,
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega(\Vector{x}),
     \end{gather}
     and:
     \begin{gather}
@@ -197,7 +197,7 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
 \begin{remark}
     The space $\SpaceLp{2}(\Omega)$ equipped with $(\cdot, \cdot)_{\SpaceLp{2}(\Omega)}$ such that, for all $u, v \in \SpaceLp{2}(\Omega)$:
     \begin{gather}
-        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \omega,
+        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \omega(\Vector{x}),
     \end{gather}
     is a Hilbert space. Moreover, for all $u \in \SpaceLp{2}(\Omega)$:
     \begin{gather}
