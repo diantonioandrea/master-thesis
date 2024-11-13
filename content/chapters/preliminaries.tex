@@ -245,6 +245,8 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
     \end{gather}
 \end{definition}
 
+The following results concerning bilinear forms defined on Hilbert spaces are central to the development of the methods that will be introduced and applied in \autoref{chapter:dg} and \autoref{chapter:cdr}, particularly \ref{theorem:lm}, which provides existence and uniqueness for the problems to be studied.
+
 \begin{theorem}[Stampacchia]
     Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\varphi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
     \begin{gather}
@@ -256,7 +258,7 @@ Following \cite[p. 131]{Brezis2010}, let $H$ be a vector space.
     \end{gather}
 \end{theorem}
 
-\begin{corollary}[Lax-Milgram]
+\begin{corollary}[Lax-Milgram] \label{theorem:lm}
     Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$, for all $\varphi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
     \begin{gather}
         a(u, v) = \langle v, \varphi \rangle.
