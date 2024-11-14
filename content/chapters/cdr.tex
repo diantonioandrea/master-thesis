@@ -43,7 +43,7 @@ Assume that:
     u_0 & \in \SpaceLp{2}(\Omega), \\
     u_N & \in C^0(\overline{I}; \SpaceLp{2}(\partial \Omega^+)),
 \end{align}
-and that $u_D$ is the trace on $I \times \partial \Omega^-$ of some function in $C^0(\overline{I}; \SpaceHk{1}(\Omega)) \cap \SpaceLp{\infty}(I \times \Omega)$.
+and that there exists $u^* \in C^0(\overline{I}; \SpaceHk{1}(\Omega)) \cap \SpaceLp{\infty}(I \times \Omega)$ such that $u_D$ is the trace of $u^*$ on $I \times \partial \Omega^-$.
 
 Moreover, assume that:
 \begin{align}
@@ -61,3 +61,28 @@ Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that
 \begin{align}
     \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
 \end{align}
+
+\subsubsection{Weak Solution}
+
+Following \cite{Feistauer2004}, set $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u_{\mid \partial \Omega^-} = 0 \right\}$.
+
+\begin{definition}[Weak solution]
+    The weak solution $u \in \SpaceLp{\infty}(I \times \Omega)$ is such that $u - u^* \in \SpaceLp{2}(I; V)$ and $u(0) = u_0$ in $\Omega$. Moreover:
+    \begin{align}
+        \partial_t \int_{\Omega} u \varphi ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x})  \notag \\
+        &+ \int_{\Omega} \Reaction u \varphi ~ d \omega(\Vector{x}) = \int_{\Omega} g \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N \varphi ~ d \sigma(\Vector{x}) \quad \text{ for all } \varphi \in V.
+    \end{align}
+\end{definition}
+This weak formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \eqref{equation:cdr_neumann}.
+
+The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \eqref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
+\begin{align}
+    \partial_t u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)), \\
+    u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)).
+\end{align}
+where $p \geq 1$ will denote the space degree of approximation.
+
+\newpage
+\subsection{Discretization}
+
+\subsubsection{Discontinuous Galërkin Semi-Discretization in Space}
