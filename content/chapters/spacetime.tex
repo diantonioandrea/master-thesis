@@ -354,7 +354,7 @@ Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{
 
 Let $\left\{ V_h \right\}_{h \in \hIndices}$ be a sequence of finite-dimensional subspaces of $V$ constructed using a finite element and a shape-regular mesh family $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$, which is fixed in time, such that each mesh exactly covers $\Omega$.
 
-Furthermore, let $\left\{ \varphi_j \right\}_{j \in \SpatialIndices}$ be a basis for $V_h$.
+Furthermore, let $\left\{ \varphi_j \right\}_{j \in \SpaceIndices}$ be a basis for $V_h$.
 
 \begin{definition}[Semi-discrete trial and test spaces]
     Let $\SpaceTrial_h = \SpaceHk{1}(I; V_h) = \SpaceX(I; V_h, V_h)$ be the semi-discrete trial space and let $\SpaceTest_h = V_h \times \SpaceLp{2}(I; V_h)$ be the semi-discrete test space.
@@ -362,17 +362,17 @@ Furthermore, let $\left\{ \varphi_j \right\}_{j \in \SpatialIndices}$ be a basis
 
 Observe that $\SpaceTrial_h \subset \SpaceTrial$, $\SpaceTest_h \subset \SpaceTest$, and a generic $u_h \in \SpaceTrial_h$ is of the form of:
 \begin{gather}
-    u_h(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j(t) \varphi_j(\Vector{x}),
+    u_h(t, \Vector{x}) = \sum_{j \in \SpaceIndices} u_j(t) \varphi_j(\Vector{x}),
 \end{gather}
 and:
 \begin{gather}
-    \partial_t u_h(t, \Vector{x}) = \sum_{j \in \SpatialIndices} u_j^{\prime}(t) \varphi_j(\Vector{x}),
+    \partial_t u_h(t, \Vector{x}) = \sum_{j \in \SpaceIndices} u_j^{\prime}(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpatialIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
+with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpaceIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
 \begin{gather}
-    y_{1h}(t, \Vector{x}) = \sum_{j \in \SpatialIndices} y_j(t) \varphi_j(\Vector{x}),
+    y_{1h}(t, \Vector{x}) = \sum_{j \in \SpaceIndices} y_j(t) \varphi_j(\Vector{x}),
 \end{gather}
-with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpatialIndices$.
+with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
 
 \begin{definition}[Semi-discrete weak formulation]
     The semi-discrete weak formulation of \ref{equation:model} is to find $u_h \in \SpaceTrial_h$ such that:

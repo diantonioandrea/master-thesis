@@ -86,11 +86,11 @@ where $p \geq 1$ integer will denote the space degree of approximation.
 
 \subsection{Discretization Setting}
 
-Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K$ indexed by $\SpatialIndices$. % [!] d (Dimension).
+Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K$ indexed by $\SpaceIndices$. % [!] d (Dimension).
 
-If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpatialIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
+If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
 \begin{gather}
-    \Neighbours{i} = \left\{ j \in \SpatialIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} \quad \text{ for all } i \in \SpatialIndices.
+    \Neighbours{i} = \left\{ j \in \SpaceIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} \quad \text{ for all } i \in \SpaceIndices.
 \end{gather}
 
 Furthermore, for $K \in \Omega_h$, introduce $h_K$ and $\rho_K$ as the diameter of $K$ and the diameter of the largest ball inscribed in $K$, respectively. It follows that:
@@ -122,7 +122,7 @@ For $u \in \SpaceHk{1}(\Omega, \Omega_h)$, $u_{\mid \Gamma_{ij}}$ corresponds to
 \end{align}
 and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$.
 
-Finally, for $i \in \SpatialIndices$\footnote{The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.}:
+Finally, for $i \in \SpaceIndices$\footnote{The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.}:
 \begin{align}
     \partial K_i^-(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) < 0 \right\}, \\
     \partial K_i^+(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) \geq 0 \right\},
@@ -139,16 +139,16 @@ Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:a
 \end{align}
 where:
 \begin{align}
-    a_h \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpatialIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
-    &- \Diffusion \sum_{i \in \SpatialIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \Diffusion \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
-    b_h \left( u, \varphi \right) &= \sum_{i \in \SpatialIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
-    &- \Diffusion \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
+    a_h \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
+    b_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
     c_h \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_{\SpaceLp{2}(\Omega)}, \label{equation:cdr_ch} \\
-    J_h \left( u, \varphi \right) &= \sum_{i \in \SpatialIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
-    l_h \left( \varphi \right) (t) &= \left( g(t), \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpatialIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N(t) \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
-    &+ \Diffusion \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D(t) \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D(t) \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpatialIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D(t) \varphi ~ d \sigma(\Vector{x}) \notag,
+    J_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
+    l_h \left( \varphi \right) (t) &= \left( g(t), \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N(t) \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
+    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D(t) \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D(t) \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D(t) \varphi ~ d \sigma(\Vector{x}) \notag,
 \end{align}
 and:
 \begin{gather}
