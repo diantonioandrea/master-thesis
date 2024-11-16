@@ -1,10 +1,8 @@
-\section{The Convection-Diffusion-Reaction Problem}
+\section{Setting and Strong Formulation}
 
-Let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
+Following \cite{Feistauer2007}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
 
-\subsection{Strong Formulation}
-
-Following \cite{Feistauer2007}, consider the following problem, that is to find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
+Consider the following problem, that is to find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
 \begin{gather}
     \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u = g \quad \text{ in } I \times \Omega, \label{equation:cdr}
 \end{gather}
@@ -33,9 +31,9 @@ Assume that $\partial \Omega = \partial \Omega^- \cup \partial \Omega^+$ where:
 \end{align}
 
 \newpage
-\subsection{Weak Formulation}
+\section{Weak Formulation}
 
-\subsubsection{Data Assumptions} \label{assumptions}
+\subsection{Data Assumptions} \label{assumptions}
 
 Assume that:
 \begin{align}
@@ -62,27 +60,81 @@ Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that
     \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
 \end{align}
 
-\subsubsection{Weak Solution}
+\newpage
+\subsection{Weak Solution}
 
 Following \cite{Feistauer2004}, set $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u_{\mid \partial \Omega^-} = 0 \right\}$.
 
 \begin{definition}[Weak solution]
     The weak solution $u \in \SpaceLp{\infty}(I \times \Omega)$ is such that $u - u^* \in \SpaceLp{2}(I; V)$ and $u(0) = u_0$ in $\Omega$. Moreover:
     \begin{align}
-        \partial_t \int_{\Omega} u \varphi ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x})  \notag \\
+        \partial_t \int_{\Omega} u \varphi ~ d \omega(\Vector{x}) &+ \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) + \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \notag \\
         &+ \int_{\Omega} \Reaction u \varphi ~ d \omega(\Vector{x}) = \int_{\Omega} g \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N \varphi ~ d \sigma(\Vector{x}) \quad \text{ for all } \varphi \in V.
     \end{align}
 \end{definition}
-This weak formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \eqref{equation:cdr_neumann}.
+This weak formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \eqref{equation:cdr_neumann}. % [!] Expand.
 
 The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \eqref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
 \begin{align}
-    \partial_t u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)), \\
-    u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)).
+    \partial_t u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)), \label{equation:assumption_regularity_1} \\
+    u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)). \label{equation:assumption_regularity_2}
 \end{align}
-where $p \geq 1$ will denote the space degree of approximation.
+where $p \geq 1$ integer will denote the space degree of approximation.
 
 \newpage
-\subsection{Discretization}
+\section{Discretization}
 
-\subsubsection{Discontinuous Galërkin Semi-Discretization in Space}
+\subsection{Discontinuous Galërkin Semi-Discretization in Space}
+
+Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K$. % [!] d (Dimension).
+
+If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpatialIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
+\begin{gather}
+    \Neighbours{i} = \left\{ j \in \SpatialIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} \quad \text{ for all } i \in \SpatialIndices.
+\end{gather}
+
+Furthermore, for $K \in \Omega_h$, introduce $h_K$ and $\rho_K$ as the diameter of $K$ and the diameter of the largest ball inscribed in $K$, respectively. It follows that:
+\begin{gather}
+    h = \max_{K \in \Omega_h} \left\{ h_K \right\}.
+\end{gather}
+
+Assume that all triangulations are shape-regular, that is there exists $\BoundC{\Omega_h} > 0$ such that:
+\begin{gather}
+    \frac{h_K}{\rho_K} \leq \BoundC{\Omega_h} \quad \text{ for all } K \in \Omega_h \text{ and for all } h \in \hIndices.
+\end{gather}
+
+Consider now the broken Sobolev space.
+\begin{definition}[$\SpaceHk{k}(\Omega, \Omega_h)$] % [!] Check u, break.
+    Let $k \geq 1$ integer, then:
+    \begin{gather}
+        \SpaceHk{k}(\Omega, \Omega_h) = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u_{\mid K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
+    \end{gather}
+    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\lvert \cdot \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $u \in \SpaceHk{k}(\Omega, \Omega_h)$:
+    \begin{gather}
+        \lvert u \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \lvert u \rvert_{\SpaceHk{k}(K)}^2.
+    \end{gather}
+\end{definition}
+
+For $u \in \SpaceHk{1}(\Omega, \Omega_h)$, $u_{\mid \Gamma_{ij}}$ corresponds to the trace of $u_{\mid K_i}$ on $\Gamma_{ij}$ while $u_{\mid \Gamma_{ji}}$ corresponds to the trace of $u_{\mid K_j}$ on $\Gamma_{ji}$\footnote{$\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
+\begin{align}
+    \langle u \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( u_{\mid \Gamma_{ij}} + u_{\mid \Gamma_{ji}} \right), \\
+    \left[ u \right]_{\Gamma_{ij}} &= u_{\mid \Gamma_{ij}} - u_{\mid \Gamma_{ji}},
+\end{align}
+and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$.
+
+Finally, for $i \in \SpatialIndices$\footnote{The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.}:
+\begin{align}
+    \partial K_i^-(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) < 0 \right\}, \\
+    \partial K_i^+(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) \geq 0 \right\},
+\end{align}
+where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
+
+\newpage
+Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies the following identity:
+\begin{align}
+    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J_h \left( u(t), \varphi \right) \notag \\ 
+    &= l_h \left( \varphi \right) (t) \quad \text{ for all } \varphi \in \SpaceHk{2}(\Omega, \Omega_h) \text{ and for } \lambda \text{-a.e. } t \in I.
+\end{align}
+
+\newpage
+\subsection{Discontinuous Galërkin Discretization in Time}
