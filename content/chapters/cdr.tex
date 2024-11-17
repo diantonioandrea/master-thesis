@@ -212,16 +212,16 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
 
 \subsubsection{Approximate Solution}
 
-\begin{definition}[$\SpaceSolutionH^p$]
+\begin{definition}[$\SpaceSolution_h^p$]
     \begin{gather}
-        \SpaceSolutionH^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u_{\mid K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
+        \SpaceSolution_h^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u_{\mid K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{gather}
 \end{definition}
 
-The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolutionH^p)$ of \eqref{equation:cdr} with initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, \eqref{equation:cdr_initial}, such that:
+The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ of \eqref{equation:cdr} with initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, \eqref{equation:cdr_initial}, such that:
 \begin{align}
-    \left( \partial_t u_h(t), \varphi_h \right)_{\SpaceLp{2}(\Omega)} + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolutionH^p \text{ and for all } t \in I, \\
-    \left( u_h(0), \varphi_h \right)_{\SpaceLp{2}(\Omega)} &= \left( u_0, \varphi_h \right)_{\SpaceLp{2}(\Omega)} \quad \text{ for all } \varphi_h \in \SpaceSolutionH^p.
+    \left( \partial_t u_h(t), \varphi_h \right)_{\SpaceLp{2}(\Omega)} + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
+    \left( u_h(0), \varphi_h \right)_{\SpaceLp{2}(\Omega)} &= \left( u_0, \varphi_h \right)_{\SpaceLp{2}(\Omega)} \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p.
 \end{align}
 
 \newpage
