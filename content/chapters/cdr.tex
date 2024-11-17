@@ -27,8 +27,9 @@ is the unit outer normal with respect to $\partial \Omega$.
 Assume that $\partial \Omega = \partial \Omega^- \cup \partial \Omega^+$ where:
 \begin{align}
     \partial \Omega^- = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) < 0 \text{ for all } t \in \overline{I} \right\}, \\
-    \partial \Omega^+ = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) \geq 0 \text{ for all } t \in \overline{I} \right\}.
+    \partial \Omega^+ = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) \geq 0 \text{ for all } t \in \overline{I} \right\},
 \end{align}
+namely the inflow and outflow parts of $\partial \Omega$.
 
 \newpage
 \section{Weak Formulation}
@@ -127,7 +128,7 @@ Finally, for $i \in \SpaceIndices$\footnote{The dependence of $\partial K_i^-(t)
     \partial K_i^-(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) < 0 \right\}, \\
     \partial K_i^+(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) \geq 0 \right\},
 \end{align}
-where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
+namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
 
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
@@ -157,6 +158,8 @@ and:
 
 This formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \eqref{equation:cdr_dirichlet} and \eqref{equation:cdr_neumann}. % [!] Expand.
 
+\subsubsection{Diffusion Term Discretization}
+
 The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation. Green's theorem is used and the following terms are added:
 \begin{gather}
     \int_{\Gamma_{ij}} \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
@@ -169,11 +172,38 @@ represent the sum of integrals of $\varphi \partial_{\Vector{n}} u$ over faces o
 \begin{gather}
     \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}),
 \end{gather}
-for which the second part cancels with the corresponding terms in $l_h(\varphi)$ as $u = u_D$ on $\partial \Omega^-$, and by the following terms:
+for which the second part cancels with the corresponding terms in $l_h$ as $u = u_D$ on $\partial \Omega^-$, and by the following terms:
 \begin{gather}
     \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}),
 \end{gather}
-which appear in $l_h(\varphi)$ due to \eqref{equation:cdr_neumann}.
+which appear in $l_h$ due to \eqref{equation:cdr_neumann}.
+
+\newpage
+\subsubsection{Convection Term Discretization}
+
+The bilinear form $b_h$ represents the discretization of the convection term. Applying Green's theorem yields, for $i \in \SpaceIndices$:
+\begin{align}
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
+    &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
+    & - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}). \notag
+\end{align}
+Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u_{\mid \Gamma{ji}}$ for all $j \in \Neighbours{i}$. Consider $u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \eqref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
+\begin{align}
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &- \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
+    &= - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \pm \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &+ \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &+ \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) + \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( u^- - u \right) \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}). \notag
+\end{align}
+Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \eqref{equation:cdr_bh}.
+
+\subsubsection{Interior and Boundary Penalty}
+
+The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty that replaces the continuity of conforming finite elements. The first term vanishes due to \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, while the second term cancels with the corresponding term in $l_h$.
 
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
