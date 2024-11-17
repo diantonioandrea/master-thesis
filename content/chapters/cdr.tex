@@ -50,14 +50,14 @@ Moreover, assume that:
 \end{align}
 and that there exist $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
 \begin{align}
-    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega, \\
-    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega, \\
-    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
+    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} \quad \text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega, \\
+    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} \quad \text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega, \\
+    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} \quad \text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega.
 \end{align}
 
 Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that:
 \begin{align}
-    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} \quad \text{ for a.e. } t, \Vector{x} \in I \times \Omega.
+    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} \quad \text{ for} \lambda \text{-a.e. } t, \Vector{x} \in I \times \Omega.
 \end{align}
 
 \newpage
@@ -132,9 +132,9 @@ where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
 
-Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies the following identity:
+Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows:
 \begin{align}
-    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J_h \left( u(t), \varphi \right) \notag \\ 
+    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_h \left( u(t), \varphi \right) \notag \\ 
     &= l_h \left( \varphi \right) (t) \quad \text{ for all } \varphi \in \SpaceHk{2}(\Omega, \Omega_h) \text{ and for } \lambda \text{-a.e. } t \in I,
 \end{align}
 where:
@@ -145,15 +145,35 @@ where:
     b_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
     &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
     c_h \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_{\SpaceLp{2}(\Omega)}, \label{equation:cdr_ch} \\
-    J_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
-    l_h \left( \varphi \right) (t) &= \left( g(t), \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N(t) \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
-    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D(t) \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D(t) \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D(t) \varphi ~ d \sigma(\Vector{x}) \notag,
+    J^{\kappa}_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
+    l_h \left( \varphi \right)  &= \left( g, \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
+    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
 \end{align}
 and:
 \begin{gather}
     \kappa_{\mid \Gamma_{ij}} = \frac{1}{\Diameter \Gamma_{ij}}.
 \end{gather}
+
+This formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \eqref{equation:cdr_dirichlet} and \eqref{equation:cdr_neumann}. % [!] Expand.
+
+The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation. Green's theorem is used and the following terms are added:
+\begin{gather}
+    \int_{\Gamma_{ij}} \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
+\end{gather}
+which vanish under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2} as $\left[ u \right]_{\Gamma_{ij}} = 0$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$. Note that, due to $\left\langle \Gradient u \right\rangle_{\Gamma_{ij}} = \Gradient u_{\mid \Gamma{ij}} = \Gradient u_{\mid \Gamma{ji}}$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$, the following terms:
+\begin{gather}
+    \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] ~ d \sigma(\Vector{x}),
+\end{gather}
+represent the sum of integrals of $\varphi \partial_{\Vector{n}} u$ over faces of $\partial K_i$ in $\Omega$ for all $i \in \SpaceIndices$. Finally, the remaining integrals are represented by the following terms:
+\begin{gather}
+    \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}),
+\end{gather}
+for which the second part cancels with the corresponding terms in $l_h(\varphi)$ as $u = u_D$ on $\partial \Omega^-$, and by the following terms:
+\begin{gather}
+    \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}),
+\end{gather}
+which appear in $l_h(\varphi)$ due to \eqref{equation:cdr_neumann}.
 
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
