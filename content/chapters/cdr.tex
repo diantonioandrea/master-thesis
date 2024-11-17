@@ -188,7 +188,7 @@ The bilinear form $b_h$ represents the discretization of the convection term. Ap
     &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
     & - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}). \notag
 \end{align}
-Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u_{\mid \Gamma{ji}}$ for all $j \in \Neighbours{i}$. Consider $u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \eqref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
+Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is, write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u_{\mid \Gamma_{ji}}$ for all $j \in \Neighbours{i}$. Additionally, consider $u^- = u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \eqref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
 \begin{align}
     \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
     &- \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
