@@ -133,12 +133,15 @@ namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ deno
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
 
-Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows:
+Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
 \begin{align}
-    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_h \left( u(t), \varphi \right) \notag \\ 
-    &= l_h \left( \varphi \right) (t) \quad \text{ for all } \varphi \in \SpaceHk{2}(\Omega, \Omega_h) \text{ and for } \lambda \text{-a.e. } t \in I,
+    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
 \end{align}
 where:
+\begin{gather}
+    A_h(u, \varphi) = a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_h \left( u(t), \varphi \right) \label{equation:cdr_Ah},
+\end{gather}
+and:
 \begin{align}
     a_h \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
     &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
@@ -151,7 +154,7 @@ where:
     &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
     &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
 \end{align}
-and:
+with:
 \begin{gather}
     \kappa_{\mid \Gamma_{ij}} = \left( \Diameter \Gamma_{ij} \right)^{-1}.
 \end{gather}
@@ -202,9 +205,24 @@ Consider, on the inflow part of $\partial K_i$, the ``information coming from ou
 \end{align}
 Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \eqref{equation:cdr_bh}.
 
+\newpage
 \subsubsection{Interior and Boundary Penalty}
 
 The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty that replaces the continuity of conforming finite elements. The first term vanishes due to \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, while the second term cancels with the corresponding term in $l_h$.
+
+\subsubsection{Approximate Solution}
+
+\begin{definition}[$\SpaceSolutionH^p$]
+    \begin{gather}
+        \SpaceSolutionH^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u_{\mid K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
+    \end{gather}
+\end{definition}
+
+The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolutionH^p)$ of \eqref{equation:cdr} with initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, \eqref{equation:cdr_initial}, such that:
+\begin{align}
+    \left( \partial_t u_h(t), \varphi_h \right)_{\SpaceLp{2}(\Omega)} + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolutionH^p \text{ and for all } t \in I, \\
+    \left( u_h(0), \varphi_h \right)_{\SpaceLp{2}(\Omega)} &= \left( u_0, \varphi_h \right)_{\SpaceLp{2}(\Omega)} \quad \text{ for all } \varphi_h \in \SpaceSolutionH^p.
+\end{align}
 
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
