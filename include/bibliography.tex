@@ -2,3 +2,21 @@
 
 \usepackage[backend=biber]{biblatex}
 \addbibresource{../bibliography/references.bib}
+
+\DeclareFieldFormat[article]{title}{\textit{#1}}
+\DeclareFieldFormat[book]{title}{\textit{#1}}
+
+\DeclareFieldFormat[article]{doi}{\href{https://doi.org/#1}{\textit{Article}}}
+\DeclareFieldFormat[book]{doi}{\href{https://doi.org/#1}{\textit{Book}}}
+
+\DeclareBibliographyDriver{article} {%
+    \noindent \textbf{\printnames{author}}
+    (\printfield{doi}, \printfield{year})\par
+    \printfield{title}\medskip
+}
+
+\DeclareBibliographyDriver{book} {%
+    \noindent \textbf{\printnames{author}}
+    (\printfield{doi}, \printfield{year})\par
+    \printfield{title}\medskip
+}
