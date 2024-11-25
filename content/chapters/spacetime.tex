@@ -443,8 +443,8 @@ Let $H$ be a real Hilbert space composed of functions defined on the space domai
 \end{definition}
 
 Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\hat{I}; \RealNumbers)$, then $u \in \SpacePolynomials{q}(I_n; H)$ if there exist $\left\{ u_i \right\}_{i = 0}^q \subset H$ such that:
-\begin{gather}
-    u = \sum_{i = 1}^q u_i (\psi_i \circ T_n^{-1}).
+\begin{gather} % [!] Check indices (i).
+    u = \sum_{i = 0}^q u_i (\psi_i \circ T_n^{-1}).
 \end{gather}
 
 \begin{definition}[$\SpacePolynomials{q}^b(\TimeMesh; H)$]
