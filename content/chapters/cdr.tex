@@ -85,9 +85,9 @@ where $p \geq 1$ integer will denote the space degree of approximation.
 \newpage
 \section{Discretization}
 
-\subsection{Discretization Setting}
+\subsection{Space Discretization Setting}
 
-Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K$ indexed by $\SpaceIndices$. % [!] d (Dimension).
+Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Denoted by $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
 
 If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
 \begin{gather}
@@ -218,11 +218,28 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
     \end{gather}
 \end{definition}
 
-The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ of \eqref{equation:cdr} with initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, \eqref{equation:cdr_initial}, such that:
+The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
 \begin{align}
     \left( \partial_t u_h(t), \varphi_h \right)_{\SpaceLp{2}(\Omega)} + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
     \left( u_h(0), \varphi_h \right)_{\SpaceLp{2}(\Omega)} &= \left( u_0, \varphi_h \right)_{\SpaceLp{2}(\Omega)} \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p.
 \end{align}
 
 \newpage
+\subsection{Time Discretization Setting}
+
+Following \cite{Feistauer2007}, for the discretization in time of this problem, consider $\left\{ I_{\tau} \right\}_{\tau \in \tIndices}$ to be a family of partitions of $\overline{I}$, each consisting of intervals $I_n$ indexed by $n \in \TimeIndices$. A partition $I_{\tau}$ is such that:
+\begin{gather}
+    I_{\tau} = \left\{ 0 = t_0 < t_1 < \dots < t_{N_\tau} = T \right\} \quad \text{ for all } \tau \in \tIndices.
+\end{gather}
+Moreover, denote by $I_n = \left( t_{n - 1}, t_n \right)$ and $\overline{I}_n = \left[ t_{n - 1}, t_n \right]$ so that:
+\begin{gather}
+    \overline{I} = \left[ 0, T \right] = \bigcup_{n = 1}^{N_{\tau}} \overline{I}_n \quad \text{ for all } \tau \in \tIndices,
+\end{gather}
+and:
+\begin{gather}
+    I_n \cap I_m = \emptyset \quad \text{ for all } n, m \in \TimeIndices \text{ such that } n \neq m \text{ and for all } \tau \in \tIndices.
+\end{gather}
+
+\newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
+
