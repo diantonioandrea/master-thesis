@@ -233,13 +233,76 @@ Following \cite{Feistauer2007}, for the discretization in time of this problem, 
 \end{gather}
 Moreover, denote by $I_n = \left( t_{n - 1}, t_n \right)$ and $\overline{I}_n = \left[ t_{n - 1}, t_n \right]$ so that:
 \begin{gather}
-    \overline{I} = \left[ 0, T \right] = \bigcup_{n = 1}^{N_{\tau}} \overline{I}_n \quad \text{ for all } \tau \in \tIndices,
+    \overline{I} = \left[ 0, T \right] = \bigcup_{n \in \TimeIndices} \overline{I}_n \quad \text{ for all } \tau \in \tIndices,
 \end{gather}
 and:
 \begin{gather}
     I_n \cap I_m = \emptyset \quad \text{ for all } n, m \in \TimeIndices \text{ such that } n \neq m \text{ and for all } \tau \in \tIndices.
 \end{gather}
 
+For a function $u$ defined on:
+\begin{gather}
+    \bigcup_{n \in \TimeIndices} I_n,
+\end{gather}
+consider the following notations:
+\begin{align}
+    u_n^+ &= u(t_n^+) = \lim_{t \rightarrow t_n^+} u(t) \quad \text{ for all } n \in \TimeIndices, \\
+    u_n^- &= u(t_n^-) = \lim_{t \rightarrow t_n^-} u(t) \quad \text{ for all } n \in \TimeIndices, \\
+    \left\{ u \right\}_n &= u_n^+ - u_n^- \quad \text{ for all } n \in \TimeIndices.
+\end{align}
+
+Consider, in general, different families of triangulations on each $I_n$ for $n \in \TimeIndices$, that is, consider distinct $\SpaceTimeIndices$ and $\hTimeIndices$ for all $n \in \TimeIndices$, so that $\left\{ \Omega_{h, n} \right\}_{h \in \hTimeIndices}$ is the family of triangulations of $\Omega$ associated with $n \in \TimeIndices$ for all $\tau \in \tIndices$.
+
+Furthermore, set:
+\begin{align}
+    h_n &= \max_{K \in \Omega_{h, n}} h_K \quad \text{ for all } n \in \TimeIndices, \\
+    h &= \max_{n \in \TimeIndices} h_n, \\
+    \tau &= \max_{n \in \TimeIndices} \lambda(I_n) = \max_{n \in \TimeIndices} t_n - t_{n - 1}.
+\end{align}
+
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time}
 
+Considering different families of triangulations on each $I_n$ leads to the following modification of $\SpaceSolution_h^p$:
+\begin{definition}[$\SpaceSolution_{h, n}^p$]
+    \begin{gather}
+        \SpaceSolution_{h, n}^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u_{\mid K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_{h, n} \right\}.
+    \end{gather}
+\end{definition}
+
+Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \eqref{equation:cdr_ah} to \eqref{equation:cdr_lh}, are redefined as follows:
+\begin{align}
+    a_{h, n} \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
+    b_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bhn} - \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
+    c_{h, n} \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_{\SpaceLp{2}(\Omega)}, \label{equation:cdr_chn} \\
+    J^{\kappa}_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jhn} \\
+    l_{h, n} \left( \varphi \right)  &= \left( g, \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
+    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
+\end{align}
+where:
+\begin{gather} % [!] To be fixed.
+    \NeighboursTime{i} = \left\{ j \in \SpaceTimeIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} \quad \text{ for all } i \in \SpaceTimeIndices \text{ and for all } n \in \TimeIndices.
+\end{gather}
+
+Set, then:
+\begin{gather}
+    A_{h, n}(u, \varphi) = a_{h, n} \left( u(t), \varphi \right) + b_{h, n} \left( u(t), \varphi \right) + c_{h, n} \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_{h, n} \left( u(t), \varphi \right) \label{equation:cdr_Ahn}.
+\end{gather}
+
+\newpage
+\subsubsection{Approximate Solution}
+
+\begin{definition}[$\SpaceSolution_{h, \tau}^{p, q}$]
+    Let $q \geq 1$ be an integer, then:
+    \begin{gather} % [!] To be fixed.
+        \SpaceSolution_{h, \tau}^{p, q} = \left\{ u \in \SpaceLp{2}(I \times \Omega) \text{ such that } u_{\mid I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
+    \end{gather}
+\end{definition}
+
+The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolution_{h, \tau}^{p, q}$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
+
+% [!] Complete.
