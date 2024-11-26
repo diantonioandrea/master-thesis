@@ -135,7 +135,7 @@ namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ deno
 
 Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
 \begin{align}
-    \left( \partial_t u(t), \varphi \right)_{\SpaceLp{2}(\Omega)} &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
+    \left( \partial_t u(t), \varphi \right)_0 &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
 \end{align}
 where:
 \begin{gather}
@@ -148,9 +148,9 @@ and:
     &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
     b_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
     &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
-    c_h \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_{\SpaceLp{2}(\Omega)}, \label{equation:cdr_ch} \\
+    c_h \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_0, \label{equation:cdr_ch} \\
     J^{\kappa}_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
-    l_h \left( \varphi \right)  &= \left( g, \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
+    l_h \left( \varphi \right)  &= \left( g, \varphi \right)_0 + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
     &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
     &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
 \end{align}
@@ -220,8 +220,8 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
 
 The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
 \begin{align}
-    \left( \partial_t u_h(t), \varphi_h \right)_{\SpaceLp{2}(\Omega)} + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
-    \left( u_h(0), \varphi_h \right)_{\SpaceLp{2}(\Omega)} &= \left( u_0, \varphi_h \right)_{\SpaceLp{2}(\Omega)} \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p.
+    \left( \partial_t u_h(t), \varphi_h \right)_0 + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
+    \left( u_h(0), \varphi_h \right)_0 &= \left( u_0, \varphi_h \right)_0 \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p.
 \end{align}
 
 \newpage
@@ -255,9 +255,13 @@ Consider, in general, different families of triangulations on each $I_n$ for $n 
 
 Furthermore, set:
 \begin{align}
-    h_n &= \max_{K \in \Omega_{h, n}} h_K \quad \text{ for all } n \in \TimeIndices, \\
-    h &= \max_{n \in \TimeIndices} h_n, \\
-    \tau &= \max_{n \in \TimeIndices} \lambda(I_n) = \max_{n \in \TimeIndices} t_n - t_{n - 1}.
+    h_n &= \max_{K \in \Omega_{h, n}} \left\{ h_K \right\} \quad \text{ for all } n \in \TimeIndices, \\
+    h &= \max_{n \in \TimeIndices} \left\{ h_n \right\}, \\
+    \tau &= \max_{n \in \TimeIndices} \left\{ \lambda(I_n) \right\} = \max_{n \in \TimeIndices} \left\{ t_n - t_{n - 1} \right\},
+\end{align}
+and:
+\begin{align}
+    \nTimeIndices = \max \left\{ \TimeIndices \right\}.
 \end{align}
 
 \newpage
@@ -277,9 +281,9 @@ Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
     b_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bhn} - \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
-    c_{h, n} \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_{\SpaceLp{2}(\Omega)}, \label{equation:cdr_chn} \\
+    c_{h, n} \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_0, \label{equation:cdr_chn} \\
     J^{\kappa}_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jhn} \\
-    l_{h, n} \left( \varphi \right)  &= \left( g, \varphi \right)_{\SpaceLp{2}(\Omega)} + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
+    l_{h, n} \left( \varphi \right)  &= \left( g, \varphi \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
     &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
     &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
 \end{align}
@@ -304,5 +308,17 @@ Set, then:
 \end{definition}
 
 The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolution_{h, \tau}^{p, q}$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
+\begin{align} % [!] Fix alignment and (?) u(0).
+    &\sum_{n \in \TimeIndices} \int_{I_n} \left( (u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag + \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u_{h, \tau}(0), \varphi_0^+ )_0 \notag \\
+    & = \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete}
+\end{align}
 
-% [!] Complete.
+By the following notation:
+\begin{align}
+    B(u, \varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (u, \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u(0), \varphi_0^+ )_0, \label{equation:cdr_B} \\
+    L(\varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \label{equation:cdr_L},
+\end{align}
+it is possibile to rewrite \eqref{equation:cdr_discrete} as:
+\begin{gather}
+    B(u_{h, \tau}, \varphi) = L(\varphi) \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete_short}
+\end{gather}
