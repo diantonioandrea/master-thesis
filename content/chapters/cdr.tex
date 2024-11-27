@@ -309,13 +309,13 @@ Set, then:
 
 The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolution_{h, \tau}^{p, q}$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
 \begin{align} % [!] Fix alignment and (?) u(0).
-    &\sum_{n \in \TimeIndices} \int_{I_n} \left( (u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag + \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u_{h, \tau}(0), \varphi_0^+ )_0 \notag \\
-    & = \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete}
+    &\sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag + \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, \varphi_0^+ )_0 \notag \\
+    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete}
 \end{align}
 
 By the following notation:
 \begin{align}
-    B(u, \varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (u, \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u(0), \varphi_0^+ )_0, \label{equation:cdr_B} \\
+    B(u, \varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u_0^+, \varphi_0^+ )_0, \label{equation:cdr_B} \\
     L(\varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \label{equation:cdr_L},
 \end{align}
 it is possibile to rewrite \eqref{equation:cdr_discrete} as:
@@ -351,6 +351,39 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following results
         \lvert u \rvert_{\SpaceHk{1}(K)} \leq \BoundC{\nu} h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(\partial K)},
     \end{gather}
     for all $u \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+\end{lemma}
+
+For what follows, fix the following notations:
+\begin{align} % [!] To be renamed.
+    \lVert u \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \left\{ u \right\}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
+    \lVert u \rVert_{E, n}^2 &= \Diffusion \lvert u \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert u \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(u, u) \\
+    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert u \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert u \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right),
+\end{align}
+where:
+\begin{gather}
+    \lVert u \rVert_{\Convection, \Gamma}^2 = \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert u^2 ~ d \sigma(\Vector{x}).
+\end{gather}
+
+Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
+
+\begin{lemma}[Reformulation of $B$]
+    \eqref{equation:cdr_B} can be reformulated to:
+    \begin{gather}
+        B(u, \varphi) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ \varphi \right\}_n )_0 + (u_{\nTimeIndices}^-, \varphi_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
+    \end{gather}
+\end{lemma}
+
+\begin{lemma}[Coercivity of $A_{h, n}$]
+    The forms $A_{h, n}$ are coercive, that is:
+    \begin{gather}
+        A_{h, n}(u, u) \geq \lVert u \rVert_{E, n}^2 \quad \text{ for all } u \in \SpaceHk{1}(\Omega, \Omega_{h, n}).
+    \end{gather}
+\end{lemma}
+
+\begin{lemma}[Coercivity of $B$]
+    \begin{gather}
+        B(u, u) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u, u) ~ d \lambda(t) + \lVert u \rVert_{T}^2.
+    \end{gather}
 \end{lemma}
 
 \newpage
