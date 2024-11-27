@@ -99,9 +99,9 @@ Furthermore, for $K \in \Omega_h$, introduce $h_K$ and $\rho_K$ as the diameter 
     h = \max_{K \in \Omega_h} \left\{ h_K \right\}.
 \end{gather}
 
-Assume that all triangulations are shape-regular, that is there exists $\BoundC{\Omega_h} > 0$ such that:
+Assume that all triangulations are shape-regular, that is there exists $\BoundC{h} > 0$ such that:
 \begin{gather}
-    \frac{h_K}{\rho_K} \leq \BoundC{\Omega_h} \quad \text{ for all } K \in \Omega_h \text{ and for all } h \in \hIndices.
+    \frac{h_K}{\rho_K} \leq \BoundC{h} \quad \text{ for all } K \in \Omega_h \text{ and for all } h \in \hIndices.
 \end{gather}
 
 Consider now the broken Sobolev space.
@@ -324,7 +324,34 @@ it is possibile to rewrite \eqref{equation:cdr_discrete} as:
 \end{gather}
 
 \newpage
-\subsection{Basic Properties}
+\subsection{Assumptions and Basic Properties}
+
+Assume that all triangulations $\Omega_{h, n}$, for all $h \in \hIndices$ and for all $n \in \TimeIndices$ are shape-regular, that is there exists $\BoundC{\tau} > 0$ such that, for all $\tau \in \tIndices$:
+\begin{gather}
+    \frac{h_K}{\rho_K} \leq \BoundC{\tau} \quad \text{ for all } K \in \Omega_{h, n} \text{ and for all } n \in \TimeIndices.
+\end{gather}
+Moreover, assume that there exists $\BoundC{\Gamma} > 0$ such that\footnote{This implies the non-degeneracy of $\left\{ \Gamma_{ij} \right\}_{j \in \NeighboursTime{i}}$ with respect to $h_{K_i}$ as $h_{K_i}$ becomes small.}:
+\begin{gather}
+    h_{K_i} \leq \BoundC{\Gamma} \Diameter \Gamma_{ij} \quad \text{ for all } i \in \SpaceTimeIndices, j \in \NeighboursTime{i} \text{ and for all } n \in \TimeIndices.
+\end{gather}
+
+From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following results:
+
+\begin{lemma}[Multiplicative trace inequality]
+    There exists $\BoundC{\mu} > 0$ such that:
+    \begin{gather}
+        \lVert u \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundC{\mu} \left( \lVert u \rVert_{\SpaceLp{2}(K)} \lvert u \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(K)}^2 \right),
+    \end{gather}
+    for all $u \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+\end{lemma}
+
+\begin{lemma}[Inverse inequality]
+    There exists $\BoundC{\nu} > 0$ such that:
+    \begin{gather}
+        \lvert u \rvert_{\SpaceHk{1}(K)} \leq \BoundC{\nu} h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(\partial K)},
+    \end{gather}
+    for all $u \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+\end{lemma}
 
 \newpage
 \section{Error Analysis}
