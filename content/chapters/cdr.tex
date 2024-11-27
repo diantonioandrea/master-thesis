@@ -335,7 +335,7 @@ Moreover, assume that there exists $\BoundC{\Gamma} > 0$ such that\footnote{This
     h_{K_i} \leq \BoundC{\Gamma} \Diameter \Gamma_{ij} \quad \text{ for all } i \in \SpaceTimeIndices, j \in \NeighboursTime{i} \text{ and for all } n \in \TimeIndices.
 \end{gather}
 
-From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following results:
+From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two inequalities:
 
 \begin{lemma}[Multiplicative trace inequality]
     There exists $\BoundC{\mu} > 0$ such that:
@@ -361,7 +361,7 @@ For what follows, fix the following notations:
 \end{align}
 where:
 \begin{gather}
-    \lVert u \rVert_{\Convection, \Gamma}^2 = \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert u^2 ~ d \sigma(\Vector{x}).
+    \lVert u \rVert_{\Convection, \Gamma}^2 = \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert u^2 ~ d \sigma(\Vector{x}) \quad \text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
 \end{gather}
 
 Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
