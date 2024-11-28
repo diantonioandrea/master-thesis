@@ -11,6 +11,9 @@
 \usepackage{nicefrac}
 \usepackage{stmaryrd}
 
+% References.
+\usepackage[nameinlink]{cleveref}
+
 %% Theorems.
 
 % Theorems and corollaries.
@@ -42,10 +45,15 @@
 \newcommand{\SpaceTest}{\mathcal{Y}} % Test space.
 
 \newcommand{\SpaceSolution}{\mathscr{S}} % Approximate solution space.
+\newcommand{\SpaceSolutionFull}{\SpaceSolution^{p, q}_{h, \tau}}
+\newcommand{\SpaceSolutionFullMO}{\SpaceSolution^{p, q - 1}_{h, \tau}}
 
 \newcommand{\SpacePolynomials}[1]{\mathcal{P}_{#1}}
 
 \newcommand{\Characteristic}[1]{\mathbbm{1}_{#1}}
+
+% Approximate solution.
+\newcommand{\AppU}{\upsilon}
 
 % Meshes.
 \newcommand{\TimeMesh}{I_{\tau}}
@@ -70,10 +78,18 @@
 % Projections and interpolants.
 \newcommand{\Projection}{\pi}
 \newcommand{\ProjectionOnto}[1]{\Projection_{#1}}
+
 \newcommand{\InterpolantGR}{\Projection^{\acrshort{gr}}}
 \newcommand{\InterpolantH}{\Projection_h}
 \newcommand{\InterpolantQN}{\Projection^n_q}
 \newcommand{\InterpolantQT}{\Projection^{\tau}_q}
+\newcommand{\InterpolantPQ}{\Projection_{p, q}}
+
+% Interpolated solution.
+\newcommand{\IntU}{\InterpolantPQ u}
+
+% Error.
+\newcommand{\Error}{\varepsilon}
 
 % Vectors and operators.
 \newcommand{\Vector}[1]{\bm{#1}}
