@@ -73,9 +73,9 @@ Following \cite{Feistauer2004}, set $V = \left\{ u \in \SpaceHk{1}(\Omega) \text
         &+ \int_{\Omega} \Reaction u \varphi ~ d \omega(\Vector{x}) = \int_{\Omega} g \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N \varphi ~ d \sigma(\Vector{x}) \quad \text{ for all } \varphi \in V.
     \end{align}
 \end{definition}
-This weak formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \eqref{equation:cdr_neumann}. % [!] Expand.
+This weak formulation is derived by multiplying \cref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \cref{equation:cdr_neumann}. % [!] Expand.
 
-The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \eqref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
+The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \cref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
 \begin{align}
     \partial_t u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)), \label{equation:assumption_regularity_1} \\
     u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)). \label{equation:assumption_regularity_2}
@@ -133,7 +133,7 @@ namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ deno
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
 
-Under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
+Under assumptions \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
 \begin{align}
     \left( \partial_t u(t), \varphi \right)_0 &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
 \end{align}
@@ -159,7 +159,7 @@ with:
     \kappa_{\mid \Gamma_{ij}} = \left( \Diameter \Gamma_{ij} \right)^{-1}.
 \end{gather}
 
-This formulation is derived by multiplying \eqref{equation:cdr} by any $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \eqref{equation:cdr_dirichlet} and \eqref{equation:cdr_neumann}. % [!] Expand.
+This formulation is derived by multiplying \cref{equation:cdr} by any $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \cref{equation:cdr_dirichlet} and \cref{equation:cdr_neumann}. % [!] Expand.
 
 \newpage
 \subsubsection{Diffusion Term Discretization}
@@ -168,7 +168,7 @@ The bilinear form $a_h$ represents the discretization of the diffusion term in t
 \begin{gather}
     \int_{\Gamma_{ij}} \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
 \end{gather}
-which vanish under assumptions \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2} as $\left[ u \right]_{\Gamma_{ij}} = 0$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$. Note that, due to $\left\langle \Gradient u \right\rangle_{\Gamma_{ij}} = \Gradient u_{\mid \Gamma{ij}} = \Gradient u_{\mid \Gamma{ji}}$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$, the following terms:
+which vanish under assumptions \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2} as $\left[ u \right]_{\Gamma_{ij}} = 0$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$. Note that, due to $\left\langle \Gradient u \right\rangle_{\Gamma_{ij}} = \Gradient u_{\mid \Gamma{ij}} = \Gradient u_{\mid \Gamma{ji}}$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$, the following terms:
 \begin{gather}
     \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] ~ d \sigma(\Vector{x}),
 \end{gather}
@@ -180,7 +180,7 @@ for which the second part cancels with the corresponding terms in $l_h$ as $u = 
 \begin{gather}
     \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}),
 \end{gather}
-which appear in $l_h$ due to \eqref{equation:cdr_neumann}.
+which appear in $l_h$ due to \cref{equation:cdr_neumann}.
 
 \newpage
 \subsubsection{Convection Term Discretization}
@@ -191,7 +191,7 @@ The bilinear form $b_h$ represents the discretization of the convection term. Ap
     &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
     & - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}). \notag
 \end{align}
-Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is, write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u_{\mid \Gamma_{ji}}$ for all $j \in \Neighbours{i}$. Additionally, consider $u^- = u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \eqref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
+Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is, write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u_{\mid \Gamma_{ji}}$ for all $j \in \Neighbours{i}$. Additionally, consider $u^- = u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \cref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
 \begin{align}
     \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
     &- \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
@@ -203,12 +203,12 @@ Consider, on the inflow part of $\partial K_i$, the ``information coming from ou
     &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
     &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}). \notag
 \end{align}
-Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \eqref{equation:cdr_bh}.
+Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \cref{equation:cdr_bh}.
 
 \newpage
 \subsubsection{Interior and Boundary Penalty}
 
-The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty that replaces the continuity of conforming finite elements. The first term vanishes due to \eqref{equation:assumption_regularity_1} and \eqref{equation:assumption_regularity_2}, while the second term cancels with the corresponding term in $l_h$.
+The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty that replaces the continuity of conforming finite elements. The first term vanishes due to \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2}, while the second term cancels with the corresponding term in $l_h$.
 
 \subsubsection{Approximate Solution}
 
@@ -218,7 +218,7 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
     \end{gather}
 \end{definition}
 
-The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
+The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet}, \cref{equation:cdr_neumann}, and \cref{equation:cdr_initial}, such that:
 \begin{align}
     \left( \partial_t u_h(t), \varphi_h \right)_0 + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
     \left( u_h(0), \varphi_h \right)_0 &= \left( u_0, \varphi_h \right)_0 \quad \text{ for all } \varphi_h \in \SpaceSolution_h^p.
@@ -274,7 +274,7 @@ Considering different families of triangulations on each $I_n$ leads to the foll
     \end{gather}
 \end{definition}
 
-Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \eqref{equation:cdr_ah} to \eqref{equation:cdr_lh}, are redefined as follows:
+Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{equation:cdr_ah} to \cref{equation:cdr_lh}, are redefined as follows:
 \begin{align}
     a_{h, n} \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
@@ -300,17 +300,17 @@ Set, then:
 \newpage
 \subsubsection{Approximate Solution}
 
-\begin{definition}[$\SpaceSolution_{h, \tau}^{p, q}$]
+\begin{definition}[$\SpaceSolutionFull$]
     Let $q \geq 1$ be an integer, then:
     \begin{gather} % [!] To be fixed.
-        \SpaceSolution_{h, \tau}^{p, q} = \left\{ u \in \SpaceLp{2}(I \times \Omega) \text{ such that } u_{\mid I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
+        \SpaceSolutionFull = \left\{ u \in \SpaceLp{2}(I \times \Omega) \text{ such that } u_{\mid I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
     \end{gather}
 \end{definition}
 
-The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolution_{h, \tau}^{p, q}$ to \eqref{equation:cdr} with the initial-boundary conditions \eqref{equation:cdr_dirichlet}, \eqref{equation:cdr_neumann}, and \eqref{equation:cdr_initial}, such that:
+The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolutionFull$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet}, \cref{equation:cdr_neumann}, and \cref{equation:cdr_initial}, such that:
 \begin{align} % [!] Fix alignment and (?) u(0).
     &\sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag + \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, \varphi_0^+ )_0 \notag \\
-    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete}
+    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolutionFull. \label{equation:cdr_discrete}
 \end{align}
 
 By the following notation:
@@ -318,9 +318,9 @@ By the following notation:
     B(u, \varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u_0^+, \varphi_0^+ )_0, \label{equation:cdr_B} \\
     L(\varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \label{equation:cdr_L},
 \end{align}
-it is possibile to rewrite \eqref{equation:cdr_discrete} as:
+it is possibile to rewrite \cref{equation:cdr_discrete} as:
 \begin{gather}
-    B(u_{h, \tau}, \varphi) = L(\varphi) \quad \text{ for all } \varphi \in \SpaceSolution_{h, \tau}^{p, q}. \label{equation:cdr_discrete_short}
+    B(u_{h, \tau}, \varphi) = L(\varphi) \quad \text{ for all } \varphi \in \SpaceSolutionFull. \label{equation:cdr_discrete_short}
 \end{gather}
 
 \newpage
@@ -367,7 +367,7 @@ where:
 Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
 
 \begin{lemma}[Reformulation of $B$]
-    \eqref{equation:cdr_B} can be reformulated to:
+    \cref{equation:cdr_B} can be reformulated to:
     \begin{gather}
         B(u, \varphi) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ \varphi \right\}_n )_0 + (u_{\nTimeIndices}^-, \varphi_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
     \end{gather}
@@ -388,3 +388,81 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 
 \newpage
 \section{Error Analysis}
+
+\subsection{Abstract Error Estimates}
+
+In what follows, denote by $u$ the exact solution and by $\AppU$ the approximate solution $u_{h, \tau}$, and denote by $\Error = \AppU - u$ the error of the method.
+
+Furthermore, in what follows, $C$ denotes a generic constant. Note that multiple instances of $C$ do not necessarily denote the same constant.
+
+For the derivation of error estimates, consider the following space-time interpolation of the exact solution:
+
+\begin{definition}[$\IntU$] \label{definition:interpolant_qp}
+    $\IntU \in \SpaceSolutionFull$ such that:
+    \begin{align}
+        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(t) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionFullMO \text{ and for all } n \in \TimeIndices \\
+        \IntU(t_n^-) &= \ProjectionOnto{\SpaceSolution^p_{h, n}} u(t_n^-) \quad \text{ for all } n \in \TimeIndices.
+    \end{align}
+\end{definition}
+
+It can be shown that $\IntU$ is uniquely determined by the properties stated in \cref{definition:interpolant_qp}.
+
+It follows, then, the derivation of error estimates in terms of the $\InterpolantPQ$-interpolation error.
+
+\begin{lemma}
+    \begin{align}
+        B(\AppU - \IntU, \AppU - \IntU) &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u - \IntU, \AppU - \IntU) ~ d \lambda(t) \label{equation:error_1} \\
+        &- \sum_{n = 1}^{\nTimeIndices - 1} \left( \left( \IntU - u \right)_n^-, \left\{ \AppU - \IntU \right\}_n \right)_0. \notag
+    \end{align}
+\end{lemma}
+
+Note that, by using, in general, different triangulations on different time levels, $\left\{ \AppU - \IntU \right\}_n \notin \SpaceSolution^p_{h, n}$.
+
+Fix, now, the following notation\footnote{Note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error.}:
+\begin{align}
+    \xi &= \AppU - \IntU, \\
+    \eta &= \IntU - u,
+\end{align}
+then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
+\begin{align}
+    B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ d \lambda(t) - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
+\end{align}
+
+\begin{definition}[$\theta_n(\eta; h, \Diffusion)$]
+    \begin{align} % [!] Check \eta_n^-
+        \theta_n(\eta; h, \Diffusion) &= \lVert \eta \rVert_{E, n} + \sqrt{\Diffusion} h \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
+        &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} \right)^{1/2} + \left( \sum_{i \in \SpaceTimeIndices} \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{1/2}
+    \end{align}
+\end{definition}
+
+\begin{lemma}
+    There exists $\ContC{A} > 0$\footnote{Note that $\ContC{A}$ does not depend on $u, \AppU, h, \Diffusion$.} such that:
+    \begin{gather}
+        \lvert A_{h, n}(\eta, \xi) \rvert \leq \ContC{A} \lVert \xi \rVert_{E, n} \theta_n(\eta; h, \Diffusion)
+    \end{gather}
+\end{lemma}
+
+\begin{lemma}
+    \begin{align}
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \xi \rVert_{E, n}^2 ~ d \lambda(t) + \lVert \xi \rVert_T^2 &\leq 4 \ContC{A}^2 \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        &+ 8 \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
+    \end{align}
+\end{lemma}
+
+Finally, observing that:
+\begin{align}
+    \lVert \Error \rVert_{E, n}^2 &\leq 2 \left( \lVert \xi \rVert_{E, n}^2 + \lVert \eta \rVert_{E, n}^2 \right), \\
+    \lVert \Error \rVert_T^2 &\leq 2 \left( \lVert \xi \rVert_T^2 + \lVert \eta \rVert_T^2 \right),
+\end{align}
+consider the following abstract error estimate:
+\begin{lemma}
+    \begin{align}
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ d \lambda(t) + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)} + \lVert \eta \rVert_T^2, \notag \\ 
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ d \lambda(t) &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
+    \end{align}
+\end{lemma}
+
+\newpage
+\subsection{Interpolation Properties}
