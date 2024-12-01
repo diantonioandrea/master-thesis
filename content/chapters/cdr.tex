@@ -133,7 +133,7 @@ namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ deno
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
 
-Under assumptions \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
+Under assumptions \cref{equation:assumption_regularity_1,equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
 \begin{align}
     \left( \partial_t u(t), \varphi \right)_0 &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
 \end{align}
@@ -274,7 +274,7 @@ Considering different families of triangulations on each $I_n$ leads to the foll
     \end{gather}
 \end{definition}
 
-Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{equation:cdr_ah} to \cref{equation:cdr_lh}, are redefined as follows:
+Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{equation:cdr_ah,equation:cdr_bh,equation:cdr_ch,equation:cdr_jh,equation:cdr_lh}, are redefined as follows:
 \begin{align}
     a_{h, n} \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
@@ -307,7 +307,7 @@ Set, then:
     \end{gather}
 \end{definition}
 
-The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolutionFull$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet}, \cref{equation:cdr_neumann}, and \cref{equation:cdr_initial}, such that:
+The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolutionFull$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, such that:
 \begin{align} % [!] Fix alignment and (?) u(0).
     &\sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag + \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, \varphi_0^+ )_0 \notag \\
     &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \quad \text{ for all } \varphi \in \SpaceSolutionFull. \label{equation:cdr_discrete}
