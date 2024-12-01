@@ -487,7 +487,7 @@ Another useful space is the subspace of $\SpacePolynomials{q}^b(\ClosedTimeMesh;
 
 \subsubsection{Quadratures and Interpolation}
 
-Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\xi_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
+Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\zeta_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
 
 \begin{definition}[$\lambdaGR_q$]
     For all $u \in C^0(\overline{I}; \RealNumbers)$:
@@ -496,12 +496,12 @@ Let $\left\{ \xi_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^
     \end{gather}
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Lagrange polynomials]
     Let $\mathcal{L}$ defined as:
     \begin{gather}
-        \mathcal{L}_i (\xi) = \prod_{\substack{l = 0 \\ l \neq i}}^q \frac{\xi - \xi_l}{\xi_i - \xi_l} \in \SpacePolynomials{q}(\hat{I}; \RealNumbers),
+        \mathcal{L}_i (\zeta) = \prod_{\substack{l = 0 \\ l \neq i}}^q \frac{\zeta - \zeta_l}{\zeta_i - \zeta_l} \in \SpacePolynomials{q}(\hat{I}; \RealNumbers),
     \end{gather}
-    be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\mathcal{L}_i (\xi_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
+    be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\mathcal{L}_i (\zeta_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
 \end{definition}
 
 \begin{definition}[$\InterpolantGR_q$]
