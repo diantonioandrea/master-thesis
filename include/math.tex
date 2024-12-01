@@ -48,12 +48,18 @@
 \newcommand{\SpaceSolutionFull}{\SpaceSolution^{p, q}_{h, \tau}}
 \newcommand{\SpaceSolutionFullMO}{\SpaceSolution^{p, q - 1}_{h, \tau}}
 
+\newcommand{\SpaceSolutionReference}{\hat{\SpaceSolution}^{p, q}_{h, n}}
+\newcommand{\SpaceSolutionReferenceMO}{\hat{\SpaceSolution}^{p, q - 1}_{h, n}}
+
 \newcommand{\SpacePolynomials}[1]{\mathcal{P}_{#1}}
 
 \newcommand{\Characteristic}[1]{\mathbbm{1}_{#1}}
 
 % Approximate solution.
 \newcommand{\AppU}{\upsilon}
+
+% Polynomials.
+\newcommand{\Legendre}{\mathbb{L}}
 
 % Meshes.
 \newcommand{\TimeMesh}{I_{\tau}}
@@ -84,9 +90,13 @@
 \newcommand{\InterpolantQN}{\Projection^n_q}
 \newcommand{\InterpolantQT}{\Projection^{\tau}_q}
 \newcommand{\InterpolantPQ}{\Projection_{p, q}}
+\newcommand{\InterpolantPQR}{\hat{\Projection}_{p, q}^n}
+\newcommand{\InterpolantPQI}{\Projection_{p, q}^n}
 
 % Interpolated solution.
 \newcommand{\IntU}{\InterpolantPQ u}
+\newcommand{\IntRefU}{\InterpolantPQR u}
+\newcommand{\IntIU}{\InterpolantPQI u}
 
 % Error.
 \newcommand{\Error}{\varepsilon}
@@ -119,6 +129,9 @@
 \newcommand{\Convection}{\Vector{C}}
 \newcommand{\Diffusion}{D}
 \newcommand{\Reaction}{R}
+
+% Maps.
+\newcommand{\RMap}{Q_n}
 
 % Others.
 \DeclareMathOperator*{\esssup}{ess\,sup}
