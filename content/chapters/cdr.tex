@@ -400,7 +400,7 @@ For the derivation of error estimates, consider the following space-time interpo
 \begin{definition}[$\IntU$] \label{definition:interpolant_qp}
     $\IntU \in \SpaceSolutionFull$ such that:
     \begin{align}
-        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(t) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionFullMO \text{ and for all } n \in \TimeIndices \\
+        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(t) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionFullMO \text{ and for all } n \in \TimeIndices, \\
         \IntU(t_n^-) &= \ProjectionOnto{\SpaceSolution^p_{h, n}} u(t_n^-) \quad \text{ for all } n \in \TimeIndices.
     \end{align}
 \end{definition}
@@ -466,3 +466,68 @@ consider the following abstract error estimate:
 
 \newpage
 \subsection{Interpolation Properties}
+
+This section investigates the approximation properties of $\InterpolantPQ$ in order to provide estimates of $\Error$ in terms of $h$ and $\tau$.
+
+\begin{lemma}
+    \begin{gather}
+        \IntU_{\mid I_n} = \InterpolantPQ \left( \ProjectionOnto{\SpaceSolution^p_{h, n}} u \right)_{\mid I_n}.
+    \end{gather}
+\end{lemma}
+
+The analysis of approximation properties of $\InterpolantPQ$ with respect to time is based on the transformation of time integrals over $I_n$ to time integrals over $\left( -1, 1 \right)$ with the aid of an affine mapping of $\left( -1, 1 \right)$ onto $I_n$ and the use of Legendre polynomials defined on $\left( -1, 1 \right)$.
+
+\begin{definition}[Legendre polynomials]
+    Let $\Legendre$ defined as:
+    \begin{gather}
+        \Legendre_{i}(\zeta) = \frac{2i - 1}{i} \zeta \Legendre_{i - 1}(\zeta) - \frac{i - 1}{i} \Legendre_{i - 2}(\zeta) \quad \text{ for all } i \in \NaturalNumbers \setminus \left\{ 0, 1 \right\},
+    \end{gather}
+    where:
+    \begin{align}
+        \Legendre_{0}(\zeta) &= 1, \\
+        \Legendre_{1}(\zeta) &= \zeta,
+    \end{align}
+    be the Legendre polynomials on $\left( -1, 1 \right)$, which form an orthogonal basis in $\SpaceLp{2}(\left( -1, 1 \right))$ and satisfy $\Legendre_i(1) = 1$ for all $i \in \NaturalNumbers$.
+\end{definition}
+
+\begin{definition}[$\SpaceSolutionReference$]
+    \begin{gather}
+        \SpaceSolutionReference = \left\{ \varphi \in \SpaceLp{2}(\left( -1, 1 \right) \times \Omega) \text{ such that } \varphi = \sum_{i = 0}^q \zeta^i \varphi_i \text{ where } \left\{ \varphi_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \right\}.
+    \end{gather}
+\end{definition}
+
+\begin{definition}[$\InterpolantPQR$] \label{definition:interpolant_ref_qp}
+    $\InterpolantPQR$ is such that:
+    \begin{align}
+        \InterpolantPQR w &\in \SpaceSolutionReference, \\
+        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(\zeta) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionReferenceMO, \\
+        \InterpolantPQR w(1^-) &= \ProjectionOnto{\SpaceSolution^p_{h, n}} w(1^-),
+    \end{align}
+    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$.
+\end{definition}
+
+It follows that:
+\begin{gather}
+    \left( \IntU \right)_{\mid I_n} = \IntIU \quad \text{ for all } n \in \TimeIndices,
+\end{gather}
+where:
+\begin{gather}
+    \IntIU = \left( \InterpolantPQR \left( u \circ \RMap \right) \right) \circ \RMap^{-1},
+\end{gather}
+with $\RMap \colon \left( -1, 1 \right) \rightarrow I_n$ mapping such that:
+\begin{align}
+    \RMap(\zeta) &= \frac{1}{2}(t_n + t_{n - 1} + \zeta \tau_n) = t \quad \text{ for all } \zeta \in \left( -1, 1 \right), \\
+    \RMap^{-1}(t) &= \frac{1}{\tau_n}(2t - t_n - t_{n - 1}) = \zeta \quad \text{ for all } t \in I_n.
+\end{align}
+
+\begin{lemma}
+    $\InterpolantPQR$ can be expressed with the aid of the Legendre polynomials, so that:
+    \begin{gather}
+        \InterpolantPQR w = \sum_{i = 0}^{q - 1} w_i \Legendre_i + \left( \ProjectionOnto{\SpaceSolution^p_{h, n}} w(1^-) - \sum_{i = 0}^{q - 1} w_i \right) \Legendre_q,
+    \end{gather}
+    where:
+    \begin{gather}
+        \ProjectionOnto{\SpaceSolution^p_{h, n}} w(1^-) = \sum_{i \in \NaturalNumbers} w_i \Legendre_i \quad{ with } \left\{ w_i \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n},
+    \end{gather}
+    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$. 
+\end{lemma}
