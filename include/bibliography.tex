@@ -1,13 +1,32 @@
 % Bibliography.
 
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber, style=authoryear, maxnames=1, sorting=nyt]{biblatex}
 \addbibresource{../bibliography/references.bib}
+\setlength\bibhang{0pt}
 
 \DeclareFieldFormat[article]{title}{\textit{#1}}
 \DeclareFieldFormat[book]{title}{\textit{#1}}
 
 \DeclareFieldFormat[article]{doi}{\href{https://doi.org/#1}{\textit{Article}}}
 \DeclareFieldFormat[book]{doi}{\href{https://doi.org/#1}{\textit{Book}}}
+
+\DeclareSortingTemplate{typealpha}{
+  \sort{
+    \field{entrytype} % Sort by type (book, article, etc.)
+  }
+  \sort{
+    \field{author} % Then by author
+  }
+  \sort{
+    \field{year} % Then by title
+  }
+}
+
+\ExecuteBibliographyOptions{sorting=typealpha}
+
+\DefineBibliographyStrings{english}{
+  andothers = {\textit{et al.}},
+}
 
 \DeclareBibliographyDriver{article} {%
     \noindent \textbf{\printnames{author}}
