@@ -330,25 +330,25 @@ Assume that all triangulations $\Omega_{h, n}$, for all $h \in \hIndices$ and fo
 \begin{gather}
     \frac{h_K}{\rho_K} \leq \BoundC{\tau} \quad \text{ for all } K \in \Omega_{h, n} \text{ and for all } n \in \TimeIndices.
 \end{gather}
-Moreover, assume that there exists $\BoundC{\Gamma} > 0$ such that\footnote{This implies the non-degeneracy of $\left\{ \Gamma_{ij} \right\}_{j \in \NeighboursTime{i}}$ with respect to $h_{K_i}$ as $h_{K_i}$ becomes small.}:
+Moreover, assume that there exists $\BoundDeg > 0$ such that\footnote{This implies the non-degeneracy of $\left\{ \Gamma_{ij} \right\}_{j \in \NeighboursTime{i}}$ with respect to $h_{K_i}$ as $h_{K_i}$ becomes small.}:
 \begin{gather}
-    h_{K_i} \leq \BoundC{\Gamma} \Diameter \Gamma_{ij} \quad \text{ for all } i \in \SpaceTimeIndices, j \in \NeighboursTime{i} \text{ and for all } n \in \TimeIndices.
+    h_{K_i} \leq \BoundDeg \Diameter \Gamma_{ij} \quad \text{ for all } i \in \SpaceTimeIndices, j \in \NeighboursTime{i} \text{ and for all } n \in \TimeIndices.
 \end{gather}
 
 From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two inequalities:
 
 \begin{lemma}[Multiplicative trace inequality]
-    There exists $\BoundC{\mu} > 0$ such that:
+    There exists $\BoundTrace > 0$ such that:
     \begin{gather}
-        \lVert u \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundC{\mu} \left( \lVert u \rVert_{\SpaceLp{2}(K)} \lvert u \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(K)}^2 \right),
+        \lVert u \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundTrace \left( \lVert u \rVert_{\SpaceLp{2}(K)} \lvert u \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(K)}^2 \right),
     \end{gather}
     for all $u \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 \begin{lemma}[Inverse inequality]
-    There exists $\BoundC{\nu} > 0$ such that:
+    There exists $\BoundInverse > 0$ such that:
     \begin{gather}
-        \lvert u \rvert_{\SpaceHk{1}(K)} \leq \BoundC{\nu} h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(\partial K)},
+        \lvert u \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(\partial K)},
     \end{gather}
     for all $u \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
@@ -398,11 +398,13 @@ Furthermore, in what follows, $C$ denotes a generic constant. Note that multiple
 For the derivation of error estimates, consider the following space-time interpolation of the exact solution:
 
 \begin{definition}[$\IntU$] \label{definition:interpolant_qp}
-    $\IntU \in \SpaceSolutionFull$ such that:
+    Let $\InterpolantPQ$ such that:
     \begin{align}
-        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(t) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionFullMO \text{ and for all } n \in \TimeIndices, \\
-        \IntU(t_n^-) &= \ProjectionOnto{\SpaceSolution^p_{h, n}} u(t_n^-) \quad \text{ for all } n \in \TimeIndices.
+        \IntU &\in \SpaceSolutionFull, \\
+        \int_{I_n} \left( \IntU - u, \varphi \right)_0 ~ d \lambda(t) &= 0 \quad \text{ for all } \varphi \in \SpaceSolutionFullMO, \\
+        \IntU(t_n^-) &= \ProjectionOnto{\SpaceSolution^p_{h, n}} u(t_n^-),
     \end{align}
+    for all $n \in \TimeIndices$
 \end{definition}
 
 It can be shown that $\IntU$ is uniquely determined by the properties stated in \cref{definition:interpolant_qp}.
@@ -564,9 +566,9 @@ it follows:
 \end{align}
 
 \begin{lemma}
-    There exists $\BoundC{q} > 0$ such that:
+    There exists $\BoundQ > 0$ such that:
     \begin{gather}
-        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundC{q} \lVert \partial_t \AppU_n \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
+        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundQ \lVert \partial_t \AppU_n \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
     \end{gather}
 \end{lemma}
 
@@ -579,6 +581,73 @@ it follows:
 \begin{lemma}
     \begin{align}
         \lVert u - \InterpolantPQ u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \lVert u - \ProjectionOnto{\SpaceSolution^p_{h, n}} u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \ProjectionOnto{\SpaceSolution^p_{h, n}} u - \ProjectionOnto{\SpacePolynomials{q}(I_n)} \ProjectionOnto{\SpaceSolution^p_{h, n}} u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
-        &+ \BoundC{q} \frac{\tau_n}{2} \lVert \partial_t \left( \ProjectionOnto{\SpaceSolution^p_{h, n}} u \right) - \partial_t \varphi \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \quad \text{ for all } \varphi \in \SpaceSolutionFull. \notag
+        &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \ProjectionOnto{\SpaceSolution^p_{h, n}} u \right) - \partial_t \varphi \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \quad \text{ for all } \varphi \in \SpaceSolutionFull. \notag
     \end{align}
 \end{lemma}
+
+Assume, now, that the solution is sufficiently regular, that is:
+\begin{gather}
+    u \in \SpaceRegular = \SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega)) \cap C^0(I; \SpaceHk{p + 1}(\Omega)) \quad \text{ for some integers } p, q \geq 1.
+\end{gather}
+
+\begin{lemma} % [!] Different time intervals.
+    There exist $\BoundInterp, \BoundPoly > 0$ such that:
+    \begin{align}
+        \lVert w(t) - \ProjectionOnto{\SpaceSolution^p_{h, n}} w(t) \rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(K)} \quad \text{ for all } K \in \Omega_{h, n} \text{ and } \lambda \text{-a.e. } t \in I_n, \\
+        \lvert w(t) - \ProjectionOnto{\SpaceSolution^p_{h, n}} w(t) \rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \lvert w(t) \rvert_{\SpaceHk{p + 1}(K)} \quad \text{ for all } K \in \Omega_{h, n} \text{ and } \lambda \text{-a.e. } t \in I_n, \\
+        \lVert w(t) - \ProjectionOnto{\SpaceSolution^p_{h, n}} w(t) \rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} \quad \text{ for } \lambda \text{-a.e. } t \in I, \\
+        \lvert w(t) - \ProjectionOnto{\SpaceSolution^p_{h, n}} w(t) \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} \quad \text{ for } \lambda \text{-a.e. } t \in I, \\
+        \lvert w(t) - \ProjectionOnto{\SpaceSolution^p_{h, n}} w(t) \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} \quad \text{ for } \lambda \text{-a.e. } t \in I, \\
+        \lVert w(\Vector{x}) - \ProjectionOnto{\SpacePolynomials{q}(I_n)} w(\Vector{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert w(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)} \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
+        \lvert w(\Vector{x}) - \ProjectionOnto{\SpacePolynomials{q}(I_n)} w(\Vector{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert w(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)} \quad \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega,
+    \end{align}
+    for all $w \in \SpaceRegular$, and for all $n \in \TimeIndices$.
+\end{lemma}
+
+\begin{lemma}
+    There exists $\BoundH > 0$ such that:
+    \begin{align}
+        \lVert \ProjectionOnto{\SpaceSolution^p_{h, n}} w \rVert_{\SpaceLp{2}(K)} &\leq \lVert w \rVert_{\SpaceLp{2}(K)}, \\
+        \lvert \ProjectionOnto{\SpaceSolution^p_{h, n}} w \rvert_{\SpaceHk{1}(K)} &\leq \BoundH \lvert w \rvert_{\SpaceHk{1}(K)},
+    \end{align}
+    for all $w \in \SpaceHk{1}(\Omega, \Omega_{h, n})$, for all $K \in \Omega_{h, n}$, and for all $n \in \TimeIndices$.
+\end{lemma}
+
+\begin{lemma}
+    Assume that there exist $\BoundHT, \BoundHTVariant > 0$ such that:
+    \begin{gather}
+        \frac{1}{\BoundHTVariant} h_K \leq \tau_n \leq \BoundHT h_K \quad \text{ for all } K \in \Omega_{h, n} \text{ and for all } n \in \TimeIndices,
+    \end{gather}
+    then:
+    \begin{align}
+        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ d \lambda(t) &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ 3 \BoundH^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
+        \TimeIntN{\Norm{\eta}_{\SpaceLp{2}(\Omega)}^2} & \leq 3 \BoundInterp^2 h^{2p + 2} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ 3 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
+        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \Norm{\eta}_{\SpaceLp{2}(K_i)}^2 } &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+  3 \BoundHT^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
+        \TimeIntN{J_{h, n}(\eta, \eta)} &\leq 6 \BoundTrace \BoundInterp^2 \BoundDeg h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ 3 \BoundPoly^2 \BoundQVariant \BoundDeg \tau_n^{2q} \left( 3 \BoundHT^2 \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 \right. \notag \\
+        &+ \left.\BoundH^2 \tau_n^2 \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right), \notag \\
+        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} \left( \Norm{\eta}_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{\left[ \eta \right]}_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) } &\leq 3 \BoundTrace \BoundInterp^2 \BoundC{\Convection} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ \frac{3}{2} \BoundTrace \BoundPoly^2 \BoundQVariant \BoundC{\Convection} \tau_n^{2q + 1} \left( 3 \BoundHT \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 \right. \notag \\
+        &+ \left. \BoundH^2 h \tau_n \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right), \notag \\
+        \TimeIntN{ \Seminorm{\eta}_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 } &\leq 3 \BoundInterp^2 h^{2 \left( p - 1 \right)} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ 3 \BoundH^2 \BoundInverse^2 \BoundPoly^2 \BoundQVariant \BoundHT^2 \tau_n^{2q} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
+        \sum_{n = 1}^{\nTimeIndices - 1} \Norm{\eta_n^-}_{\SpaceLp{2}(\Omega)}^2 &\leq \BoundInterp^2 \BoundHTVariant T h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2,
+    \end{align}
+    for all $n \in \TimeIndices$, where:
+    \begin{align}
+        \BoundQVariant = 1 + \frac{1}{4} \BoundQ.
+    \end{align}
+\end{lemma}
+
+The main result of the error analysis can now be stated.
+\begin{theorem}
+    There exists $C > 0$ such that:
+    \begin{align}
+        \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n} } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
+        &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right). \notag
+    \end{align}
+\end{theorem}
+This estimated holds true even for $\Diffusion = 0$.
