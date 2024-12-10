@@ -507,7 +507,7 @@ Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0
 \begin{definition}[$\InterpolantGR_q$]
     Let $Z \in \left\{V_h, W, V^* \right\}$. Define $\InterpolantGR_q \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\TimeMesh; Z)$ as the Lagrange interpolation operator associated with the \acrshort{gr} nodes, such that for all $u \in \SpaceHk{1}(I; Z) \hookrightarrow C^0(\overline{I}; Z)$:
     \begin{gather}
-        \InterpolantGR_q(u)_{\mid I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \mathcal{L}_i \circ T_n^{-1} \right).
+        \InterpolantGR_q(u) \Restriction_{I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \mathcal{L}_i \circ T_n^{-1} \right).
     \end{gather}
 
     Moreover, there exists $C \geq 0$ such that:
@@ -598,7 +598,7 @@ Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     Let $Z \in \left\{V_h, W\right\}$. Define $\InterpolantQT \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\ClosedTimeMesh; Z)$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $n \in \TimeIndices$:
     \begin{align}
         & \InterpolantQT(u)(0) = u(0), \\
-        & \InterpolantQT(u)_{\mid I_n} = \InterpolantQN(u_{\mid I_n}).
+        & \InterpolantQT(u) \Restriction_{I_n} = \InterpolantQN(u \Restriction_{I_n}).
     \end{align}
 \end{definition}
 
