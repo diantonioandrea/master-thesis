@@ -487,7 +487,12 @@ Another useful space is the subspace of $\SpacePolynomials{q}^b(\ClosedTimeMesh;
 
 \subsubsection{Quadratures and Interpolation}
 
-Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus $t_{n, i} = T_n(\zeta_i)$ and $\omega_{n, i} = \frac{\tau}{2} \omega_i$ for all $i \in \left\{ 0, \dots, q \right\}$ are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
+Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus:
+\begin{align}
+    t_{n, i} &= T_n(\zeta_i) \quad \text{ for all } i \in \left\{ 0, \dots, q \right\}, \\
+    \omega_{n, i} &= \frac{\tau}{2} \omega_i \quad \text{ for all } i \in \left\{ 0, \dots, q \right\},
+\end{align}
+are the quadrature nodes and corresponding weights on the $n$-th time interval $I_n$.
 
 \begin{definition}[$\lambdaGR_q$]
     For all $u \in C^0(\overline{I}; \RealNumbers)$:
