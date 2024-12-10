@@ -1,6 +1,6 @@
 % Bibliography.
 
-\usepackage[backend=biber, style=authoryear, maxnames=1, sorting=nyt]{biblatex}
+\usepackage[backend=biber, style=authoryear, sorting=nyt]{biblatex}
 \addbibresource{../bibliography/references.bib}
 \setlength\bibhang{0pt}
 
@@ -9,6 +9,18 @@
 
 \DeclareFieldFormat[article]{doi}{\href{https://doi.org/#1}{\textit{Article}}}
 \DeclareFieldFormat[book]{doi}{\href{https://doi.org/#1}{\textit{Book}}}
+
+\DeclareCiteCommand{\cite}
+  {}
+  {\printtext[bibhyperref]{\printnames{labelname} \printfield{year}}}
+  {\multicitedelim}
+  {}
+
+% \DeclareCiteCommand{\cite}
+%   {}
+%   {\printtext[bibhyperref]{\printnames{labelname} (\printfield{year})}}
+%   {\multicitedelim}
+%   {}
 
 \DeclareSortingTemplate{typealpha}{
   \sort{
@@ -24,18 +36,26 @@
 
 \ExecuteBibliographyOptions{sorting=typealpha}
 
-\DefineBibliographyStrings{english}{
-  andothers = {\textit{et al.}},
-}
-
 \DeclareBibliographyDriver{article} {%
-    \noindent \textbf{\printnames{author}}
+    \noindent \textbf{\printnames{labelname}}
     (\printfield{doi}, \printfield{year})\par
     \printfield{title}\medskip
 }
 
 \DeclareBibliographyDriver{book} {%
-    \noindent \textbf{\printnames{author}}
+    \noindent \textbf{\printnames{labelname}}
     (\printfield{doi}, \printfield{year})\par
     \printfield{title}\medskip
 }
+
+% \DeclareBibliographyDriver{article} {%
+%     \noindent \textbf{\printnames{author}}
+%     (\printfield{doi}, \printfield{year})\par
+%     \printfield{title}\medskip
+% }
+
+% \DeclareBibliographyDriver{book} {%
+%     \noindent \textbf{\printnames{author}}
+%     (\printfield{doi}, \printfield{year})\par
+%     \printfield{title}\medskip
+% }
