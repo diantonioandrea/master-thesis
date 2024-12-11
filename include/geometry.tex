@@ -3,19 +3,21 @@
 \usepackage{xcolor-solarized}
 \color{solarized-base02}
 
-\usepackage[a4paper]{geometry}
+\usepackage{geometry}
 \geometry{
-	inner=20mm,
-	outer=20mm,
-	top=30mm,
-	bottom=25mm,
-	heightrounded,
-	marginparwidth=50pt,
-	marginparsep=20pt,
-	headsep=25pt,
-	headheight=30pt
+    a4paper,
+    inner=20mm,
+    outer=20mm,
+    top=25mm,
+    bottom=35mm,
+    headheight=30pt,
+	footskip=10mm
 }
 
 % Graphics.
 \usepackage{graphicx}
 \graphicspath{../gallery/}
+
+% Footnotes.
+\setlength{\skip\footins}{10mm}
+\usepackage[flushmargin]{footmisc}
