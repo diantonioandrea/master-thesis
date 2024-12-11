@@ -205,7 +205,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
     \end{align}
     where:
     \begin{align}
-        \iota_{V, W} = \lVert F_{V \rightarrow W} \rVert_{\mathcal{L}(V;W)}.
+        \iota_{V, W} = \lVert F_{V \rightarrow W} \rVert_{\Lagrange(V;W)}.
     \end{align}
 \end{definition}
 
@@ -255,7 +255,7 @@ Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definitio
 \subsection{Model Problem}
 
 \begin{definition}[$A$] \label{definition:A} % [!] Check instances of \ContC{a}
-    Let $A \colon I \rightarrow \mathcal{L}(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
+    Let $A \colon I \rightarrow \Lagrange(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
     \begin{align} \label{equation:a}
         \lVert A(t)(u) \rVert_{V^*} & \leq \ContC{a} \lVert u \rVert_V &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
         \langle A(t)(u), u \rangle_{V^*, V} & \geq \CoerC{a} \lVert u \rVert_V^2 &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
@@ -398,7 +398,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
     \end{align}
     and both \cref{equation:weak_h1} and \cref{equation:weak_h2} are well-posed.
 
-    Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \mathcal{L}(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
+    Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \Lagrange(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
 \end{proposition}
 
 \subsubsection{Error Analysis}
@@ -502,17 +502,17 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 \end{definition}
 
 \begin{definition}[Lagrange polynomials]
-    Let $\mathcal{L}$ defined as:
+    Let $\Lagrange$ defined as:
     \begin{align}
-        \mathcal{L}_i (\zeta) = \prod_{\substack{l = 0 \\ l \neq i}}^q \frac{\zeta - \zeta_l}{\zeta_i - \zeta_l} \in \SpacePolynomials{q}(\hat{I}; \RealNumbers),
+        \Lagrange_i (\zeta) = \prod_{\substack{l = 0 \\ l \neq i}}^q \frac{\zeta - \zeta_l}{\zeta_i - \zeta_l} \in \SpacePolynomials{q}(\hat{I}; \RealNumbers),
     \end{align}
-    be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\mathcal{L}_i (\zeta_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
+    be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\Lagrange_i (\zeta_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
 \end{definition}
 
 \begin{definition}[$\InterpolantGR_q$]
     Let $Z \in \left\{V_h, W, V^* \right\}$. Define $\InterpolantGR_q \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\TimeMesh; Z)$ as the Lagrange interpolation operator associated with the \acrshort{gr} nodes, such that for all $u \in \SpaceHk{1}(I; Z) \hookrightarrow C^0(\overline{I}; Z)$:
     \begin{align}
-        \InterpolantGR_q(u) \Restriction_{I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \mathcal{L}_i \circ T_n^{-1} \right).
+        \InterpolantGR_q(u) \Restriction_{I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \Lagrange_i \circ T_n^{-1} \right).
     \end{align}
 
     Moreover, there exists $C \geq 0$ such that:
