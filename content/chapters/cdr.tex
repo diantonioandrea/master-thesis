@@ -1,6 +1,6 @@
 \section{Setting and Strong Formulation}
 
-Following \cite{Feistauer2007}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
+Following \cite{Feistauer2004}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
 
 Consider the following problem, that is to find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
 \begin{align}
@@ -64,17 +64,17 @@ Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that
 \newpage
 \subsection{Weak Solution}
 
-Following \cite{Feistauer2004}, set $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u \Restriction_{\partial \Omega^-} = 0 \right\}$.
+Set now $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u \Restriction_{\partial \Omega^-} = 0 \right\}$.
 
 \begin{definition}[Weak solution]
     The weak solution $u \in \SpaceLp{\infty}(I \times \Omega)$ is such that $u - u^* \in \SpaceLp{2}(I; V)$ and $u(0) = u_0$ in $\Omega$. Moreover:
     \begin{align}
-        \partial_t \int_{\Omega} u \varphi ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
-        &+ \int_{\Omega} \Reaction u \varphi ~ d \omega(\Vector{x}) = \int_{\Omega} g \varphi ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N \varphi ~ d \sigma(\Vector{x}),
+        \partial_t \int_{\Omega} u w ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u w ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
+        &+ \int_{\Omega} \Reaction u w ~ d \omega(\Vector{x}) = \int_{\Omega} g w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vector{x}),
     \end{align}
-    for all $\varphi \in V$.
+    for all $w \in V$.
 \end{definition}
-This weak formulation is derived by multiplying \cref{equation:cdr} by any $\varphi \in V$, applying Green's theorem and using \cref{equation:cdr_neumann}. % [!] Expand.
+This weak formulation is derived by multiplying \cref{equation:cdr} by any $w \in V$, applying Green's theorem and using \cref{equation:cdr_neumann}. % [!] Expand.
 
 The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \cref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
 \begin{align}
@@ -88,7 +88,7 @@ where $p \geq 1$ integer will denote the space degree of approximation.
 
 \subsection{Space Discretization Setting}
 
-Following \cite{Feistauer2004}, for the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Denoted by $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
+For the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Denoted by $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
 
 If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
 \begin{align}
@@ -106,21 +106,21 @@ Assume that all triangulations are shape-regular, that is there exists $\BoundC{
 \end{align}
 
 Consider now the broken Sobolev space.
-\begin{definition}[$\SpaceHk{k}(\Omega, \Omega_h)$] % [!] Check u, break.
+\begin{definition}[$\SpaceHk{k}(\Omega, \Omega_h)$] % [!] Check v, break.
     Let $k \geq 1$ integer, then:
     \begin{align}
-        \SpaceHk{k}(\Omega, \Omega_h) = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u \Restriction_{K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
+        \SpaceHk{k}(\Omega, \Omega_h) = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } v \Restriction_{K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{align}
-    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\lvert \cdot \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $u \in \SpaceHk{k}(\Omega, \Omega_h)$:
+    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\lvert \cdot \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $v \in \SpaceHk{k}(\Omega, \Omega_h)$:
     \begin{align}
-        \lvert u \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \lvert u \rvert_{\SpaceHk{k}(K)}^2.
+        \lvert v \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \lvert v \rvert_{\SpaceHk{k}(K)}^2.
     \end{align}
 \end{definition}
 
-For $u \in \SpaceHk{1}(\Omega, \Omega_h)$, $u \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $u \Restriction_{K_i}$ on $\Gamma_{ij}$ while $u \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $u \Restriction_{K_j}$ on $\Gamma_{ji}$\footnote{$\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
+For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$\footnote{$\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
 \begin{align}
-    \langle u \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( u \Restriction_{\Gamma_{ij}} + u \Restriction_{\Gamma_{ji}} \right), \\
-    \left[ u \right]_{\Gamma_{ij}} &= u \Restriction_{\Gamma_{ij}} - u \Restriction_{\Gamma_{ji}},
+    \langle v \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( v \Restriction_{\Gamma_{ij}} + v \Restriction_{\Gamma_{ji}} \right), \\
+    \left[ v \right]_{\Gamma_{ij}} &= v \Restriction_{\Gamma_{ij}} - v \Restriction_{\Gamma_{ji}},
 \end{align}
 and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$.
 
@@ -134,52 +134,52 @@ namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ deno
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space}
 
-Under assumptions \cref{equation:assumption_regularity_1,equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
+Under assumptions \cref{equation:assumption_regularity_1,equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $w \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
 \begin{align}
-    \left( \partial_t u(t), \varphi \right)_0 &+ A_h(u(t), \varphi) = l_h \left( \varphi \right) (t),
+    \left( \partial_t u(t), w \right)_0 &+ A_h(u(t), w) = l_h \left( w \right) (t),
 \end{align}
 where:
 \begin{align}
-    A_h(u, \varphi) = a_h \left( u(t), \varphi \right) + b_h \left( u(t), \varphi \right) + c_h \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_h \left( u(t), \varphi \right) \label{equation:cdr_Ah},
+    A_h(u, w) = a_h \left( u(t), w \right) + b_h \left( u(t), w \right) + c_h \left( u(t), w \right) + \Diffusion J^{\kappa}_h \left( u(t), w \right) \label{equation:cdr_Ah},
 \end{align}
 and:
 \begin{align}
-    a_h \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
-    &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
-    b_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
-    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
-    c_h \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_0, \label{equation:cdr_ch} \\
-    J^{\kappa}_h \left( u, \varphi \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
-    l_h \left( \varphi \right)  &= \left( g, \varphi \right)_0 + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
-    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
+    a_h \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
+    b_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}), \notag \\
+    c_h \left( u, w \right) &= \Reaction \left( u, w \right)_0, \label{equation:cdr_ch} \\
+    J^{\kappa}_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
+    l_h \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
+    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}) \notag,
 \end{align}
 with:
 \begin{align}
     \kappa \Restriction_{\Gamma_{ij}} = \left( \Diameter \Gamma_{ij} \right)^{-1}.
 \end{align}
 
-This formulation is derived by multiplying \cref{equation:cdr} by any $\varphi \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \cref{equation:cdr_dirichlet} and \cref{equation:cdr_neumann}. % [!] Expand.
+This formulation is derived by multiplying \cref{equation:cdr} by any $w \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \cref{equation:cdr_dirichlet} and \cref{equation:cdr_neumann}. % [!] Expand.
 
 \newpage
 \subsubsection{Diffusion Term Discretization}
 
 The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation. Green's theorem is used and the following terms are added:
 \begin{align}
-    \int_{\Gamma_{ij}} \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
+    \int_{\Gamma_{ij}} \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
 \end{align}
 which vanish under assumptions \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2} as $\left[ u \right]_{\Gamma_{ij}} = 0$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$. Note that, due to $\left\langle \Gradient u \right\rangle_{\Gamma_{ij}} = \Gradient u \Restriction_{\Gamma{ij}} = \Gradient u \Restriction_{\Gamma{ji}}$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$, the following terms:
 \begin{align}
-    \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] ~ d \sigma(\Vector{x}),
+    \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] ~ d \sigma(\Vector{x}),
 \end{align}
-represent the sum of integrals of $\varphi \partial_{\Vector{n}} u$ over faces of $\partial K_i$ in $\Omega$ for all $i \in \SpaceIndices$. Finally, the remaining integrals are represented by the following terms:
+represent the sum of integrals of $w \partial_{\Vector{n}} u$ over faces of $\partial K_i$ in $\Omega$ for all $i \in \SpaceIndices$. Finally, the remaining integrals are represented by the following terms:
 \begin{align}
-    \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}),
+    \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}),
 \end{align}
 for which the second part cancels with the corresponding terms in $l_h$ as $u = u_D$ on $\partial \Omega^-$, and by the following terms:
 \begin{align}
-    \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}),
+    \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}),
 \end{align}
 which appear in $l_h$ due to \cref{equation:cdr_neumann}.
 
@@ -188,21 +188,21 @@ which appear in $l_h$ due to \cref{equation:cdr_neumann}.
 
 The bilinear form $b_h$ represents the discretization of the convection term. Applying Green's theorem yields, for $i \in \SpaceIndices$:
 \begin{align}
-    \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
-    &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
-    & - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}). \notag
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) &= \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
+    &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
+    & - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}). \notag
 \end{align}
 Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is, write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u \Restriction_{\Gamma_{ji}}$ for all $j \in \Neighbours{i}$. Additionally, consider $u^- = u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \cref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
 \begin{align}
-    \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &- \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \notag \\
-    &= - \int_{K_i} u \Divergence \left( \Convection \varphi \right) ~ d \omega(\Vector{x}) \pm \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &+ \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &+ \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) + \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( u^- - u \right) \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- \varphi ~ d \sigma(\Vector{x}) \notag \\
-    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
-    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}). \notag
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
+    &- \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
+    &= - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \pm \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
+    &+ \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) \notag \\
+    &+ \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) + \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( u^- - u \right) w ~ d \sigma(\Vector{x}) \notag \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}). \notag
 \end{align}
 Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \cref{equation:cdr_bh}.
 
@@ -215,14 +215,14 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
 
 \begin{definition}[$\SpaceSolution_h^p$]
     \begin{align}
-        \SpaceSolution_h^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
+        \SpaceSolution_h^p = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } u \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{align}
 \end{definition}
 
 The discontinuous Galërkin semi-discrete problem is to find an approximate solution $u_h \in C^1(I; \SpaceSolution_h^p)$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, such that:
 \begin{align}
-    \left( \partial_t u_h(t), \varphi_h \right)_0 + A_h(u_h(t), \varphi_h) &= l_h(\varphi_h) &\text{ for all } \varphi_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
-    \left( u_h(0), \varphi_h \right)_0 &= \left( u_0, \varphi_h \right)_0 &\text{ for all } \varphi_h \in \SpaceSolution_h^p.
+    \left( \partial_t u_h(t), w_h \right)_0 + A_h(u_h(t), w_h) &= l_h(w_h) &\text{ for all } w_h \in \SpaceSolution_h^p \text{ and for all } t \in I, \\
+    \left( u_h(0), w_h \right)_0 &= \left( u_0, w_h \right)_0 &\text{ for all } w_h \in \SpaceSolution_h^p.
 \end{align}
 
 \newpage
@@ -241,15 +241,15 @@ and:
     I_n \cap I_m = \emptyset &\text{ for all } n, m \in \TimeIndices \text{ such that } n \neq m \text{ and for all } \tau \in \tIndices.
 \end{align}
 
-For a function $u$ defined on:
+For a function $v$ defined on:
 \begin{align}
     \bigcup_{n \in \TimeIndices} I_n,
 \end{align}
 consider the following notations:
 \begin{align}
-    u_n^+ &= u(t_n^+) = \lim_{t \rightarrow t_n^+} u(t) &\text{ for all } n \in \TimeIndices, \\
-    u_n^- &= u(t_n^-) = \lim_{t \rightarrow t_n^-} u(t) &\text{ for all } n \in \TimeIndices, \\
-    \left\{ u \right\}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
+    u_n^+ &= v(t_n^+) = \lim_{t \rightarrow t_n^+} v(t) &\text{ for all } n \in \TimeIndices, \\
+    u_n^- &= v(t_n^-) = \lim_{t \rightarrow t_n^-} v(t) &\text{ for all } n \in \TimeIndices, \\
+    \left\{ v \right\}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
 \end{align}
 
 Consider, in general, different families of triangulations on each $I_n$ for $n \in \TimeIndices$, that is, consider distinct $\SpaceTimeIndices$ and $\hTimeIndices$ for all $n \in \TimeIndices$, so that $\left\{ \Omega_{h, n} \right\}_{h \in \hTimeIndices}$ is the family of triangulations of $\Omega$ associated with $n \in \TimeIndices$ for all $\tau \in \tIndices$.
@@ -271,22 +271,22 @@ and:
 Considering different families of triangulations on each $I_n$ leads to the following modification of $\SpaceSolution_h^p$:
 \begin{definition}[$\SpaceSolution_{h, n}^p$]
     \begin{align}
-        \SpaceSolution_{h, n}^p = \left\{ u \in \SpaceLp{2}(\Omega) \text{ such that } u \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_{h, n} \right\}.
+        \SpaceSolution_{h, n}^p = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } v \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_{h, n} \right\}.
     \end{align}
 \end{definition}
 
 Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{equation:cdr_ah,equation:cdr_bh,equation:cdr_ch,equation:cdr_jh,equation:cdr_lh}, are redefined as follows:
 \begin{align}
-    a_{h, n} \left( u, \varphi \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
-    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ \varphi \right] - \left\langle \Gradient \varphi \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) \varphi - \left( \Gradient \varphi \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
-    b_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) \varphi ~ d \omega(\Vector{x}) \label{equation:cdr_bhn} - \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] \varphi ~ d \sigma(\Vector{x}) \\
-    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u \varphi ~ d \sigma(\Vector{x}), \notag \\
-    c_{h, n} \left( u, \varphi \right) &= \Reaction \left( u, \varphi \right)_0, \label{equation:cdr_chn} \\
-    J^{\kappa}_{h, n} \left( u, \varphi \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ \varphi \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u \varphi ~ d \sigma(\Vector{x}), \label{equation:cdr_jhn} \\
-    l_{h, n} \left( \varphi \right)  &= \left( g, \varphi \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N \varphi ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
-    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D \varphi ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient \varphi \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D \varphi ~ d \sigma(\Vector{x}) \notag,
+    a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
+    b_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) \label{equation:cdr_bhn} - \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}), \notag \\
+    c_{h, n} \left( u, w \right) &= \Reaction \left( u, w \right)_0, \label{equation:cdr_chn} \\
+    J^{\kappa}_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vector{x}), \label{equation:cdr_jhn} \\
+    l_{h, n} \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
+    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
+    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}) \notag,
 \end{align}
 where:
 \begin{align}
@@ -296,7 +296,7 @@ for all $i \in \SpaceTimeIndices$ and for all $n \in \TimeIndices$.
 
 Set, then:
 \begin{align}
-    A_{h, n}(u, \varphi) = a_{h, n} \left( u(t), \varphi \right) + b_{h, n} \left( u(t), \varphi \right) + c_{h, n} \left( u(t), \varphi \right) + \Diffusion J^{\kappa}_{h, n} \left( u(t), \varphi \right) \label{equation:cdr_Ahn}.
+    A_{h, n}(u, w) = a_{h, n} \left( u(t), w \right) + b_{h, n} \left( u(t), w \right) + c_{h, n} \left( u(t), w \right) + \Diffusion J^{\kappa}_{h, n} \left( u(t), w \right) \label{equation:cdr_Ahn}.
 \end{align}
 
 \newpage
@@ -305,25 +305,25 @@ Set, then:
 \begin{definition}[$\SpaceSolutionFull$]
     Let $q \geq 1$ be an integer, then:
     \begin{align} % [!] To be fixed.
-        \SpaceSolutionFull = \left\{ u \in \SpaceLp{2}(I \times \Omega) \text{ such that } u \Restriction_{I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
+        \SpaceSolutionFull = \left\{ v \in \SpaceLp{2}(I \times \Omega) \text{ such that } v \Restriction_{I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
     \end{align}
 \end{definition}
 
 The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolutionFull$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, such that:
 \begin{align} % [!] Fix alignment and (?) u(0).
-    \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, \varphi )_0 + A_{h, n}(u_{h, \tau}, \varphi) \right) ~ d \lambda(t) \notag &+ \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, \varphi_0^+ )_0 \notag \\
-    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0, \label{equation:cdr_discrete}
+    \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, w )_0 + A_{h, n}(u_{h, \tau}, w) \right) ~ d \lambda(t) \notag &+ \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, w_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, w_0^+ )_0 \notag \\
+    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ d \lambda(t) + (u_0, w_0^+ )_0, \label{equation:cdr_discrete}
 \end{align}
-for all $\varphi \in \SpaceSolutionFull$
+for all $w \in \SpaceSolutionFull$
 
 By the following notation:
 \begin{align}
-    B(u, \varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, \varphi_{n - 1}^+ )_0 + (u_0^+, \varphi_0^+ )_0, \label{equation:cdr_B} \\
-    L(\varphi) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(\varphi) ~ d \lambda(t) + (u_0, \varphi_0^+ )_0 \label{equation:cdr_L},
+    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
+    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ d \lambda(t) + (u_0, w_0^+ )_0 \label{equation:cdr_L},
 \end{align}
 it is possibile to rewrite \cref{equation:cdr_discrete} as:
 \begin{align}
-    B(u_{h, \tau}, \varphi) &= L(\varphi) &\text{ for all } \varphi \in \SpaceSolutionFull. \label{equation:cdr_discrete_short}
+    B(u_{h, \tau}, w) &= L(w) &\text{ for all } w \in \SpaceSolutionFull. \label{equation:cdr_discrete_short}
 \end{align}
 
 \newpage
@@ -343,28 +343,28 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Multiplicative trace inequality]
     There exists $\BoundTrace > 0$ such that:
     \begin{align}
-        \lVert u \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundTrace \left( \lVert u \rVert_{\SpaceLp{2}(K)} \lvert u \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(K)}^2 \right),
+        \lVert v \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundTrace \left( \lVert v \rVert_{\SpaceLp{2}(K)} \lvert v \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)}^2 \right),
     \end{align}
-    for all $u \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+    for all $v \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 \begin{lemma}[Inverse inequality]
     There exists $\BoundInverse > 0$ such that:
     \begin{align}
-        \lvert u \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert u \rVert_{\SpaceLp{2}(\partial K)},
+        \lvert v \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(\partial K)},
     \end{align}
-    for all $u \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+    for all $v \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 For what follows, fix the following notations:
 \begin{align} % [!] To be renamed.
-    \lVert u \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \left\{ u \right\}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
-    \lVert u \rVert_{E, n}^2 &= \Diffusion \lvert u \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert u \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(u, u) \\
-    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert u \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert u \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right),
+    \lVert v \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \left\{ v \right\}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
+    \lVert v \rVert_{E, n}^2 &= \Diffusion \lvert v \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert v \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(v, v) \\
+    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert v \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert v \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right),
 \end{align}
 where:
 \begin{align}
-    \lVert u \rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert u^2 ~ d \sigma(\Vector{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
+    \lVert v \rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert v^2 ~ d \sigma(\Vector{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
 \end{align}
 
 Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
@@ -372,14 +372,14 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{lemma}[Reformulation of $B$]
     \cref{equation:cdr_B} can be reformulated to:
     \begin{align}
-        B(u, \varphi) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t \varphi )_0 + A_{h, n}(u, \varphi) \right) ~ d \lambda(t) + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ \varphi \right\}_n )_0 + (u_{\nTimeIndices}^-, \varphi_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
+        B(u, w) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t w )_0 + A_{h, n}(u, w) \right) ~ d \lambda(t) + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ w \right\}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
     \end{align}
 \end{lemma}
 
 \begin{lemma}[Coercivity of $A_{h, n}$]
     The forms $A_{h, n}$ are coercive, that is:
     \begin{align}
-        A_{h, n}(u, u) &\geq \lVert u \rVert_{E, n}^2 &\text{ for all } u \in \SpaceHk{1}(\Omega, \Omega_{h, n}).
+        A_{h, n}(v, v) &\geq \lVert v \rVert_{E, n}^2 &\text{ for all } v \in \SpaceHk{1}(\Omega, \Omega_{h, n}).
     \end{align}
 \end{lemma}
 
@@ -404,7 +404,7 @@ For the derivation of error estimates, consider the following space-time interpo
     $\InterpolantPQ$ is such that\footnote{$\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.}:
     \begin{align}
         \InterpolantPQ u &\in \SpaceSolutionFull, \\
-        \int_{I_n} \left( \InterpolantPQ u - u, \varphi \right)_0 ~ d \lambda(t) &= 0 &\text{ for all } \varphi \in \SpaceSolutionFullMO, \\
+        \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ d \lambda(t) &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
         \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-),
     \end{align}
     for all $n \in \TimeIndices$
@@ -497,27 +497,27 @@ The analysis of approximation properties of $\InterpolantPQ$ with respect to tim
 
 \begin{definition}[$\SpaceSolutionReference$]
     \begin{align}
-        \SpaceSolutionReference = \left\{ \varphi \in \SpaceLp{2}(\left( -1, 1 \right) \times \Omega) \text{ such that } \varphi = \sum_{i = 0}^q \zeta^i \varphi_i \text{ where } \left\{ \varphi_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \right\}.
+        \SpaceSolutionReference = \left\{ w \in \SpaceLp{2}(\left( -1, 1 \right) \times \Omega) \text{ such that } w = \sum_{i = 0}^q \zeta^i w_i \text{ where } \left\{ w_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \right\}.
     \end{align}
 \end{definition}
 
 \begin{definition}[$\InterpolantPQR$] \label{definition:interpolant_ref_qp}
     $\InterpolantPQR$ is such that:
     \begin{align}
-        \InterpolantPQR w &\in \SpaceSolutionReference, \\
-        \int_{I_n} \left( \InterpolantPQR u - u, \varphi \right)_0 ~ d \lambda(\zeta) &= 0 &\text{ for all } \varphi \in \SpaceSolutionReferenceMO, \\ 
-        \InterpolantPQR w(1^-) &= \InterSol w(1^-),
+        \InterpolantPQR v &\in \SpaceSolutionReference, \\
+        \int_{I_n} \left( \InterpolantPQR u - u, v \right)_0 ~ d \lambda(\zeta) &= 0 &\text{ for all } v \in \SpaceSolutionReferenceMO, \\ 
+        \InterpolantPQR v(1^-) &= \InterSol v(1^-),
     \end{align}
-    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$.
+    for all $v \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$.
 \end{definition}
 
 It follows that:
 \begin{align}
-    \left( \IntU \right) \Restriction_{I_n} = \IntIU &\text{ for all } n \in \TimeIndices,
+    \left( \IntU \right) \Restriction_{I_n} = \InterpolantPQI u &\text{ for all } n \in \TimeIndices,
 \end{align}
 where:
 \begin{align}
-    \IntIU = \left( \InterpolantPQR \left( u \circ \RMap \right) \right) \circ \RMap^{-1},
+    \InterpolantPQI u = \left( \InterpolantPQR \left( u \circ \RMap \right) \right) \circ \RMap^{-1},
 \end{align}
 with $\RMap \colon \left( -1, 1 \right) \rightarrow I_n$ mapping such that:
 \begin{align}
@@ -537,20 +537,20 @@ with $\RMap \colon \left( -1, 1 \right) \rightarrow I_n$ mapping such that:
     for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$. 
 \end{lemma}
 
-Set now $\AppU_n = \InterSol u \circ \RMap$, then:
+Set now $\AppUN = \InterSol u \circ \RMap$, then:
 \begin{align}
-    \eta \Restriction_{I_n} = (\InterpolantPQ u - u) \Restriction_{ I_n} = \IntIU \pm \InterSol u - u \Restriction_{I_n} = \InterpolantPQ \InterSol u \pm \InterSol u - u \Restriction_{I_n},
+    \eta \Restriction_{I_n} = (\InterpolantPQ u - u) \Restriction_{ I_n} = \InterpolantPQI u \pm \InterSol u - u \Restriction_{I_n} = \InterpolantPQ \InterSol u \pm \InterSol u - u \Restriction_{I_n},
 \end{align}
 implies\footnote{$\SpacePlaceholder$ denotes a space that is yet to be specified.}:
 \begin{align}
     \lVert \eta \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} & \leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterpolantPQ \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
     &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \left( \InterpolantPQR \left( \InterSol u \circ \RMap \right) \right) \circ \RMap^{-1} \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
-    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppU_n - \InterpolantPQR \AppU_n \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}.
+    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}.
 \end{align}
 
-Moreover, consider the following expansion of $\AppU_n$ with respect to the Legendre polynomials:
+Moreover, consider the following expansion of $\AppUN$ with respect to the Legendre polynomials:
 \begin{align}
-    \AppU_n = \sum_{i \in \NaturalNumbers} \AppU_{n, i} \Legendre_i &\text{ for } \left\{ \AppU_{n, i} \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n}.
+    \AppUN = \sum_{i \in \NaturalNumbers} \AppU_{n, i} \Legendre_i &\text{ for } \left\{ \AppU_{n, i} \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n}.
 \end{align}
 Since:
 \begin{align}
@@ -558,35 +558,35 @@ Since:
 \end{align}
 it follows that\footnote{$\InterPoly$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}((-1, 1))$.}:
 \begin{align}
-    \AppU_n - \InterPoly \AppU_n = \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i.
+    \AppUN - \InterPoly \AppUN = \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i.
 \end{align}
 
 Then, \cref{lemma:legendre_interpolant} implies:
 \begin{align}
-    \AppU_n - \InterpolantPQR \AppU_n &= \sum_{i = q}^{+\infty} \AppU_{n, i} \Legendre_i - \left( \InterSol \AppU_n(1) - \sum_{i = 0}^{q - 1} \AppU_{n, i} \right) \Legendre_q \notag \\
+    \AppUN - \InterpolantPQR \AppUN &= \sum_{i = q}^{+\infty} \AppU_{n, i} \Legendre_i - \left( \InterSol \AppUN(1) - \sum_{i = 0}^{q - 1} \AppU_{n, i} \right) \Legendre_q \notag \\
     &= \sum_{i = q}^{+\infty} \AppU_{n, i} \Legendre_i - \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right) \Legendre_q \notag \\
-    &= \AppU_n - \InterPoly \AppU_n - \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right) \Legendre_q.
+    &= \AppUN - \InterPoly \AppUN - \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right) \Legendre_q.
 \end{align}
 
 \begin{lemma}
     There exists $\BoundQ > 0$ such that:
     \begin{align}
-        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundQ \lVert \partial_t \AppU_n \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
+        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundQ \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
     \end{align}
 \end{lemma}
 
 \begin{lemma}
     \begin{align}
-        \lVert \partial_t \AppU_n \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}^2
+        \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}^2
     \end{align}
 \end{lemma}
 
 \begin{lemma}
     \begin{align}
         \lVert u - \InterpolantPQ u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterPolyN \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
-        &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \InterSol u \right) - \partial_t \varphi \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
+        &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \InterSol u \right) - \partial_t w \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
     \end{align}
-    for all $\varphi \in \SpaceSolutionFull$\footnote{$\InterPolyN$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}(I_n)$.}.
+    for all $w \in \SpaceSolutionFull$\footnote{$\InterPolyN$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}(I_n)$.}.
 \end{lemma}
 
 Assume, now, that the solution is sufficiently regular, that is:
@@ -595,17 +595,23 @@ Assume, now, that the solution is sufficiently regular, that is:
 \end{align}
 
 \begin{lemma} % [!] Different time intervals, [!] to be fixed.
-    There exist $\BoundInterp, \BoundPoly > 0$ such that:
+    There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $v \in \SpaceRegular$:
     \begin{align}
-        \lVert w(t) - \InterSol w(t) \rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(K)} &\text{ for all } K \in \Omega_{h, n} \text{ and } \lambda \text{-a.e. } t \in I_n, \\
-        \lvert w(t) - \InterSol w(t) \rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \lvert w(t) \rvert_{\SpaceHk{p + 1}(K)} &\text{ for all } K \in \Omega_{h, n} \text{ and } \lambda \text{-a.e. } t \in I_n, \\
-        \lVert w(t) - \InterSol w(t) \rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} &\text{ for } \lambda \text{-a.e. } t \in I, \\
-        \lvert w(t) - \InterSol w(t) \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} &\text{ for } \lambda \text{-a.e. } t \in I, \\
-        \lvert w(t) - \InterSol w(t) \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \lvert w(t) \rvert_{\SpaceHk{p + 1}(\Omega)} &\text{ for } \lambda \text{-a.e. } t \in I, \\
-        \lVert w(\Vector{x}) - \InterPolyN w(\Vector{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert w(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)} &\text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
-        \lvert w(\Vector{x}) - \InterPolyN w(\Vector{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert w(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)} &\text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega,
+        \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)}, \\
+        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)},
     \end{align}
-    for all $w \in \SpaceRegular$, and for all $n \in \TimeIndices$.
+    for all $K \in \Omega_{h, n}$, for $\lambda$-a.e. $t \in I_n$, and for all $n \in \TimeIndices$,
+    \begin{align}
+        \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)},
+    \end{align}
+    for $\lambda$-a.e. $t \in I$,
+    \begin{align}
+        \lVert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)}, \\
+        \lvert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)},
+    \end{align}
+    for $\omega$-a.e. $\Vector{x} \in \Omega$.
 \end{lemma}
 
 \begin{lemma}
@@ -646,11 +652,14 @@ Assume, now, that the solution is sufficiently regular, that is:
     \end{align}
 \end{lemma}
 
+\newpage
+\subsection{Error Estimates}
+
 The main result of the error analysis can now be stated.
-\begin{theorem}
+\begin{theorem} \label{theorem:estimates_ht}
     Let assumptions \cref{equation:ass_1,equation:ass_2,equation:ass_3,equation:ass_4,equation:ass_5,equation:ass_6,equation:ass_7,equation:ass_8,equation:ass_9,equation:ass_h,equation:ass_hd,equation:ass_ht} be satisfied and let $u \in \SpaceRegular$ be the solution to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, then there exists $C > 0$\footnote{Note that $C$ does not depend on $h, \tau, \Diffusion$.} such that $\Error = \AppU - u$ satisfies what follows:
     \begin{align}
-        \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n} } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
+        \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
         &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right). \notag
     \end{align}
 \end{theorem}
