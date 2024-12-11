@@ -98,13 +98,18 @@
 \newcommand{\InterpolantH}{\Projection_h}
 \newcommand{\InterpolantQN}{\Projection^n_q}
 \newcommand{\InterpolantQT}{\Projection^{\tau}_q}
-\newcommand{\InterpolantPQ}{\Projection_{p, q}}
-\newcommand{\InterpolantPQR}{\hat{\Projection}_{p, q}^n}
-\newcommand{\InterpolantPQI}{\Projection_{p, q}^n}
 
-\newcommand{\InterSol}{\ProjectionOnto{\SpaceSolution^p_{h, n}}}
-\newcommand{\InterPoly}{\ProjectionOnto{\SpacePolynomials{q}((-1, 1))}}
-\newcommand{\InterPolyN}{\ProjectionOnto{\SpacePolynomials{q}(I_n)}}
+\newcommand{\InterpolantPQ}{\Projection_{h, \tau}^{p, q}}
+\newcommand{\InterpolantPQR}{\hat{\Projection}_{h, n}^{p, q}}
+\newcommand{\InterpolantPQI}{\Projection^{p, q}_n}
+
+\newcommand{\InterSol}{\Projection_{h, n}^p}
+\newcommand{\InterPoly}{\hat{\Projection}_{\SpacePolynomials{}}^q}
+\newcommand{\InterPolyN}{\Projection_{\SpacePolynomials{}}^{q, n}}
+
+% \newcommand{\InterSol}{\ProjectionOnto{\SpaceSolution^p_{h, n}}}
+% \newcommand{\InterPoly}{\ProjectionOnto{\SpacePolynomials{q}((-1, 1))}}
+% \newcommand{\InterPolyN}{\ProjectionOnto{\SpacePolynomials{q}(I_n)}}
 
 % Interpolated solution.
 \newcommand{\IntU}{\InterpolantPQ u}
