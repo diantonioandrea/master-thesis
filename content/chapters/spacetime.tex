@@ -1,6 +1,6 @@
 \section{Bochner Spaces}
 
-The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p. 111]{Ern2021}, functions defined on a bounded time interval $I \subset \RealNumbers$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \RealNumbersTo{d}$.
+The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p.~111]{Ern2021}, functions defined on a bounded time interval $I \subset \RealNumbers$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \RealNumbersTo{d}$.
 
 \subsection{Bochner Integral}
 
@@ -250,7 +250,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \newpage
 \section{Weak Formulation of the Model Parabolic Problem}
 
-Following \cite[p. 124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definition:gelfand} and \cref{definition:x}.
+Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definition:gelfand} and \cref{definition:x}.
 
 \subsection{Model Problem}
 
@@ -342,7 +342,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 
 \subsection{Conforming Semi-Discretization in Space}
 
-Following \cite[p. 135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
+Following \cite[p.~135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
 
 \begin{definition}[$b$ and $l$]
     Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
@@ -421,7 +421,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
 \newpage
 \subsection{Discontinuous Galërkin Discretization in Time} \label{subsection:time_dg}
 
-Following \cite[p. 177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $\TimeMesh = \left\{ I_n \right\}_{n \in \TimeIndices}$ partition of $I$ where $\TimeIndices = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
+Following \cite[p.~177]{Ern2021}, let $N > 0$ be a positive natural number. Fix $\TimeMesh = \left\{ I_n \right\}_{n \in \TimeIndices}$ partition of $I$ where $\TimeIndices = \left\{ 1, \dots, N \right\}$, $I_n = (t_{n - 1}, t_n]$ and $\tau = \frac{T}{N}$.
 
 \begin{definition}[Mapping]
     Let $T_n \colon \hat{I} \rightarrow I_n$ for $\hat{I} = (-1, 1]$ be such that:
@@ -575,7 +575,7 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 \newpage
 \subsection{Stability and Error Analysis}
 
-Following \cite[p. 186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
+Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
 \begin{align}
     \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right).
 \end{align}
