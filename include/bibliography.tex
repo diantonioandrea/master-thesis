@@ -12,7 +12,8 @@
 
 \DeclareCiteCommand{\cite}
   {}
-  {\printtext[bibhyperref]{\printnames{labelname} (\printfield{year})}}
+  {\printtext[bibhyperref]{\printnames{labelname} (\printfield{year})%
+    \iffieldundef{postnote}{}{\addcomma\space\printfield{postnote}}}}
   {\multicitedelim}
   {}
 
