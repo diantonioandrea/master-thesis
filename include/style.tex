@@ -3,10 +3,19 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\fancyhead[L]{\textit{\leftmark, \rightmark}}
 \fancyhead[R]{\textit{\thepage}}
-% \fancyhead[L]{\textit{\documenttitle}}
-\fancyhead[L]{\textit{\leftmark}}
 \fancyfoot[C]{}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\textit{\documenttitle}}
+    \fancyhead[R]{\textit{\thepage}}
+}
 
 % Chapters styling.
 \usepackage[Bjarne]{fncychap}
