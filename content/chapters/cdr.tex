@@ -2,6 +2,8 @@
 
 Following \cite{Feistauer2004}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
 
+To fix the notation, let $\lambda$ denote the Lebesgue measure on $\RealNumbers$ and $\omega$ denote the Lebesgue measure on $\Omega$. Accordingly, $\lambda$-a.e. and $\omega$-a.e. refer to almost everywhere with respect to $\lambda$ and $\omega$, respectively. For brevity, these will be denoted simply as a.e. when the measure is clear from the context, and $d\lambda(t)$ will be written as $dt$.
+
 Consider the following problem, that is to find $u \colon I \times \Omega \rightarrow \RealNumbers$ such that:
 \begin{align}
     \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u = g &\text{ in } I \times \Omega, \label{equation:cdr}
@@ -49,22 +51,22 @@ Moreover, assume that:
     \Convection & \in \left[ C^0(\overline{I}; \SpaceWkp{1}{\infty}(\Omega)) \right]^2, \label{equation:ass_4} \\
     \Reaction & \in C^0(\overline{I}; \SpaceLp{\infty}(\Omega)), \label{equation:ass_5}
 \end{align}
-and that there exist $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
+with $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
 \begin{align}
-    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} &\text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_6} \\
-    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} &\text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_7} \\
-    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} &\text{ for } \lambda \otimes \omega \text{-a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_8}
+    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_6} \\
+    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_7} \\
+    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} &\text{for a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_8}
 \end{align}
 
 Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that:
 \begin{align}
-    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} &\text{ for} \lambda \text{-a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_9}
+    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_9}
 \end{align}
 
 \newpage
 \subsection{Weak Solution}
 
-Set now $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u \Restriction_{\partial \Omega^-} = 0 \right\}$.
+Set now $V = \left\{ v \in \SpaceHk{1}(\Omega) \text{ such that } v \Restriction_{\partial \Omega^-} = 0 \right\}$.
 
 \begin{definition}[Weak solution]
     The weak solution $u \in \SpaceLp{\infty}(I \times \Omega)$ is such that $u - u^* \in \SpaceLp{2}(I; V)$ and $u(0) = u_0$ in $\Omega$. Moreover:
@@ -76,26 +78,26 @@ Set now $V = \left\{ u \in \SpaceHk{1}(\Omega) \text{ such that } u \Restriction
 \end{definition}
 This weak formulation is derived by multiplying \cref{equation:cdr} by any $w \in V$, applying Green's theorem and using \cref{equation:cdr_neumann}. % [!] Expand.
 
-The existence of the weak solution $u$ is assumed with the following regularity\footnote{It is possible to show that such $u$ satisfies \cref{equation:cdr} pointwise and that $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$.}\footnote{If $\Diffusion > 0$ it is possible to show the existence and uniqueness of $u$. Moreover, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.}: % [!] Citation needed.
+Under the following regularity assumptions:
 \begin{align}
     \partial_t u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)), \label{equation:assumption_regularity_1} \\
-    u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)). \label{equation:assumption_regularity_2}
+    u & \in \SpaceLp{1}(I; \SpaceHk{p + 1}(\Omega)) \cap \SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega)), \label{equation:assumption_regularity_2}
 \end{align}
-where $p \geq 1$ integer will denote the space degree of approximation.
+it is possible to show that there exists a unique weak solution $u$ satisfying \cref{equation:cdr} pointwise, with $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$, where $p \geq 1$ is an integer denoting the spatial degree of approximation. Furthermore, if $\Diffusion > 0$, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.
 
 \newpage
 \section{Discretization}
 
 \subsection{Space Discretization Setting}
 
-For the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Denoted by $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
+For the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard, conforming triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Referred to as $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
 
-If $K_i \cap K_j \neq \emptyset$, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbours. Moreover, define:
+If $K_i \cap K_j \neq \emptyset$\footnote{Except for a single point, i.e., a vertex.}, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbors. Moreover, define:
 \begin{align}
     \Neighbours{i} = \left\{ j \in \SpaceIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} &\text{ for all } i \in \SpaceIndices.
 \end{align}
 
-Furthermore, for $K \in \Omega_h$, introduce $h_K$ and $\rho_K$ as the diameter of $K$ and the diameter of the largest ball inscribed in $K$, respectively. It follows that:
+Furthermore, for $K \in \Omega_h$, introduce $h_K$ and $\rho_K$ as the diameter of $K$ and the diameter of the largest ball inscribed in $K$, respectively. Define, then:
 \begin{align}
     h = \max_{K \in \Omega_h} \left\{ h_K \right\}.
 \end{align}
@@ -117,7 +119,7 @@ Consider now the broken Sobolev space.
     \end{align}
 \end{definition}
 
-For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$\footnote{$\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
+For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$\footnote{Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
 \begin{align}
     \langle v \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( v \Restriction_{\Gamma_{ij}} + v \Restriction_{\Gamma_{ji}} \right), \\
     \left[ v \right]_{\Gamma_{ij}} &= v \Restriction_{\Gamma_{ij}} - v \Restriction_{\Gamma_{ji}},
@@ -132,9 +134,9 @@ Finally, for $i \in \SpaceIndices$\footnote{The dependence of $\partial K_i^-(t)
 namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
 
 \newpage
-\subsection{Discontinuous Galërkin Semi-Discretization in Space}
+\subsection{Discontinuous Galërkin Semi-Discretization in Space} \label{sec:space_discretization}
 
-Under assumptions \cref{equation:assumption_regularity_1,equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $w \in \SpaceHk{2}(\Omega, \Omega_h)$ and for $\lambda$-a.e. $t \in I$:
+Under assumptions \cref{equation:assumption_regularity_1,equation:assumption_regularity_2}, the exact solution $u$ satisfies what follows for all $w \in \SpaceHk{2}(\Omega, \Omega_h)$ and for a.e. $t \in I$:
 \begin{align}
     \left( \partial_t u(t), w \right)_0 &+ A_h(u(t), w) = l_h \left( w \right) (t),
 \end{align}
@@ -160,12 +162,12 @@ with:
     \kappa \Restriction_{\Gamma_{ij}} = \left( \Diameter \Gamma_{ij} \right)^{-1}.
 \end{align}
 
-This formulation is derived by multiplying \cref{equation:cdr} by any $w \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \cref{equation:cdr_dirichlet} and \cref{equation:cdr_neumann}. % [!] Expand.
+This formulation is derived by multiplying \cref{equation:cdr} by any $w \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each $K \in \Omega_h$, applying Green's theorem, summing over all $K \in \Omega_h$, adding terms that either appear on both sides or vanish, and using \cref{equation:cdr_dirichlet} and \cref{equation:cdr_neumann}. More details can be found in the following sections.
 
 \newpage
 \subsubsection{Diffusion Term Discretization}
 
-The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation. Green's theorem is used and the following terms are added:
+The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation, which guarantees its non-negativity. Green's theorem is used and the following terms are added:
 \begin{align}
     \int_{\Gamma_{ij}} \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
 \end{align}
@@ -228,7 +230,7 @@ The discontinuous Galërkin semi-discrete problem is to find an approximate solu
 \newpage
 \subsection{Time Discretization Setting}
 
-Following \cite{Feistauer2007}, for the discretization in time of this problem, consider $\left\{ I_{\tau} \right\}_{\tau \in \tIndices}$ to be a family of partitions of $\overline{I}$, each consisting of intervals $I_n$ indexed by $n \in \TimeIndices$. A partition $I_{\tau}$ is such that:
+Following \cite{Feistauer2007}, for the discretization in time of this problem, consider $\left\{ I_{\tau} \right\}_{\tau \in \tIndices}$ to be a family of partitions of $\overline{I}$, each consisting of intervals $I_n$ indexed by $n \in \TimeIndices = \left\{ 1, \dots, \nTimeIndices \right\}$. A partition $I_{\tau}$ is such that:
 \begin{align}
     I_{\tau} &= \left\{ 0 = t_0 < t_1 < \dots < t_{N_\tau} = T \right\} &\text{ for all } \tau \in \tIndices.
 \end{align}
@@ -246,9 +248,9 @@ For a function $v$ defined on:
     \bigcup_{n \in \TimeIndices} I_n,
 \end{align}
 consider the following notations:
-\begin{align}
-    u_n^+ &= v(t_n^+) = \lim_{t \rightarrow t_n^+} v(t) &\text{ for all } n \in \TimeIndices, \\
-    u_n^- &= v(t_n^-) = \lim_{t \rightarrow t_n^-} v(t) &\text{ for all } n \in \TimeIndices, \\
+\begin{align} % [!] Check \varepsilon.
+    u_n^+ &= v(t_n^+) = \lim_{\varepsilon \rightarrow 0} v(t_n^+ + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
+    u_n^- &= v(t_n^-) = \lim_{\varepsilon \rightarrow 0} v(t_n^- + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
     \left\{ v \right\}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
 \end{align}
 
@@ -258,11 +260,7 @@ Furthermore, set:
 \begin{align}
     h_n &= \max_{K \in \Omega_{h, n}} \left\{ h_K \right\} &\text{ for all } n \in \TimeIndices, \\
     h &= \max_{n \in \TimeIndices} \left\{ h_n \right\}, \\
-    \tau &= \max_{n \in \TimeIndices} \left\{ \lambda(I_n) \right\} = \max_{n \in \TimeIndices} \left\{ t_n - t_{n - 1} \right\},
-\end{align}
-and:
-\begin{align}
-    \nTimeIndices = \max \left\{ \TimeIndices \right\}.
+    \tau &= \max_{n \in \TimeIndices} \left\{ \lambda(I_n) \right\} = \max_{n \in \TimeIndices} \left\{ t_n - t_{n - 1} \right\}.
 \end{align}
 
 \newpage
@@ -275,7 +273,7 @@ Considering different families of triangulations on each $I_n$ leads to the foll
     \end{align}
 \end{definition}
 
-Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{equation:cdr_ah,equation:cdr_bh,equation:cdr_ch,equation:cdr_jh,equation:cdr_lh}, are redefined as follows:
+Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{sec:space_discretization}, are redefined as follows:
 \begin{align}
     a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
@@ -299,6 +297,8 @@ Set, then:
     A_{h, n}(u, w) = a_{h, n} \left( u(t), w \right) + b_{h, n} \left( u(t), w \right) + c_{h, n} \left( u(t), w \right) + \Diffusion J^{\kappa}_{h, n} \left( u(t), w \right) \label{equation:cdr_Ahn}.
 \end{align}
 
+Note that this is essentially the same definition given in \cref{sec:space_discretization}, with the modification that it accounts for the change in the spatial mesh at each time interval.
+
 \newpage
 \subsubsection{Approximate Solution}
 
@@ -311,15 +311,15 @@ Set, then:
 
 The discontinuous Galërkin discrete problem is to find an approximate solution $u_{h, \tau} \in \SpaceSolutionFull$ to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, such that:
 \begin{align} % [!] Fix alignment and (?) u(0).
-    \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, w )_0 + A_{h, n}(u_{h, \tau}, w) \right) ~ d \lambda(t) \notag &+ \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, w_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, w_0^+ )_0 \notag \\
-    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ d \lambda(t) + (u_0, w_0^+ )_0, \label{equation:cdr_discrete}
+    \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u_{h, \tau}, w )_0 + A_{h, n}(u_{h, \tau}, w) \right) ~ dt \notag &+ \sum_{n = 2}^{\nTimeIndices} (\left\{ u_{h, \tau} \right\}_{n - 1}, w_{n - 1}^+ )_0 + ((u_{h, \tau})_0^+, w_0^+ )_0 \notag \\
+    &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0, \label{equation:cdr_discrete}
 \end{align}
 for all $w \in \SpaceSolutionFull$
 
 By the following notation:
 \begin{align}
-    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ d \lambda(t) + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
-    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ d \lambda(t) + (u_0, w_0^+ )_0 \label{equation:cdr_L},
+    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
+    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0 \label{equation:cdr_L},
 \end{align}
 it is possibile to rewrite \cref{equation:cdr_discrete} as:
 \begin{align}
@@ -343,7 +343,7 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Multiplicative trace inequality]
     There exists $\BoundTrace > 0$ such that:
     \begin{align}
-        \lVert v \rVert_{\SpaceLp{2}(\partial K)} \leq \BoundTrace \left( \lVert v \rVert_{\SpaceLp{2}(K)} \lvert v \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)}^2 \right),
+        \lVert v \rVert_{\SpaceLp{2}(\partial K)}^2 \leq \BoundTrace \left( \lVert v \rVert_{\SpaceLp{2}(K)} \lvert v \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)}^2 \right),
     \end{align}
     for all $v \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
@@ -351,7 +351,7 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Inverse inequality]
     There exists $\BoundInverse > 0$ such that:
     \begin{align}
-        \lvert v \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(\partial K)},
+        \lvert v \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)},
     \end{align}
     for all $v \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
@@ -372,7 +372,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{lemma}[Reformulation of $B$]
     \cref{equation:cdr_B} can be reformulated to:
     \begin{align}
-        B(u, w) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t w )_0 + A_{h, n}(u, w) \right) ~ d \lambda(t) + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ w \right\}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
+        B(u, w) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ w \right\}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
     \end{align}
 \end{lemma}
 
@@ -385,7 +385,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 
 \begin{lemma}[Coercivity of $B$]
     \begin{align}
-        B(u, u) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u, u) ~ d \lambda(t) + \lVert u \rVert_{T}^2.
+        B(u, u) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u, u) ~ dt + \lVert u \rVert_{T}^2.
     \end{align}
 \end{lemma}
 
@@ -396,7 +396,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 
 In what follows, denote by $u$ the exact solution and by $\AppU$ the approximate solution $u_{h, \tau}$, and denote by $\Error = \AppU - u$ the error of the method.
 
-Furthermore, in what follows, $C$ denotes a generic constant. Note that multiple instances of $C$ do not necessarily denote the same constant.
+Furthermore, in what follows, $C$ denotes a generic constant, typically independent of the space and time mesh parameters. Note that different occurrences of $C$ do not necessarily represent the same constant.
 
 For the derivation of error estimates, consider the following space-time interpolation of the exact solution:
 
@@ -404,7 +404,7 @@ For the derivation of error estimates, consider the following space-time interpo
     $\InterpolantPQ$ is such that\footnote{$\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.}:
     \begin{align}
         \InterpolantPQ u &\in \SpaceSolutionFull, \\
-        \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ d \lambda(t) &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
+        \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
         \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-),
     \end{align}
     for all $n \in \TimeIndices$
@@ -416,7 +416,7 @@ It follows, then, the derivation of error estimates in terms of the $\Interpolan
 
 \begin{lemma}
     \begin{align}
-        B(\AppU - \InterpolantPQ u, \AppU - \InterpolantPQ u) &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u - \InterpolantPQ u, \AppU - \InterpolantPQ u) ~ d \lambda(t) \label{equation:error_1} \\
+        B(\AppU - \InterpolantPQ u, \AppU - \InterpolantPQ u) &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(u - \InterpolantPQ u, \AppU - \InterpolantPQ u) ~ dt \label{equation:error_1} \\
         &- \sum_{n = 1}^{\nTimeIndices - 1} \left( \left( \InterpolantPQ u - u \right)_n^-, \left\{ \AppU - \InterpolantPQ u \right\}_n \right)_0. \notag
     \end{align}
 \end{lemma}
@@ -430,10 +430,11 @@ Fix, now, the following notation\footnote{Note that $\xi \in \SpaceSolutionFull$
 \end{align}
 then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
 \begin{align}
-    B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ d \lambda(t) - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
+    B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
 \end{align}
 
 \begin{definition}[$\theta_n(\eta; h, \Diffusion)$]
+    Define $\theta_n(\eta; h, \Diffusion)$ as:
     \begin{align} % [!] Check \eta_n^-
         \theta_n(\eta; h, \Diffusion) &= \lVert \eta \rVert_{E, n} + \sqrt{\Diffusion} h \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
         &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} \right)^{1/2} + \left( \sum_{i \in \SpaceTimeIndices} \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{1/2}
@@ -441,15 +442,16 @@ then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
 \end{definition}
 
 \begin{lemma}
-    There exists $\ContC{A} > 0$\footnote{Note that $\ContC{A}$ does not depend on $u, \AppU, h, \Diffusion$.} such that:
+    There exists $\ContC{A} > 0$ independent of $u, \AppU, h, \Diffusion$ such that:
     \begin{align}
         \lvert A_{h, n}(\eta, \xi) \rvert \leq \ContC{A} \lVert \xi \rVert_{E, n} \theta_n(\eta; h, \Diffusion)
     \end{align}
 \end{lemma}
 
 \begin{lemma}
+    The following inequality holds:
     \begin{align}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \xi \rVert_{E, n}^2 ~ d \lambda(t) + \lVert \xi \rVert_T^2 &\leq 4 \ContC{A}^2 \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \xi \rVert_{E, n}^2 ~ dt + \lVert \xi \rVert_T^2 &\leq 4 \ContC{A}^2 \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ 8 \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
     \end{align}
 \end{lemma}
@@ -462,12 +464,14 @@ Finally, observing that:
 consider the following abstract error estimate:
 \begin{lemma}
     \begin{align}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ d \lambda(t) + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)} + \lVert \eta \rVert_T^2, \notag \\ 
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ d \lambda(t) &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ d \lambda(t) \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
     \end{align}
 \end{lemma}
+
+% [!!] End of corrections.
 
 \newpage
 \subsection{Interpolation Properties}
@@ -554,7 +558,7 @@ Moreover, consider the following expansion of $\AppUN$ with respect to the Legen
 \end{align}
 Since:
 \begin{align}
-    \int_{-1}^1 \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i \right) \Legendre_j ~ d \lambda(t) = 0 &\text{ for all } j \in \left\{ 0, \dots, q \right\},
+    \int_{-1}^1 \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i \right) \Legendre_j ~ dt = 0 &\text{ for all } j \in \left\{ 0, \dots, q \right\},
 \end{align}
 it follows that\footnote{$\InterPoly$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}((-1, 1))$.}:
 \begin{align}
@@ -600,13 +604,13 @@ Assume, now, that the solution is sufficiently regular, that is:
         \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)}, \\
         \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)},
     \end{align}
-    for all $K \in \Omega_{h, n}$, for $\lambda$-a.e. $t \in I_n$, and for all $n \in \TimeIndices$,
+    for all $K \in \Omega_{h, n}$, for a.e. $t \in I_n$, and for all $n \in \TimeIndices$,
     \begin{align}
         \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
         \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
         \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)},
     \end{align}
-    for $\lambda$-a.e. $t \in I$,
+    for a.e. $t \in I$,
     \begin{align}
         \lVert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)}, \\
         \lvert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)},
@@ -630,7 +634,7 @@ Assume, now, that the solution is sufficiently regular, that is:
     \end{align}
     then:
     \begin{align}
-        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ d \lambda(t) &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2\\
+        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2\\
         &+ 3 \BoundH^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
         \TimeIntN{\Norm{\eta}_{\SpaceLp{2}(\Omega)}^2} & \leq 3 \BoundInterp^2 h^{2p + 2} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
         &+ 3 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
