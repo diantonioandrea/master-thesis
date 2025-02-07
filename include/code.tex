@@ -4,30 +4,43 @@
 \usepackage{listings}
 
 \lstdefinestyle{default}{
-	basicstyle=\ttfamily\color{solarized-base01},
+	basicstyle=\small\ttfamily\color{solarized-base01},
+	frame=single,
+	rulecolor=\color{solarized-base01},
+	xleftmargin=15pt,
+	xrightmargin=15pt,
+	framesep=10pt,
 	breakatwhitespace=false,
 	breaklines=true,
-	keepspaces=true,
-	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,
-	tabsize=2
+	tabsize=4,
+	captionpos=b,
+	keepspaces=true
 }
 
 \lstdefinestyle{cpp}{ % C++.
-	commentstyle=\color{solarized-green},
-	keywordstyle=\color{solarized-blue},
+	language=c++,
+	% backgroundcolor=\color{solarized-base3},
+	basicstyle=\small\ttfamily\color{solarized-base01},
+	keywordstyle=\bfseries\color{solarized-blue},
+	commentstyle=\itshape\color{solarized-green},
 	stringstyle=\color{solarized-orange},
-	basicstyle=\ttfamily\color{solarized-base01},
+	frame=single,
+	rulecolor=\color{solarized-base01},
+	xleftmargin=15pt,
+	xrightmargin=15pt,
+	framesep=10pt,
+	% numbers=left,
+	% numbersep=15pt,
+	% numberstyle=\color{solarized-base0},
 	breakatwhitespace=false,
 	breaklines=true,
-	captionpos=b,
-	keepspaces=true,
-	showspaces=false,
-	language=c++,
 	showstringspaces=false,
 	showtabs=false,
-	tabsize=4
+	tabsize=4,
+	captionpos=b,
+	keepspaces=true
 }
 
 \lstset{style=default}
