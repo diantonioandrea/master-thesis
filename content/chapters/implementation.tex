@@ -15,6 +15,19 @@ Although it is not necessary to explicitly construct the full space-time mesh fo
 
 \subsection{Construction of the Polygonal Meshes}
 
+\begin{figure}[!ht]
+    \begin{subfigure}[b]{0.49\textwidth}
+		\centering
+        \input{content/tikz/Square_250.tex}
+    \end{subfigure}
+	\hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+		\centering
+        \input{content/tikz/Square_2000.tex}
+    \end{subfigure}
+    \caption{Examples of polygonal meshes with $\nSpaceIndices = 250, 2000$.}
+\end{figure}
+
 The construction of the polygonal meshes over the problem's polygonal domain is based on the Voronoi mesh construction process and Lloyd's relaxation method.
 
 Let $\Omega \subset \RealNumbersTo{2}$ be a polygonal (and hence bounded) domain, and let $\nSpaceIndices \in \NaturalNumbers$ denote the desired number of elements for $\Omega_h$, i.e., the mesh to be constructed. As before, it is customary to let $h$ denote both the mesh index and its characteristic parameter.
@@ -37,19 +50,72 @@ The initial diagram, consisting of $\nSpaceIndices$ cells, is then iteratively r
 
 Finally, postprocessing is performed by collapsing edges that are too short, as such edges may introduce errors in the solution of the problem.
 
-\begin{figure}[!ht]
-    \begin{subfigure}[b]{0.49\textwidth}
-		\centering
-        \input{content/tikz/Square_250.tex}
-    \end{subfigure}
-	\hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-		\centering
-        \input{content/tikz/Square_2000.tex}
-    \end{subfigure}
-    \caption{Examples of polygonal meshes with $\nSpaceIndices = 250, 2000$}
-\end{figure}
+\newpage
+\subsubsection{Implementation Details}
 
+The following methods constitute the implementation of \lstinline{mesher2}:
+
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+	Polygon21 reduce2(
+		const Polygon21 &, 
+		const Line21 &, 
+		const Point21 &);
+
+	std::vector<Point21> random2(
+		const Polygon21 &, 
+		const Natural &);
+
+	std::vector<Polygon21> voronoi2(
+		const Polygon21 &, 
+		const std::vector<Point21> &);
+
+	std::vector<Polygon21> voronoi2(
+		const Polygon21 &, 
+		const Natural &);
+
+	void lloyd2(
+		const Polygon21 &, 
+		std::vector<Polygon21> &);
+
+	void collapse2(
+		const Polygon21 &, 
+		std::vector<Polygon21> &);
+}
+\end{lstlisting}
+
+\lstinline{random2} is responsible for generating randomly placed points within a polygon.
+
+\lstinline{reduce2} partitions a polygon into two parts using a line, retaining the portion in which a specified point lies.
+
+\lstinline{voronoi2} constructs a Voronoi diagram either from a given set of points within a polygon or by first generating these points using \lstinline{random2}. It then iteratively invokes \lstinline{reduce2} to produce the complete diagram.
+
+Finally, \lstinline{lloyd2} relaxes the diagram by iteratively invoking \lstinline{voronoi2} and adjusting the points according to Lloyd's algorithm, while \lstinline{collapse2} identifies edges that should be collapsed, removes them, and repositions any resulting disconnected polygons.
+
+\newpage
+Moreover, two additional definitions of \lstinline{mesher2} are provided to respectively load and dump polygonal meshes to a file, thereby avoiding the need to construct a new mesh at each execution:
+
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+	std::vector<Polygon21> mesher2(
+		const std::string &);
+
+	void mesher2(
+		const std::string &, 
+		const std::vector<Polygon21> &);
+
+}
+\end{lstlisting}
+
+\subsubsection{A Code Snippet}
+
+The following snippet illustrates the polygonal mesh construction process.
+
+\lstinputlisting[style=cpp]{content/snippets/mesh2.cpp}
+
+\newpage
 \subsection{Construction of the Prismatic Meshes}
 
 
