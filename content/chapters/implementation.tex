@@ -13,7 +13,7 @@ Moreover, the implementation of the algorithm differs slightly from the version 
 
 Although it is not necessary to explicitly construct the full space-time mesh for this problem, doing so simplifies the process by providing a straightforward method for accessing individual elements based on their spatial index and time level. 
 
-\subsection{Construction of the Polygonal Meshes}
+\subsection{Construction of Polygonal Meshes} \label{subsection:pol_mesh}
 
 \begin{figure}[!ht]
     \begin{subfigure}[b]{0.49\textwidth}
@@ -30,7 +30,7 @@ Although it is not necessary to explicitly construct the full space-time mesh fo
 
 The construction of the polygonal meshes over the problem's polygonal domain is based on the Voronoi mesh construction process and Lloyd's relaxation method.
 
-Let $\Omega \subset \RealNumbersTo{2}$ be a polygonal (and hence bounded) domain, and let $\nSpaceIndices \in \NaturalNumbers$ denote the desired number of elements for $\Omega_h$, i.e., the mesh to be constructed. As before, it is customary to let $h$ denote both the mesh index and its characteristic parameter.
+Let $\Omega \subset \RealNumbersTo{2}$ be a polygonal (and hence bounded) domain, and let $\nSpaceIndices \in \NaturalNumbers$ denote the desired number of elements for $\SpaceMesh$, i.e., the mesh to be constructed. As before, it is customary to let $h$ denote both the mesh index and its characteristic parameter.
 
 The function used to generate polygonal meshes is \lstinline{mesher2}, defined as follows:
 
@@ -95,7 +95,6 @@ Finally, \lstinline{lloyd2} relaxes the diagram by iteratively invoking \lstinli
 
 \newpage
 Moreover, two additional definitions of \lstinline{mesher2} are provided to respectively load and dump polygonal meshes to a file, thereby avoiding the need to construct a new mesh at each execution:
-
 \begin{lstlisting}[style=cpp]
 namespace ivo {
 
@@ -116,9 +115,55 @@ The following snippet illustrates the polygonal mesh construction process.
 \lstinputlisting[style=cpp]{content/snippets/mesh2.cpp}
 
 \newpage
-\subsection{Construction of the Prismatic Meshes}
+\subsection{Construction of Prismatic Meshes}
 
+Let $I \subset \RealNumbers$ be an open interval, and let $\SpaceMesh$ be a polygonal mesh over $\Omega \subset \RealNumbersTo{2}$, constructed as described in \cref{subsection:pol_mesh}. Let $\nTimeIndices \in \NaturalNumbers$ denote the cardinality of the partition $\TimeMesh$.
 
+The function used to generate uniform partitions is \lstinline{mesher1}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    std::vector<Real> mesher1(
+        const Real &, 
+        const Real &, 
+        const Natural &);
+
+}
+\end{lstlisting}
+
+This method generates $\nTimeIndices + 1$ uniformly spaced points in $I$, defining its partition $\TimeMesh$.
+
+The function used to generate prismatic meshes, formally $\TimeMesh \times \SpaceMesh$, is the constructor of \lstinline{Mesh21}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    Mesh21(
+        const std::vector<Polygon21> &, 
+        const std::vector<Real> &, 
+        const Natural &p = 1, 
+        const Natural &q = 1);
+
+}
+\end{lstlisting}
+
+This method, by invoking the constructors of \lstinline{Element21} and \lstinline{Neighbour21}:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    Element21(
+        const Polygon21 &, 
+        const Real &, 
+        const Natural &, 
+        const Natural &);
+
+    Neighbour21(
+        const Integer &, 
+        const Integer &, 
+        const std::vector<std::array<Integer, 2>> &);
+
+}
+\end{lstlisting}
+and relying solely on geometric information, constructs the mesh elements and the neighboring structure, where the former serve as wrappers for the element properties, and the latter is a collection of indices mapping each element to its neighbors.
 
 \newpage
 \section{Convection-Diffusion-Reaction Problems}
