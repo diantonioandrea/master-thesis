@@ -9,7 +9,7 @@ The library has been designed to include all the necessary components for the im
 Moreover, the implementation of the algorithm differs slightly from the version introduced and analyzed in \cref{chapter:cdr}.
 
 \newpage
-\section{Prismatic Meshes Over Polygonal Domains}
+\section{Prismatic Meshes Over Polygonal Domains} \label{section:mesh}
 
 Although it is not necessary to explicitly construct the full space-time mesh for this problem, doing so simplifies the process by providing a straightforward method for accessing individual elements based on their spatial index and time level. 
 
@@ -168,3 +168,40 @@ and relying solely on geometric information, constructs the mesh elements and th
 \newpage
 \section{Convection-Diffusion-Reaction Problems}
 
+With meshes construced as in \cref{section:mesh}, it is possible to construct and solve convection-diffusion-reaction problems on them.
+
+\subsection{Polynomial Basis}
+
+The polynomial basis of choice for both space and time is that of the Legendre polynomials. This choice is driven by the fact that, given the basis degree, it's easy to generate them at runtime, even when this degree varies element-wise.
+
+The function used to generate monodimensional Legendre polynomials is \lstinline{legendre}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+    namespace internal {
+
+        Vector<Real> legendre(
+            const Vector<Real> &, 
+            const Natural &, 
+            const Natural &k = 0);
+
+    }
+}
+\end{lstlisting}
+
+This method returns the evaluation of the $k$-th derivative of a Legendre polynomial at order $n$ by the means of the following formula:
+\begin{align}
+    \frac{d^k}{dx^k} \Legendre_n(\xi) &= \frac{1}{2^k} \sum_{j = k}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - k} &\text{ for } \xi \in \left[ -1, 1 \right].
+\end{align}
+
+\newpage
+\subsection{Quadrature Methods}
+
+
+
+\newpage
+\subsection{Problem Construction and Solution}
+
+
+
+\newpage
+\subsection{Error Analysis}
