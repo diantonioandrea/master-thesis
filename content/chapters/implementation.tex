@@ -1,6 +1,6 @@
 \section{Implementation Overview}
 
-This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \cref{chapter:cdr}.
+This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \cref{chapter:cdr}. It is intended as a review of the implementation rather than a comprehensive guide detailing each component.
 
 The algorithm has been implemented as part of a comprehensive library, \href{https://github.com/diantonioandrea/ivo}{ivo}\footnote{Named after \href{https://en.wikipedia.org/wiki/Ivo_Babuška}{Ivo Babuška}.}, which was written entirely in \lstinline{C++23} from scratch for this thesis.
 
@@ -172,9 +172,9 @@ With meshes construced as in \cref{section:mesh}, it is possible to construct an
 
 \subsection{Polynomial Basis}
 
-The polynomial basis of choice for both space and time is that of the Legendre polynomials. This choice is driven by the fact that, given the basis degree, it's easy to generate them at runtime, even when this degree varies element-wise.
+The polynomial basis chosen for both space and time consists of Legendre polynomials. This choice is motivated by the ease of generating them at runtime for a given basis degree, even when the degree varies element-wise.
 
-The function used to generate monodimensional Legendre polynomials is \lstinline{legendre}, defined as follows:
+The function used to generate one-dimensional Legendre polynomials is \lstinline{legendre}, defined as follows:
 \begin{lstlisting}[style=cpp]
 namespace ivo {
     namespace internal {
@@ -188,15 +188,73 @@ namespace ivo {
 }
 \end{lstlisting}
 
-This method returns the evaluation of the $k$-th derivative of a Legendre polynomial at order $n$ by the means of the following formula:
+This method returns the evaluation of the $k$-th derivative of a Legendre polynomial of order $n$ using the following formula:
 \begin{align}
-    \frac{d^k}{dx^k} \Legendre_n(\xi) &= \frac{1}{2^k} \sum_{j = k}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - k} &\text{ for } \xi \in \left[ -1, 1 \right].
+    \frac{d^k}{dx^k} \Legendre_n(\xi) &= \frac{1}{2^k} \sum_{j = k}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - k}, &\text{ for } \xi \in \left[ -1, 1 \right].
 \end{align}
 
+Separate basis functions for space and time can be constructed using the following functions:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+    
+    std::array<Matrix<Real>, 2> basis_t(
+        const Mesh21 &, 
+        const Natural &, 
+        const Vector<Real> &);
+
+    std::array<Matrix<Real>, 3> basis_xy(
+        const Mesh21 &, 
+        const Natural &, 
+        const std::array<Vector<Real>, 2> &);
+
+}
+\end{lstlisting}
+
+\lstinline{basis_t} returns the evaluations of the one-dimensional Legendre polynomials at the reference time nodes, including the appropriate scaling due to the change of variable, determined by the interval mapping.
+
+\lstinline{basis_xy} returns the evaluations of the two-dimensional Legendre polynomials at the reference spatial nodes, incorporating the correct scaling due to the change of variable, determined by the roto-translation of the bounding box.
+
 \newpage
-\subsection{Quadrature Methods}
+\subsection{Quadrature Method} \label{subsection:quadrature}
 
+The quadrature method of choice is the Gauss-Legendre quadrature, which, at a fixed order $n$, provides exact results for polynomials of order up to $2n - 1$.
 
+The function used to generate Gauss-Legendre quadrature nodes and weights over a given interval is \lstinline{gauss1}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+    namespace internal {
+
+        std::array<Vector<Real>, 2> gauss1(
+            const Natural &, 
+            const Real &, 
+            const Real &);
+
+    }
+}
+\end{lstlisting}
+which is actually used wrapped in the following methods:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    std::array<Vector<Real>, 2> quadrature1t(
+        const Natural &);
+
+    std::array<Vector<Real>, 2> quadrature1x(
+        const Natural &);
+
+    std::array<Vector<Real>, 3> quadrature2xy(
+        const Natural &);
+
+}
+\end{lstlisting}
+
+\lstinline{quadrature1t} returns the Gauss-Legendre quadrature nodes and weights over the reference time interval $\left[ -1, 1 \right]$, used for all time integrals.
+
+\lstinline{quadrature1x} returns the Gauss-Legendre quadrature nodes and weights over the reference spatial interval $\left[ 0, 1 \right]$, used for all interface space integrals, i.e., integrals over element edges.
+
+\lstinline{quadrature2xy} returns the Gauss-Legendre quadrature nodes and weights over the reference triangular domain with vertices $\left\{ \left( 0, 0 \right), \left( 1, 0 \right), \left( 0, 1 \right) \right\}$, used for all volume space integrals, i.e., integrals over elements.
+
+Even though the mesh consists of polygons, quadrature is performed over subtriangulations of the elements for simplicity.
 
 \newpage
 \subsection{Problem Construction and Solution}
