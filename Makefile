@@ -17,3 +17,4 @@ thesis.pdf: thesis.tex
 clean:
 	@latexmk -CA
 	@$(RM) -r *.bbl
+	@$(RM) -r *.xml
