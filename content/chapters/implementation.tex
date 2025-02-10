@@ -190,7 +190,7 @@ namespace ivo {
 
 This method returns the evaluation of the $k$-th derivative of a Legendre polynomial of order $n$ using the following formula:
 \begin{align}
-    \frac{d^k}{dx^k} \Legendre_n(\xi) &= \frac{1}{2^k} \sum_{j = k}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - k}, &\text{ for } \xi \in \left[ -1, 1 \right].
+    \frac{d^k}{dx^k} \Legendre_n(\xi) &= \frac{1}{2^k} \sum_{j = k}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - k} &\text{ for } \xi \in \left[ -1, 1 \right].
 \end{align}
 
 Separate basis functions for space and time can be constructed using the following functions:
