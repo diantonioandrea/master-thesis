@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=.9]
+\begin{loglogaxis}[
+xlabel={$DoFs$},
+% xtick={},
+% xticklabels={},
+% ylabel={ _LABERROR },
+grid=both,
+legend pos=north east
+]
+\addplot[color=\documentcolor, dashed, semithick] coordinates {(10500, 0.010996883365782237) (30000, 0.005093977776140967) (84000, 0.0028509284354104026) (240000, 0.0014387271934965318) (672000, 0.000866854)};
+\addplot[color=\documentcolor, dotted, semithick] coordinates {(10500, 0.0034674111456195426) (30000, 0.0024271902291239087) (84000, 0.001733708) (240000, 0.0012135951145619544) (672000, 0.000866854)};
+\addplot[color=\documentcolor, solid, thick] coordinates {(10500, 0.0072321472557008906) (30000, 0.0037605840026324376) (84000, 0.0022923182177052013) (240000, 0.001326161154029243) (672000, 0.000866854)};
+\addplot[color=\accentcolor, mark=triangle, very thick] coordinates {(10500, 0.00961887) (30000, 0.00543628) (84000, 0.00296588) (240000, 0.00139258) (672000, 0.000866854)};
+\legend{$h^2$,$\tau^1$,$h^2 + \tau^1$,$\Norm{\Error}_{\SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$}
+\end{loglogaxis}
+\end{tikzpicture}
