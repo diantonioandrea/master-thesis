@@ -27,13 +27,17 @@ which correspond to the parabolic and hyperbolic cases, respectively.
 The goal of the error analysis is to evaluate the behavior of the error $\Error$, as defined in \cref{subsection:error_estimates}, for a fixed exact solution $u$ while varying $p$ and $q$.
 
 % [!] Break.
-Two notable quantities to consider are $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$ and $\Norm{\Error}_{\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$, namely the \\ $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors, for which \cref{theorem:estimates_ht} gives an estimate. 
+Two notable quantities to consider are $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$ and $\Norm{\Error}_{\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$, namely the \\ $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors.
 
 This work wants to extend the error analysis by additionally considering $\Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)}$ and $\Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))}$, namely the $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors, where:
 \begin{align}
     \Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)} &= \left( \int_{\Omega} \Error^2(T, \Vector{x}) ~ d \omega (\Vector{x}) \right)^{\nicefrac12}, \\
     \Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))} &= \sup_{t \in \overline{I}} \left( \int_{\Omega} \Error^2(t, \Vector{x}) ~ d \omega (\Vector{x}) \right)^{\nicefrac12}.
 \end{align}
+
+The estimates given in \cref{theorem:estimates_ht} provide a useful benchmark for these quantities, enabling an evaluation of both the algorithm's performance and its implementation.
+
+The following sections, as anticipated, illustrate the behavior of the error $\Error$ versus the number of degrees of freedom and compare it with the expected powers of both $h$ and $\tau$, for both the parabolic and hyperbolic cases across three pairs of $\left( p, q \right)$ values: $\left( 1, 1 \right)$, $\left( 2, 2 \right)$, and $\left( 2, 1 \right)$.
 
 \newpage
 \subsection{Parabolic Case}
