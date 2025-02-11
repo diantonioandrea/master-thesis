@@ -257,10 +257,112 @@ namespace ivo {
 Even though the mesh consists of polygons, quadrature is performed over subtriangulations of the elements for simplicity.
 
 \newpage
-\subsection{Problem Construction and Solution}
+\subsection{Equation and Data}
 
+The equation, or the collection of the convection-diffusion-reaction parameters, and the initial and boundary data are all grouped in separate instances, built by the constructors of \lstinline{Equation}, \lstinline{Initial}, and \lstinline{Data}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
 
+    Equation(
+        const 
+            std::function<std::array<Real, 2> (Real, Real, Real)> &, 
+        const Real &, 
+        const std::function<Real (Real, Real, Real)> &);
+
+    Initial(
+        const std::function<Real (Real, Real)> &);
+
+    Data(
+        const std::function<Real (Real, Real, Real)> &, 
+        const std::function<Real (Real, Real, Real)> &, 
+        const std::function<Real (Real, Real, Real)> &);
+
+}
+\end{lstlisting}
+
+\newpage
+\subsection{Problem Construction}
+
+The construction of the stiffness matrix and of the forcing vector, who make up for the linear system associated with the convection-diffusion-reaction problem, makes up for the main part of the construction of a convection-diffusion-reaction problem.
+
+The functions that construct the stiffness matrix and the forcing vector are, respectively, \lstinline{stiffness} and \lstinline{forcing}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    Sparse<Real> stiffness(
+        const Mesh21 &mesh, 
+        const Equation &equation)
+
+    Vector<Real> forcing(
+        const Mesh21 &mesh, 
+        const Equation &equation, 
+        const Data &data)
+
+}
+\end{lstlisting}
+These methods operate by iterating over all elements of a mesh and performing the quadratures defined in \cref{sec:full_discretization}.
+
+The evaluation points for the quadratures and basis construction are obtained through the following method, which is overloaded for time intervals, space intervals, and space triangles:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+    namespace internal {
+
+        std::tuple<Vector<Real>, Real> reference_to_element(
+            const Mesh21 &, 
+            const Natural &, 
+            const Vector<Real> &);
+
+        std::tuple<std::array<Vector<Real>, 2>, Real> 
+            reference_to_element(
+                const Mesh21 &, 
+                const Natural &, 
+                const Natural &, 
+                const std::array<Vector<Real>, 2> &);
+
+        std::tuple<std::array<Vector<Real>, 2>, Vector<Real>, Real> 
+            reference_to_element(
+                const Mesh21 &, 
+                const Natural &, 
+                const Natural &, 
+                const Vector<Real> &);
+
+    }
+}
+\end{lstlisting}
+This method, given a reference to a specific geometry, maps the reference points to the corresponding domain, preparing them for basis evaluation and quadrature scaling.
+
+\newpage
+\subsection{Problem Solution}
+
+The function that solves the linear system associated to the convection-diffusion-reaction problem is \lstinline{solve}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    Vector<Real> solve(
+        const Mesh21 &, 
+        const Sparse<Real> &, 
+        const Vector<Real> &, 
+        const Initial &);
+
+}
+\end{lstlisting}
 
 \newpage
 \subsection{Error Analysis}
 
+Anticipating the contents of \cref{section:error_results}, the error analysis consists in the evaluation of of various norms of the error $\Error$ introduced in \cref{subsection:error_estimates}.
+
+The function used to evaluate the various components of the error analysis is the constructor of \lstinline{Error}, defined as follows:
+\begin{lstlisting}[style=cpp]
+namespace ivo {
+
+    Error(
+        const Mesh21 &, 
+        const Equation &, 
+        const Vector<Real> &, 
+        const std::function<Real (Real, Real, Real)> &, 
+        const 
+            std::function<std::array<Real, 2> (Real, Real, Real)> &);
+
+}
+\end{lstlisting}
