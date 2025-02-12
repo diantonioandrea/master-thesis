@@ -21,17 +21,20 @@
     %% Title.
 
 	\input{title/title.tex}
+
     \pagenumbering{roman}
 
     %% Dedication.
 
     \newpage
+
     \input{extra/dedication.tex}
 
     %% Abstract.
 
     \chapter*{Abstract}
     \addcontentsline{toc}{chapter}{Abstract}
+    
     \input{content/abstract.tex}
 
     %% Table of Contents.
@@ -53,12 +56,12 @@
     %     \qitem{TBA}{TBA}
     % \end{epigraphs}
 
-    \input{content/chapters/introduction.tex}
+    \input{content/chapters/introduction.tex} \label{chapter:introduction}
 
     % Preliminaries.
 
     \newpage
-    \chapter{Preliminaries}
+    \chapter{Preliminaries} \label{chapter:preliminaries}
 
     \input{content/chapters/preliminaries.tex}
 
@@ -94,7 +97,7 @@
 
     \newpage
     \chapter*{Conclusions}
-    \addcontentsline{toc}{chapter}{Conclusions}
+    \addcontentsline{toc}{chapter}{Conclusions} \label{chapter:conclusions}
 
     \input{content/chapters/conclusions.tex}
 
@@ -102,12 +105,8 @@
 
     \chapter*{Acknowledgements}
     \addcontentsline{toc}{chapter}{Acknowledgements}
+
     \input{extra/acknowledgements.tex}
-
-    %% Acronyms.
-
-    \newpage
-    \printglossary[type=\acronymtype]
 
     %% Bibliography.
 
