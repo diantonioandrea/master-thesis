@@ -217,9 +217,9 @@ namespace ivo {
 \newpage
 \subsection{Quadrature Method} \label{subsection:quadrature}
 
-The quadrature method of choice is the Gauss-Legendre quadrature, which, at a fixed order $n$, provides exact results for polynomials of order up to $2n - 1$.
+The quadrature method of choice is the \acrfull{gl} quadrature, which, at a fixed order $n$, provides exact results for polynomials of order up to $2n - 1$.
 
-The function used to generate Gauss-Legendre quadrature nodes and weights over a given interval is \lstinline{gauss1}, defined as follows:
+The function used to generate \acrshort{gl} quadrature nodes and weights over a given interval is \lstinline{gauss1}, defined as follows:
 \begin{lstlisting}[style=cpp]
 namespace ivo {
     namespace internal {
@@ -248,11 +248,11 @@ namespace ivo {
 }
 \end{lstlisting}
 
-\lstinline{quadrature1t} returns the Gauss-Legendre quadrature nodes and weights over the reference time interval $\left[ -1, 1 \right]$, used for all time integrals.
+\lstinline{quadrature1t} returns the \acrshort{gl} quadrature nodes and weights over the reference time interval $\left[ -1, 1 \right]$, used for all time integrals.
 
-\lstinline{quadrature1x} returns the Gauss-Legendre quadrature nodes and weights over the reference spatial interval $\left[ 0, 1 \right]$, used for all interface space integrals, i.e., integrals over element edges.
+\lstinline{quadrature1x} returns the \acrshort{gl} quadrature nodes and weights over the reference spatial interval $\left[ 0, 1 \right]$, used for all interface space integrals, i.e., integrals over element edges.
 
-\lstinline{quadrature2xy} returns the Gauss-Legendre quadrature nodes and weights over the reference triangle with vertices $\left\{ \left( 0, 0 \right), \left( 1, 0 \right), \left( 0, 1 \right) \right\}$, used for all volume space integrals, i.e., integrals over elements.
+\lstinline{quadrature2xy} returns the \acrshort{gl} quadrature nodes and weights over the reference triangle with vertices $\left\{ \left( 0, 0 \right), \left( 1, 0 \right), \left( 0, 1 \right) \right\}$, used for all volume space integrals, i.e., integrals over elements.
 
 Even though the mesh consists of polygons, quadrature is performed over subtriangulations of the elements for simplicity.
 
