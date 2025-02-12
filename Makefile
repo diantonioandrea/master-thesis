@@ -18,3 +18,6 @@ clean:
 	@latexmk -CA
 	@$(RM) -r *.bbl
 	@$(RM) -r *.xml
+	@$(RM) -r *.acn
+	@$(RM) -r *.glo
+	@$(RM) -r *.ist
