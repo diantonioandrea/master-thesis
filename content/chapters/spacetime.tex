@@ -464,7 +464,7 @@ Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\ha
 
 By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ is left-continuous at the discrete time nodes $t_n$.
 
-\begin{definition}[Time jumps]
+\begin{definition}[Time jumps] \label{def:time_jumps}
     \begin{align}
         \llbracket u_{\tau} \rrbracket_{n - 1} = u_{\tau}(t_{n - 1}^+) - u_{\tau}(t_{n - 1}),
     \end{align}
@@ -487,7 +487,7 @@ Another useful space is the subspace of $\SpacePolynomials{q}^b(\ClosedTimeMesh;
 
 \subsubsection{Quadratures and Interpolation}
 
-Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrlong{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus:
+Let $\left\{ \zeta_i \right\}_{i = 0}^{q}$ and $\left\{ \omega_i \right\}_{i = 0}^{q}$ be the \acrfull{gr} quadrature nodes and corresponding weights on $\hat{I}$, thus:
 \begin{align}
     t_{n, i} &= T_n(\zeta_i) &\text{ for all } i \in \left\{ 0, \dots, q \right\}, \\
     \omega_{n, i} &= \frac{\tau}{2} \omega_i &\text{ for all } i \in \left\{ 0, \dots, q \right\},
@@ -586,17 +586,39 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \begin{lemma}[Coercivity]
     The discrete problem \cref{equation:weak_ht} is well posed by:
     \begin{align}
-        b_{\tau}(u_{h \tau}, u_{h \tau}) &\geq \CoerC{a} \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 &\text{ for all } u_{h \tau} \in \SpaceX_{h \tau}.
+        b_{\tau}(u_{h \tau}, u_{h \tau}) &\geq \CoerC{a} \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 &\text{ for all } u_{h \tau} \in \SpaceX_{h \tau}. \label{eq:b_coercivity}
     \end{align}
 \end{lemma}
 
 \begin{proof}
-        
+    By the coercivity of $a$ at the $q + 1$ \acrshort{gr} nodes and the positivity of the weights, it follows that:
+    \begin{align*}
+        \int_{I_n} a(t; u_{h \tau}(t), u_{h \tau}(t)) ~ d \lambdaGR_{q + 1} &= \sum_{i = 1}^{q + 1} \omega_{n, i} a(t_{n, i}; u_{h \tau}(t_{n, i}), u_{h \tau}(t_{n, i})) \\
+        &\geq \CoerC{a} \sum_{i = 1}^{q + 1} \omega_{n, i} \Norm{ u_{h \tau}(t_{n, i}) }_V^2 \\
+        &= \CoerC{a} \int_{I_n} \Norm{ u_{h \tau}(t) }_V^2 ~ d \lambda,
+    \end{align*}
+    given that the quadrature is of order $2q$.
+
+    Moreover, by using the facts that:
+    \begin{align*}
+        \frac{d}{dt} \Norm{ u_{h \tau} }_W^2 &= 2 \left( \partial_t u_{h \tau}, u_{h \tau} \right)_W, \\
+        2 \left( u_{h \tau}(t_{n - 1}^+) - u_{h \tau}(t_{n - 1}) \right) u_{h \tau}(t_{n - 1}^+) &= u_{h \tau}^2(t_{n - 1}^+) - u_{h \tau}^2(t_{n - 1}) + \left( u_{h \tau}(t_{n - 1}^+) - u_{h \tau}(t_{n - 1}) \right)^2,
+    \end{align*}
+    together with \cref{def:time_jumps}:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} &\left( \int_{I_n} \left( \partial_t u_{h \tau}(t), u_{h \tau}(t) \right)_W ~ d \lambda + \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
+        &= \frac12 \sum_{n \in \TimeIndices} \left( \Norm{ u_{h \tau}(t_n) }_W^2 - \Norm{ u_{h \tau}(t_{n - 1}^+) }_W^2 + 2 \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
+        &= \frac12 \sum_{n \in \TimeIndices} \left( \Norm{ u_{h \tau}(t_n) }_W^2 + \Norm{ u_{h \tau}(t_{n - 1}) }_W^2 + \Norm{ \llbracket u_{h \tau} \rrbracket_{n - 1} }_W^2 \right) \\
+        &= \frac12 \Norm{ u_{h \tau}(T) }_W^2 - \frac12 \Norm{ u_{h \tau}(0) }_W^2 + \frac12 \sum_{n \in \TimeIndices} \Norm{ \llbracket u_{h \tau} \rrbracket_{n - 1} }_W^2.
+    \end{align*}
+
+    This, together with the lower bound on $a$, proves \cref{eq:b_coercivity}, while the well-posedness of \cref{equation:weak_ht} follows from \cref{theorem:lm}.
 \end{proof}
 
+\newpage
 \subsubsection{Error Analysis}
 
-\begin{definition}[$\InterpolantQN$]
+\begin{definition}[$\InterpolantQN$] \label{def:interpolant_qn}
     Let $Z \in \left\{V_h, W\right\}$. Define $\InterpolantQN \colon \SpaceHk{1}(I_n; Z) \rightarrow \SpacePolynomials{q}(I_n; Z)$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $n \in \TimeIndices$:
     \begin{align}
         \InterpolantQN(u)(t_n) & = u(t_n), \\
@@ -604,7 +626,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{align}
 \end{definition}
 
-\begin{definition}[$\InterpolantQT$]
+\begin{definition}[$\InterpolantQT$] \label{def:interpolant_qt}
     Let $Z \in \left\{V_h, W\right\}$. Define $\InterpolantQT \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\ClosedTimeMesh; Z)$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $n \in \TimeIndices$:
     \begin{align}
         & \InterpolantQT(u)(0) = u(0), \\
@@ -620,7 +642,33 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \end{lemma}
 
 \begin{proof}
-        
+    Let:
+    \begin{align*}
+        \delta = u - \InterpolantQT(u),
+    \end{align*}
+    then, integrating by parts and using \cref{def:interpolant_qn}, together with the facts that $\delta()$ :
+    \begin{align*}
+        \delta(t_n) &= 0, \\
+        \partial_t y_{\tau}\Restriction_{I_n} &\in \SpacePolynomials{q - 1}(I_n; W),
+    \end{align*}
+    for all $n \in \TimeIndices$, it follows that:
+    \begin{align*}
+        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda &= - \int_{I_n} \left( \delta, \partial_t y_{\tau} \right)_W ~ d \lambda + \left( \delta(t_n), y_{\tau}(t_n) \right)_W - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W \\
+        &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W.
+    \end{align*}
+
+    Since, by \cref{def:interpolant_qt}:
+    \begin{align*}
+        \InterpolantQT(u)(t_{n - 1}) = u(t_{n - 1}) &= u(t_{n - 1}^+),
+    \end{align*}
+    as $u \in C^0(\overline{I}; W)$, it follows that:
+    \begin{align*}
+        \llbracket \InterpolantQT(u) \rrbracket_{n - 1} &= - \delta(t_{n - 1}^+),
+    \end{align*}
+    hence:
+    \begin{align*}
+        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W = \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W.
+    \end{align*}
 \end{proof}
 
 Consider a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
