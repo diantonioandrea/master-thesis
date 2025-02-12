@@ -25,3 +25,6 @@
 **/*-blx.bib
 **/*.run.xml
 **/*.fdb_latexmk
+**/*.glo
+**/*.ist
+**/*.acn
