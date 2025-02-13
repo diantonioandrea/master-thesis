@@ -14,13 +14,13 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 
     Moreover, the Bochner integral of a simple function is defined as:
     \begin{align}
-        \int_I u(t) ~ d \lambda  = \sum_{n = 1}^N v_n \lambda(A_n) \in V.
+        \int_I u(t) ~ d \lambda(t)  = \sum_{n = 1}^N v_n \lambda(A_n) \in V.
     \end{align}
 \end{definition}
 
 \begin{lemma} % [!] Ugly \left and \right with \lVert and \rVert.
     \begin{align}
-        \left\lVert \int_I u(t) ~ d \lambda \right\rVert_V &\leq \int_I \left\lVert u(t) \right\rVert_V ~ d \lambda &\text{ for all simple functions } u.
+        \left\lVert \int_I u(t) ~ d \lambda(t) \right\rVert_V &\leq \int_I \left\lVert u(t) \right\rVert_V ~ d \lambda(t) &\text{ for all simple functions } u.
     \end{align}
 \end{lemma}
 
@@ -42,25 +42,25 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 &    \end{align}
     that is  $u$ is strongly measurable, and:
     \begin{align}
-        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - u_n(t) \rVert_V ~ d \lambda = 0.
+        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - u_n(t) \rVert_V ~ d \lambda(t) = 0.
     \end{align}
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda(t) \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
     Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \cref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
     \begin{align}
-        \int_I u(t) ~ d \lambda = \lim_{n \rightarrow \infty} \int_I u_n(t) ~ d \lambda.
+        \int_I u(t) ~ d \lambda(t) = \lim_{n \rightarrow \infty} \int_I u_n(t) ~ d \lambda(t).
     \end{align}
 \end{definition}
 
 \begin{theorem}[Bochner]
     Let $u\colon I \rightarrow V$ be a strongly measurable function, then $u$ is Bochner integrable if and only if:
     \begin{align}
-        \int_I \lVert u(t) \rVert_V ~ d \lambda < + \infty.
+        \int_I \lVert u(t) \rVert_V ~ d \lambda(t) < + \infty.
     \end{align}
 \end{theorem}
 
@@ -74,21 +74,21 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
     \end{align}
     then $F(u)$ is a Bochner integrable function and:
     \begin{align}
-        \int_I F(u)(t) ~ d \lambda = F\left( \int_I u(t) ~ d \lambda \right).
+        \int_I F(u)(t) ~ d \lambda(t) = F\left( \int_I u(t) ~ d \lambda(t) \right).
     \end{align}
 \end{corollary}
 
 \begin{remark} % [!] Ugly \left and \right with \langle and \rangle.
     Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $\varphi \in V^*$, then:
     \begin{align}
-        \int_I \left\langle \varphi, (u)(t) \right\rangle_{V^*, V} ~ d \lambda = \left\langle \varphi, \int_I u(t) ~ d \lambda \right\rangle_{V^*, V}.
+        \int_I \left\langle \varphi, (u)(t) \right\rangle_{V^*, V} ~ d \lambda(t) = \left\langle \varphi, \int_I u(t) ~ d \lambda(t) \right\rangle_{V^*, V}.
     \end{align}
 \end{remark}
 
 \begin{remark}[Embedding]
     Let $u\colon I \rightarrow V$ be a Bochner integrable function and let $W$ be a Banach space such that $V \hookrightarrow W$. Denote by $F_{V \rightarrow W} \colon V \rightarrow W$ the canonical embedding, then:
     \begin{align}
-        \int_I F_{V \rightarrow W}(u)(t) ~ d \lambda = F_{V \rightarrow W}\left( \int_I u(t) ~ d \lambda \right),
+        \int_I F_{V \rightarrow W}(u)(t) ~ d \lambda(t) = F_{V \rightarrow W}\left( \int_I u(t) ~ d \lambda(t) \right),
     \end{align}
     leading to a useful identification between the $V$-valued and the $W$-valued integrals.
 \end{remark}
@@ -100,7 +100,7 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
     \end{align}
     where:
     \begin{align}
-        & \lVert u \rVert_{\SpaceLp{p}(I; V)}^p = \int_I \lVert u(t) \rVert_V^p ~ d \lambda & \text{ if } p < +\infty, \\
+        & \lVert u \rVert_{\SpaceLp{p}(I; V)}^p = \int_I \lVert u(t) \rVert_V^p ~ d \lambda(t) & \text{ if } p < +\infty, \\
         & \lVert u \rVert_{\SpaceLp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \lVert u(t) \rVert_V \right\} & \text{ if } p = +\infty.
     \end{align}
 \end{definition}
@@ -139,7 +139,7 @@ Set $I = (0, T)$ for $T > 0$ for the entirety of this section.
 \begin{theorem}[Lebesgue's differentiation]
     Let $u \in \SpaceLp{1}(I; V)$ and:
     \begin{align}
-        F(t) &= \int_0^t u(s) ~ d \lambda &\text{ for all } t \in I,
+        F(t) &= \int_0^t u(s) ~ d \lambda(t) &\text{ for all } t \in I,
     \end{align}
     then $F$ is strongly differentiable for $\lambda$-a.e. $t \in I$ and $\partial_t F(t) = u(t)$ for $\lambda$-a.e. $t \in I$.
 \end{theorem}
@@ -153,7 +153,7 @@ Set $I = (0, T)$ for $T > 0$ for the entirety of this section.
 \begin{corollary}[Vanishing integrals]
     Let $u \in \SpaceLp{1}_{loc}(I; V)$ be such that:
     \begin{align}
-        \int_I u(t) \varphi(t) ~ d \lambda &= 0 &\text{ for all } \varphi \in C_c^{\infty}(I; \RealNumbers),
+        \int_I u(t) \varphi(t) ~ d \lambda(t) &= 0 &\text{ for all } \varphi \in C_c^{\infty}(I; \RealNumbers),
     \end{align}
     then $u(t) = 0$ for $\lambda$-a.e. $t \in I$.
 \end{corollary}
@@ -173,7 +173,7 @@ Set $I = (0, T)$ for $T > 0$ for the entirety of this section.
 \begin{theorem}[Fundamental theorem of calculus]
     Let $u, v \in \SpaceLp{1}(I; V)$, then $u$ is weakly differentiable with $v = \partial_t u$ if and only if there exists $a \in V$ such that:
     \begin{align}
-        u(t) &= a + \int_0^t v(s) ~ d \lambda &\text{ for } \lambda \text{-a.e.} t \in I.
+        u(t) &= a + \int_0^t v(s) ~ d \lambda(t) &\text{ for } \lambda \text{-a.e.} t \in I.
     \end{align}
 \end{theorem}
 
@@ -243,7 +243,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 
     Moreover, for all $u, v \in \SpaceX(I; V, V^*)$:
     \begin{align}
-        \int_I \langle \partial_t u(t), v(t) \rangle_{V^*, V} ~ d \lambda = - \int_I \langle \partial_t v(t), u(t) \rangle_{V^*, V} ~ d \lambda + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
+        \int_I \langle \partial_t u(t), v(t) \rangle_{V^*, V} ~ d \lambda(t) = - \int_I \langle \partial_t v(t), u(t) \rangle_{V^*, V} ~ d \lambda(t) + \left( u(T), v(T) \right)_W - \left( u(0), v(0) \right)_W.
     \end{align}
 \end{theorem}
 
@@ -289,8 +289,8 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definitio
 \begin{definition}[$b$ and $l$]
     Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
-        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle \partial_t u(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda, \\
-        & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
+        & b(u, y) = \left( u(0), y_0 \right)_W + \int_I \langle \partial_t u(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ d \lambda(t), \\
+        & l(y) = \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda(t).
     \end{align}
 \end{definition}
 
@@ -347,8 +347,8 @@ Following \cite[p.~135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{
 \begin{definition}[$b$ and $l$]
     Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that for all $u \in \SpaceTrial$ and all $y = (y_0, y_1) \in \SpaceTest$:
     \begin{align}
-        b(u, y) &= \left( u(0), y_0 \right)_W + \int_I \left( \langle \partial_t u(t), y_1(t) \rangle_{V^*, V} + a(t; u(t), y_1(t)) \right)~ d \lambda, \\
-        l(y) &= \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda.
+        b(u, y) &= \left( u(0), y_0 \right)_W + \int_I \left( \langle \partial_t u(t), y_1(t) \rangle_{V^*, V} + a(t; u(t), y_1(t)) \right)~ d \lambda(t), \\
+        l(y) &= \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ d \lambda(t).
     \end{align}
 \end{definition}
 
@@ -398,7 +398,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
     \end{align}
     and both \cref{equation:weak_h1} and \cref{equation:weak_h2} are well-posed.
 
-    Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \Lagrange(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
+    Moreover, if $f \in C^0(\overline{I}; V^*)$ and $A \in C^0(\overline{I}; \Linear(V; V^*))$, $u_h \in C^1(\overline{I}; V_h)$.
 \end{proposition}
 
 \subsubsection{Error Analysis}
@@ -497,7 +497,7 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 \begin{definition}[$\lambdaGR_q$]
     For all $u \in C^0(\overline{I}; \RealNumbers)$:
     \begin{align}
-        \int_I u(t) ~ d \lambdaGR_q = \sum_{n \in \TimeIndices} \int_{I_n} u(t) ~ d \lambdaGR_q = \sum_{n \in \TimeIndices} \sum_{i = 0}^q \omega_{n, i} u(t_{n, i}).
+        \int_I u(t) ~ d \lambdaGR_q(t) = \sum_{n \in \TimeIndices} \int_{I_n} u(t) ~ d \lambdaGR_q(t) = \sum_{n \in \TimeIndices} \sum_{i = 0}^q \omega_{n, i} u(t_{n, i}).
     \end{align}
 \end{definition}
 
@@ -509,7 +509,7 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
     be the Lagrange polynomial based on the \acrshort{gr} nodes and associated with the $i$-th node, so that $\Lagrange_i (\zeta_l) = \delta_{i l}$ for all $i, l \in \left\{ 0, \dots, q\right\}$.
 \end{definition}
 
-\begin{definition}[$\InterpolantGR_q$]
+\begin{definition}[$\InterpolantGR_q$] \label{def:interpolant_gr}
     Let $Z \in \left\{V_h, W, V^* \right\}$. Define $\InterpolantGR_q \colon \SpaceHk{1}(I; Z) \rightarrow \SpacePolynomials{q}^b(\TimeMesh; Z)$ as the Lagrange interpolation operator associated with the \acrshort{gr} nodes, such that for all $u \in \SpaceHk{1}(I; Z) \hookrightarrow C^0(\overline{I}; Z)$:
     \begin{align}
         \InterpolantGR_q(u) \Restriction_{I_n} = \sum_{i = 0}^q u(t_{n, i}) \left( \Lagrange_i \circ T_n^{-1} \right).
@@ -524,8 +524,8 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 \begin{proposition}
     For all $p \in \SpacePolynomials{q}^b(\TimeMesh; W)$ and for all $u, v \in \SpaceHk{1}(I; W)$:
     \begin{align}
-        & \int_I \left( u, \InterpolantGR_q(v) \right)_W ~ d \lambdaGR_q = \int_I \left( u, v \right)_W ~ d \lambdaGR_q, \\
-        & \int_I \left( p, \InterpolantGR_q(v) \right)_W ~ d \lambda = \int_I \left( p, v \right)_W ~ d \lambdaGR_q
+        & \int_I \left( u, \InterpolantGR_q(v) \right)_W ~ d \lambdaGR_q(t) = \int_I \left( u, v \right)_W ~ d \lambdaGR_q(t), \\
+        & \int_I \left( p, \InterpolantGR_q(v) \right)_W ~ d \lambda(t) = \int_I \left( p, v \right)_W ~ d \lambdaGR_q(t)
     \end{align}
 \end{proposition}
 
@@ -538,21 +538,21 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 \begin{definition}[$b_{\tau}$ and $l_{\tau}$]
     Let $b_{\tau} \colon \SpaceTrial_{h \tau} \times \SpaceTest_{h \tau} \rightarrow \RealNumbers$ and $l_{\tau} \colon \SpaceTest_{h \tau} \rightarrow \RealNumbers$ be such that for all $u_{h \tau} \in \SpaceTrial_{h \tau}$ and all $y_{h \tau} \in \SpaceTest_{h \tau}$:
     \begin{align}
-        b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q \\
-        & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q, \notag \\
-        l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambdaGR_q.
+        b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q(t) \\
+        & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q(t), \notag \\
+        l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambdaGR_q(t).
     \end{align}
 \end{definition}
 
 \begin{remark}
     \acrshort{gr} gives a quadrature of order $2q$, hence:
     \begin{align}
-        \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q &= \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda &\text{ for all } n \in \TimeIndices.
+        \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambdaGR_q(t) &= \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda(t) &\text{ for all } n \in \TimeIndices.
     \end{align}
     
     The same applies to:
     \begin{align}
-        \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q,
+        \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q(t),
     \end{align}
     if $a$ is time-independent.
 \end{remark}
@@ -568,8 +568,8 @@ In \cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed,
 \begin{proposition}[Localization]
     The $dG(q)$ solution $u_{h \tau}$ of \cref{equation:weak_ht}, if it exists, is such that $u_{h \tau}(0) = \ProjectionOnto{V_h}(u_0)$ and for all $p \in \SpacePolynomials{q}(I_n; V_h)$:
     \begin{align}
-        \int_{I_n} \left( \partial_t u_{h \tau}(t), p(t) \right)_W ~ d \lambda & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \notag \\
-        + \int_{I_n} a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q & = \int_I \langle f(t), p(t) \rangle_{V^*, V} ~ d \lambdaGR_q &\text{ for all } n \in \TimeIndices.
+        \int_{I_n} \left( \partial_t u_{h \tau}(t), p(t) \right)_W ~ d \lambda(t) & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, p(t_{n - 1}^+) \right)_W \notag \\
+        + \int_{I_n} a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambdaGR_q(t) & = \int_I \langle f(t), p(t) \rangle_{V^*, V} ~ d \lambdaGR_q(t) &\text{ for all } n \in \TimeIndices.
     \end{align}
 \end{proposition}
 
@@ -578,7 +578,7 @@ In \cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed,
 
 Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
 \begin{align}
-    \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right).
+    \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right). \label{eq:norm_ht}
 \end{align}
 
 \subsubsection{Stability}
@@ -593,9 +593,9 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \begin{proof}
     By the coercivity of $a$ at the $q + 1$ \acrshort{gr} nodes and the positivity of the weights, it follows that:
     \begin{align*}
-        \int_{I_n} a(t; u_{h \tau}(t), u_{h \tau}(t)) ~ d \lambdaGR_{q + 1} &= \sum_{i = 1}^{q + 1} \omega_{n, i} a(t_{n, i}; u_{h \tau}(t_{n, i}), u_{h \tau}(t_{n, i})) \\
+        \int_{I_n} a(t; u_{h \tau}(t), u_{h \tau}(t)) ~ d \lambdaGR_{q + 1}(t) &= \sum_{i = 1}^{q + 1} \omega_{n, i} a(t_{n, i}; u_{h \tau}(t_{n, i}), u_{h \tau}(t_{n, i})) \\
         &\geq \CoerC{a} \sum_{i = 1}^{q + 1} \omega_{n, i} \Norm{ u_{h \tau}(t_{n, i}) }_V^2 \\
-        &= \CoerC{a} \int_{I_n} \Norm{ u_{h \tau}(t) }_V^2 ~ d \lambda,
+        &= \CoerC{a} \int_{I_n} \Norm{ u_{h \tau}(t) }_V^2 ~ d \lambda(t),
     \end{align*}
     given that the quadrature is of order $2q$.
 
@@ -606,7 +606,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{align*}
     together with \cref{def:time_jumps}:
     \begin{align*}
-        \sum_{n \in \TimeIndices} &\left( \int_{I_n} \left( \partial_t u_{h \tau}(t), u_{h \tau}(t) \right)_W ~ d \lambda + \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
+        \sum_{n \in \TimeIndices} &\left( \int_{I_n} \left( \partial_t u_{h \tau}(t), u_{h \tau}(t) \right)_W ~ d \lambda(t) + \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
         &= \frac12 \sum_{n \in \TimeIndices} \left( \Norm{ u_{h \tau}(t_n) }_W^2 - \Norm{ u_{h \tau}(t_{n - 1}^+) }_W^2 + 2 \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
         &= \frac12 \sum_{n \in \TimeIndices} \left( \Norm{ u_{h \tau}(t_n) }_W^2 + \Norm{ u_{h \tau}(t_{n - 1}) }_W^2 + \Norm{ \llbracket u_{h \tau} \rrbracket_{n - 1} }_W^2 \right) \\
         &= \frac12 \Norm{ u_{h \tau}(T) }_W^2 - \frac12 \Norm{ u_{h \tau}(0) }_W^2 + \frac12 \sum_{n \in \TimeIndices} \Norm{ \llbracket u_{h \tau} \rrbracket_{n - 1} }_W^2.
@@ -622,7 +622,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     Let $Z \in \left\{V_h, W\right\}$. Define $\InterpolantQN \colon \SpaceHk{1}(I_n; Z) \rightarrow \SpacePolynomials{q}(I_n; Z)$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $n \in \TimeIndices$:
     \begin{align}
         \InterpolantQN(u)(t_n) & = u(t_n), \\
-        \int_{I_n} \left( \InterpolantQN(u) - u, p \right)_W ~ d \lambda &= 0 &\text{ for all } p \in \SpacePolynomials{q - 1}(I_n; Z)
+        \int_{I_n} \left( \InterpolantQN(u) - u, p \right)_W ~ d \lambda(t) &= 0 &\text{ for all } p \in \SpacePolynomials{q - 1}(I_n; Z)
     \end{align}
 \end{definition}
 
@@ -634,10 +634,17 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{align}
 \end{definition}
 
-\begin{lemma}[Orthogonality]
+\begin{proposition} \label{prop:interpolant_qt}
+    Set $Z$ as in \cref{def:interpolant_qt}. There exists $C > 0$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $\tau > 0$:
+    \begin{align}
+        \Norm{ u - \InterpolantQT \left( u \right) }_{\SpaceLp{\infty}(I; Z)} \leq C \tau^{q + 1} \Seminorm{ u }_{\SpaceWkp{q + 1}{\infty}(I; Z)}.
+    \end{align}
+\end{proposition}
+
+\begin{lemma}[Orthogonality] \label{lemma:orthogonality}
     For all $u \in \SpaceHk{1}(I; W)$, $y_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; W)$ and all $n \in \TimeIndices$:
     \begin{align}
-        \int_{I_n} \left( \partial_t \left( u - \InterpolantQT(u) \right), y_{\tau} \right)_W ~ d \lambda - \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W = 0.
+        \int_{I_n} \left( \partial_t \left( u - \InterpolantQT(u) \right), y_{\tau} \right)_W ~ d \lambda(t) - \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W = 0.
     \end{align}
 \end{lemma}
 
@@ -653,7 +660,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{align*}
     for all $n \in \TimeIndices$, it follows that:
     \begin{align*}
-        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda &= - \int_{I_n} \left( \delta, \partial_t y_{\tau} \right)_W ~ d \lambda + \left( \delta(t_n), y_{\tau}(t_n) \right)_W - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W \\
+        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda(t) &= - \int_{I_n} \left( \delta, \partial_t y_{\tau} \right)_W ~ d \lambda(t) + \left( \delta(t_n), y_{\tau}(t_n) \right)_W - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W \\
         &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W.
     \end{align*}
 
@@ -667,25 +674,131 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \end{align*}
     hence:
     \begin{align*}
-        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W = \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W.
+        \int_{I_n} \left( \partial_t \delta, y_{\tau} \right)_W ~ d \lambda(t) &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W = \left( \llbracket \InterpolantQT(u) \rrbracket_{n - 1}, y_{\tau}(t_{n - 1}^+) \right)_W.
     \end{align*}
 \end{proof}
 
 Consider a time-independent space approximation operator $\InterpolantH$ to separate the time and space approximations.
 
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_ht}
-    Let $u \in \SpaceX$ be the solution of \cref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \cref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$ and set $\eta$ as in \cref{theorem:estimate_h}, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
+    Let $u \in \SpaceX$ be the solution of \cref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \cref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
     \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W + C C_1(u) \tau^{q + 1} \\
-        & + \frac{C}{\CoerC{a}} \lVert \partial_t \eta \rVert_{\SpaceLp{2}(I; V^*)} + C C_2 \lVert \eta \rVert_{\SpaceLp{\infty}(I; V)}, \notag
+        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert u_0 - \InterpolantH \left( u_0 \right) \rVert_W + C C_1(u) \tau^{q + 1} \label{eq:estimates_ht} \\
+        & + \frac{C}{\CoerC{a}} \lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \rVert_{\SpaceLp{2}(I; V^*)} + C \CoCoR{a} C_2 \lVert u - \InterpolantH \left( u \right) \rVert_{\SpaceLp{\infty}(I; V)}, \notag
     \end{align}
     where:
     \begin{align}
         C_1(u) & = \frac{1}{\CoerC{a}} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
-        C_2^2 & = \CoCoR{a}^2 \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}.
+        C_2^2 & = \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}.
     \end{align}
 \end{theorem}
 
 \begin{proof}
-        
+    Let $y_{h \tau} \in \SpaceX_{h \tau}$, then, by the regularity assumptions on $u$, it follows that:
+    \begin{align*}
+        \left( \partial_t u(t_{n, i}), y_{h \tau} \right)_W + a \left( t_{n, i}; u(t_{n, i}), y_{h \tau} \right) &= \left\langle f(t_{n, i}), y_{h \tau} \right\rangle_{V^*, V},
+    \end{align*}
+    for all $n \in \TimeIndices$ and for all $i \in \left\{ 1, \dots, q + 1\right\}$.
+
+    Hence:
+    \begin{align*}
+        b(u_{h \tau}, y_{h \tau}) &= \left( u_0, y_{h \tau}(0) \right)_W + \int_I \left\langle f, y_{h \tau} \right\rangle_{V^*, V} ~ d \lambdaGR_{q + 1}(t) \\
+        &= \left( u_0, y_{h \tau}(0) \right)_W + \Remainder \left( y_{h \tau} \right) + \int_I \left( \partial_t u, y_{h \tau}\right)_W ~ d \lambda(t) + \int_I a \left( t; u, y_{h \tau}\right) ~ d \lambdaGR_{q + 1}(t),
+    \end{align*}
+    where:
+    \begin{align*}
+        \Remainder \left( y_{h \tau} \right) &= \int_I \left( \partial_t u, y_{h \tau}\right)_W ~ d \lambdaGR_{q + 1}(t) - \int_I \left( \partial_t u, y_{h \tau}\right)_W ~ d \lambda(t).
+    \end{align*}
+
+    Introduce $w_{h \tau} = \InterpolantQT \left( \InterpolantH \left( u \right) \right) \in \SpaceX_{h \tau}$, and set $e_{h \tau} = u_{h \tau} - w_{h \tau}$ and $\eta = u - w_{h \tau}$, then:
+    \begin{align*}
+        b(u_{h \tau} - w_{h \tau}, y_{h \tau}) &= \left( u_0 - w_{h \tau}(0), y_{h \tau}(0) \right)_W + \Remainder \left( y_{h \tau} \right) \\
+        &+ \sum_{n \in \TimeIndices} \int_{I_n} \left( \partial_t \left( u - w_{h \tau} \right), y_{h \tau}\right)_W ~ d \lambda(t) - \sum_{n \in \TimeIndices}  \left( \llbracket w_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W \\
+        &+ \int_I a \left( t; u - w_{h \tau}, y_{h \tau}\right) ~ d \lambdaGR_{q + 1}(t).
+    \end{align*}
+
+    By \cref{def:interpolant_qt}, $w_{h \tau}(0) = \InterpolantH \left( u_0 \right) \in V$, and by \cref{lemma:orthogonality} it follows that, for all $n \in \TimeIndices$:
+    \begin{align*}
+        \int_{I_n} &\left( \partial_t w_{h \tau}, y_{h \tau}\right)_W ~ d \lambda(t) + \left( \llbracket w_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W \\
+        &= \int_{I_n} \left( \partial_t \left( \InterpolantQT \left( \InterpolantH \left( u \right) \right) \right), y_{h \tau}\right)_W ~ d \lambda(t) + \left( \llbracket \InterpolantQT \left( \InterpolantH \left( u \right) \right) \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W \\
+        &= \int_{I_n} \left( \partial_t \left( \InterpolantH \left( u \right) \right), y_{h \tau}\right)_W ~ d \lambda(t) = \int_{I_n} \left( \InterpolantH \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t).
+    \end{align*}
+
+    Hence:
+    \begin{align*}
+        b(e_{h \tau}, y_{h \tau}) &= \left( u_0 - \InterpolantH \left( u_0 \right), y_{h \tau}(0) \right)_W + \Remainder \left( y_{h \tau} \right) \\
+        &+ \int_I \left( \partial_t u - \InterpolantH \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t) + \int_I a \left( t; \eta, y_{h \tau}\right) ~ d \lambdaGR_{q + 1}(t).
+    \end{align*}
+
+    Regarding the terms in the right-hand side, it holds that:
+    \begin{align*}
+        \left\lvert \left( u_0 - \InterpolantH \left( u_0 \right), y_{h \tau}(0) \right)_W \right\rvert \leq \Norm{ u_0 - \InterpolantH \left( u_0 \right) }_W \Norm{ y_{h \tau}(0) }_W.
+    \end{align*}
+
+    Moreover, since:
+    \begin{align*}
+        \int_I \left( \partial_t u, y_{h \tau}\right)_W ~ d \lambdaGR_{q + 1}(t) = \int_I \left( \InterpolantGR_q \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t),
+    \end{align*}
+    by \cref{def:interpolant_gr}, it follows that:
+    \begin{align*}
+        \Remainder \left( y_{h \tau} \right) = \int_I \left( \InterpolantGR_q \left( \partial_t u \right) - \partial_t u, y_{h \tau}\right)_W ~ d \lambda(t),
+    \end{align*}
+    thus:
+    \begin{align*}
+        \left\lvert \Remainder \left( y_{h \tau} \right) \right\rvert &\leq \Norm{ \InterpolantGR_q \left( \partial_t u \right) - \partial_t u }_{\SpaceLp{2}(I; V^*)} \Norm{ y_{h \tau} }_{\SpaceLp{2}(I; V)} \\
+        &\leq C \tau^{q + 1} \Seminorm{u}_{\SpaceHk{q + 2}(I; V^*)} \Norm{ y_{h \tau} }_{\SpaceLp{2}(I; V)}.
+    \end{align*}
+
+    Furthermore:
+    \begin{align*}
+        \left\lvert \int_I \left( \partial_t u - \InterpolantH \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t) \right\rvert &\leq \Norm{ \partial_t u - \InterpolantH \left( \partial_t u \right) }_{\SpaceLp{2}(I; V^*)} \Norm{ y_{h \tau} }_{\SpaceLp{2}(I; V)}.
+    \end{align*}
+
+    Additionally, by the commutation properties of $\InterpolantQT$ and $\InterpolantH$, the stability of $\InterpolantH$, and by \cref{prop:interpolant_qt}, it follows that for all $n \in \TimeIndices$ and for all $i \in \left\{ 1, \dots, q + 1\right\}$:
+    \begin{align*}
+        \Norm{ \eta(t_{n, i}) }_V &\leq \Norm{ \left( u - \InterpolantH \left( u \right) \right) \left( t_{n, i} \right) }_V + \Norm{ \InterpolantH }_{\Linear \left(V; V_h \right)} \Norm{ \left( u - \InterpolantQT \left( u \right) \right) \left( t_{n, i} \right) }_V \\
+        &\leq \Norm{ u - \InterpolantH \left( u \right) }_{\SpaceLp{\infty}(I; V)} + C \tau^{q + 1} \Seminorm{ u }_{\SpaceWkp{q + 1}{\infty}(I; V)} = C(u).
+    \end{align*}
+
+    Thus, by the boundedness of $a$, the Cauchy-Schwarz inequality, the facts that the quadrature is of order $2q$ and:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} \sum_{i = 1}^{q + 1} \omega_{n, i} = T,
+    \end{align*}
+    it follows that:
+    \begin{align*}
+        \left\lvert \int_I a \left( t; \eta, y_{h \tau}\right) ~ d \lambdaGR_{q + 1}(t) \right\rvert &\leq \sum_{n \in \TimeIndices} \sum_{i = 1}^{q + 1} \omega_{n, i} \ContC{a} C(u) \Norm{ y_{h \tau} \left( t_{n, i} \right)}_V \\
+        &\leq \ContC{a} T^{\nicefrac12} C(u) \Norm{ y_{h \tau} }_{\SpaceLp{2}(I; V)}.
+    \end{align*}
+
+    Combining these estimates, and recalling \cref{eq:norm_ht} and the definition of $C_1(u)$:
+    \begin{align*}
+        \sup_{y_{h \tau} \in \SpaceX_{h \tau}} \frac{ \left\lvert b(e_{h \tau}, y_{h \tau}) \right\rvert }{\Norm{y_{h \tau}}_{\SpaceX_{h \tau}}} &\leq \sqrt{2 \CoerC{a}} \Norm{ u_0 - \InterpolantH \left( u_0 \right) }_W + C \CoerC{a} \tau^{q + 1} C_1(u) \\
+        &+ \Norm{ \partial_t u - \InterpolantH \left( \partial_t u \right) }_{\SpaceLp{2}(I; V^*)} + \ContC{a} T^{\nicefrac12} \Norm{ u - \InterpolantH \left( u \right) }_{\SpaceLp{\infty}(I; V)}.
+    \end{align*}
+
+    Furthermore, by \cref{eq:b_coercivity}, it follows that:
+    \begin{align*}
+        \CoerC{a} \Norm{e_{h \tau}}_{\SpaceX_{h \tau}} \leq \sup_{y_{h \tau} \in \SpaceX_{h \tau}} \frac{ \left\lvert b(e_{h \tau}, y_{h \tau}) \right\rvert }{\Norm{y_{h \tau}}_{\SpaceX_{h \tau}}},
+    \end{align*}
+    that is, together with the definition of $\CoCoR{a}$:
+    \begin{align*}
+        \Norm{e_{h \tau}}_{\SpaceX_{h \tau}} &\leq \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \Norm{ u_0 - \InterpolantH \left( u_0 \right) }_W + C \CoerC{a} \tau^{q + 1} C_1(u) \\
+        &+ \frac{1}{\CoerC{a}} \Norm{ \partial_t u - \InterpolantH \left( \partial_t u \right) }_{\SpaceLp{2}(I; V^*)} + \CoCoR{a} T^{\nicefrac12} \Norm{ u - \InterpolantH \left( u \right) }_{\SpaceLp{\infty}(I; V)}.
+    \end{align*}
+
+    Regarding $\eta$, the definition of the time scales, yields:
+    \begin{align*}
+        \Norm{ \eta }_{\SpaceX_{h \tau}} \leq \Norm{ \eta }_{\SpaceLp{2}(I; V)} + C \frac{\iota_{V, W}}{\sqrt{\CoerC{a}}} \Norm{ \eta }_{\SpaceLp{\infty}(I; V)} \leq C C_2 \Norm{ \eta }_{\SpaceLp{\infty}(I; V)}.
+    \end{align*}
+
+    Similarly:
+    \begin{align*}
+        \Norm{ \eta }_{\SpaceLp{\infty}(I; V)} \leq \Norm{ u - \InterpolantH \left( u \right) }_{\SpaceLp{\infty}(I; V)} + C \tau^{q + 1} \Seminorm{u}_{\SpaceWkp{q + 1}{\infty}(I; V)}.
+    \end{align*}
+
+    Finally, the triangle inequality implies that:
+    \begin{align*}
+        \Norm{u - u_{h \tau}}_{\SpaceX_{h \tau}} &\leq \Norm{e_{h \tau}}_{\SpaceX_{h \tau}} + \Norm{ \eta }_{\SpaceX_{h \tau}},
+    \end{align*}
+    concluding the proof by recovering \cref{eq:estimates_ht}.
 \end{proof}
