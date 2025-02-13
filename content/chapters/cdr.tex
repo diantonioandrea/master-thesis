@@ -360,7 +360,7 @@ For what follows, fix the following notations:
 \begin{align} % [!] To be renamed.
     \lVert w \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \left\{ w \right\}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
     \lVert w \rVert_{E, n}^2 &= \Diffusion \lvert w \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert w \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
-    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right),
+    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right), \notag
 \end{align}
 where:
 \begin{align}
@@ -516,7 +516,7 @@ then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
     B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
 \end{align}
 
-\begin{definition}[$\theta_n(\eta; h, \Diffusion)$]
+\begin{definition}[$\theta_n(\eta; h, \Diffusion)$] \label{def:theta}
     Define $\theta_n(\eta; h, \Diffusion)$ as:
     \begin{align} % [!] Check \eta_n^-
         \theta_n(\eta; h, \Diffusion) &= \lVert \eta \rVert_{E, n} + \sqrt{\Diffusion} h \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
@@ -545,7 +545,7 @@ Finally, observing that:
     \lVert \Error \rVert_T^2 &\leq 2 \left( \lVert \xi \rVert_T^2 + \lVert \eta \rVert_T^2 \right),
 \end{align}
 consider the following abstract error estimate:
-\begin{lemma}
+\begin{lemma} \label{lemma:abstract_estimates}
     \begin{align}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)} + \lVert \eta \rVert_T^2, \notag \\ 
@@ -744,7 +744,7 @@ Assume, now, that the solution is sufficiently regular, that is:
 
 The main result of the error analysis can now be stated.
 \begin{theorem} \label{theorem:estimates_ht}
-    Let assumptions \cref{equation:ass_1,equation:ass_2,equation:ass_3,equation:ass_4,equation:ass_5,equation:ass_6,equation:ass_7,equation:ass_8,equation:ass_9,equation:ass_h,equation:ass_hd,equation:ass_ht} be satisfied and let $u \in \SpaceRegular$ be the solution to \cref{equation:cdr} with the initial-boundary conditions \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, then there exists $C > 0$\footnote{Note that $C$ does not depend on $h, \tau, \Diffusion$.} such that $\Error = \AppU - u$ satisfies what follows:
+    Let assumptions in \cref{equation:ass_1,equation:ass_2,equation:ass_3,equation:ass_4,equation:ass_5,equation:ass_6,equation:ass_7,equation:ass_8,equation:ass_9,equation:ass_h,equation:ass_hd,equation:ass_ht} be satisfied and let $u \in \SpaceRegular$ be the solution to \cref{equation:cdr} with the initial-boundary conditions in \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, then there exists $C > 0$, independent of $h, \tau, \Diffusion$, such that $\Error = \AppU - u$ satisfies what follows:
     \begin{align}
         \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
         &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right). \notag
@@ -753,5 +753,31 @@ The main result of the error analysis can now be stated.
 This estimate holds true even for $\Diffusion = 0$.
 
 \begin{proof}
-        
+    From \cref{lemma:abstract_estimates}:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
+    \end{align*}
+
+    It also follows, by \cref{def:theta} and the Cauchy-Schwarz inequality, that:
+    \begin{align*}
+        \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \lVert \eta \rVert_{E, n}^2 + \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
+    \end{align*}
+    where:
+    \begin{align*}
+        \lVert \eta \rVert_{E, n}^2 &= \Diffusion \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert \eta \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(\eta, \eta) \\
+        &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert \eta \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert \eta \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right).
+    \end{align*}
+
+    Hence:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt + C \sum_{n \in \TimeIndices} \int_{I_n} \lVert \eta \rVert_{\SpaceLp{2}(\Omega)}^2 ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion J^{\kappa}_{h, n}(\eta, \eta) ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( \lVert \eta \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert \eta \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) ~ dt \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
+    \end{align*}
+
+    % [!] To be completed.
 \end{proof}
