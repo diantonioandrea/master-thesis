@@ -1,6 +1,6 @@
-\section{Implementation Overview}
-
 This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \cref{chapter:cdr}. It is intended as a review of the implementation rather than a comprehensive guide detailing each component.
+
+\section{Implementation Overview}
 
 The algorithm has been implemented as part of a comprehensive library, \href{https://github.com/diantonioandrea/ivo}{ivo}, named after \href{https://en.wikipedia.org/wiki/Ivo_Babuška}{Ivo Babuška}, and written entirely in \lstinline{C++23} from scratch for this thesis.
 
@@ -35,13 +35,9 @@ Let $\Omega \subset \RealNumbersTo{2}$ be a polygonal (and hence bounded) domain
 The function used to generate polygonal meshes is \lstinline{mesher2}, defined as follows:
 
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-
-    std::vector<Polygon21> mesher2(
-        const Polygon21 &, 
-        const Natural &);
-
-}
+std::vector<Polygon21> mesher2(
+    const Polygon21 &, 
+    const Natural &)
 \end{lstlisting}
 
 This method first randomly generates $\nSpaceIndices$ points in $\Omega$ and computes their Voronoi cells by iteratively subdividing $\Omega$ using the bisectors corresponding to each point.
@@ -56,33 +52,30 @@ Finally, postprocessing is performed by collapsing edges that are too short, as 
 The following methods constitute the implementation of \lstinline{mesher2}:
 
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+Polygon21 reduce2(
+    const Polygon21 &, 
+    const Line21 &, 
+    const Point21 &)
 
-	Polygon21 reduce2(
-		const Polygon21 &, 
-		const Line21 &, 
-		const Point21 &);
+std::vector<Point21> random2(
+    const Polygon21 &, 
+    const Natural &)
 
-	std::vector<Point21> random2(
-		const Polygon21 &, 
-		const Natural &);
+std::vector<Polygon21> voronoi2(
+    const Polygon21 &, 
+    const std::vector<Point21> &)
 
-	std::vector<Polygon21> voronoi2(
-		const Polygon21 &, 
-		const std::vector<Point21> &);
+std::vector<Polygon21> voronoi2(
+    const Polygon21 &, 
+    const Natural &)
 
-	std::vector<Polygon21> voronoi2(
-		const Polygon21 &, 
-		const Natural &);
+void lloyd2(
+    const Polygon21 &, 
+    std::vector<Polygon21> &)
 
-	void lloyd2(
-		const Polygon21 &, 
-		std::vector<Polygon21> &);
-
-	void collapse2(
-		const Polygon21 &, 
-		std::vector<Polygon21> &);
-}
+void collapse2(
+    const Polygon21 &, 
+    std::vector<Polygon21> &)
 \end{lstlisting}
 
 \lstinline{random2} is responsible for generating randomly placed points within a polygon.
@@ -96,16 +89,12 @@ Finally, \lstinline{lloyd2} relaxes the diagram by iteratively invoking \lstinli
 \newpage
 Moreover, two additional definitions of \lstinline{mesher2} are provided to respectively load and dump polygonal meshes to a file, thereby avoiding the need to construct a new mesh at each execution:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+std::vector<Polygon21> mesher2(
+    const std::string &);
 
-	std::vector<Polygon21> mesher2(
-		const std::string &);
-
-	void mesher2(
-		const std::string &, 
-		const std::vector<Polygon21> &);
-
-}
+void mesher2(
+    const std::string &, 
+    const std::vector<Polygon21> &)
 \end{lstlisting}
 
 \subsubsection{A Code Snippet}
@@ -121,47 +110,35 @@ Let $I \subset \RealNumbers$ be an open interval, and let $\SpaceMesh$ be a poly
 
 The function used to generate uniform partitions is \lstinline{mesher1}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-
-    std::vector<Real> mesher1(
-        const Real &, 
-        const Real &, 
-        const Natural &);
-
-}
+std::vector<Real> mesher1(
+    const Real &, 
+    const Real &, 
+    const Natural &)
 \end{lstlisting}
 
 This method generates $\nTimeIndices + 1$ uniformly spaced points in $I$, defining its partition $\TimeMesh$.
 
 The function used to generate prismatic meshes, formally $\TimeMesh \times \SpaceMesh$, is the constructor of \lstinline{Mesh21}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-
-    Mesh21(
-        const std::vector<Polygon21> &, 
-        const std::vector<Real> &, 
-        const Natural &p = 1, 
-        const Natural &q = 1);
-
-}
+Mesh21(
+    const std::vector<Polygon21> &, 
+    const std::vector<Real> &, 
+    const Natural &p = 1, 
+    const Natural &q = 1)
 \end{lstlisting}
 
 This method, by invoking the constructors of \lstinline{Element21} and \lstinline{Neighbour21}:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+Element21(
+    const Polygon21 &, 
+    const Real &, 
+    const Natural &, 
+    const Natural &)
 
-    Element21(
-        const Polygon21 &, 
-        const Real &, 
-        const Natural &, 
-        const Natural &);
-
-    Neighbour21(
-        const Integer &, 
-        const Integer &, 
-        const std::vector<std::array<Integer, 2>> &);
-
-}
+Neighbour21(
+    const Integer &, 
+    const Integer &, 
+    const std::vector<std::array<Integer, 2>> &)
 \end{lstlisting}
 and relying solely on geometric information, constructs the mesh elements and the neighboring structure, where the former serve as wrappers for the element properties, and the latter is a collection of indices mapping each element to its neighbors.
 
@@ -176,16 +153,10 @@ The polynomial basis chosen for both space and time consists of Legendre polynom
 
 The function used to generate one-dimensional Legendre polynomials is \lstinline{legendre}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-    namespace internal {
-
-        Vector<Real> legendre(
-            const Vector<Real> &, 
-            const Natural &, 
-            const Natural &k = 0);
-
-    }
-}
+Vector<Real> legendre(
+    const Vector<Real> &, 
+    const Natural &, 
+    const Natural &k = 0)
 \end{lstlisting}
 
 This method returns the evaluation of the $k$-th derivative of a Legendre polynomial of order $n$ using the following formula:
@@ -195,19 +166,15 @@ This method returns the evaluation of the $k$-th derivative of a Legendre polyno
 
 Separate basis functions for space and time can be constructed using the following functions:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-    
-    std::array<Matrix<Real>, 2> basis_t(
-        const Mesh21 &, 
-        const Natural &, 
-        const Vector<Real> &);
+std::array<Matrix<Real>, 2> basis_t(
+    const Mesh21 &, 
+    const Natural &, 
+    const Vector<Real> &)
 
-    std::array<Matrix<Real>, 3> basis_xy(
-        const Mesh21 &, 
-        const Natural &, 
-        const std::array<Vector<Real>, 2> &);
-
-}
+std::array<Matrix<Real>, 3> basis_xy(
+    const Mesh21 &, 
+    const Natural &, 
+    const std::array<Vector<Real>, 2> &)
 \end{lstlisting}
 
 \lstinline{basis_t} returns the evaluations of the one-dimensional Legendre polynomials at the reference time nodes, including the appropriate scaling due to the change of variable, determined by the interval mapping.
@@ -221,31 +188,21 @@ The quadrature method of choice is the \acrfull{gl} quadrature, which, at a fixe
 
 The function used to generate \acrshort{gl} quadrature nodes and weights over a given interval is \lstinline{gauss1}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-    namespace internal {
-
-        std::array<Vector<Real>, 2> gauss1(
-            const Natural &, 
-            const Real &, 
-            const Real &);
-
-    }
-}
+std::array<Vector<Real>, 2> gauss1(
+    const Natural &, 
+    const Real &, 
+    const Real &);
 \end{lstlisting}
 which is actually used wrapped in the following methods:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+std::array<Vector<Real>, 2> quadrature1t(
+    const Natural &)
 
-    std::array<Vector<Real>, 2> quadrature1t(
-        const Natural &);
+std::array<Vector<Real>, 2> quadrature1x(
+    const Natural &)
 
-    std::array<Vector<Real>, 2> quadrature1x(
-        const Natural &);
-
-    std::array<Vector<Real>, 3> quadrature2xy(
-        const Natural &);
-
-}
+std::array<Vector<Real>, 3> quadrature2xy(
+    const Natural &)
 \end{lstlisting}
 
 \lstinline{quadrature1t} returns the \acrshort{gl} quadrature nodes and weights over the reference time interval $\left[ -1, 1 \right]$, used for all time integrals.
@@ -261,23 +218,19 @@ Even though the mesh consists of polygons, quadrature is performed over subtrian
 
 The equation, or the collection of the convection-diffusion-reaction parameters, and the initial and boundary data are all grouped in separate instances, built by the constructors of \lstinline{Equation}, \lstinline{Initial}, and \lstinline{Data}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+Equation(
+    const 
+        std::function<std::array<Real, 2> (Real, Real, Real)> &, 
+    const Real &, 
+    const std::function<Real (Real, Real, Real)> &)
 
-    Equation(
-        const 
-            std::function<std::array<Real, 2> (Real, Real, Real)> &, 
-        const Real &, 
-        const std::function<Real (Real, Real, Real)> &);
+Initial(
+    const std::function<Real (Real, Real)> &)
 
-    Initial(
-        const std::function<Real (Real, Real)> &);
-
-    Data(
-        const std::function<Real (Real, Real, Real)> &, 
-        const std::function<Real (Real, Real, Real)> &, 
-        const std::function<Real (Real, Real, Real)> &);
-
-}
+Data(
+    const std::function<Real (Real, Real, Real)> &, 
+    const std::function<Real (Real, Real, Real)> &, 
+    const std::function<Real (Real, Real, Real)> &)
 \end{lstlisting}
 
 \newpage
@@ -287,47 +240,37 @@ The construction of the stiffness matrix and of the forcing vector, who make up 
 
 The functions that construct the stiffness matrix and the forcing vector are, respectively, \lstinline{stiffness} and \lstinline{forcing}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
+Sparse<Real> stiffness(
+    const Mesh21 &mesh, 
+    const Equation &equation)
 
-    Sparse<Real> stiffness(
-        const Mesh21 &mesh, 
-        const Equation &equation)
-
-    Vector<Real> forcing(
-        const Mesh21 &mesh, 
-        const Equation &equation, 
-        const Data &data)
-
-}
+Vector<Real> forcing(
+    const Mesh21 &mesh, 
+    const Equation &equation, 
+    const Data &data)
 \end{lstlisting}
 These methods operate by iterating over all elements of a mesh and performing the quadratures defined in \cref{sec:full_discretization}.
 
 The evaluation points for the quadratures and basis construction are obtained through the following method, which is overloaded for time intervals, space intervals, and space triangles:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-    namespace internal {
+std::tuple<Vector<Real>, Real> reference_to_element(
+    const Mesh21 &, 
+    const Natural &, 
+    const Vector<Real> &)
 
-        std::tuple<Vector<Real>, Real> reference_to_element(
-            const Mesh21 &, 
-            const Natural &, 
-            const Vector<Real> &);
+std::tuple<std::array<Vector<Real>, 2>, Real> 
+    reference_to_element(
+        const Mesh21 &, 
+        const Natural &, 
+        const Natural &, 
+        const std::array<Vector<Real>, 2> &)
 
-        std::tuple<std::array<Vector<Real>, 2>, Real> 
-            reference_to_element(
-                const Mesh21 &, 
-                const Natural &, 
-                const Natural &, 
-                const std::array<Vector<Real>, 2> &);
-
-        std::tuple<std::array<Vector<Real>, 2>, Vector<Real>, Real> 
-            reference_to_element(
-                const Mesh21 &, 
-                const Natural &, 
-                const Natural &, 
-                const Vector<Real> &);
-
-    }
-}
+std::tuple<std::array<Vector<Real>, 2>, Vector<Real>, Real> 
+    reference_to_element(
+        const Mesh21 &, 
+        const Natural &, 
+        const Natural &, 
+        const Vector<Real> &)
 \end{lstlisting}
 This method, given a reference to a specific geometry, maps the reference points to the corresponding domain, preparing them for basis evaluation and quadrature scaling.
 
@@ -336,15 +279,11 @@ This method, given a reference to a specific geometry, maps the reference points
 
 The function that solves the linear system associated to the convection-diffusion-reaction problem is \lstinline{solve}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-
-    Vector<Real> solve(
-        const Mesh21 &, 
-        const Sparse<Real> &, 
-        const Vector<Real> &, 
-        const Initial &);
-
-}
+Vector<Real> solve(
+    const Mesh21 &, 
+    const Sparse<Real> &, 
+    const Vector<Real> &, 
+    const Initial &)
 \end{lstlisting}
 
 \newpage
@@ -354,17 +293,13 @@ Anticipating the contents of \cref{section:error_results}, the error analysis co
 
 The function used to evaluate the various components of the error analysis is the constructor of \lstinline{Error}, defined as follows:
 \begin{lstlisting}[style=cpp]
-namespace ivo {
-
-    Error(
-        const Mesh21 &, 
-        const Equation &, 
-        const Vector<Real> &, 
-        const std::function<Real (Real, Real, Real)> &, 
-        const 
-            std::function<std::array<Real, 2> (Real, Real, Real)> &);
-
-}
+Error(
+    const Mesh21 &, 
+    const Equation &, 
+    const Vector<Real> &, 
+    const std::function<Real (Real, Real, Real)> &, 
+    const 
+        std::function<std::array<Real, 2> (Real, Real, Real)> &)
 \end{lstlisting}
 
-This method, similarly to \lstinline{stiffness} and \lstinline{forcing}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error over the entire time interval.
+This method, similarly to \lstinline{stiffness} and \lstinline{forcing}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
