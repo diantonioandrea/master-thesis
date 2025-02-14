@@ -2,7 +2,7 @@
 
 This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \cref{chapter:cdr}. It is intended as a review of the implementation rather than a comprehensive guide detailing each component.
 
-The algorithm has been implemented as part of a comprehensive library, \href{https://github.com/diantonioandrea/ivo}{ivo}\footnote{Named after \href{https://en.wikipedia.org/wiki/Ivo_Babuška}{Ivo Babuška}.}, which was written entirely in \lstinline{C++23} from scratch for this thesis.
+The algorithm has been implemented as part of a comprehensive library, \href{https://github.com/diantonioandrea/ivo}{ivo}, named after \href{https://en.wikipedia.org/wiki/Ivo_Babuška}{Ivo Babuška}, and written entirely in \lstinline{C++23} from scratch for this thesis.
 
 The library has been designed to include all the necessary components for the implementation, use, and testing of the algorithm. These components comprise geometric methods and objects in $\RealNumbersTo{2}$ and $\RealNumbersTo{3}$ for mesh generation, dense and sparse matrices for problem formulation, and linear solvers for its solution, as well as additional linear algebra routines and utilities for the definition and manipulation of the principal equation driving the algorithm.
 
@@ -366,3 +366,5 @@ namespace ivo {
 
 }
 \end{lstlisting}
+
+This method, similarly to \lstinline{stiffness} and \lstinline{forcing}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error over the entire time interval.
