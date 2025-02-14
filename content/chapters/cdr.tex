@@ -309,7 +309,8 @@ Note that this is essentially the same definition given in \cref{sec:space_discr
 \begin{definition}[$\SpaceSolutionFull$]
     Let $q \geq 1$ be an integer, then:
     \begin{align} % [!] To be fixed.
-        \SpaceSolutionFull = \left\{ v \in \SpaceLp{2}(I \times \Omega) \text{ such that } v \Restriction_{I_n} = \sum_{i = 0}^q t^i u_i \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
+        \SpaceSolutionFull = \left\{ v \in \SpaceLp{2}(I \times \Omega) \text{ such that } v \Restriction_{I_n} = \sum_{i = 0}^q t^i u_i, \right. \\ 
+        \left. \vphantom{\sum_{i = 0}^q} \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
     \end{align}
 \end{definition}
 
@@ -396,7 +397,8 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
         b_{h, n} \left( w, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient w \right) w ~ d \omega(\Vector{x}) - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ w \right] w ~ d \sigma(\Vector{x}) \\
         &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
         &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w - w^- \right) w ~ d \sigma(\Vector{x}),
+        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
+        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w - w^- \right) w ~ d \sigma(\Vector{x}),
     \end{align*}
     and, by $\partial K_i = \partial K_i^- \cup \partial K_i^+$:
     \begin{align*}
