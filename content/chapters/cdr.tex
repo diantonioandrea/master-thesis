@@ -710,28 +710,28 @@ Assume, now, that the solution is sufficiently regular, that is:
     for all $w \in \SpaceHk{1}(\Omega, \Omega_{h, n})$, for all $K \in \Omega_{h, n}$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
-\begin{lemma}
+\begin{lemma} \label{lemma:bounds}
     Assume that there exist $\BoundHT, \BoundHTVariant > 0$ such that:
     \begin{align}
         \frac{1}{\BoundHTVariant} h_K &\leq \tau_n \leq \BoundHT h_K &\text{ for all } K \in \Omega_{h, n} \text{ and for all } n \in \TimeIndices, \label{equation:ass_ht}
     \end{align}
     then:
     \begin{align}
-        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2\\
+        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_1} \\
         &+ 3 \BoundH^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
-        \TimeIntN{\Norm{\eta}_{\SpaceLp{2}(\Omega)}^2} & \leq 3 \BoundInterp^2 h^{2p + 2} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \TimeIntN{\Norm{\eta}_{\SpaceLp{2}(\Omega)}^2} & \leq 3 \BoundInterp^2 h^{2p + 2} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_2} \\
         &+ 3 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
-        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \Norm{\eta}_{\SpaceLp{2}(K_i)}^2 } &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \Norm{\eta}_{\SpaceLp{2}(K_i)}^2 } &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_3} \\
         &+  3 \BoundHT^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
-        \TimeIntN{J_{h, n}(\eta, \eta)} &\leq 6 \BoundTrace \BoundInterp^2 \BoundDeg h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \TimeIntN{J_{h, n}(\eta, \eta)} &\leq 6 \BoundTrace \BoundInterp^2 \BoundDeg h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_4} \\
         &+ 3 \BoundPoly^2 \BoundQVariant \BoundDeg \tau_n^{2q} \left( 3 \BoundHT^2 \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 \right. \notag \\
         &+ \left.\BoundH^2 \tau_n^2 \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right), \notag \\
-        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} \left( \Norm{\eta}_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{\left[ \eta \right]}_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) } &\leq 3 \BoundTrace \BoundInterp^2 \BoundC{\Convection} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \TimeIntN{ \sum_{i \in \SpaceTimeIndices} \left( \Norm{\eta}_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{\left[ \eta \right]}_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) } &\leq 3 \BoundTrace \BoundInterp^2 \BoundC{\Convection} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_5} \\
         &+ \frac{3}{2} \BoundTrace \BoundPoly^2 \BoundQVariant \BoundC{\Convection} \tau_n^{2q + 1} \left( 3 \BoundHT \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 \right. \notag \\
         &+ \left. \BoundH^2 h \tau_n \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right), \notag \\
-        \TimeIntN{ \Seminorm{\eta}_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 } &\leq 3 \BoundInterp^2 h^{2 \left( p - 1 \right)} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \TimeIntN{ \Seminorm{\eta}_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 } &\leq 3 \BoundInterp^2 h^{2 \left( p - 1 \right)} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_6} \\
         &+ 3 \BoundH^2 \BoundInverse^2 \BoundPoly^2 \BoundQVariant \BoundHT^2 \tau_n^{2q} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
-        \sum_{n = 1}^{\nTimeIndices - 1} \Norm{\eta_n^-}_{\SpaceLp{2}(\Omega)}^2 &\leq \BoundInterp^2 \BoundHTVariant T h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2,
+        \sum_{n = 1}^{\nTimeIndices - 1} \Norm{\eta_n^-}_{\SpaceLp{2}(\Omega)}^2 &\leq \BoundInterp^2 \BoundHTVariant T h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2, \label{eq:bound_7}
     \end{align}
     for all $n \in \TimeIndices$, where:
     \begin{align}
@@ -779,5 +779,16 @@ This estimate holds true even for $\Diffusion = 0$.
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
-    % [!] To be completed.
+    From \cref{lemma:bounds}, by \cref{eq:bound_1,eq:bound_2,eq:bound_3,eq:bound_4,eq:bound_5,eq:bound_6,eq:bound_7}:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        &+ C \sum_{n \in \TimeIndices} \tau_n^{2 q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right) \\
+        &+ C h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2.
+    \end{align*}
+
+    Finally, owning to the regularity assumptions on $u$:
+    \begin{align*}
+        \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
+        &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right).
+    \end{align*}
 \end{proof}
