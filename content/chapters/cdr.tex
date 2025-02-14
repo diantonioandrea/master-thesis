@@ -504,7 +504,7 @@ It follows, then, the derivation of error estimates in terms of the $\Interpolan
     \end{align}
 \end{lemma}
 
-Note that, by using, in general, different triangulations on different time levels, $\left\{ \AppU - \InterpolantPQ u \right\}_n \notin \SpaceSolution^p_{h, n}$.
+Note that, by using different triangulations on different time levels, $\left\{ \AppU - \InterpolantPQ u \right\}_n \notin \SpaceSolution^p_{h, n}$.
 
 Fix, now, the following notation\footnote{Note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error.}:
 \begin{align}
@@ -546,10 +546,11 @@ Finally, observing that:
 \end{align}
 consider the following abstract error estimate:
 \begin{lemma} \label{lemma:abstract_estimates}
+    The following holds:
     \begin{align}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)} + \lVert \eta \rVert_T^2, \notag \\ 
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \label{eq:abstract_estimates_2} \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
     \end{align}
 \end{lemma}
@@ -562,6 +563,7 @@ consider the following abstract error estimate:
 This section investigates the approximation properties of $\InterpolantPQ$ in order to provide estimates of $\Error$ in terms of $h$ and $\tau$.
 
 \begin{lemma}
+    It holds that:
     \begin{align}
         \InterpolantPQ u \Restriction_{I_n} = \InterpolantPQ \left( \InterSol u \right) \Restriction_{I_n}.
     \end{align}
@@ -663,12 +665,14 @@ Then, \cref{lemma:legendre_interpolant} implies:
 \end{lemma}
 
 \begin{lemma}
+    It holds that:
     \begin{align}
         \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}^2
     \end{align}
 \end{lemma}
 
 \begin{lemma}
+    The following holds:
     \begin{align}
         \lVert u - \InterpolantPQ u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterPolyN \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
         &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \InterSol u \right) - \partial_t w \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
@@ -753,13 +757,13 @@ The main result of the error analysis can now be stated.
 This estimate holds true even for $\Diffusion = 0$.
 
 \begin{proof}
-    From \cref{lemma:abstract_estimates}:
+    From \cref{lemma:abstract_estimates}, by \cref{eq:abstract_estimates_2}:
     \begin{align*}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
-    It also follows, by \cref{def:theta} and the Cauchy-Schwarz inequality, that:
+    It also follows, by \cref{def:theta} and the \acrshort{cs} inequality, that:
     \begin{align*}
         \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \lVert \eta \rVert_{E, n}^2 + \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
     \end{align*}
@@ -783,10 +787,11 @@ This estimate holds true even for $\Diffusion = 0$.
     \begin{align*}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
         &+ C \sum_{n \in \TimeIndices} \tau_n^{2 q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right) \\
-        &+ C h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2.
+        &+ C h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2,
     \end{align*}
+    where only the lowest-order terms are retained.
 
-    Finally, owning to the regularity assumptions on $u$:
+    Finally, owing to the regularity assumptions on $u$:
     \begin{align*}
         \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
         &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right).
