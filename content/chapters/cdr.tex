@@ -1,6 +1,8 @@
 \section{Setting and Strong Formulation}
 
-Following \cite{Feistauer2004}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain\footnote{Consider the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.} and $T > 0$ so that $I = \left( 0, T\right)$.
+Following \cite{Feistauer2004}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain and $T > 0$ so that $I = \left( 0, T\right)$.
+
+Consider, in what follows, the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.
 
 To fix the notation, let $\lambda$ denote the Lebesgue measure on $\RealNumbers$ and $\omega$ denote the Lebesgue measure on $\Omega$. Accordingly, $\lambda$-a.e. and $\omega$-a.e. refer to almost everywhere with respect to $\lambda$ and $\omega$, respectively. For brevity, these will be denoted simply as a.e. when the measure is clear from the context, and $d\lambda(t)$ will be written as $dt$.
 
@@ -90,9 +92,9 @@ it is possible to show that there exists a unique weak solution $u$ satisfying \
 
 \subsection{Space Discretization Setting}
 
-For the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard, conforming triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$\footnote{Referred to as $K$ when unambiguous.} indexed by $j \in \SpaceIndices$. % [!] d (Dimension).
+For the semi-discretization in space of this problem, consider $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ to be a family of standard, conforming triangulations of $\Omega$, each consisting of closed $d$-simplices $K_j$ indexed by $j \in \SpaceIndices$, and referred to as $K$ when unambiguous. % [!] d (Dimension).
 
-If $K_i \cap K_j \neq \emptyset$\footnote{Except for a single point, i.e., a vertex.}, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbors. Moreover, define:
+If $K_i \cap K_j \neq \emptyset$, except for a single point, i.e., a vertex, define $\Gamma_{ij} = K_i \cap K_j$ for $i, j \in \SpaceIndices$, and refer to $K_i$ and $K_j$ as neighbors. Moreover, define:
 \begin{align}
     \Neighbours{i} = \left\{ j \in \SpaceIndices \text{ such that } K_j \text{ is a neighbour of } K_i \right\} &\text{ for all } i \in \SpaceIndices.
 \end{align}
@@ -119,19 +121,21 @@ Consider now the broken Sobolev space.
     \end{align}
 \end{definition}
 
-For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$\footnote{Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.}. Moreover:
+For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$. Moreover:
 \begin{align}
     \langle v \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( v \Restriction_{\Gamma_{ij}} + v \Restriction_{\Gamma_{ji}} \right), \\
     \left[ v \right]_{\Gamma_{ij}} &= v \Restriction_{\Gamma_{ij}} - v \Restriction_{\Gamma_{ji}},
 \end{align}
-and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$.
+and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$. Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.
 
-Finally, for $i \in \SpaceIndices$\footnote{The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.}:
+Finally, for $i \in \SpaceIndices$:
 \begin{align}
     \partial K_i^-(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) < 0 \right\}, \\
     \partial K_i^+(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) \geq 0 \right\},
 \end{align}
 namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
+
+The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.
 
 \newpage
 \subsection{Discontinuous Galërkin Semi-Discretization in Space} \label{sec:space_discretization}
@@ -333,10 +337,11 @@ Assume that all triangulations $\Omega_{h, n}$, for all $h \in \hIndices$ and fo
 \begin{align}
     \frac{h_K}{\rho_K} &\leq \BoundC{\tau} &\text{ for all } K \in \Omega_{h, n} \text{ and for all } n \in \TimeIndices. \label{equation:ass_h}
 &\end{align}
-Moreover, assume that there exists $\BoundDeg > 0$ such that\footnote{This implies the non-degeneracy of $\left\{ \Gamma_{ij} \right\}_{j \in \NeighboursTime{i}}$ with respect to $h_{K_i}$ as $h_{K_i}$ becomes small.}:
+Moreover, assume that there exists $\BoundDeg > 0$ such that:
 \begin{align}
     h_{K_i} &\leq \BoundDeg \Diameter \Gamma_{ij} &\text{ for all } i \in \SpaceTimeIndices, j \in \NeighboursTime{i} \text{ and for all } n \in \TimeIndices. \label{equation:ass_hd}
 \end{align}
+This implies the non-degeneracy of $\left\{ \Gamma_{ij} \right\}_{j \in \NeighboursTime{i}}$ with respect to $h_{K_i}$ as $h_{K_i}$ becomes small.
 
 From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two inequalities:
 
@@ -484,13 +489,13 @@ Furthermore, in what follows, $C$ denotes a generic constant, typically independ
 For the derivation of error estimates, consider the following space-time interpolation of the exact solution:
 
 \begin{definition}[$\InterpolantPQ$] \label{definition:interpolant_qp}
-    $\InterpolantPQ$ is such that\footnote{$\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.}:
+    $\InterpolantPQ$ is such that:
     \begin{align}
         \InterpolantPQ u &\in \SpaceSolutionFull, \\
         \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
         \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-),
     \end{align}
-    for all $n \in \TimeIndices$
+    for all $n \in \TimeIndices$, where $\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.
 \end{definition}
 
 It can be shown that $\InterpolantPQ u$ is uniquely determined by the properties stated in \cref{definition:interpolant_qp}.
@@ -506,12 +511,12 @@ It follows, then, the derivation of error estimates in terms of the $\Interpolan
 
 Note that, by using different triangulations on different time levels, $\left\{ \AppU - \InterpolantPQ u \right\}_n \notin \SpaceSolution^p_{h, n}$.
 
-Fix, now, the following notation\footnote{Note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error.}:
+Fix, now, the following notation:
 \begin{align}
     \xi &= \AppU - \InterpolantPQ u, \\
     \eta &= \InterpolantPQ u - u,
 \end{align}
-then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
+and note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error, then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
 \begin{align}
     B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
 \end{align}
@@ -630,12 +635,13 @@ Set now $\AppUN = \InterSol u \circ \RMap$, then:
 \begin{align}
     \eta \Restriction_{I_n} = (\InterpolantPQ u - u) \Restriction_{ I_n} = \InterpolantPQI u \pm \InterSol u - u \Restriction_{I_n} = \InterpolantPQ \InterSol u \pm \InterSol u - u \Restriction_{I_n},
 \end{align}
-which implies\footnote{$\SpacePlaceholder$ denotes a space that is yet to be specified.}:
+which implies:
 \begin{align}
     \lVert \eta \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} & \leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterpolantPQ \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
     &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \left( \InterpolantPQR \left( \InterSol u \circ \RMap \right) \right) \circ \RMap^{-1} \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
-    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}.
+    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)},
 \end{align}
+where $\SpacePlaceholder$ denotes a space that is yet to be specified.
 
 Moreover, consider the following expansion of $\AppUN$ with respect to the Legendre polynomials:
 \begin{align}
@@ -645,10 +651,11 @@ Since:
 \begin{align}
     \int_{-1}^1 \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i \right) \Legendre_j ~ dt &= 0 &\text{ for all } j \in \left\{ 0, \dots, q \right\},
 \end{align}
-it follows that\footnote{$\InterPoly$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}((-1, 1))$.}:
+it follows that:
 \begin{align}
-    \AppUN - \InterPoly \AppUN = \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i.
+    \AppUN - \InterPoly \AppUN = \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \Legendre_i,
 \end{align}
+where $\InterPoly$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}((-1, 1))$.
 
 Then, \cref{lemma:legendre_interpolant} implies:
 \begin{align}
@@ -677,7 +684,7 @@ Then, \cref{lemma:legendre_interpolant} implies:
         \lVert u - \InterpolantPQ u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterPolyN \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
         &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \InterSol u \right) - \partial_t w \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
     \end{align}
-    for all $w \in \SpaceSolutionFull$\footnote{$\InterPolyN$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}(I_n)$.}.
+    for all $w \in \SpaceSolutionFull$, where $\InterPolyN$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}(I_n)$.
 \end{lemma}
 
 Assume, now, that the solution is sufficiently regular, that is:
