@@ -239,6 +239,8 @@ Data(
 
 \lstinline{Data} stores information about the Dirichlet and Neumann boundary conditions, along with the right-hand side of the equation.
 
+Categorizing the problem's parameters into different objects allows for solving different problems by modifying only the necessary parts.
+
 \newpage
 \subsection{Problem Construction}
 
@@ -301,6 +303,8 @@ Vector<T> gmres(
     const Vector<T> &)
 \end{lstlisting}
 
+The choice of this solver is motivated by the fact that the linear systems consist of unsymmetric, sparse, square matrices. Consequently, \lstinline{gmres} is an excellent solver, even as these matrices grow in size due to an increase in $p$ and $q$ or a decrease in $h$ and $\tau$.
+
 \newpage
 \subsection{Error Analysis}
 
@@ -318,3 +322,5 @@ Error(
 \end{lstlisting}
 
 This method, similarly to \lstinline{stiffness}, \lstinline{forcing}, and \lstinline{solve}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
+
+Results are extracted from the test outputs using custom scripts within the library.
