@@ -47,7 +47,7 @@ The initial diagram, consisting of $\nSpaceIndices$ cells, is then iteratively r
 Finally, postprocessing is performed by collapsing edges that are too short, as such edges may introduce errors in the solution of the problem.
 
 \newpage
-\subsubsection{Implementation Details}
+\subsubsection{Mesher Details}
 
 The following methods constitute the implementation of \lstinline{mesher2}:
 
@@ -233,6 +233,12 @@ Data(
     const std::function<Real (Real, Real, Real)> &)
 \end{lstlisting}
 
+\lstinline{Equation} stores information about the convection, diffusion, and reaction coefficients.
+
+\lstinline{Initial} stores information about the initial conditions.
+
+\lstinline{Data} stores information about the Dirichlet and Neumann boundary conditions, along with the right-hand side of the equation.
+
 \newpage
 \subsection{Problem Construction}
 
@@ -286,6 +292,15 @@ Vector<Real> solve(
     const Initial &)
 \end{lstlisting}
 
+This method solves a linear system at each time level of the problem by imposing the initial conditions as those of the problem for the first level, or as the final conditions of the previous level otherwise. It then uses an iterative solver, such as \lstinline{gmres}, defined below, to solve the linear system.
+
+\begin{lstlisting}[style=cpp]
+template<Numerical T>
+Vector<T> gmres(
+    Sparse<T> &,
+    const Vector<T> &)
+\end{lstlisting}
+
 \newpage
 \subsection{Error Analysis}
 
@@ -302,4 +317,4 @@ Error(
         std::function<std::array<Real, 2> (Real, Real, Real)> &)
 \end{lstlisting}
 
-This method, similarly to \lstinline{stiffness} and \lstinline{forcing}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
+This method, similarly to \lstinline{stiffness}, \lstinline{forcing}, and \lstinline{solve}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
