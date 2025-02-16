@@ -46,10 +46,10 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 
 \begin{table}[!ht]
     \centering
-    \def\arraystretch{1.25}
-    \begin{tabular}{ |c|c|c|c|c| }
+    \def\arraystretch{1.5}
+    \begin{tabular}{ | C{1.25cm} || C{3cm} | C{3cm} | C{3cm} | C{3cm} | }
         \hline
-        Index & Space elements $ \left[ \nSpaceIndices \right] $ & Time elements $ \left[ \nTimeIndices \right] $ & Space size $ \left[ h \right] $ & Time size $ \left[ \tau \right] $ \\
+        Index & Space elements \newline $\left[ \nSpaceIndices \right]$ & Time elements \newline $\left[ \nTimeIndices \right]$ & Space size \newline $\left[ h \right]$ & Time size \newline $\left[ \tau \right]$ \\
         \hline
         \hline
         1 & 125 & 7 & 0.136 & 0.143 \\
@@ -64,6 +64,8 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 \end{table}
 
 \newpage
+\subsection{Convergence Graphs}
+
 % Parabolic case.
 % p = 1, q = 1.
 
@@ -245,3 +247,24 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
     \caption{Hyperbolic case, $p = 2$ and $q = 1$.}
 \end{figure}
 \vspace*{\fill}
+
+\newpage
+\subsection{Error Tables}
+
+% \begin{table}[!ht]
+%     \centering
+%     \def\arraystretch{1.25}
+%     \begin{tabular}{ | C{1.25cm} || C{1.25cm} | C{1.25cm} | C{1.25cm} | C{1.25cm} | C{1.25cm} | }
+%         \hline
+%         \diagbox{$h$}{$\tau$} & 0.143 & 0.10 & 0.071 & 0.050 & 0.036 \\
+%         \hline
+%         \hline
+%         0.136 &  &  &  &  &  \\
+%         0.093 &  &  &  &  &  \\
+%         0.069 &  &  &  &  &  \\
+%         0.049 &  &  &  &  &  \\
+%         0.038 &  &  &  &  &  \\
+%         \hline
+%     \end{tabular}
+%     \caption{Parabolic case, $p = 1$ and $q = 1$.}
+% \end{table}
