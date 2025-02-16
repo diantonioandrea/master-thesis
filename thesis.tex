@@ -50,14 +50,14 @@
 
     \newpage
     \chapter*{Introduction}
-    \addcontentsline{toc}{chapter}{Introduction}
+    \addcontentsline{toc}{chapter}{Introduction} \label{chapter:introduction}
     \pagenumbering{arabic}
 
     % \begin{epigraphs}
     %     \qitem{TBA}{TBA}
     % \end{epigraphs}
 
-    \input{content/chapters/introduction.tex} \label{chapter:introduction}
+    \input{content/chapters/introduction.tex}
 
     % Preliminaries.
 
@@ -90,15 +90,15 @@
     % Numerical Results.
 
     \newpage
-    \chapter{Numerical Results}
+    \chapter{Numerical Results} \label{chapter:results}
 
     \input{content/chapters/results.tex}
 
     % Conclusions.
 
     \newpage
-    \chapter*{Conclusions}
-    \addcontentsline{toc}{chapter}{Conclusions} \label{chapter:conclusions}
+    \chapter*{Conclusions} \label{chapter:conclusions}
+    \addcontentsline{toc}{chapter}{Conclusions}
 
     \input{content/chapters/conclusions.tex}
 
