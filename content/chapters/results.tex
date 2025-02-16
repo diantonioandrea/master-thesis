@@ -42,13 +42,32 @@ The estimates given in \cref{theorem:estimates_ht} provide a useful benchmark fo
 
 What follows, as anticipated, illustrates the behavior of the error $\Error$ versus the number of degrees of freedom and compare it with the expected powers of both $h$ and $\tau$, for both the parabolic and hyperbolic cases across three pairs of $\left( p, q \right)$ values: $\left( 1, 1 \right)$, $\left( 2, 2 \right)$, and $\left( 2, 1 \right)$.
 
-Different meshes are employed, with decreasing values of $h$ and accordingly sized values of $\tau$.
+Different meshes are employed, with decreasing values of $h$ and correspondingly scaled values of $\tau$, as shown in \cref{table:ht}.
 
-% [!] Insert table.
+\begin{table}[!ht]
+    \centering
+    \def\arraystretch{1.25}
+    \begin{tabular}{ |c|c|c|c|c| }
+        \hline
+        Index & Space elements $ \left[ \nSpaceIndices \right] $ & Time elements $ \left[ \nTimeIndices \right] $ & Space size $ \left[ h \right] $ & Time size $ \left[ \tau \right] $ \\
+        \hline
+        \hline
+        1 & 125 & 7 & 0.136 & 0.143 \\
+        2 & 250 & 10 & 0.093 & 0.100 \\
+        3 & 500 & 14 & 0.069 & 0.071 \\
+        4 & 1000 & 20 & 0.049 & 0.050 \\
+        5 & 2000 & 28 & 0.038 & 0.036 \\
+        \hline
+    \end{tabular}
+    \caption{Mesh parameters.}
+    \label{table:ht}
+\end{table}
 
 \newpage
-\subsection{Parabolic Case}
+% Parabolic case.
+% p = 1, q = 1.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
@@ -61,10 +80,7 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/1_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors versus $DoFs$, with $p = 1$ and $q = 1$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_l2T.tex}
@@ -76,11 +92,15 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/1_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 1$ and $q = 1$.}
+    \caption{Parabolic case, $p = 1$ and $q = 1$.}
 \end{figure}
+\vspace*{\fill}
 
 \newpage
+% Parabolic case.
+% p = 2, q = 2.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
@@ -93,10 +113,7 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_2_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 2$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_l2T.tex}
@@ -108,11 +125,15 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_2_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 2$.}
+    \caption{Parabolic case, $p = 2$ and $q = 2$.}
 \end{figure}
+\vspace*{\fill}
 
 \newpage
+% Parabolic case.
+% p = 2, q = 1.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
@@ -125,10 +146,7 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 1$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_par_l2T.tex}
@@ -140,19 +158,23 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 1$.}
+    \caption{Parabolic case, $p = 2$ and $q = 1$.}
 \end{figure}
+\vspace*{\fill}
 
 \newpage
-\subsection{Hyperbolic Case}
+% Hyperbolic case.
+% p = 1, q = 1.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \input{content/tikz/1_1_hyp_l2l2.tex}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error versus $DoFs$, with $p = 1$ and $q = 1$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_l2T.tex}
@@ -164,18 +186,23 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/1_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 1$ and $q = 1$.}
+    \caption{Hyperbolic case, $p = 1$ and $q = 1$.}
 \end{figure}
+\vspace*{\fill}
 
 \newpage
+% Hyperbolic case.
+% p = 2, q = 2.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \input{content/tikz/2_2_hyp_l2l2.tex}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error versus $DoFs$, with $p = 2$ and $q = 2$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_l2T.tex}
@@ -187,18 +214,23 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_2_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 2$.}
+    \caption{Hyperbolic case, $p = 2$ and $q = 2$.}
 \end{figure}
+\vspace*{\fill}
 
 \newpage
+% Hyperbolic case.
+% p = 2, q = 1.
 
+\vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \input{content/tikz/2_1_hyp_l2l2.tex}
-    \caption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error versus $DoFs$, with $p = 2$ and $q = 1$.}
-\end{figure}
-
-\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_1_hyp_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\medskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_hyp_l2T.tex}
@@ -210,5 +242,6 @@ Different meshes are employed, with decreasing values of $h$ and accordingly siz
         \input{content/tikz/2_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors versus $DoFs$, with $p = 2$ and $q = 1$.}
+    \caption{Hyperbolic case, $p = 2$ and $q = 1$.}
 \end{figure}
+\vspace*{\fill}
