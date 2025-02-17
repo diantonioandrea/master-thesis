@@ -42,7 +42,7 @@ The estimates given in \cref{theorem:estimates_ht} provide a useful benchmark fo
 
 What follows, as anticipated, illustrates the behavior of the error $\Error$ versus the number of degrees of freedom and compare it with the expected powers of both $h$ and $\tau$, for both the parabolic and hyperbolic cases across three pairs of $\left( p, q \right)$ values: $\left( 1, 1 \right)$, $\left( 2, 2 \right)$, and $\left( 2, 1 \right)$.
 
-Different meshes are employed, with decreasing values of $h$ and correspondingly scaled values of $\tau$, as shown in \cref{table:ht}.
+\Cref{sec:graphs} illustrates the convergence behavior of the method over meshes with correspondingly scaled values of $h$ and $\tau$, as shown in \cref{table:ht}, while \cref{sec:tables} examines the behavior of the algorithm over multiple pairs of $h$ and $\tau$, thereby ignoring the scaling assumption introduced in \cref{lemma:bounds}.
 
 \begin{table}[!ht]
     \centering
@@ -52,11 +52,11 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
          & $\nSpaceIndices$ & $\nTimeIndices$ & $h$ & $\tau$ \\
         \hline
         \hline
-        1 & $\num{125}$ & $\num{7}$ & $\num{0.136}$ & $\num{0.143}$ \\
-        2 & $\num{250}$ & $\num{10}$ & $\num{0.093}$ & $\num{0.100}$ \\
-        3 & $\num{500}$ & $\num{14}$ & $\num{0.069}$ & $\num{0.071}$ \\
-        4 & $\num{1000}$ & $\num{20}$ & $\num{0.049}$ & $\num{0.050}$ \\
-        5 & $\num{2000}$ & $\num{28}$ & $\num{0.038}$ & $\num{0.036}$ \\
+        1 & $125$ & $7$ & $\num{0.136}$ & $\num{0.143}$ \\
+        2 & $250$ & $10$ & $\num{0.093}$ & $\num{0.100}$ \\
+        3 & $500$ & $14$ & $\num{0.069}$ & $\num{0.071}$ \\
+        4 & $1000$ & $20$ & $\num{0.049}$ & $\num{0.050}$ \\
+        5 & $2000$ & $28$ & $\num{0.038}$ & $\num{0.036}$ \\
         \hline
     \end{tabular}
     \caption{Mesh parameters.}
@@ -64,7 +64,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 \end{table}
 
 \newpage
-\subsection{Convergence Graphs}
+\subsection{Convergence Graphs} \label{sec:graphs}
 
 % Parabolic case.
 % p = 1, q = 1.
@@ -249,7 +249,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 \vspace*{\fill}
 
 \newpage
-\subsection{Error Tables}
+\subsection{Error Tables} \label{sec:tables}
 
 % Parabolic case.
 % p = 1, q = 1.
@@ -320,5 +320,192 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \end{tabular}
     }
     \caption{Parabolic case, $p = 1$ and $q = 1$.}
+\end{table}
+\vspace*{\fill}
+
+\newpage
+% Parabolic case.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{table}[!ht]
+    \centering
+    \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0014825}$ & $\num{0.00148241}$ & $\num{0.0014824}$ & $\num{0.0014824}$ \\
+            $\num{0.0928138}$ & $\num{0.000617495}$ & $\num{0.000617285}$ & $\num{0.00061726}$ & $\num{0.000617257}$ \\
+            $\num{0.0694348}$ & $\num{0.000247574}$ & $\num{0.000247041}$ & $\num{0.000246978}$ & $\num{0.00024697}$ \\
+            $\num{0.0493257}$ & $\num{8.44331e-05}$ & $\num{8.28462e-05}$ & $\num{8.26579e-05}$ & $\num{8.26322e-05}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2h1.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00961274}$ & $\num{0.00961274}$ & $\num{0.00961274}$ & $\num{0.00961274}$ \\
+            $\num{0.0928138}$ & $\num{0.00543306}$ & $\num{0.00543306}$ & $\num{0.00543306}$ & $\num{0.00543306}$ \\
+            $\num{0.0694348}$ & $\num{0.00296395}$ & $\num{0.00296395}$ & $\num{0.00296394}$ & $\num{0.00296394}$ \\
+            $\num{0.0493257}$ & $\num{0.00139134}$ & $\num{0.00139133}$ & $\num{0.00139133}$ & $\num{0.00139133}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00229241}$ & $\num{0.00229244}$ & $\num{0.00229244}$ & $\num{0.00229244}$ \\
+            $\num{0.0928138}$ & $\num{0.000954368}$ & $\num{0.000954386}$ & $\num{0.000954391}$ & $\num{0.000954393}$ \\
+            $\num{0.0694348}$ & $\num{0.000381884}$ & $\num{0.000381887}$ & $\num{0.00038189}$ & $\num{0.000381892}$ \\
+            $\num{0.0493257}$ & $\num{0.000128154}$ & $\num{0.000128137}$ & $\num{0.000128137}$ & $\num{0.000128137}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.002278}$ & $\num{0.00229244}$ & $\num{0.00229244}$ & $\num{0.00229244}$ \\
+            $\num{0.0928138}$ & $\num{0.00094802}$ & $\num{0.000954386}$ & $\num{0.000954391}$ & $\num{0.000954393}$ \\
+            $\num{0.0694348}$ & $\num{0.00037886}$ & $\num{0.000381887}$ & $\num{0.00038189}$ & $\num{0.000381892}$ \\
+            $\num{0.0493257}$ & $\num{0.0001263}$ & $\num{0.000128137}$ & $\num{0.000128137}$ & $\num{0.000128137}$ \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Parabolic case, $p = 2$ and $q = 2$.}
+\end{table}
+\vspace*{\fill}
+
+\newpage
+% Hyperbolic case.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{table}[!ht]
+    \centering
+    \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00900924}$ & $\num{0.0089206}$ & $\num{0.00889951}$ & $\num{0.00889391}$ \\
+            $\num{0.0928138}$ & $\num{0.00519974}$ & $\num{0.00504002}$ & $\num{0.00500099}$ & $\num{0.00499039}$ \\
+            $\num{0.0694348}$ & $\num{0.00300944}$ & $\num{0.00272059}$ & $\num{0.00264629}$ & $\num{0.00262568}$ \\
+            $\num{0.0493257}$ & $\num{0.00196791}$ & $\num{0.00148632}$ & $\num{0.00134443}$ & $\num{0.00130295}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0138078}$ & $\num{0.0137972}$ & $\num{0.0137936}$ & $\num{0.0137922}$ \\
+            $\num{0.0928138}$ & $\num{0.00773672}$ & $\num{0.00772809}$ & $\num{0.00772526}$ & $\num{0.00772418}$ \\
+            $\num{0.0694348}$ & $\num{0.00406202}$ & $\num{0.00405412}$ & $\num{0.00405183}$ & $\num{0.00405099}$ \\
+            $\num{0.0493257}$ & $\num{0.00200423}$ & $\num{0.0019955}$ & $\num{0.00199352}$ & $\num{0.0019929}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0136962}$ & $\num{0.0137972}$ & $\num{0.0137936}$ & $\num{0.0137922}$ \\
+            $\num{0.0928138}$ & $\num{0.00767094}$ & $\num{0.00772809}$ & $\num{0.00772526}$ & $\num{0.00772418}$ \\
+            $\num{0.0694348}$ & $\num{0.00568972}$ & $\num{0.00405412}$ & $\num{0.00405183}$ & $\num{0.00405099}$ \\
+            $\num{0.0493257}$ & $\num{0.00568648}$ & $\num{0.00290149}$ & $\num{0.00199352}$ & $\num{0.0019929}$ \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Hyperbolic case, $p = 1$ and $q = 1$.}
+\end{table}
+\vspace*{\fill}
+
+\newpage
+% Hyperbolic case.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{table}[!ht]
+    \centering
+    \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00161122}$ & $\num{0.00161114}$ & $\num{0.00161113}$ & $\num{0.00161113}$ \\
+            $\num{0.0928138}$ & $\num{0.000685526}$ & $\num{0.00068533}$ & $\num{0.000685307}$ & $\num{0.000685304}$ \\
+            $\num{0.0694348}$ & $\num{0.000279232}$ & $\num{0.00027875}$ & $\num{0.000278694}$ & $\num{0.000278686}$ \\
+            $\num{0.0493257}$ & $\num{9.53935e-05}$ & $\num{9.3975e-05}$ & $\num{9.38066e-05}$ & $\num{9.37835e-05}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00249395}$ & $\num{0.00249396}$ & $\num{0.00249396}$ & $\num{0.00249396}$ \\
+            $\num{0.0928138}$ & $\num{0.0010599}$ & $\num{0.00105991}$ & $\num{0.00105991}$ & $\num{0.00105991}$ \\
+            $\num{0.0694348}$ & $\num{0.000430618}$ & $\num{0.000430617}$ & $\num{0.000430618}$ & $\num{0.000430617}$ \\
+            $\num{0.0493257}$ & $\num{0.000144872}$ & $\num{0.000144864}$ & $\num{0.000144863}$ & $\num{0.000144863}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00247869}$ & $\num{0.00249396}$ & $\num{0.00249396}$ & $\num{0.00249396}$ \\
+            $\num{0.0928138}$ & $\num{0.00105346}$ & $\num{0.00105991}$ & $\num{0.00105991}$ & $\num{0.00105991}$ \\
+            $\num{0.0694348}$ & $\num{0.000428047}$ & $\num{0.000430617}$ & $\num{0.000430618}$ & $\num{0.000430617}$ \\
+            $\num{0.0493257}$ & $\num{0.000144112}$ & $\num{0.000144864}$ & $\num{0.000144863}$ & $\num{0.000144863}$ \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Hyperbolic case, $p = 2$ and $q = 2$.}
 \end{table}
 \vspace*{\fill}
