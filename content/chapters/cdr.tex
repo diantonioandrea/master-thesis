@@ -71,7 +71,13 @@ Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that
 Set now $V = \left\{ v \in \SpaceHk{1}(\Omega) \text{ such that } v \Restriction_{\partial \Omega^-} = 0 \right\}$.
 
 \begin{definition}[Weak solution]
-    The weak solution $u \in \SpaceLp{\infty}(I \times \Omega)$ is such that $u - u^* \in \SpaceLp{2}(I; V)$ and $u(0) = u_0$ in $\Omega$. Moreover:
+    The weak solution $u$ is such that: 
+    \begin{align}
+        u &\in \SpaceLp{\infty}(I \times \Omega), \\
+        u - u^* &\in \SpaceLp{2}(I; V), 
+        u(0) &= u_0 &\text{in } \Omega.
+    \end{align}
+    Moreover:
     \begin{align}
         \partial_t \int_{\Omega} u w ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u w ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
         &+ \int_{\Omega} \Reaction u w ~ d \omega(\Vector{x}) = \int_{\Omega} g w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vector{x}),
@@ -108,6 +114,7 @@ Assume that all triangulations are shape-regular, that is there exists $\BoundC{
 \begin{align}
     \frac{h_K}{\rho_K} &\leq \BoundC{h} &\text{ for all } K \in \Omega_h &\text{ and for all } h \in \hIndices.
 \end{align}
+It can also be assumed that this constant is independent of $h$ and remains the same for all triangulations $\Omega_h$.
 
 Consider now the broken Sobolev space.
 \begin{definition}[$\SpaceHk{k}(\Omega, \Omega_h)$] % [!] Check v, break.
@@ -255,7 +262,7 @@ consider the following notations:
 \begin{align} % [!] Check \varepsilon.
     u_n^+ &= v(t_n^+) = \lim_{\varepsilon \rightarrow 0} v(t_n^+ + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
     u_n^- &= v(t_n^-) = \lim_{\varepsilon \rightarrow 0} v(t_n^- + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
-    \left\{ v \right\}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
+    \Jump{v}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
 \end{align}
 
 Consider, in general, different families of triangulations on each $I_n$ for $n \in \TimeIndices$, that is, consider distinct $\SpaceTimeIndices$ and $\hTimeIndices$ for all $n \in \TimeIndices$, so that $\left\{ \Omega_{h, n} \right\}_{h \in \hTimeIndices}$ is the family of triangulations of $\Omega$ associated with $n \in \TimeIndices$ for all $\tau \in \tIndices$.
@@ -323,7 +330,7 @@ for all $w \in \SpaceSolutionFull$
 
 By the following notation:
 \begin{align}
-    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
+    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
     L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0 \label{equation:cdr_L},
 \end{align}
 it is possibile to rewrite \cref{equation:cdr_discrete} as:
@@ -364,7 +371,7 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 
 For what follows, fix the following notations:
 \begin{align} % [!] To be renamed.
-    \lVert w \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \left\{ w \right\}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
+    \lVert w \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \Jump{w}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
     \lVert w \rVert_{E, n}^2 &= \Diffusion \lvert w \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert w \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
     &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right), \notag
 \end{align}
@@ -439,18 +446,18 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{lemma}[Reformulation of $B$]
     \Cref{equation:cdr_B} can be reformulated to:
     \begin{align}
-        B(u, w) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t w )_0 + A_{h, n}(u, w) \right) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ w \right\}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
+        B(u, w) = \sum_{n \in \TimeIndices} \int_{I_n} \left( (-u, \partial_t w )_0 + A_{h, n}(u, w) \right) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \Jump{w}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0. \label{equation:cdr_B_reformulated}
     \end{align}
 \end{lemma}
 
 \begin{proof}
     Integration by parts in \cref{equation:cdr_B} yields:
     \begin{align*}
-        \sum_{n \in \TimeIndices} \int_{I_n} (\partial_t u, w )_0 ~ dt &+ \sum_{n = 2}^{\nTimeIndices} (\left\{ u \right\}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0 \\
+        \sum_{n \in \TimeIndices} \int_{I_n} (\partial_t u, w )_0 ~ dt &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0 \\
         &= \sum_{n \in \TimeIndices} \int_{I_n} ( -u, \partial_t w )_0 ~ dt + \sum_{n \in \TimeIndices} \left( (u_n^-, w_n^-)_0 - (u_{n - 1}^+, w_{n - 1}^+)_0 \right) \\
         &+ \sum_{n = 2}^{\nTimeIndices} (u_{n - 1}^+ - u_{n - 1}^-, w_{n - 1}^+)_0 + (u_0^+, w_0^+ )_0 \\
         &= \sum_{n \in \TimeIndices} \int_{I_n} ( -u, \partial_t w )_0 ~ dt + \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, w_n^- - w_n^+)_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^- )_0 \\
-        &= \sum_{n \in \TimeIndices} \int_{I_n} (-u, \partial_t w )_0 ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \left\{ w \right\}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0.
+        &= \sum_{n \in \TimeIndices} \int_{I_n} (-u, \partial_t w )_0 ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (u_n^-, \Jump{w}_n )_0 + (u_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0.
     \end{align*}
 \end{proof}
 
@@ -465,16 +472,16 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{proof}
     By \cref{equation:cdr_B} and \cref{equation:cdr_B_reformulated}, it follows that:
     \begin{align*}
-        B(w, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t w, w )_0 + A_{h, n}(w, w) \right) ~ dt + \sum_{n = 1}^{\nTimeIndices - 1} (\left\{ w \right\}_n, w_n^+ )_0 + (w_0^+, w_0^+ )_0, \\
-        B(w, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (-w, \partial_t w )_0 + A_{h, n}(w, w) \right) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (w_n^-, \left\{ w \right\}_n )_0 + (w_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0.
+        B(w, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t w, w )_0 + A_{h, n}(w, w) \right) ~ dt + \sum_{n = 1}^{\nTimeIndices - 1} (\Jump{w}_n, w_n^+ )_0 + (w_0^+, w_0^+ )_0, \\
+        B(w, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (-w, \partial_t w )_0 + A_{h, n}(w, w) \right) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} (w_n^-, \Jump{w}_n )_0 + (w_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0.
     \end{align*}
 
     Then, by summing these two identities and dividing by two:
     \begin{align*}
         B(w, w) &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \frac12 (w_0^+, w_0^+ )_0 + \frac12 (w_{\nTimeIndices}^-, w_{\nTimeIndices}^-)_0 \\
-        &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} (\left\{ w \right\}_n, \left\{ w \right\}_n )_0 \\
+        &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} (\Jump{w}_n, \Jump{w}_n )_0 \\
         &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \frac12 \Norm{w_0^+}_{\SpaceLp{2}(\Omega)} + \frac12 \Norm{w_{\nTimeIndices}^-}_{\SpaceLp{2}(\Omega)} \\
-        &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} \frac12 \Norm{ \left\{ w \right\}_n }_{\SpaceLp{2}(\Omega)} \\
+        &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} \frac12 \Norm{ \Jump{w}_n }_{\SpaceLp{2}(\Omega)} \\
         &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \lVert w \rVert_{T}^2.
     \end{align*}
 \end{proof}
