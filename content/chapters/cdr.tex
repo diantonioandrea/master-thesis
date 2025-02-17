@@ -284,7 +284,7 @@ Considering different families of triangulations on each $I_n$ leads to the foll
     \end{align}
 \end{definition}
 
-Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{sec:space_discretization}, are redefined as follows:
+Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \Cref{sec:space_discretization}, are redefined as follows:
 \begin{align}
     a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) \label{equation:cdr_ahn} \\
     &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vektor{x}) \notag \\
@@ -308,7 +308,7 @@ Set, then:
     A_{h, n}(u, w) = a_{h, n} \left( u(t), w \right) + b_{h, n} \left( u(t), w \right) + c_{h, n} \left( u(t), w \right) + \Diffusion J^{\kappa}_{h, n} \left( u(t), w \right) \label{equation:cdr_Ahn}.
 \end{align}
 
-Note that this is essentially the same definition given in \cref{sec:space_discretization}, with the modification that it accounts for the change in the spatial mesh at each time interval.
+Note that this is essentially the same definition given in \Cref{sec:space_discretization}, with the modification that it accounts for the change in the spatial mesh at each time interval.
 
 \newpage
 \subsubsection{Approximate Solution}
@@ -466,7 +466,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
     \begin{align}
         B(w, w) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \lVert w \rVert_{T}^2,
     \end{align}
-    which, together with \cref{lemma:A_coercivity}, implies coercivity for $B$.
+    which, together with \Cref{lemma:A_coercivity}, implies coercivity for $B$.
 \end{lemma}
 
 \begin{proof}
@@ -507,7 +507,7 @@ For the derivation of error estimates, consider the following space-time interpo
     for all $n \in \TimeIndices$, where $\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.
 \end{definition}
 
-It can be shown that $\InterpolantPQ u$ is uniquely determined by the properties stated in \cref{definition:interpolant_qp}.
+It can be shown that $\InterpolantPQ u$ is uniquely determined by the properties stated in \Cref{definition:interpolant_qp}.
 
 It follows, then, the derivation of error estimates in terms of the $\InterpolantPQ$-interpolation error.
 
@@ -666,7 +666,7 @@ it follows that:
 \end{align}
 where $\InterPoly$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}((-1, 1))$.
 
-Then, \cref{lemma:legendre_interpolant} implies:
+Then, \Cref{lemma:legendre_interpolant} implies:
 \begin{align}
     \AppUN - \InterpolantPQR \AppUN &= \sum_{i = q}^{+\infty} \AppU_{n, i} \Legendre_i - \left( \InterSol \AppUN(1) - \sum_{i = 0}^{q - 1} \AppU_{n, i} \right) \Legendre_q \notag \\
     &= \sum_{i = q}^{+\infty} \AppU_{n, i} \Legendre_i - \left( \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right) \Legendre_q \notag \\
@@ -773,13 +773,13 @@ The main result of the error analysis can now be stated.
 This estimate holds true even for $\Diffusion = 0$.
 
 \begin{proof}
-    From \cref{lemma:abstract_estimates}, by \cref{eq:abstract_estimates_2}:
+    From \Cref{lemma:abstract_estimates}, by \cref{eq:abstract_estimates_2}:
     \begin{align*}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
-    It also follows, by \cref{def:theta} and the \acrshort{cs} inequality, that:
+    It also follows, by \Cref{def:theta} and the \acrshort{cs} inequality, that:
     \begin{align*}
         \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \lVert \eta \rVert_{E, n}^2 + \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
     \end{align*}
@@ -799,7 +799,7 @@ This estimate holds true even for $\Diffusion = 0$.
         &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
-    From \cref{lemma:bounds}, by \cref{eq:bound_1,eq:bound_2,eq:bound_3,eq:bound_4,eq:bound_5,eq:bound_6,eq:bound_7}:
+    From \Cref{lemma:bounds}, by \cref{eq:bound_1,eq:bound_2,eq:bound_3,eq:bound_4,eq:bound_5,eq:bound_6,eq:bound_7}:
     \begin{align*}
         \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
         &+ C \sum_{n \in \TimeIndices} \tau_n^{2 q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right) \\

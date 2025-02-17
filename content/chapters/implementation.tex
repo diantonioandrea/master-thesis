@@ -1,4 +1,4 @@
-This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \cref{chapter:cdr}. It is intended as a review of the implementation rather than a comprehensive guide detailing each component.
+This chapter outlines the implementation of the Space-Time Discontinuous Galërkin Method as presented in \Cref{chapter:cdr}. It is intended as a review of the implementation rather than a comprehensive guide detailing each component.
 
 \section{Implementation Overview}
 
@@ -6,7 +6,7 @@ The algorithm has been implemented as part of a comprehensive library, \href{htt
 
 The library has been designed to include all the necessary components for the implementation, use, and testing of the algorithm. These components comprise geometric methods and objects in $\RealNumbersTo{2}$ and $\RealNumbersTo{3}$ for mesh generation, dense and sparse matrices for problem formulation, and linear solvers for its solution, as well as additional linear algebra routines and utilities for the definition and manipulation of the principal equation driving the algorithm.
 
-Moreover, the implementation of the algorithm differs slightly from the version introduced and analyzed in \cref{chapter:cdr}.
+Moreover, the implementation of the algorithm differs slightly from the version introduced and analyzed in \Cref{chapter:cdr}.
 
 \newpage
 \section{Prismatic Meshes Over Polygonal Domains} \label{section:mesh}
@@ -145,7 +145,7 @@ and relying solely on geometric information, constructs the mesh elements and th
 \newpage
 \section{Convection-Diffusion-Reaction Problems}
 
-With meshes construced as in \cref{section:mesh}, it is possible to construct and solve convection-diffusion-reaction problems on them.
+With meshes construced as in \Cref{section:mesh}, it is possible to construct and solve convection-diffusion-reaction problems on them.
 
 \subsection{Polynomial Basis}
 
@@ -257,7 +257,7 @@ Vector<Real> forcing(
     const Equation &equation, 
     const Data &data)
 \end{lstlisting}
-These methods operate by iterating over all elements of a mesh and performing the quadratures defined in \cref{sec:full_discretization}.
+These methods operate by iterating over all elements of a mesh and performing the quadratures defined in \Cref{sec:full_discretization}.
 
 The evaluation points for the quadratures and basis construction are obtained through the following method, which is overloaded for time intervals, space intervals, and space triangles:
 \begin{lstlisting}[style=cpp]
@@ -308,7 +308,7 @@ The choice of this solver is motivated by the fact that the linear systems consi
 \newpage
 \subsection{Error Analysis}
 
-Anticipating the contents of \cref{section:error_results}, the error analysis consists in the evaluation of of various norms of the error $\Error$ introduced in \cref{subsection:error_estimates}.
+Anticipating the contents of \Cref{section:error_results}, the error analysis consists in the evaluation of of various norms of the error $\Error$ introduced in \cref{subsection:error_estimates}.
 
 The function used to evaluate the various components of the error analysis is the constructor of \lstinline{Error}, defined as follows:
 \begin{lstlisting}[style=cpp]
@@ -321,6 +321,6 @@ Error(
         std::function<std::array<Real, 2> (Real, Real, Real)> &)
 \end{lstlisting}
 
-This method, similarly to \lstinline{stiffness}, \lstinline{forcing}, and \lstinline{solve}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
+This method, similarly to \lstinline{stiffness}, \lstinline{forcing}, and \lstinline{solve}, operates by iterating over all elements of a mesh and performing the necessary quadratures to evaluate the norms in \Cref{section:error_results}. The norm in \cref{eq:inf_error} is computed by maximizing the $\SpaceLp{2}$ error at a fixed time over the entire time interval.
 
-Results are extracted from the test outputs using custom scripts within the library, which are used to generate the data presented in \cref{chapter:results}.
+Results are extracted from the test outputs using custom scripts within the library, which are used to generate the data presented in \Cref{chapter:results}.

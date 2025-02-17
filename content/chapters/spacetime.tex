@@ -47,11 +47,11 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda(t) \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \Cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda(t) \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \cref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \Cref{definition:bochner_integrable}, then the Bochner integral of $u$ is defined as:
     \begin{align}
         \int_I u(t) ~ d \lambda(t) = \lim_{n \rightarrow \infty} \int_I u_n(t) ~ d \lambda(t).
     \end{align}
@@ -239,7 +239,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \end{definition}
 
 \begin{theorem}[Time trace and integration by parts]
-    Let $V, W$ as in \cref{definition:gelfand}, then \newline \nobreak $\SpaceX(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \SpaceX(I; V, V^*)$ is surjective.
+    Let $V, W$ as in \Cref{definition:gelfand}, then \newline \nobreak $\SpaceX(I; V, V^*) \hookrightarrow C^0(\overline{I};W)$, and the map that associates $u(0) \in W$ to each $u \in \SpaceX(I; V, V^*)$ is surjective.
 
     Moreover, for all $u, v \in \SpaceX(I; V, V^*)$:
     \begin{align}
@@ -250,7 +250,7 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \newpage
 \section{Model Parabolic Problem}
 
-Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definition:gelfand} and \cref{definition:x}.
+Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definition:gelfand} and \Cref{definition:x}.
 
 \subsection{Introduction}
 
@@ -263,7 +263,7 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \cref{definitio
 \end{definition}
 
 \begin{lemma}
-    Let $1 \leq p \leq +\infty$ and  $A$ as in \cref{definition:A}, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \SpaceLp{p}(I; V^*)$ with:
+    Let $1 \leq p \leq +\infty$ and  $A$ as in \Cref{definition:A}, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \SpaceLp{p}(I; V^*)$ with:
     \begin{align}
         \lVert A(u) \rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \lVert u \rVert_{\SpaceLp{p}(I; V)}.
     \end{align}
@@ -556,7 +556,7 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
     \end{align}
     if $a$ is time-independent.
 \end{remark}
-In \cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed, ensuring that only exact quadratures are employed.
+In \Cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed, ensuring that only exact quadratures are employed.
 
 \begin{definition}[$dG(q)$ weak formulation]
     The discrete weak formulation of \cref{equation:model} is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
@@ -604,7 +604,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
         \frac{d}{dt} \Norm{ u_{h \tau} }_W^2 &= 2 \left( \partial_t u_{h \tau}, u_{h \tau} \right)_W, \\
         2 \left( u_{h \tau}(t_{n - 1}^+) - u_{h \tau}(t_{n - 1}) \right) u_{h \tau}(t_{n - 1}^+) &= u_{h \tau}^2(t_{n - 1}^+) - u_{h \tau}^2(t_{n - 1}) + \left( u_{h \tau}(t_{n - 1}^+) - u_{h \tau}(t_{n - 1}) \right)^2,
     \end{align*}
-    together with \cref{def:time_jumps}:
+    together with \Cref{def:time_jumps}:
     \begin{align*}
         \sum_{n \in \TimeIndices} &\left( \int_{I_n} \left( \partial_t u_{h \tau}(t), u_{h \tau}(t) \right)_W ~ d \lambda(t) + \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
         &= \frac12 \sum_{n \in \TimeIndices} \left( \Norm{ u_{h \tau}(t_n) }_W^2 - \Norm{ u_{h \tau}(t_{n - 1}^+) }_W^2 + 2 \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, u_{h \tau}(t_{n - 1}^+) \right)_W \right) \\
@@ -612,7 +612,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
         &= \frac12 \Norm{ u_{h \tau}(T) }_W^2 - \frac12 \Norm{ u_{h \tau}(0) }_W^2 + \frac12 \sum_{n \in \TimeIndices} \Norm{ \llbracket u_{h \tau} \rrbracket_{n - 1} }_W^2.
     \end{align*}
 
-    This, together with the lower bound on $a$, proves \cref{eq:b_coercivity}, while the well-posedness of \cref{equation:weak_ht} follows from \cref{theorem:lm}.
+    This, together with the lower bound on $a$, proves \cref{eq:b_coercivity}, while the well-posedness of \cref{equation:weak_ht} follows from \Cref{theorem:lm}.
 \end{proof}
 
 \newpage
@@ -635,7 +635,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \end{definition}
 
 \begin{proposition} \label{prop:interpolant_qt}
-    Set $Z$ as in \cref{def:interpolant_qt}. There exists $C > 0$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $\tau > 0$:
+    Set $Z$ as in \Cref{def:interpolant_qt}. There exists $C > 0$ such that for all $u \in \SpaceHk{1}(I_n; Z)$ and for all $\tau > 0$:
     \begin{align}
         \Norm{ u - \InterpolantQT \left( u \right) }_{\SpaceLp{\infty}(I; Z)} \leq C \tau^{q + 1} \Seminorm{ u }_{\SpaceWkp{q + 1}{\infty}(I; Z)}.
     \end{align}
@@ -653,7 +653,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
     \begin{align*}
         \delta = u - \InterpolantQT(u),
     \end{align*}
-    then, integrating by parts and using \cref{def:interpolant_qn}, together with the facts that $\delta()$ :
+    then, integrating by parts and using \Cref{def:interpolant_qn}, together with the facts that $\delta()$ :
     \begin{align*}
         \delta(t_n) &= 0, \\
         \partial_t y_{\tau}\Restriction_{I_n} &\in \SpacePolynomials{q - 1}(I_n; W),
@@ -664,7 +664,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
         &= - \left( \delta(t_{n - 1}^+), y_{\tau}(t_{n - 1}^+) \right)_W.
     \end{align*}
 
-    Since, by \cref{def:interpolant_qt}:
+    Since, by \Cref{def:interpolant_qt}:
     \begin{align*}
         \InterpolantQT(u)(t_{n - 1}) = u(t_{n - 1}) &= u(t_{n - 1}^+),
     \end{align*}
@@ -717,7 +717,7 @@ Consider a time-independent space approximation operator $\InterpolantH$ to sepa
         &+ \int_I a \left( t; u - w_{h \tau}, y_{h \tau}\right) ~ d \lambdaGR_{q + 1}(t).
     \end{align*}
 
-    By \cref{def:interpolant_qt}, $w_{h \tau}(0) = \InterpolantH \left( u_0 \right) \in V$, and by \cref{lemma:orthogonality} it follows that, for all $n \in \TimeIndices$:
+    By \Cref{def:interpolant_qt}, $w_{h \tau}(0) = \InterpolantH \left( u_0 \right) \in V$, and by \Cref{lemma:orthogonality} it follows that, for all $n \in \TimeIndices$:
     \begin{align*}
         \int_{I_n} &\left( \partial_t w_{h \tau}, y_{h \tau}\right)_W ~ d \lambda(t) + \left( \llbracket w_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W \\
         &= \int_{I_n} \left( \partial_t \left( \InterpolantQT \left( \InterpolantH \left( u \right) \right) \right), y_{h \tau}\right)_W ~ d \lambda(t) + \left( \llbracket \InterpolantQT \left( \InterpolantH \left( u \right) \right) \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W \\
@@ -739,7 +739,7 @@ Consider a time-independent space approximation operator $\InterpolantH$ to sepa
     \begin{align*}
         \int_I \left( \partial_t u, y_{h \tau}\right)_W ~ d \lambdaGR_{q + 1}(t) = \int_I \left( \InterpolantGR_q \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t),
     \end{align*}
-    by \cref{def:interpolant_gr}, it follows that:
+    by \Cref{def:interpolant_gr}, it follows that:
     \begin{align*}
         \Remainder \left( y_{h \tau} \right) = \int_I \left( \InterpolantGR_q \left( \partial_t u \right) - \partial_t u, y_{h \tau}\right)_W ~ d \lambda(t),
     \end{align*}
