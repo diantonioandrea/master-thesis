@@ -754,7 +754,7 @@ Consider a time-independent space approximation operator $\InterpolantH$ to sepa
         \left\lvert \int_I \left( \partial_t u - \InterpolantH \left( \partial_t u \right), y_{h \tau}\right)_W ~ d \lambda(t) \right\rvert &\leq \Norm{ \partial_t u - \InterpolantH \left( \partial_t u \right) }_{\SpaceLp{2}(I; V^*)} \Norm{ y_{h \tau} }_{\SpaceLp{2}(I; V)}.
     \end{align*}
 
-    Additionally, by the commutation properties of $\InterpolantQT$ and $\InterpolantH$, the stability of $\InterpolantH$, and by \cref{prop:interpolant_qt}, it follows that for all $n \in \TimeIndices$ and for all $i \in \left\{ 1, \dots, q + 1\right\}$:
+    Additionally, by the commutation properties of $\InterpolantQT$ and $\InterpolantH$, the stability of $\InterpolantH$, and by \Cref{prop:interpolant_qt}, it follows that for all $n \in \TimeIndices$ and for all $i \in \left\{ 1, \dots, q + 1\right\}$:
     \begin{align*}
         \Norm{ \eta(t_{n, i}) }_V &\leq \Norm{ \left( u - \InterpolantH \left( u \right) \right) \left( t_{n, i} \right) }_V + \Norm{ \InterpolantH }_{\Linear \left(V; V_h \right)} \Norm{ \left( u - \InterpolantQT \left( u \right) \right) \left( t_{n, i} \right) }_V \\
         &\leq \Norm{ u - \InterpolantH \left( u \right) }_{\SpaceLp{\infty}(I; V)} + C \tau^{q + 1} \Seminorm{ u }_{\SpaceWkp{q + 1}{\infty}(I; V)} = C(u).
