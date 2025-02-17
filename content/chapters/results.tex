@@ -47,16 +47,16 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 \begin{table}[!ht]
     \centering
     \def\arraystretch{1.5}
-    \begin{tabular}{ | C{1.25cm} || C{3cm} | C{3cm} | C{3cm} | C{3cm} | }
+    \begin{tabular}{ | C{1cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | }
         \hline
-        Index & Space elements \newline $\left[ \nSpaceIndices \right]$ & Time elements \newline $\left[ \nTimeIndices \right]$ & Space size \newline $\left[ h \right]$ & Time size \newline $\left[ \tau \right]$ \\
+         & $\nSpaceIndices$ & $\nTimeIndices$ & $h$ & $\tau$ \\
         \hline
         \hline
-        1 & 125 & 7 & 0.136 & 0.143 \\
-        2 & 250 & 10 & 0.093 & 0.100 \\
-        3 & 500 & 14 & 0.069 & 0.071 \\
-        4 & 1000 & 20 & 0.049 & 0.050 \\
-        5 & 2000 & 28 & 0.038 & 0.036 \\
+        1 & $\num{125}$ & $\num{7}$ & $\num{0.136}$ & $\num{0.143}$ \\
+        2 & $\num{250}$ & $\num{10}$ & $\num{0.093}$ & $\num{0.100}$ \\
+        3 & $\num{500}$ & $\num{14}$ & $\num{0.069}$ & $\num{0.071}$ \\
+        4 & $\num{1000}$ & $\num{20}$ & $\num{0.049}$ & $\num{0.050}$ \\
+        5 & $\num{2000}$ & $\num{28}$ & $\num{0.038}$ & $\num{0.036}$ \\
         \hline
     \end{tabular}
     \caption{Mesh parameters.}
@@ -82,7 +82,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/1_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_l2T.tex}
@@ -115,7 +115,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/2_2_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_l2T.tex}
@@ -148,7 +148,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/2_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_par_l2T.tex}
@@ -176,7 +176,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/1_1_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_l2T.tex}
@@ -204,7 +204,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/2_2_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_l2T.tex}
@@ -232,7 +232,7 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
         \input{content/tikz/2_1_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \par\medskip
+    \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_hyp_l2T.tex}
@@ -251,20 +251,74 @@ Different meshes are employed, with decreasing values of $h$ and correspondingly
 \newpage
 \subsection{Error Tables}
 
-% \begin{table}[!ht]
-%     \centering
-%     \def\arraystretch{1.25}
-%     \begin{tabular}{ | C{1.25cm} || C{1.25cm} | C{1.25cm} | C{1.25cm} | C{1.25cm} | C{1.25cm} | }
-%         \hline
-%         \diagbox{$h$}{$\tau$} & 0.143 & 0.10 & 0.071 & 0.050 & 0.036 \\
-%         \hline
-%         \hline
-%         0.136 &  &  &  &  &  \\
-%         0.093 &  &  &  &  &  \\
-%         0.069 &  &  &  &  &  \\
-%         0.049 &  &  &  &  &  \\
-%         0.038 &  &  &  &  &  \\
-%         \hline
-%     \end{tabular}
-%     \caption{Parabolic case, $p = 1$ and $q = 1$.}
-% \end{table}
+% Parabolic case.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{table}[!ht]
+    \centering
+    \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.00843558}$ & $\num{0.00834559}$ & $\num{0.00832463}$ & $\num{0.00831924}$ \\
+            $\num{0.0928138}$ & $\num{0.00478264}$ & $\num{0.00461507}$ & $\num{0.00457461}$ & $\num{0.00456385}$ \\
+            $\num{0.0694348}$ & $\num{0.00275645}$ & $\num{0.00244628}$ & $\num{0.00236626}$ & $\num{0.00234427}$ \\
+            $\num{0.0493257}$ & $\num{0.001848}$ & $\num{0.00133339}$ & $\num{0.00117677}$ & $\num{0.00113055}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2h1.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0347433}$ & $\num{0.0347438}$ & $\num{0.0347441}$ & $\num{0.0347443}$ \\
+            $\num{0.0928138}$ & $\num{0.0264992}$ & $\num{0.0264992}$ & $\num{0.0264993}$ & $\num{0.0264994}$ \\
+            $\num{0.0694348}$ & $\num{0.019355}$ & $\num{0.0193541}$ & $\num{0.019354}$ & $\num{0.019354}$ \\
+            $\num{0.0493257}$ & $\num{0.0135598}$ & $\num{0.0135577}$ & $\num{0.0135572}$ & $\num{0.0135571}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0129324}$ & $\num{0.0129143}$ & $\num{0.0129079}$ & $\num{0.0129054}$ \\
+            $\num{0.0928138}$ & $\num{0.00709783}$ & $\num{0.00707916}$ & $\num{0.00707278}$ & $\num{0.00707027}$ \\
+            $\num{0.0694348}$ & $\num{0.00365368}$ & $\num{0.00363296}$ & $\num{0.00362616}$ & $\num{0.00362352}$ \\
+            $\num{0.0493257}$ & $\num{0.00176644}$ & $\num{0.00174141}$ & $\num{0.00173378}$ & $\num{0.00173093}$ \\
+            \hline
+        \end{tabular}
+    }
+    \par\bigskip
+    \centering
+    \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
+        \def\arraystretch{1.5}
+        \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
+            \hline
+             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \hline
+            \hline
+            $\num{0.13637}$ & $\num{0.0127936}$ & $\num{0.0129143}$ & $\num{0.0129079}$ & $\num{0.0129054}$ \\
+            $\num{0.0928138}$ & $\num{0.00731665}$ & $\num{0.00707916}$ & $\num{0.00707278}$ & $\num{0.00707027}$ \\
+            $\num{0.0694348}$ & $\num{0.00566822}$ & $\num{0.00380083}$ & $\num{0.00362616}$ & $\num{0.00362352}$ \\
+            $\num{0.0493257}$ & $\num{0.00567173}$ & $\num{0.00289246}$ & $\num{0.00181735}$ & $\num{0.00175048}$ \\
+            \hline
+        \end{tabular}
+    }
+    \caption{Parabolic case, $p = 1$ and $q = 1$.}
+\end{table}
+\vspace*{\fill}
