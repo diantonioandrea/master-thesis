@@ -306,9 +306,9 @@ Vector<T> gmres(
 The choice of this solver is motivated by the fact that the linear systems consist of unsymmetric, sparse, square matrices. Consequently, \lstinline{gmres} is an excellent solver, even as these matrices grow in size due to an increase in $p$ and $q$ or a decrease in $h$ and $\tau$.
 
 \newpage
-\subsection{Error Analysis}
+\subsection{Error Evaluation}
 
-Anticipating the contents of \Cref{section:error_results}, the error analysis consists in the evaluation of of various norms of the error $\Error$ introduced in \Cref{subsection:error_estimates}.
+Anticipating the contents of \Cref{section:error_results}, the error evaluation consists in the computation of various norms of the error $\Error$ introduced in \Cref{subsection:error_estimates}.
 
 The function used to evaluate the various components of the error analysis is the constructor of \lstinline{Error}, defined as follows:
 \begin{lstlisting}[style=cpp]
