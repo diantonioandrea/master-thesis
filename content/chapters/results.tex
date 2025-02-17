@@ -4,15 +4,15 @@ This chapter presents the numerical results obtained testing the algorithm based
 
 Following \cite{Feistauer2007}, fix $\Omega = \left( 0, 1 \right) \times \left( 0, 1 \right)$ and $I = \left( 0, 1 \right)$, and define the exact solution as follows:
 \begin{align}
-    u(t, \Vector{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right),
+    u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right),
 \end{align}
 where $\Boundary$ controls the steepness of the boundary layer in the exact solution, set to $\Boundary = 0.05$.
 
 Moreover, fix:
 \begin{align}
-    \ConvectionNoVector_1(t, \Vector{x}) &= 1, \\
-    \ConvectionNoVector_2(t, \Vector{x}) &= 1, \\
-    \Reaction(t, \Vector{x}) &= 0.5,
+    \ConvectionNoVector_1(t, \Vektor{x}) &= 1, \\
+    \ConvectionNoVector_2(t, \Vektor{x}) &= 1, \\
+    \Reaction(t, \Vektor{x}) &= 0.5,
 \end{align}
 where $\Convection = \left( \ConvectionNoVector_1, \ConvectionNoVector_2 \right)$, and consider two choices for $\Diffusion$:
 \begin{align}
@@ -27,12 +27,12 @@ which correspond to the parabolic and hyperbolic cases, respectively.
 The goal of the error analysis is to evaluate the behavior of the error $\Error$, as defined in \cref{subsection:error_estimates}, for a fixed exact solution $u$ while varying $p$ and $q$.
 
 % [!] Break.
-Two notable quantities to consider are $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$ and $\Norm{\Error}_{\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$, namely the \\ $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors.
+Two notable quantities to consider are $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$ and $\Norm{\sqrt{\Diffusion} \Error}_{\SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$, namely the $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ and $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ errors.
 
 This work wants to extend the error analysis by additionally considering $\Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)}$ and $\Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))}$, namely the $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors, where:
 \begin{align}
-    \Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)} &= \left( \int_{\Omega} \Error^2(T, \Vector{x}) ~ d \omega (\Vector{x}) \right)^{\nicefrac12}, \\
-    \Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))} &= \sup_{t \in \overline{I}} \left( \int_{\Omega} \Error^2(t, \Vector{x}) ~ d \omega (\Vector{x}) \right)^{\nicefrac12}. \label{eq:inf_error}
+    \Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)} &= \left( \int_{\Omega} \Error^2(T, \Vektor{x}) ~ d \omega (\Vektor{x}) \right)^{\nicefrac12}, \\
+    \Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))} &= \sup_{t \in \overline{I}} \left( \int_{\Omega} \Error^2(t, \Vektor{x}) ~ d \omega (\Vektor{x}) \right)^{\nicefrac12}. \label{eq:inf_error}
 \end{align}
 
 The estimates given in \cref{theorem:estimates_ht} provide a useful benchmark for these quantities, enabling an evaluation of both the algorithm's performance and its implementation.
@@ -46,7 +46,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 
 \begin{table}[!ht]
     \centering
-    \def\arraystretch{1.5}
+    \def\arraystretch{1.25}
     \begin{tabular}{ | C{1cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | }
         \hline
          & $\nSpaceIndices$ & $\nTimeIndices$ & $h$ & $\tau$ \\
@@ -258,10 +258,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 \begin{table}[!ht]
     \centering
     \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00843558}$ & $\num{0.00834559}$ & $\num{0.00832463}$ & $\num{0.00831924}$ \\
@@ -274,10 +274,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2h1.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0347433}$ & $\num{0.0347438}$ & $\num{0.0347441}$ & $\num{0.0347443}$ \\
@@ -290,10 +290,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0129324}$ & $\num{0.0129143}$ & $\num{0.0129079}$ & $\num{0.0129054}$ \\
@@ -306,10 +306,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0127936}$ & $\num{0.0129143}$ & $\num{0.0129079}$ & $\num{0.0129054}$ \\
@@ -331,10 +331,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 \begin{table}[!ht]
     \centering
     \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0014825}$ & $\num{0.00148241}$ & $\num{0.0014824}$ & $\num{0.0014824}$ \\
@@ -347,10 +347,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2h1.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00961274}$ & $\num{0.00961274}$ & $\num{0.00961274}$ & $\num{0.00961274}$ \\
@@ -363,10 +363,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00229241}$ & $\num{0.00229244}$ & $\num{0.00229244}$ & $\num{0.00229244}$ \\
@@ -379,10 +379,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.002278}$ & $\num{0.00229244}$ & $\num{0.00229244}$ & $\num{0.00229244}$ \\
@@ -404,10 +404,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 \begin{table}[!ht]
     \centering
     \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00900924}$ & $\num{0.0089206}$ & $\num{0.00889951}$ & $\num{0.00889391}$ \\
@@ -420,10 +420,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0138078}$ & $\num{0.0137972}$ & $\num{0.0137936}$ & $\num{0.0137922}$ \\
@@ -436,10 +436,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.0136962}$ & $\num{0.0137972}$ & $\num{0.0137936}$ & $\num{0.0137922}$ \\
@@ -461,10 +461,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 \begin{table}[!ht]
     \centering
     \subfloat[$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2l2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00161122}$ & $\num{0.00161114}$ & $\num{0.00161113}$ & $\num{0.00161113}$ \\
@@ -477,10 +477,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % l2T.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00249395}$ & $\num{0.00249396}$ & $\num{0.00249396}$ & $\num{0.00249396}$ \\
@@ -493,10 +493,10 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
     \par\bigskip
     \centering
     \subfloat[$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.]{
-        \def\arraystretch{1.5}
+        \def\arraystretch{1.25}
         \begin{tabular}{ | C{2cm} || C{2cm} | C{2cm} | C{2cm} | C{2cm} | } % linfl2.
             \hline
-             & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
+            \diagbox{$h$}{$\tau$} & $\num{0.142857}$ & $\num{0.1}$ & $\num{0.0714286}$ & $\num{0.05}$ \\
             \hline
             \hline
             $\num{0.13637}$ & $\num{0.00247869}$ & $\num{0.00249396}$ & $\num{0.00249396}$ & $\num{0.00249396}$ \\

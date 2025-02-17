@@ -16,11 +16,11 @@ Following \cite[p.~89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ denot
 
 \begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$]
     \begin{align}
-        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega(\Vector{x}) < \infty \right\},
+        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vektor{x}) \rvert ~ d \omega(\Vektor{x}) < \infty \right\},
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vector{x}) \rvert ~ d \omega(\Vector{x}).
+    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vektor{x}) \rvert ~ d \omega(\Vektor{x}).
     \end{align}
 \end{definition}
 
@@ -31,12 +31,12 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Beppo Levi, or monotone convergence]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        & 0 \leq f_1(\Vector{x}) \leq \dots \leq f_n(\Vector{x}) \leq \dots < +\infty &\text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
-        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vector{x}) ~ d \omega(\Vector{x}) < +\infty,
+        & 0 \leq f_1(\Vektor{x}) \leq \dots \leq f_n(\Vektor{x}) \leq \dots < +\infty &\text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega, \\
+        & \sup_{n \in \NaturalNumbers} \int_\Omega f_n(\Vektor{x}) ~ d \omega(\Vektor{x}) < +\infty,
     \end{align}
-    then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vector{x} \in \Omega$:
+    then there exists $f \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vektor{x} \in \Omega$:
     \begin{align}
-        \lim_{n \rightarrow \infty} f_n(\Vector{x}) = f(\Vector{x}),
+        \lim_{n \rightarrow \infty} f_n(\Vektor{x}) = f(\Vektor{x}),
     \end{align}
     and
     \begin{align}
@@ -45,10 +45,10 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \end{theorem}
 
 \begin{theorem}[Lebesgue, or dominated convergence]
-    Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vector{x} \in \Omega$:
+    Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vektor{x} \in \Omega$:
     \begin{align}
-        \lim_{n \rightarrow \infty} f_n(\Vector{x}) & = f(\Vector{x}), \\
-        \lvert f_n(\Vector{x}) \rvert & < g(\Vector{x}),
+        \lim_{n \rightarrow \infty} f_n(\Vektor{x}) & = f(\Vektor{x}), \\
+        \lvert f_n(\Vektor{x}) \rvert & < g(\Vektor{x}),
     \end{align}
     then $f \in \SpaceLp{1}(\Omega)$ and:
     \begin{align}
@@ -59,12 +59,12 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{lemma}[Fatou]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
     \begin{align}
-        f_n(x) & \geq 0 &\text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega, \\
-        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vector{x}) ~ d \omega(\Vector{x}) & < +\infty,
+        f_n(x) & \geq 0 &\text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega, \\
+        \sup_{n \in \NaturalNumbers} \int_{\Omega} f_n(\Vektor{x}) ~ d \omega(\Vektor{x}) & < +\infty,
     \end{align}
     then:
     \begin{align}
-        \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vector{x}) ~ d \omega(\Vector{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vector{x}) ~ d \omega(\Vector{x}).
+        \int_{\Omega} \liminf_{n \rightarrow \infty} f_n(\Vektor{x}) ~ d \omega(\Vektor{x}) \leq \liminf_{n \rightarrow \infty} \int_{\Omega} f_n(\Vektor{x}) ~ d \omega(\Vektor{x}).
     \end{align}
 \end{lemma}
 
@@ -77,18 +77,18 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vector{x}) \rvert^p ~ d \omega(\Vector{x}) \right)^{1/p}.
+    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vektor{x}) \rvert^p ~ d \omega(\Vektor{x}) \right)^{1/p}.
     \end{align}
 \end{definition}
 
 \begin{definition}[$\SpaceLp{\infty}(\Omega)$]
     Let $C \geq 0$,
     \begin{align}
-        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \lvert f(\Vector{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega \right\},
+        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \lvert f(\Vektor{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\},
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vector{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vector{x} \in \Omega \right\}.
+    \lVert f \rVert_{\SpaceLp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vektor{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\}.
     \end{align}
 \end{definition}
 
@@ -123,7 +123,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Riesz representation theorem for $1 < p < +\infty$] \label{theorem:riesz_p}
     Let $1 < p < +\infty$ and $\varphi \in (\SpaceLp{p}(\Omega))^*$, then for all $f \in \SpaceLp{p}(\Omega)$ there exists a unique $u \in \SpaceLp{p^{\prime}}(\Omega)$ such that:
     \begin{align}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega(\Vector{x}),
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vektor{x}) u(\Vektor{x}) ~ d \omega(\Vektor{x}),
     \end{align}
     and:
     \begin{align}
@@ -147,7 +147,7 @@ As a consequence of \cref{theorem:riesz_p}, the following identification result 
 \begin{theorem}[Riesz representation theorem for $p = 1$] \label{theorem:riesz_1}
     Let $\varphi \in (\SpaceLp{1}(\Omega))^*$, then for all $f \in \SpaceLp{1}(\Omega)$ there exists a unique $u \in \SpaceLp{\infty}(\Omega)$ such that:
     \begin{align}
-        \langle f, \varphi \rangle = \int_{\Omega} f(\Vector{x}) u(\Vector{x}) ~ d \omega(\Vector{x}),
+        \langle f, \varphi \rangle = \int_{\Omega} f(\Vektor{x}) u(\Vektor{x}) ~ d \omega(\Vektor{x}),
     \end{align}
     and:
     \begin{align}
@@ -199,7 +199,7 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
 \begin{remark}
     The space $\SpaceLp{2}(\Omega)$ equipped with $(\cdot, \cdot)_{\SpaceLp{2}(\Omega)}$ such that, for all $u, v \in \SpaceLp{2}(\Omega)$:
     \begin{align}
-        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vector{x}) v(\Vector{x}) ~ d \omega(\Vector{x}),
+        (u, v)_{\SpaceLp{2}(\Omega)} = \int_{\Omega} u(\Vektor{x}) v(\Vektor{x}) ~ d \omega(\Vektor{x}),
     \end{align}
     is a Hilbert space. Moreover, for all $u \in \SpaceLp{2}(\Omega)$:
     \begin{align}
@@ -404,7 +404,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 
     Furthermore, there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\RealNumbersTo{d})$:
     \begin{align}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert &\leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p &\text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vektor{x}) - u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
     \end{align}
     where:
     \begin{align}
@@ -436,7 +436,7 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
     \end{align}
     and
     \begin{align}
-        \lvert \partial^{\alpha} u(\Vector{x}) - \partial^{\alpha} u(\Vector{y}) \rvert &\leq C \lVert \Vector{x} - \Vector{y} \rVert^{\theta} \lVert u \rVert_{k, p} &\text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d}.
+        \lvert \partial^{\alpha} u(\Vektor{x}) - \partial^{\alpha} u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\theta} \lVert u \rVert_{k, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d}.
     \end{align}
 
     In particular:
@@ -457,7 +457,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 
     Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
     \begin{align}
-        \lvert u(\Vector{x}) - u(\Vector{y}) \rvert &\leq C \lVert \Vector{x} - \Vector{y} \rVert^{\alpha} \lVert u \rVert_{1, p} &\text{ for } \omega \text{-a.e. } \Vector{x}, \Vector{y} \in \RealNumbersTo{d},
+        \lvert u(\Vektor{x}) - u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\alpha} \lVert u \rVert_{1, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
     \end{align}
     where:
     \begin{align}

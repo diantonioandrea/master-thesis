@@ -12,9 +12,9 @@ Consider the following problem, that is to find $u \colon I \times \Omega \right
 \end{align}
 with the following initial-boundary conditions:
 \begin{align}
-    u(t, \Vector{x}) &= u_D(t, \Vector{x}) &\text{for all } t, \Vector{x} \in I \times \partial \Omega^-, \label{equation:cdr_dirichlet} \\
-    \Diffusion \partial_{\Vector{n}} u(t, \Vector{x}) &= u_N(t, \Vector{x}) &\text{for all } t, \Vector{x} \in I \times \partial \Omega^+, \label{equation:cdr_neumann} \\
-    u(0, \Vector{x}) &= u_0(\Vector{x}) &\text{for all } \Vector{x} \in \Omega, \label{equation:cdr_initial}
+    u(t, \Vektor{x}) &= u_D(t, \Vektor{x}) &\text{for all } t, \Vektor{x} \in I \times \partial \Omega^-, \label{equation:cdr_dirichlet} \\
+    \Diffusion \partial_{\Vektor{n}} u(t, \Vektor{x}) &= u_N(t, \Vektor{x}) &\text{for all } t, \Vektor{x} \in I \times \partial \Omega^+, \label{equation:cdr_neumann} \\
+    u(0, \Vektor{x}) &= u_0(\Vektor{x}) &\text{for all } \Vektor{x} \in \Omega, \label{equation:cdr_initial}
 \end{align}
 and where:
 \begin{align}
@@ -24,14 +24,14 @@ and where:
 \end{align}
 are respectively the convection, diffusion and reaction coefficients, and:
 \begin{align}
-    \Vector{n} \colon \partial \Omega \rightarrow \RealNumbersTo{d},
+    \Vektor{n} \colon \partial \Omega \rightarrow \RealNumbersTo{d},
 \end{align}
 is the unit outer normal with respect to $\partial \Omega$.
 
 Assume that $\partial \Omega = \partial \Omega^- \cup \partial \Omega^+$ where:
 \begin{align}
-    \partial \Omega^- = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) < 0 \text{ for all } t \in \overline{I} \right\}, \\
-    \partial \Omega^+ = \left\{ \Vector{x} \in \partial \Omega \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}(\Vector{x}) \geq 0 \text{ for all } t \in \overline{I} \right\},
+    \partial \Omega^- = \left\{ \Vektor{x} \in \partial \Omega \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}(\Vektor{x}) < 0 \text{ for all } t \in \overline{I} \right\}, \\
+    \partial \Omega^+ = \left\{ \Vektor{x} \in \partial \Omega \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}(\Vektor{x}) \geq 0 \text{ for all } t \in \overline{I} \right\},
 \end{align}
 namely the inflow and outflow parts of $\partial \Omega$.
 
@@ -55,14 +55,14 @@ Moreover, assume that:
 \end{align}
 with $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
 \begin{align}
-    \lVert \Convection(t, \Vector{x}) \rVert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_6} \\
-    \lvert \Divergence \Convection(t, \Vector{x}) \rvert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega, \label{equation:ass_7} \\
-    \lvert \Reaction(t, \Vector{x}) \rvert & \leq \BoundC{\Reaction} &\text{for a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_8}
+    \lVert \Convection(t, \Vektor{x}) \rVert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_6} \\
+    \lvert \Divergence \Convection(t, \Vektor{x}) \rvert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_7} \\
+    \lvert \Reaction(t, \Vektor{x}) \rvert & \leq \BoundC{\Reaction} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega. \label{equation:ass_8}
 \end{align}
 
 Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that:
 \begin{align}
-    \Reaction(t, \Vector{x}) - \frac{1}{2} \Divergence \Convection(t, \Vector{x}) & \geq \BoundC{\Reaction \Convection} &\text{for a.e. } t, \Vector{x} \in I \times \Omega. \label{equation:ass_9}
+    \Reaction(t, \Vektor{x}) - \frac{1}{2} \Divergence \Convection(t, \Vektor{x}) & \geq \BoundC{\Reaction \Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega. \label{equation:ass_9}
 \end{align}
 
 \newpage
@@ -79,8 +79,8 @@ Set now $V = \left\{ v \in \SpaceHk{1}(\Omega) \text{ such that } v \Restriction
     \end{align}
     Moreover:
     \begin{align}
-        \partial_t \int_{\Omega} u w ~ d \omega(\Vector{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vector{n} \right) u w ~ d \sigma(\Vector{x}) - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
-        &+ \int_{\Omega} \Reaction u w ~ d \omega(\Vector{x}) = \int_{\Omega} g w ~ d \omega(\Vector{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vector{x}),
+        \partial_t \int_{\Omega} u w ~ d \omega(\Vektor{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vektor{n} \right) u w ~ d \sigma(\Vektor{x}) - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) \notag \\
+        &+ \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x}),
     \end{align}
     for all $w \in V$.
 \end{definition}
@@ -133,14 +133,14 @@ For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corres
     \langle v \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( v \Restriction_{\Gamma_{ij}} + v \Restriction_{\Gamma_{ji}} \right), \\
     \left[ v \right]_{\Gamma_{ij}} &= v \Restriction_{\Gamma_{ij}} - v \Restriction_{\Gamma_{ji}},
 \end{align}
-and $\Vector{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$. Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.
+and $\Vektor{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$. Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.
 
 Finally, for $i \in \SpaceIndices$:
 \begin{align}
-    \partial K_i^-(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) < 0 \right\}, \\
-    \partial K_i^+(t) = \left\{ \Vector{x} \in \partial K_i \text{ such that } \Convection(t, \Vector{x}) \cdot \Vector{n}_i(\Vector{x}) \geq 0 \right\},
+    \partial K_i^-(t) = \left\{ \Vektor{x} \in \partial K_i \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}_i(\Vektor{x}) < 0 \right\}, \\
+    \partial K_i^+(t) = \left\{ \Vektor{x} \in \partial K_i \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}_i(\Vektor{x}) \geq 0 \right\},
 \end{align}
-namely the inflow and outflow parts of $\partial K_i$, where $\Vector{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
+namely the inflow and outflow parts of $\partial K_i$, where $\Vektor{n}_i$ denotes the unit outer normal with respect to $\partial K_i$.
 
 The dependence of $\partial K_i^-(t)$ and $\partial K_i^+(t)$ on $t$ will be implicit in what follows.
 
@@ -157,16 +157,16 @@ where:
 \end{align}
 and:
 \begin{align}
-    a_h \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) \label{equation:cdr_ah} \\
-    &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
-    b_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) \label{equation:cdr_bh} - \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
-    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}), \notag \\
-    c_h \left( u, w \right) &= \int_{\Omega} \Reaction u w ~ d \omega(\Vector{x}), \label{equation:cdr_ch} \\
-    J^{\kappa}_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vector{x}), \label{equation:cdr_jh} \\
-    l_h \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}) \label{equation:cdr_lh} \\
-    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}) \notag,
+    a_h \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) \label{equation:cdr_ah} \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vektor{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vektor{n}_i \right) w - \left( \Gradient w \cdot \Vektor{n}_i \right) u \right) ~ d \sigma(\Vektor{x}), \notag \\
+    b_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) \label{equation:cdr_bh} - \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left[ u \right] w ~ d \sigma(\Vektor{x}) \\
+    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}), \notag \\
+    c_h \left( u, w \right) &= \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}), \label{equation:cdr_ch} \\
+    J^{\kappa}_h \left( u, w \right) &= \sum_{i \in \SpaceIndices} \sum_{j \in \Neighbours{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vektor{x}) + \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vektor{x}), \label{equation:cdr_jh} \\
+    l_h \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vektor{x}) \label{equation:cdr_lh} \\
+    &+ \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vektor{x}) + \Diffusion \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vektor{n}_i \right) ~ d \sigma(\Vektor{x}) \notag \\
+    &- \sum_{i \in \SpaceIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u_D w ~ d \sigma(\Vektor{x}) \notag,
 \end{align}
 with:
 \begin{align}
@@ -180,19 +180,19 @@ This formulation is derived by multiplying \cref{equation:cdr} by any $w \in \Sp
 
 The bilinear form $a_h$ represents the discretization of the diffusion term in the nonsymmetric formulation, which guarantees its non-negativity. Green's theorem is used and the following terms are added:
 \begin{align}
-    \int_{\Gamma_{ij}} \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] ~ d \sigma(\Vector{x}),
+    \int_{\Gamma_{ij}} \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ u \right] ~ d \sigma(\Vektor{x}),
 \end{align}
 which vanish under assumptions \cref{equation:assumption_regularity_1} and \cref{equation:assumption_regularity_2} as $\left[ u \right]_{\Gamma_{ij}} = 0$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$. Note that, due to $\left\langle \Gradient u \right\rangle_{\Gamma_{ij}} = \Gradient u \Restriction_{\Gamma{ij}} = \Gradient u \Restriction_{\Gamma{ji}}$ for all $i \in \SpaceIndices$ and for all $j \in \Neighbours{i}$, the following terms:
 \begin{align}
-    \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] ~ d \sigma(\Vector{x}),
+    \sum_{\substack{j \in \Neighbours{i} \\ j < i}} \int_{\Gamma_{ij}} \left\langle \Gradient u \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] ~ d \sigma(\Vektor{x}),
 \end{align}
-represent the sum of integrals of $w \partial_{\Vector{n}} u$ over faces of $\partial K_i$ in $\Omega$ for all $i \in \SpaceIndices$. Finally, the remaining integrals are represented by the following terms:
+represent the sum of integrals of $w \partial_{\Vektor{n}} u$ over faces of $\partial K_i$ in $\Omega$ for all $i \in \SpaceIndices$. Finally, the remaining integrals are represented by the following terms:
 \begin{align}
-    \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}),
+    \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vektor{n}_i \right) w - \left( \Gradient w \cdot \Vektor{n}_i \right) u \right) ~ d \sigma(\Vektor{x}),
 \end{align}
 for which the second part cancels with the corresponding terms in $l_h$ as $u = u_D$ on $\partial \Omega^-$, and by the following terms:
 \begin{align}
-    \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}),
+    \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vektor{x}),
 \end{align}
 which appear in $l_h$ due to \cref{equation:cdr_neumann}.
 
@@ -201,21 +201,21 @@ which appear in $l_h$ due to \cref{equation:cdr_neumann}.
 
 The bilinear form $b_h$ represents the discretization of the convection term. Applying Green's theorem yields, for $i \in \SpaceIndices$:
 \begin{align}
-    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) &= \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
-    &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \label{equation:cdr_convection_discretization_1} \\
-    & - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}). \notag
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) &= \int_{\partial K_i} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) \notag \\
+    &= \int_{\partial K_i^-} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) \label{equation:cdr_convection_discretization_1} \\
+    & - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}). \notag
 \end{align}
 Consider, on the inflow part of $\partial K_i$, the ``information coming from outside'' the element $K_i$, that is, write $u^-$ instead of $u$, where $u^-$ is a simplified notation for $u \Restriction_{\Gamma_{ji}}$ for all $j \in \Neighbours{i}$. Additionally, consider $u^- = u_D$ on $\partial K_i^- \cap \partial \Omega$. Starting from \cref{equation:cdr_convection_discretization_1}, further rearrange the resulting terms:
 \begin{align}
-    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
-    &- \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \notag \\
-    &= - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vector{x}) \pm \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
-    &+ \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) \notag \\
-    &+ \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) \notag \\
-    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) + \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( u^- - u \right) w ~ d \sigma(\Vector{x}) \notag \\
-    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u^- w ~ d \sigma(\Vector{x}) \notag \\
-    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
-    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}). \notag
+    \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) &= \int_{\partial K_i^-} \left( \Convection \cdot \Vektor{n}_i \right) u^- w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^+} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) \notag \\
+    &- \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) \notag \\
+    &= - \int_{K_i} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) \pm \int_{\partial K_i} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) \notag \\
+    &+ \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u^- w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u^- w ~ d \sigma(\Vektor{x}) \notag \\
+    &+ \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) + \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left( u^- - u \right) w ~ d \sigma(\Vektor{x}) \notag \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u^- w ~ d \sigma(\Vektor{x}) \notag \\
+    &= \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) - \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left[ u \right] w ~ d \sigma(\Vektor{x}) \\
+    &- \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) + \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u_D w ~ d \sigma(\Vektor{x}). \notag
 \end{align}
 Note that the last term is transferred to $l_h$ while the other terms define $b_h$ as in \cref{equation:cdr_bh}.
 
@@ -286,16 +286,16 @@ Considering different families of triangulations on each $I_n$ leads to the foll
 
 Moreover, the bilinear forms $a_h$, $b_h$, $c_h$, and $J^{\kappa}_h$, as well as $l_h$, introduced in \cref{sec:space_discretization}, are redefined as follows:
 \begin{align}
-    a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vector{x}) \label{equation:cdr_ahn} \\
-    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) u \right) ~ d \sigma(\Vector{x}), \notag \\
-    b_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vector{x}) \label{equation:cdr_bhn} - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ u \right] w ~ d \sigma(\Vector{x}) \\
-    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u w ~ d \sigma(\Vector{x}), \notag \\
-    c_{h, n} \left( u, w \right) &= \int_{\Omega} \Reaction u w ~ d \omega(\Vector{x}), \label{equation:cdr_chn} \\
-    J^{\kappa}_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vector{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vector{x}), \label{equation:cdr_jhn} \\
-    l_{h, n} \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vector{x}) \label{equation:cdr_lhn} \\
-    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vector{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vector{n}_i \right) ~ d \sigma(\Vector{x}) \notag \\
-    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) u_D w ~ d \sigma(\Vector{x}) \notag,
+    a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) \label{equation:cdr_ahn} \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vektor{x}) \notag \\
+    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vektor{n}_i \right) w - \left( \Gradient w \cdot \Vektor{n}_i \right) u \right) ~ d \sigma(\Vektor{x}), \notag \\
+    b_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) \label{equation:cdr_bhn} - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left[ u \right] w ~ d \sigma(\Vektor{x}) \\
+    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}), \notag \\
+    c_{h, n} \left( u, w \right) &= \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}), \label{equation:cdr_chn} \\
+    J^{\kappa}_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vektor{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vektor{x}), \label{equation:cdr_jhn} \\
+    l_{h, n} \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vektor{x}) \label{equation:cdr_lhn} \\
+    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vektor{x}) + \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vektor{n}_i \right) ~ d \sigma(\Vektor{x}) \notag \\
+    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u_D w ~ d \sigma(\Vektor{x}) \notag,
 \end{align}
 where:
 \begin{align}
@@ -377,7 +377,7 @@ For what follows, fix the following notations:
 \end{align}
 where:
 \begin{align}
-    \lVert w \rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \lvert \Convection \cdot \Vector{n} \rvert w^2 ~ d \sigma(\Vector{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
+    \lVert w \rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \lvert \Convection \cdot \Vektor{n} \rvert w^2 ~ d \sigma(\Vektor{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
 \end{align}
 
 Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
@@ -392,50 +392,50 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{proof}
     By \cref{equation:cdr_ahn}:
     \begin{align*}
-        a_{h, n} \left( w, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient w \cdot \Gradient w ~ d \omega(\Vector{x}) \\
-        &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vector{n}_{ij} \left[ w \right] \right) ~ d \sigma(\Vector{x}) \\
-        &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient w \cdot \Vector{n}_i \right) w - \left( \Gradient w \cdot \Vector{n}_i \right) w \right) ~ d \sigma(\Vector{x}) \\
-        &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient w \cdot \Gradient w ~ d \omega(\Vector{x}) \\
+        a_{h, n} \left( w, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient w \cdot \Gradient w ~ d \omega(\Vektor{x}) \\
+        &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] \right) ~ d \sigma(\Vektor{x}) \\
+        &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient w \cdot \Vektor{n}_i \right) w - \left( \Gradient w \cdot \Vektor{n}_i \right) w \right) ~ d \sigma(\Vektor{x}) \\
+        &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient w \cdot \Gradient w ~ d \omega(\Vektor{x}) \\
         &= \Diffusion \Seminorm{w}_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2.
     \end{align*}
 
     By \cref{equation:cdr_bhn}:
     \begin{align*}
-        b_{h, n} \left( w, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient w \right) w ~ d \omega(\Vector{x}) - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left[ w \right] w ~ d \sigma(\Vector{x}) \\
-        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w - w^- \right) w ~ d \sigma(\Vector{x}),
+        b_{h, n} \left( w, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient w \right) w ~ d \omega(\Vektor{x}) - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left[ w \right] w ~ d \sigma(\Vektor{x}) \\
+        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vektor{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left( w - w^- \right) w ~ d \sigma(\Vektor{x}),
     \end{align*}
     and, by $\partial K_i = \partial K_i^- \cup \partial K_i^+$:
     \begin{align*}
-        b_{h, n} \left( w, w \right) &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &- \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w^2 - 2 ww^- \right) ~ d \sigma(\Vector{x}) \\
-        &+ \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}),
+        b_{h, n} \left( w, w \right) &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vektor{x}) - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &- \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left( w^2 - 2 ww^- \right) ~ d \sigma(\Vektor{x}) \\
+        &+ \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}),
     \end{align*}
     hence, by using:
     \begin{align*}
-        \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) = - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w^- \right)^2 ~ d \sigma(\Vector{x}),
+        \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) = - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left( w^- \right)^2 ~ d \sigma(\Vektor{x}),
     \end{align*}
     it follows that:
     \begin{align*}
-        b_{h, n} \left( w, w \right) &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &- \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) \left( w^2 - 2 ww^- + \left( w^- \right)^2 \right) ~ d \sigma(\Vector{x}) \\
-        &+ \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vector{n}_i \right) w^2 ~ d \sigma(\Vector{x}) \\
-        &= - \frac12 \int_{\Omega} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) \\
+        b_{h, n} \left( w, w \right) &= - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Divergence{\Convection} w^2 ~ d \omega(\Vektor{x}) - \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &- \frac12 \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left( w^2 - 2 ww^- + \left( w^- \right)^2 \right) ~ d \sigma(\Vektor{x}) \\
+        &+ \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) w^2 ~ d \sigma(\Vektor{x}) \\
+        &= - \frac12 \int_{\Omega} \Divergence{\Convection} w^2 ~ d \omega(\Vektor{x}) \\
         &+ \frac12 \sum_{i \in \SpaceTimeIndices} \left( \Norm{ w }_{\Convection, \partial K_i^- \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^+ \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
-        &= - \frac12 \int_{\Omega} \Divergence{\Convection} w^2 ~ d \omega(\Vector{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \left( \Norm{ w }_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right).
+        &= - \frac12 \int_{\Omega} \Divergence{\Convection} w^2 ~ d \omega(\Vektor{x}) + \frac12 \sum_{i \in \SpaceTimeIndices} \left( \Norm{ w }_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right).
     \end{align*}
 
     By \cref{equation:cdr_chn}:
     \begin{align*}
-        c_{h, n} \left( u, w \right) &= \int_{\Omega} \Reaction w^2 ~ d \omega(\Vector{x}).
+        c_{h, n} \left( u, w \right) &= \int_{\Omega} \Reaction w^2 ~ d \omega(\Vektor{x}).
     \end{align*}
 
     Finally, by \cref{equation:cdr_Ahn}, together with \cref{equation:ass_9}:
     \begin{align*}
         A_{h, n}(w, w) &= a_{h, n} \left( w, w \right) + b_{h, n} \left( w, w \right) + c_{h, n} \left( w, w \right) + \Diffusion J^{\kappa}_{h, n} \left( w, w \right) \\
-        &= \Diffusion \Seminorm{w}_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \int_{\Omega} \left( \Reaction - \frac12 \Divergence{\Convection} \right) w^2 ~ d \omega(\Vector{x}) + \Diffusion J^{\kappa}_{h, n} \left( w, w \right) \\
+        &= \Diffusion \Seminorm{w}_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \int_{\Omega} \left( \Reaction - \frac12 \Divergence{\Convection} \right) w^2 ~ d \omega(\Vektor{x}) + \Diffusion J^{\kappa}_{h, n} \left( w, w \right) \\
         &+ \frac12 \sum_{i \in \SpaceTimeIndices} \left( \Norm{ w }_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
         &\geq \Diffusion \lvert w \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert w \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
         &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
@@ -715,10 +715,10 @@ Assume, now, that the solution is sufficiently regular, that is:
     \end{align}
     for a.e. $t \in I$,
     \begin{align}
-        \lVert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)}, \\
-        \lvert v(\Vector{x}) - \InterPolyN v(\Vector{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert v(\Vector{x}) \rvert_{\SpaceHk{q + 1}(I_n)},
+        \lVert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert v(\Vektor{x}) \rvert_{\SpaceHk{q + 1}(I_n)}, \\
+        \lvert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert v(\Vektor{x}) \rvert_{\SpaceHk{q + 1}(I_n)},
     \end{align}
-    for $\omega$-a.e. $\Vector{x} \in \Omega$.
+    for $\omega$-a.e. $\Vektor{x} \in \Omega$.
 \end{lemma}
 
 \begin{lemma}
