@@ -41,7 +41,7 @@ The estimates given in \Cref{theorem:estimates_ht} provide a useful benchmark fo
 
 What follows, as anticipated, illustrates the behavior of the error $\Error$ versus the number of degrees of freedom and compare it with the expected powers of both $h$ and $\tau$, for both the parabolic and hyperbolic cases across three pairs of $\left( p, q \right)$ values: $\left( 1, 1 \right)$, $\left( 2, 2 \right)$, and $\left( 2, 1 \right)$.
 
-\Cref{sec:graphs} illustrates the convergence behavior of the method over meshes with correspondingly scaled values of $h$ and $\tau$, as shown in \Cref{table:ht}, while \Cref{sec:tables} examines the behavior of the algorithm over multiple pairs of $h$ and $\tau$, thereby ignoring the scaling assumption introduced in \Cref{lemma:bounds}.
+\Cref{sec:graphs_1,sec:graphs_2} illustrates the convergence behavior of the method over meshes with correspondingly scaled values of $h$ and $\tau$, as shown in \Cref{table:ht}, while \Cref{sec:tables_1,sec:tables_2} examines the behavior of the algorithm over multiple pairs of $h$ and $\tau$, thereby ignoring the scaling assumption introduced in \Cref{lemma:bounds}.
 
 \begin{table}[!ht]
     \centering
@@ -63,7 +63,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 \end{table}
 
 \newpage
-\subsection{Convergence Graphs} \label{sec:graphs}
+\subsection{Convergence Tests, Parabolic Case} \label{sec:graphs_1}
 
 % Parabolic case.
 % p = 1, q = 1.
@@ -93,7 +93,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/1_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Parabolic case, $p = 1$ and $q = 1$.}
+    \caption{$p = 1$ and $q = 1$.}
 \end{figure}
 \vspace*{\fill}
 
@@ -126,7 +126,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/2_2_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Parabolic case, $p = 2$ and $q = 2$.}
+    \caption{$p = 2$ and $q = 2$.}
 \end{figure}
 \vspace*{\fill}
 
@@ -159,11 +159,13 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/2_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Parabolic case, $p = 2$ and $q = 1$.}
+    \caption{$p = 2$ and $q = 1$.}
 \end{figure}
 \vspace*{\fill}
 
 \newpage
+\subsection{Convergence Tests, Hyperbolic Case} \label{sec:graphs_2}
+
 % Hyperbolic case.
 % p = 1, q = 1.
 
@@ -187,7 +189,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/1_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Hyperbolic case, $p = 1$ and $q = 1$.}
+    \caption{$p = 1$ and $q = 1$.}
 \end{figure}
 \vspace*{\fill}
 
@@ -215,7 +217,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/2_2_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Hyperbolic case, $p = 2$ and $q = 2$.}
+    \caption{$p = 2$ and $q = 2$.}
 \end{figure}
 \vspace*{\fill}
 
@@ -243,12 +245,12 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
         \input{content/tikz/2_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
     \end{subfigure}
-    \caption{Hyperbolic case, $p = 2$ and $q = 1$.}
+    \caption{$p = 2$ and $q = 1$.}
 \end{figure}
 \vspace*{\fill}
 
 \newpage
-\subsection{Error Tables} \label{sec:tables}
+\subsection{Error Tests, Parabolic Case} \label{sec:tables_1}
 
 % Parabolic case.
 % p = 1, q = 1.
@@ -318,7 +320,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
             \hline
         \end{tabular}
     }
-    \caption{Parabolic case, $p = 1$ and $q = 1$.}
+    \caption{$p = 1$ and $q = 1$.}
 \end{table}
 \vspace*{\fill}
 
@@ -391,11 +393,13 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
             \hline
         \end{tabular}
     }
-    \caption{Parabolic case, $p = 2$ and $q = 2$.}
+    \caption{$p = 2$ and $q = 2$.}
 \end{table}
 \vspace*{\fill}
 
 \newpage
+\subsection{Error Tests, Hyperbolic Case} \label{sec:tables_2}
+
 % Hyperbolic case.
 % p = 1, q = 1.
 
@@ -448,7 +452,7 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
             \hline
         \end{tabular}
     }
-    \caption{Hyperbolic case, $p = 1$ and $q = 1$.}
+    \caption{$p = 1$ and $q = 1$.}
 \end{table}
 \vspace*{\fill}
 
@@ -505,6 +509,254 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
             \hline
         \end{tabular}
     }
-    \caption{Hyperbolic case, $p = 2$ and $q = 2$.}
+    \caption{$p = 2$ and $q = 2$.}
 \end{table}
+\vspace*{\fill}
+
+\newpage
+\subsection{Saturation Tests, Parabolic Case} \label{sec:saturation_1}
+
+% Parabolic case, t.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_t_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_t_sat_l2h1.tex}
+        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_t_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_t_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Parabolic case, h.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_h_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_h_sat_l2h1.tex}
+        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_h_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_h_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$h$ saturation, $p = 1$ and $q = 1$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Parabolic case, t.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_t_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_t_sat_l2h1.tex}
+        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_t_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_t_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Parabolic case, h.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_h_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_h_sat_l2h1.tex}
+        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_h_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_h_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$h$ saturation, $p = 2$ and $q = 2$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+\subsection{Saturation Tests, Hyperbolic Case} \label{sec:saturation_2}
+
+% Hyperbolic case, t.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_t_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_t_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_t_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Hyperbolic case, h.
+% p = 1, q = 1.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_h_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_h_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_h_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$h$ saturation, $p = 1$ and $q = 1$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Hyperbolic case, t.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_t_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_t_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_t_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
+\end{figure}
+\vspace*{\fill}
+
+\newpage
+% Hyperbolic case, h.
+% p = 2, q = 2.
+
+\vspace*{\fill}
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_h_sat_l2l2.tex}
+        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_h_sat_l2T.tex}
+        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_h_sat_linfl2.tex}
+        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+    \end{subfigure}
+    \caption{$h$ saturation, $p = 2$ and $q = 2$.}
+\end{figure}
 \vspace*{\fill}
