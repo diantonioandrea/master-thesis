@@ -1,4 +1,12 @@
-\section{Bochner Spaces}
+This chapter presents the theory behind the \acrlong{dgm}.
+
+\Cref{sec:bochner} introduces the theory of Bochner spaces, which, together with \Cref{chapter:preliminaries}, completes the mathematical foundations of the \acrshort{dgm}.
+
+The goal of \Cref{sec:model_problem} is to develop the \acrshort{dgm} around a model parabolic problem, for which \Cref{chapter:cdr} provides a specific formulation. \Cref{subsection:introduction,subsection:weak_formulation} introduce the problem, while \Cref{subsection:well_posedeness} establishes its well-posedness. \Cref{sec:space_discretization,subsection:time_dg} describe the space and time discretizations of the problem, and \Cref{subsection:method_formulation} formulates the \acrshort{dgm}. Finally, \Cref{subsection:method_analysis} provides the stability and error analysis of the method.
+
+Only the relevant proofs are included, while the remaining ones can be found in \citetitle{Ern2021}.
+
+\section{Bochner Spaces} \label{sec:bochner}
 
 The Bochner spaces introduced in this section provide an ideal setting for studying and characterizing time-dependent \acrshort{pdes}, by considering, following \cite[p.~111]{Ern2021}, functions defined on a bounded time interval $I \subset \RealNumbers$, with values in a Banach (or Hilbert) space of functions defined on the space domain $\Omega \subset \RealNumbersTo{d}$.
 
@@ -248,11 +256,11 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
 \end{theorem}
 
 \newpage
-\section{Model Parabolic Problem}
+\section{Model Parabolic Problem} \label{sec:model_problem}
 
 Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definition:gelfand} and \Cref{definition:x}.
 
-\subsection{Introduction}
+\subsection{Introduction} \label{subsection:introduction}
 
 \begin{definition}[$A$] \label{definition:A} % [!] Check instances of \ContC{a}
     Let $A \colon I \rightarrow \Lagrange(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
@@ -280,7 +288,7 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 \end{definition}
 
 \newpage
-\subsection{Weak Formulation}
+\subsection{Weak Formulation} \label{subsection:weak_formulation}
 
 \begin{definition}[Trial and test spaces]
     Let $\SpaceTrial = \SpaceX(I; V, V^*)$ be the trial space and let $\SpaceTest = \SpaceTest_0 \times \SpaceTest_1$ be the test space where $\SpaceTest_0 = W$ and $\SpaceTest_1 = \SpaceLp{2}(I; V)$.
@@ -310,7 +318,7 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 \end{lemma}
 
 \newpage
-\subsection{Well-Posedeness}
+\subsection{Well-Posedeness} \label{subsection:well_posedeness}
 
 The objective of this section is to establish the well-posedness of the parabolic model problem \cref{equation:weak}.
 
@@ -338,7 +346,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 % [!] Proof to be included.
 
 \newpage
-\subsection{Conforming Semi-Discretization in Space}
+\subsection{Conforming Semi-Discretization in Space} \label{subsection:space_discretization}
 
 The following sections focus on the discretization of the model parabolic problem.
 
@@ -483,7 +491,7 @@ Another useful space is the subspace of $\SpacePolynomials{q}^b(\ClosedTimeMesh;
 \end{definition}
 
 \newpage
-\subsection{Method Formulation}
+\subsection{Method Formulation} \label{subsection:method_formulation}
 
 \subsubsection{Quadratures and Interpolation}
 
@@ -574,7 +582,7 @@ In \Cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed,
 \end{proposition}
 
 \newpage
-\subsection{Stability and Error Analysis}
+\subsection{Stability and Error Analysis} \label{subsection:method_analysis}
 
 Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
 \begin{align}
