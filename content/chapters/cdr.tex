@@ -509,7 +509,7 @@ For the derivation of error estimates, consider the following space-time interpo
 
 It can be shown that $\InterpolantPQ u$ is uniquely determined by the properties stated in \Cref{definition:interpolant_qp}.
 
-It follows, then, the derivation of error estimates in terms of the $\InterpolantPQ$-interpolation error.
+The following identity can then be written involving the $\InterpolantPQ$-interpolation error.
 
 \begin{lemma}
     \begin{align}
@@ -525,7 +525,7 @@ Fix, now, the following notation:
     \xi &= \AppU - \InterpolantPQ u, \\
     \eta &= \InterpolantPQ u - u,
 \end{align}
-and note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error, then $\Error = \xi + \eta$, and \cref{equation:error_1} can be rewritten as:
+and note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation error. Observing that $\Error = \xi + \eta$, \cref{equation:error_1} can be rewritten as:
 \begin{align}
     B(\xi, \xi) &= - \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(\eta, \xi) ~ dt - \sum_{n = 1}^{\nTimeIndices - 1} \left( \eta_n^-, \left\{ \xi \right\}_n \right)_0. \label{equation:error_2}
 \end{align}
@@ -558,7 +558,7 @@ Finally, observing that:
     \lVert \Error \rVert_{E, n}^2 &\leq 2 \left( \lVert \xi \rVert_{E, n}^2 + \lVert \eta \rVert_{E, n}^2 \right), \\
     \lVert \Error \rVert_T^2 &\leq 2 \left( \lVert \xi \rVert_T^2 + \lVert \eta \rVert_T^2 \right),
 \end{align}
-consider the following abstract error estimate:
+which leads to the following abstract error estimate:
 \begin{lemma} \label{lemma:abstract_estimates}
     The following holds:
     \begin{align}
@@ -600,18 +600,23 @@ The analysis of approximation properties of $\InterpolantPQ$ with respect to tim
 
 \begin{definition}[$\SpaceSolutionReference$]
     \begin{align}
-        \SpaceSolutionReference = \left\{ w \in \SpaceLp{2}(\left( -1, 1 \right) \times \Omega) \text{ such that } w = \sum_{i = 0}^q \zeta^i w_i \text{ where } \left\{ w_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \right\}.
+        \SpaceSolutionReference = \left\{ w \in \SpaceLp{2}(\left( -1, 1 \right) \times \Omega) \text{ such that } w = \sum_{i = 0}^q \zeta^i w_i \text{ with } \left\{ w_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \right\}. \label{eq:space_sol_ref_def}
     \end{align}
 \end{definition}
+
+Note that $w$ in \cref{eq:space_sol_ref_def} can be expressed more explicitly as:
+\begin{align}
+    w \left( \zeta, \Vektor{x} \right) = \sum_{i = 0}^q \zeta^i w_i \left( \Vektor{x} \right).
+\end{align}
 
 \begin{definition}[$\InterpolantPQR$] \label{definition:interpolant_ref_qp}
     $\InterpolantPQR$ is such that:
     \begin{align}
-        \InterpolantPQR v &\in \SpaceSolutionReference, \\
-        \int_{I_n} \left( \InterpolantPQR u - u, v \right)_0 ~ d \lambda(\zeta) &= 0 &\text{ for all } v \in \SpaceSolutionReferenceMO, \\ 
-        \InterpolantPQR v(1^-) &= \InterSol v(1^-),
+        \InterpolantPQR w &\in \SpaceSolutionReference, \\
+        \int_{-1}^1 \left( \InterpolantPQR w - w, v \right)_0 ~ d \lambda(\zeta) &= 0 &\text{ for all } v \in \SpaceSolutionReferenceMO, \\ 
+        \InterpolantPQR w(1^-) &= \InterSol w(1^-),
     \end{align}
-    for all $v \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$.
+    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$.
 \end{definition}
 
 It follows that:
@@ -635,7 +640,7 @@ with $\RMap \colon \left( -1, 1 \right) \rightarrow I_n$ mapping such that:
     \end{align}
     where:
     \begin{align}
-        \InterSol w(1^-) &= \sum_{i \in \NaturalNumbers} w_i \Legendre_i &\text{ for } \left\{ w_i \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n},
+        \InterSol w &= \sum_{i \in \NaturalNumbers} w_i \Legendre_i &\text{ for } \left\{ w_i \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n},
     \end{align}
     for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$. 
 \end{lemma}
@@ -648,9 +653,9 @@ which implies:
 \begin{align}
     \lVert \eta \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} & \leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterpolantPQ \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
     &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \left( \InterpolantPQR \left( \InterSol u \circ \RMap \right) \right) \circ \RMap^{-1} \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
-    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)},
+    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(\left( -1, 1 \right); \SpacePlaceholder)},
 \end{align}
-where $\SpacePlaceholder$ denotes a space that is yet to be specified.
+where $\SpacePlaceholder$ denotes a Banach space that is yet to be specified.
 
 Moreover, consider the following expansion of $\AppUN$ with respect to the Legendre polynomials:
 \begin{align}
@@ -701,6 +706,7 @@ Assume, now, that the solution is sufficiently regular, that is:
     u \in \SpaceRegular = \SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega)) \cap C^0(I; \SpaceHk{p + 1}(\Omega)) &\text{ for some integers } p, q \geq 1.
 \end{align}
 
+\newpage
 \begin{lemma} % [!] Different time intervals, [!] to be fixed.
     There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $v \in \SpaceRegular$:
     \begin{align}
@@ -730,6 +736,7 @@ Assume, now, that the solution is sufficiently regular, that is:
     for all $w \in \SpaceHk{1}(\Omega, \Omega_{h, n})$, for all $K \in \Omega_{h, n}$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
+\newpage
 \begin{lemma} \label{lemma:bounds}
     Assume that there exist $\BoundHT, \BoundHTVariant > 0$ such that:
     \begin{align}
@@ -764,7 +771,7 @@ Assume, now, that the solution is sufficiently regular, that is:
 
 The main result of the error analysis can now be stated.
 \begin{theorem} \label{theorem:estimates_ht}
-    Let assumptions in \cref{equation:ass_1,equation:ass_2,equation:ass_3,equation:ass_4,equation:ass_5,equation:ass_6,equation:ass_7,equation:ass_8,equation:ass_9,equation:ass_h,equation:ass_hd,equation:ass_ht} be satisfied and let $u \in \SpaceRegular$ be the solution to \cref{equation:cdr} with the initial-boundary conditions in \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, then there exists $C > 0$, independent of $h, \tau, \Diffusion$, such that $\Error = \AppU - u$ satisfies what follows:
+    Let assumptions in \cref{equation:ass_1,equation:ass_2,equation:ass_3,equation:ass_4,equation:ass_5,equation:ass_6,equation:ass_7,equation:ass_8,equation:ass_9,equation:ass_ht} be satisfied, let $u \in \SpaceRegular$ be the solution to the problem in \cref{equation:cdr} with the initial-boundary conditions in \cref{equation:cdr_dirichlet,equation:cdr_neumann,equation:cdr_initial}, and let $\AppU$ be the solution to the discrete problem in \cref{equation:cdr_discrete_short}, then there exists $C > 0$, independent of $h, \tau, \Diffusion$, such that $\Error = \AppU - u$ satisfies what follows:
     \begin{align}
         \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
         &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right). \notag
