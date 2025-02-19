@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=.9]
+\begin{loglogaxis}[
+xlabel={$DoFs$},
+% xtick={},
+% xticklabels={},
+% ylabel={ _LABERROR },
+grid=both,
+legend pos=north east
+]
+\addplot[color=\documentcolor, dashed, semithick] coordinates {(18000, 0.000954389) (27000, 0.000954389) (36000, 0.000954389) (45000, 0.000954389) (54000, 0.000954389)};
+\addplot[color=\documentcolor, dotted, semithick] coordinates {(18000, 0.025768533922228335) (27000, 0.007635166972960323) (36000, 0.003221066740278542) (45000, 0.0016491861710226136) (54000, 0.000954389)};
+\addplot[color=\documentcolor, solid, thick] coordinates {(18000, 0.013361461461114168) (27000, 0.004294777986480162) (36000, 0.002087727870139271) (45000, 0.001301787585511307) (54000, 0.000954389)};
+\addplot[color=\accentcolor, mark=triangle, very thick] coordinates {(18000, 0.000954297) (27000, 0.000954352) (36000, 0.000954377) (45000, 0.000954386) (54000, 0.000954389)};
+\legend{$\BigO{h^3}$,$\BigO{\tau^3}$,$\BigO{h^3 + \tau^3}$}
+\end{loglogaxis}
+\end{tikzpicture}
