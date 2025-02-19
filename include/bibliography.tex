@@ -17,6 +17,13 @@
   {\multicitedelim}
   {}
 
+\DeclareCiteCommand{\citetitle}
+  {}
+  {\printtext[bibhyperref]{\printfield{title}, \printnames{author} (\printfield{year})%
+    \iffieldundef{postnote}{}{\addcomma\space\printfield{postnote}}}}
+  {}
+  {}
+
 \DeclareSortingTemplate{typealpha}{
   \sort{
     \field{entrytype} % Sort by type (book, article, etc.)
