@@ -1,6 +1,8 @@
-This chapter presents the numerical results obtained testing the algorithm based on \Cref{chapter:cdr} and implemented as in \Cref{chapter:implementation}.
+This chapter presents the numerical results obtained from testing the algorithm based on \Cref{chapter:cdr} and implemented as described in \Cref{chapter:implementation}.
 
-\section{Testing Conditions}
+\Cref{sec:tests,section:error_results} outline the testing conditions and the rationale behind the testing strategies for the \acrshort{dgm} applied to \acrshort{cdr} problems. Finally, \Cref{sec:test_results} presents and discusses the test results.
+
+\section{Testing Conditions} \label{sec:tests}
 
 Following \cite{Feistauer2007}, fix $\Omega = \left( 0, 1 \right) \times \left( 0, 1 \right)$ and $I = \left( 0, 1 \right)$, and define the exact solution as follows:
 \begin{align}
@@ -37,7 +39,7 @@ This work wants to extend the error analysis by additionally considering $\Norm{
 The estimates given in \Cref{theorem:estimates_ht} provide a useful benchmark for these quantities, enabling an evaluation of both the algorithm's performance and its implementation.
 
 \newpage
-\section{Results}
+\section{Results} \label{sec:test_results}
 
 What follows, as anticipated, illustrates the behavior of the error $\Error$ versus the number of degrees of freedom and compare it with the expected powers of both $h$ and $\tau$, for both the parabolic and hyperbolic cases across three pairs of $\left( p, q \right)$ values: $\left( 1, 1 \right)$, $\left( 2, 2 \right)$, and $\left( 2, 1 \right)$.
 
@@ -76,24 +78,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_par_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:1_1_par_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_par_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_linfl2}
     \end{subfigure}
     \caption{$p = 1$ and $q = 1$.}
 \end{figure}
@@ -109,24 +115,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_par_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:2_2_par_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_par_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_linfl2}
     \end{subfigure}
     \caption{$p = 2$ and $q = 2$.}
 \end{figure}
@@ -142,24 +152,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_1_par_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_1_par_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_par_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:2_1_par_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_par_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_1_par_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_par_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_1_par_linfl2}
     \end{subfigure}
     \caption{$p = 2$ and $q = 1$.}
 \end{figure}
@@ -178,18 +192,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_hyp_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_linfl2}
     \end{subfigure}
     \caption{$p = 1$ and $q = 1$.}
 \end{figure}
@@ -206,18 +223,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_hyp_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_linfl2}
     \end{subfigure}
     \caption{$p = 2$ and $q = 2$.}
 \end{figure}
@@ -234,18 +254,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_1_hyp_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_1_hyp_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_hyp_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_1_hyp_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_1_hyp_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_1_hyp_linfl2}
     \end{subfigure}
     \caption{$p = 2$ and $q = 1$.}
 \end{figure}
@@ -273,6 +296,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.001848}$ & $\num{0.00133339}$ & $\num{0.00117677}$ & $\num{0.00113055}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_par_l2l2}
     }
     \par\bigskip
     \centering
@@ -289,6 +313,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.0135598}$ & $\num{0.0135577}$ & $\num{0.0135572}$ & $\num{0.0135571}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_par_l2h1}
     }
     \par\bigskip
     \centering
@@ -305,6 +330,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00176644}$ & $\num{0.00174141}$ & $\num{0.00173378}$ & $\num{0.00173093}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_par_l2T}
     }
     \par\bigskip
     \centering
@@ -321,6 +347,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00567173}$ & $\num{0.00289246}$ & $\num{0.00181735}$ & $\num{0.00175048}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_par_linfl2}
     }
     \caption{$p = 1$ and $q = 1$.}
 \end{table}
@@ -346,6 +373,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{8.44331e-05}$ & $\num{8.28462e-05}$ & $\num{8.26579e-05}$ & $\num{8.26322e-05}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_par_l2l2}
     }
     \par\bigskip
     \centering
@@ -362,6 +390,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00139134}$ & $\num{0.00139133}$ & $\num{0.00139133}$ & $\num{0.00139133}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_par_l2h1}
     }
     \par\bigskip
     \centering
@@ -378,6 +407,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.000128154}$ & $\num{0.000128137}$ & $\num{0.000128137}$ & $\num{0.000128137}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_par_l2T}
     }
     \par\bigskip
     \centering
@@ -394,6 +424,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.0001263}$ & $\num{0.000128137}$ & $\num{0.000128137}$ & $\num{0.000128137}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_par_linfl2}
     }
     \caption{$p = 2$ and $q = 2$.}
 \end{table}
@@ -421,6 +452,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00196791}$ & $\num{0.00148632}$ & $\num{0.00134443}$ & $\num{0.00130295}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_hyp_l2l2}
     }
     \par\bigskip
     \centering
@@ -437,6 +469,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00200423}$ & $\num{0.0019955}$ & $\num{0.00199352}$ & $\num{0.0019929}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_hyp_l2T}
     }
     \par\bigskip
     \centering
@@ -453,6 +486,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.00568648}$ & $\num{0.00290149}$ & $\num{0.00199352}$ & $\num{0.0019929}$ \\
             \hline
         \end{tabular}
+        \label{table:1_1_hyp_linfl2}
     }
     \caption{$p = 1$ and $q = 1$.}
 \end{table}
@@ -478,6 +512,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{9.53935e-05}$ & $\num{9.3975e-05}$ & $\num{9.38066e-05}$ & $\num{9.37835e-05}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_hyp_l2l2}
     }
     \par\bigskip
     \centering
@@ -494,6 +529,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.000144872}$ & $\num{0.000144864}$ & $\num{0.000144863}$ & $\num{0.000144863}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_hyp_l2T}
     }
     \par\bigskip
     \centering
@@ -510,6 +546,7 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
             $\num{0.0493257}$ & $\num{0.000144112}$ & $\num{0.000144864}$ & $\num{0.000144863}$ & $\num{0.000144863}$ \\
             \hline
         \end{tabular}
+        \label{table:2_2_hyp_linfl2}
     }
     \caption{$p = 2$ and $q = 2$.}
 \end{table}
@@ -527,24 +564,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_par_t_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_t_sat_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:1_1_par_t_sat_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_par_t_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -560,24 +601,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_par_h_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_h_sat_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:1_1_par_h_sat_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_par_h_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_par_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -593,24 +638,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_par_t_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_t_sat_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:2_2_par_t_sat_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_par_t_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
@@ -626,24 +675,28 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_par_h_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_h_sat_l2l2}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_l2h1.tex}
         \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        \label{graph:2_2_par_h_sat_l2h1}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_par_h_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_par_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
@@ -662,18 +715,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_hyp_t_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_t_sat_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_t_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_hyp_t_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_t_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -690,18 +746,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/1_1_hyp_h_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_h_sat_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_h_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:1_1_hyp_h_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_h_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:1_1_hyp_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -718,18 +777,21 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_hyp_t_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_t_sat_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_t_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_hyp_t_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_t_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
@@ -746,19 +808,27 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
         \centering
         \input{content/tikz/2_2_hyp_h_sat_l2l2.tex}
         \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_h_sat_l2l2}
     \end{subfigure}
     \par\bigskip
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_h_sat_l2T.tex}
         \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        \label{graph:2_2_hyp_h_sat_l2T}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.49\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_h_sat_linfl2.tex}
         \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        \label{graph:2_2_hyp_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
 \vspace*{\fill}
+
+\newpage
+\subsection{Comments} \label{sec:test_discussion}
+
+Graphs in \Cref{sec:graphs_1,sec:graphs_2}, particurarly for the pairs $\left( 1, 1 \right)$ and $\left( 2, 2 \right)$, highlights the correct and expected error trend for for all the considered norms. Graphs for the $\left( 2, 1 \right)$ case, \cpageref{graph:2_1_par_l2l2,graph:2_1_hyp_l2l2}, show the importance of the choices for the $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ norms.
