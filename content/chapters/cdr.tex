@@ -1,4 +1,11 @@
-\section{Setting and Strong Formulation}
+This chapter presents an application of the \acrshort{dgm} developed in \Cref{chapter:dg} to \acrfull{cdr} problems.
+
+\Cref{sec:cdr_introduction} specializes the setting presented in \Cref{chapter:dg} and introduces the \acrshort{cdr} problem, for which the weak formulation is provided in \Cref{sec:cdr_weak}. \Cref{sec:cdr_discretization} is primarily concerned with the space and time discretization of the problem, formulating the discrete problem whose implementation is presented in \Cref{chapter:implementation}. Finally, \Cref{sec:cdr_error_analysis} provides the error analysis of the method, with estimates that serve as the main justification for the tests discussed in \Cref{chapter:results}.
+
+Only the relevant proofs are included, while the remaining ones can be found in \citetitle{Feistauer2004} and \citetitle{Feistauer2007}.
+
+\newpage
+\section{Setting and Strong Formulation} \label{sec:cdr_introduction}
 
 Following \cite{Feistauer2004}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain and $T > 0$ so that $I = \left( 0, T\right)$.
 
@@ -36,7 +43,7 @@ Assume that $\partial \Omega = \partial \Omega^- \cup \partial \Omega^+$ where:
 namely the inflow and outflow parts of $\partial \Omega$.
 
 \newpage
-\section{Weak Formulation}
+\section{Weak Formulation} \label{sec:cdr_weak}
 
 \subsection{Data Assumptions} \label{assumptions}
 
@@ -94,7 +101,7 @@ Under the following regularity assumptions:
 it is possible to show that there exists a unique weak solution $u$ satisfying \cref{equation:cdr} pointwise, with $u \in C^0(\left[ 0, T \right); \SpaceHk{p + 1}(\Omega))$, where $p \geq 1$ is an integer denoting the spatial degree of approximation. Furthermore, if $\Diffusion > 0$, it can be shown that $\partial_t u \in \SpaceLp{2}(I \times \Omega)$.
 
 \newpage
-\section{Discretization}
+\section{Discretization} \label{sec:cdr_discretization}
 
 \subsection{Space Discretization Setting}
 
@@ -487,7 +494,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \end{proof}
 
 \newpage
-\section{Error Analysis}
+\section{Error Analysis} \label{sec:cdr_error_analysis}
 
 \subsection{Abstract Error Estimates} \label{subsection:error_estimates}
 
