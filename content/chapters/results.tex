@@ -6,7 +6,7 @@ This chapter presents the numerical results obtained from testing the algorithm 
 
 Following \cite{Feistauer2007}, fix $\Omega = \left( 0, 1 \right) \times \left( 0, 1 \right)$ and $I = \left( 0, 1 \right)$, and define the exact solution as follows:
 \begin{align}
-    u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right),
+    u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right), \label{eq:u_test_exact}
 \end{align}
 where $\Boundary$ controls the steepness of the boundary layer in the exact solution, set to $\Boundary = 0.05$.
 
@@ -32,7 +32,7 @@ Two notable quantities to consider are $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2
 
 This work wants to extend the error analysis by additionally considering $\Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)}$ and $\Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))}$, namely the $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ errors, where:
 \begin{align}
-    \Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)} &= \left( \int_{\Omega} \Error^2(T, \Vektor{x}) ~ d \omega (\Vektor{x}) \right)^{\nicefrac12}, \\
+    \Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)} &= \left( \int_{\Omega} \Error^2(T, \Vektor{x}) ~ d \omega (\Vektor{x}) \right)^{\nicefrac12}, \label{eq:T_error} \\
     \Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))} &= \sup_{t \in \overline{I}} \left( \int_{\Omega} \Error^2(t, \Vektor{x}) ~ d \omega (\Vektor{x}) \right)^{\nicefrac12}. \label{eq:inf_error}
 \end{align}
 
@@ -831,4 +831,14 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
 \newpage
 \subsection{Comments} \label{sec:test_discussion}
 
-Graphs in \Cref{sec:graphs_1,sec:graphs_2}, particurarly for the pairs $\left( 1, 1 \right)$ and $\left( 2, 2 \right)$, highlights the correct and expected error trend for for all the considered norms. Graphs for the $\left( 2, 1 \right)$ case, \cpageref{graph:2_1_par_l2l2,graph:2_1_hyp_l2l2}, show the importance of the choices for the $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ norms.
+The function introduced in \cref{eq:u_test_exact} as the exact solution, although smooth, exhibits strong boundary layers with respect to space. This suggests a stronger dependency of the error on $h$, particularly for the $\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ norm in the parabolic case.
+
+Graphs in \Cref{sec:graphs_1,sec:graphs_2}, particularly for the pairs $\left( 1, 1 \right)$ and $\left( 2, 2 \right)$ of $\left( p, q \right)$, show the correct and expected error trend for all considered norms.
+
+The pair $\left( 2, 1 \right)$ of $\left( p, q \right)$, as seen in \cpageref{graph:2_1_par_l2l2,graph:2_1_hyp_l2l2}, confirms the expected behavior for the case $p \neq q$. Moreover, the norms introduced in \cref{eq:T_error,eq:inf_error} exhibit a distinct behavior: the former initially captures the local behavior of the error, which is expected to strongly depend on $h$, while the latter captures the lowest-order behavior of the algorithm, providing a more global measure of the error.
+
+Tables in \Cref{sec:tables_1,sec:tables_2}, on the other hand, illustrate the behavior of the error using meshes with different combinations of $h$ and $\tau$. Most norms, consistent with the expected dependency on $h$, highlight the lower necessity of refining the mesh with respect to $\tau$, given an exact solution with these characteristics. However, the $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ norm still captures the error introduced by the low time resolution on highly space-refined meshes.
+
+Saturation tests, whose outcomes are illustrated in \Cref{sec:saturation_1,sec:saturation_2}, provide a qualitative means to identify the refinement threshold for $h$ and $\tau$. As expected, all the $\tau$-saturation tests indicate that, for an exact solution with these characteristics, concentrating most of the refinement in $h$ yields a better approximation at a lower computational cost.
+
+These tests not only validate the algorithm and its implementation but also provide valuable insights for further improvements. They suggest the possibility of introducing adaptivity in $h$ and $\tau$, or even in $p$ and $q$, through the development of an a-posteriori error estimate based on the considered norms.
