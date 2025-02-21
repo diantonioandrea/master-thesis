@@ -1,9 +1,11 @@
-Research in numerical methods for partial differential equations is a dynamic field, as evidenced by a steady output of high-impact publications. Key areas of focus include discretization schemes, high-dimensional PDE techniques, and data-driven solution methods.
+Galërkin methods have significantly influenced numerical analysis by providing a unified framework for approximating solutions to differential equations. Their versatility has led to advancements in stability, accuracy, and computational efficiency, with applications spanning fluid dynamics, electromagnetics, and high-order numerical simulations.
 
 This thesis investigates the discontinuous Galërkin method for the space-time discretization of a particular class of PDEs.
 
-The method is first introduced for the broader class of parabolic problems and later specialized to the convection-diffusion-reaction problem, for which an explicit derivation and error analysis are carried out. The algorithm, along with all its components, such as a mesher and a linear solver for sparse systems, is then implemented from scratch in \lstinline{C++23}, and this implementation is used for numerical testing.
+After a brief review of the preliminaries, the method is first formally introduced for the broader class of parabolic problems and later specialized to the convection-diffusion-reaction problem, for which an explicit derivation and error analysis are carried out. It is shown that, under certain assumptions of mesh shape regularity and sufficient regularity of the exact solution, the errors are of order $\BigO{h^p + \tau^q}$, where $p$ and $q$ represent the orders of approximation in space and time, respectively.
 
-Numerical tests performed in both the parabolic and hyperbolic cases, where the diffusion constant $\Diffusion$ is equal to $0$, validate the algorithm and its implementation, confirming the expected orders of convergence for the error derived in the theoretical analysis across various norms.
+The algorithm is implemented from scratch in \lstinline{C++23}, requiring the development of methods and classes for handling standard algebraic objects, a polygonal mesher, and a solver for sparse linear systems, as well as tailored methods for constructing the problem based on its discretization and performing the necessary quadratures.
+
+Numerical tests performed using the aforementioned implementation in both the parabolic and hyperbolic cases validate the algorithm and its implementation, confirming the expected orders of convergence for the error derived in the theoretical analysis across various norms.
 
 The results obtained not only confirm the effectiveness of this approach but also lay the groundwork for future research, particularly in the direction of adaptivity.
