@@ -511,7 +511,7 @@ For the derivation of error estimates, consider the following space-time interpo
         \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
         \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-),
     \end{align}
-    for all $n \in \TimeIndices$, where $\InterSol$ denotes the $\SpaceLp{2}$ projection onto $\SpaceSolution^p_{h, n}$.
+    for all $n \in \TimeIndices$, where $\InterSol$ denotes the $\SpaceLp{2}$ projection in space onto $\SpaceSolution^p_{h, n}$.
 \end{definition}
 
 It can be shown that $\InterpolantPQ u$ is uniquely determined by the properties stated in \Cref{definition:interpolant_qp}.
@@ -649,7 +649,7 @@ with $\RMap \colon \left( -1, 1 \right) \rightarrow I_n$ mapping such that:
     \begin{align}
         \InterSol w &= \sum_{i \in \NaturalNumbers} w_i \Legendre_i &\text{ for } \left\{ w_i \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n},
     \end{align}
-    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$. 
+    for all $w \in C^0(\left[ -1, 1 \right]; \SpaceLp{2}(\Omega))$ and for all $n \in \TimeIndices$, recalling that $\InterSol$ denotes the $\SpaceLp{2}$ projection in space onto $\SpaceSolution^p_{h, n}$.
 \end{lemma}
 
 Set now $\AppUN = \InterSol u \circ \RMap$, then:
@@ -666,7 +666,7 @@ where $\SpacePlaceholder$ denotes a Banach space that is yet to be specified.
 
 Moreover, consider the following expansion of $\AppUN$ with respect to the Legendre polynomials:
 \begin{align}
-    \AppUN = \sum_{i \in \NaturalNumbers} \AppU_{n, i} \Legendre_i &\text{ for } \left\{ \AppU_{n, i} \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n}.
+    \AppUN &= \sum_{i \in \NaturalNumbers} \AppU_{n, i} \Legendre_i &\text{ for } \left\{ \AppU_{n, i} \right\}_{i \in \NaturalNumbers} \subset \SpaceSolution^p_{h, n}.
 \end{align}
 Since:
 \begin{align}
