@@ -2,7 +2,7 @@ This chapter presents the theory behind the \acrlong{dgm}.
 
 \Cref{sec:bochner} introduces the theory of Bochner spaces, which, together with \Cref{chapter:preliminaries}, completes the mathematical foundations of the \acrshort{dgm}.
 
-The goal of \Cref{sec:model_problem} is to develop the \acrshort{dgm} around a model parabolic problem, for which \Cref{chapter:cdr} provides a specific formulation. \Cref{subsection:introduction,subsection:weak_formulation} introduce the problem, while \Cref{subsection:well_posedeness} establishes its well-posedness. \Cref{sec:space_discretization,subsection:time_dg} describe the space and time discretizations of the problem, and \Cref{subsection:method_formulation} formulates the \acrshort{dgm}. Finally, \Cref{subsection:method_analysis} provides the stability and error analysis of the method.
+The goal of \Cref{sec:model_problem,section:dg_discretization} is to develop the \acrshort{dgm} around a model parabolic problem, for which \Cref{chapter:cdr} provides a specific formulation. \Cref{subsection:introduction,subsection:weak_formulation} introduce the problem, while \Cref{subsection:well_posedeness} establishes its well-posedness. \Cref{sec:space_discretization,subsection:time_dg} describe the space and time discretizations of the problem, and \Cref{subsection:method_formulation} formulates the \acrshort{dgm}. Finally, \Cref{subsection:method_analysis} provides the stability and error analysis of the method.
 
 Only the relevant proofs are included, while the remaining ones can be found in \citetitle{Ern2021}.
 
@@ -322,8 +322,6 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 
 The objective of this section is to establish the well-posedness of the parabolic model problem \cref{equation:weak}.
 
-\subsubsection{Uniqueness}
-
 \begin{lemma}[Uniqueness and a priori estimate]
     Let $u \in \SpaceTrial$ solution of \cref{equation:weak}, then \cref{equation:weak} admits at most one solution and:
     \begin{align}
@@ -331,24 +329,16 @@ The objective of this section is to establish the well-posedness of the paraboli
     \end{align}
 \end{lemma}
 
-% [!] Proof to be included.
-
-% \begin{lemma}[$W$-norm estimate]
-%     % [!]
-% \end{lemma}
-
-\subsubsection{Existence}
-
 \begin{lemma}[Existence]
     There exists $u \in \SpaceTrial$ solution of \cref{equation:weak}.
 \end{lemma}
 
-% [!] Proof to be included.
-
 \newpage
-\subsection{Conforming Semi-Discretization in Space} \label{subsection:space_discretization}
+\section{Discretization} \label{section:dg_discretization}
 
 The following sections focus on the discretization of the model parabolic problem.
+
+\subsection{Conforming Semi-Discretization in Space} \label{subsection:space_discretization}
 
 Following \cite[p.~135]{Ern2021}, set $a(t; u, v) = \langle A(t)(u), v \rangle_{V^*, V}$ for all $u, v \in V$ and for $\lambda$-a.e. $t \in I$.
 
