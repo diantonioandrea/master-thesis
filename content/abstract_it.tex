@@ -1,0 +1,11 @@
+I metodi di Galërkin hanno profondamente influenzato l'analisi numerica, fornendo un potente strumento per l'approssimazione delle soluzioni di equazioni differenziali. La loro versatilità ha condotto a significativi progressi in termini di stabilità, accuratezza ed efficienza computazionale, con applicazioni che spaziano dalla dinamica dei fluidi all'elettromagnetismo, fino alle simulazioni numeriche di alto ordine.
+
+In questa tesi si studia il metodo di Galërkin discontinuo per la discretizzazione spazio-temporale di una specifica classe di equazioni alle derivate parziali.
+
+Dopo una breve rassegna dei concetti preliminari, il metodo viene inizialmente introdotto in modo formale per la più ampia classe dei problemi parabolici, per poi essere specializzato al problema di convezione-diffusione-reazione, di cui si forniscono sia una derivazione esplicita sia un'analisi dell'errore. Si dimostra che, sotto opportune ipotesi di regolarità della mesh e della soluzione esatta, l'errore è dell'ordine $\mathcal{O}(h^p + \tau^q)$, dove $p$ e $q$ rappresentano rispettivamente gli ordini di approssimazione in spazio e in tempo.
+
+L'algoritmo è stato implementato ex novo in \lstinline{C++23}, richiedendo lo sviluppo di classi e metodi per la gestione di oggetti algebrici standard, di un mesher poligonale e di un risolutore per sistemi lineari sparsi, oltre a metodi specifici per la costruzione del problema sulla base della sua discretizzazione e per l'esecuzione delle necessarie quadrature.
+
+I test numerici, condotti sui casi parabolico e iperbolico tramite la suddetta implementazione, validano l'algoritmo e confermano gli ordini di convergenza attesi, come derivati dall'analisi teorica, rispetto a diverse norme considerate.
+
+I risultati ottenuti non solo confermano l'efficacia di questo approccio, ma gettano anche le basi per ulteriori approfondimenti, in particolare nella direzione dell'adattività.
