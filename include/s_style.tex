@@ -1,0 +1,35 @@
+% Styling.
+
+% Style.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[L]{\textit{\documentauthor, \documenttitle}}
+\fancyhead[R]{\textit{\thepage}}
+\fancyfoot[C]{}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\textit{\documentauthor, \documenttitle}}
+    \fancyhead[R]{\textit{\thepage}}
+    \fancyfoot[C]{}
+}
+
+% Colours.
+\usepackage{xcolor-solarized}
+
+\color{\documentcolor}
+
+% Alternative section titles.
+\usepackage{titlesec}
+
+% Enumerates.
+\usepackage{enumerate}
+
+% Paragraph spacing.
+\usepackage{parskip}
+
+% Table of contents.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
