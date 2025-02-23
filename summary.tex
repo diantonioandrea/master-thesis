@@ -19,18 +19,22 @@
 \begin{document}
 
     \maketitle
+    \pagenumbering{roman}
+
     \tableofcontents
+
+    \newpage
+    \pagenumbering{arabic}
+    
+    \section*{Riassunto in Lingua Inglese}
+    \addcontentsline{toc}{section}{Riassunto in Lingua Inglese}
+    
+    \input{./content/abstract.tex}
 
     \newpage
     \section*{Riassunto in Lingua Italiana}
     \addcontentsline{toc}{section}{Riassunto in Lingua Italiana}
 
     \input{./content/abstract_it.tex}
-
-    \newpage
-    \section*{Riassunto in Lingua Inglese}
-    \addcontentsline{toc}{section}{Riassunto in Lingua Inglese}
-    
-    \input{./content/abstract.tex}
 
 \end{document}
