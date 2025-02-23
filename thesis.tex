@@ -12,80 +12,11 @@
 
     %% Dedication.
 
-    \newpage
-
     \input{extra/dedication.tex}
-
-    %% Abstract.
-
-    \chapter*{Abstract}
-    \addcontentsline{toc}{chapter}{Abstract}
-    
-    \input{content/abstract.tex}
-
-    %% Table of Contents.
-
-    \newpage
-    \tableofcontents
-    \thispagestyle{plain}
 
     %% Chapters.
 
-    % Introduction.
-
-    \newpage
-    \chapter*{Introduction}
-    \addcontentsline{toc}{chapter}{Introduction} \label{chapter:introduction}
-    \pagenumbering{arabic}
-
-    % \begin{epigraphs}
-    %     \qitem{TBA}{TBA}
-    % \end{epigraphs}
-
-    \input{content/chapters/introduction.tex}
-
-    % Preliminaries.
-
-    \newpage
-    \chapter{Preliminaries} \label{chapter:preliminaries}
-
-    \input{content/chapters/preliminaries.tex}
-
-    % STDG Method.
-
-    \newpage
-    \chapter{The Space-Time Discontinuous Galërkin Method} \label{chapter:dg}
-
-    \input{content/chapters/spacetime.tex}
-
-    % CDR Problems.
-
-    \newpage
-    \chapter{Convection-Diffusion-Reaction Problems} \label{chapter:cdr}
-
-    \input{content/chapters/cdr.tex}
-
-    % Implementation.
-
-    \newpage
-    \chapter{Implementation} \label{chapter:implementation}
-
-    \input{content/chapters/implementation.tex}
-
-    % Numerical Results.
-
-    \newpage
-    \chapter{Numerical Results} \label{chapter:results}
-
-    \input{content/chapters/results.tex}
-
-    % Conclusions.
-
-    \newpage
-    \chapter*{Conclusions} \label{chapter:conclusions}
-    \addcontentsline{toc}{chapter}{Conclusions}
-
-    \input{content/chapters/conclusions.tex}
+    \input{content/chapters.tex}
 
     %% Acknowledgements.
 
@@ -96,14 +27,10 @@
 
     %% Bibliography.
 
-    \newpage
-    \addcontentsline{toc}{chapter}{Bibliography}
-
-    \printbibliography
+    \input{content/bibliography.tex}
 
     %% End.
 
-    \newpage
     \input{extra/end.tex}
     
 \end{document}
