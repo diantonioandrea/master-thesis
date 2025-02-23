@@ -66,6 +66,8 @@ What follows, as anticipated, illustrates the behavior of the error $\Error$ ver
 
 Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation behavior of the error when either $h$ or $\tau$ is reduced individually, while keeping the other fixed.
 
+Given the higher number of tests in this section, despite the lower amount of information they provide, the graphs in \Cref{sec:saturation_1,sec:saturation_2} have been stripped of their captions and downscaled. To ensure understandability, the order of the norms remains unchanged from \Cref{sec:graphs_1,sec:graphs_2} to \Cref{sec:saturation_1,sec:saturation_2}.
+
 \newpage
 \subsection{Convergence Tests, Parabolic Case} \label{sec:graphs_1}
 
@@ -560,69 +562,66 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
 
 \vspace*{\fill}
 \begin{figure}[!ht]
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_par_t_sat_l2l2}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_par_t_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_l2h1.tex}
-        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
-        \label{graph:1_1_par_t_sat_l2h1}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/1_1_par_t_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:1_1_par_t_sat_l2T}
+        % \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        % \label{graph:1_1_par_t_sat_l2h1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_t_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:1_1_par_t_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_t_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_par_t_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_par_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
-\vspace*{\fill}
 
-\newpage
 % Parabolic case, h.
 % p = 1, q = 1.
 
-\vspace*{\fill}
 \begin{figure}[!ht]
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_par_h_sat_l2l2}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_par_h_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_l2h1.tex}
-        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
-        \label{graph:1_1_par_h_sat_l2h1}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/1_1_par_h_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:1_1_par_h_sat_l2T}
+        % \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        % \label{graph:1_1_par_h_sat_l2h1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
+        \centering
+        \input{content/tikz/1_1_par_h_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:1_1_par_h_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/1_1_par_h_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_par_h_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_par_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -634,69 +633,66 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
 
 \vspace*{\fill}
 \begin{figure}[!ht]
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_par_t_sat_l2l2}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_par_t_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_l2h1.tex}
-        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
-        \label{graph:2_2_par_t_sat_l2h1}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/2_2_par_t_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:2_2_par_t_sat_l2T}
+        % \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        % \label{graph:2_2_par_t_sat_l2h1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_t_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:2_2_par_t_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_t_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_par_t_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_par_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
-\vspace*{\fill}
 
-\newpage
 % Parabolic case, h.
 % p = 2, q = 2.
 
-\vspace*{\fill}
 \begin{figure}[!ht]
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_par_h_sat_l2l2}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_par_h_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_l2h1.tex}
-        \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
-        \label{graph:2_2_par_h_sat_l2h1}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/2_2_par_h_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:2_2_par_h_sat_l2T}
+        % \subcaption{$\sqrt{\Diffusion} \SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ error.}
+        % \label{graph:2_2_par_h_sat_l2h1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.24\textwidth}
+        \centering
+        \input{content/tikz/2_2_par_h_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:2_2_par_h_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.24\textwidth}
         \centering
         \input{content/tikz/2_2_par_h_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_par_h_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_par_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
@@ -711,56 +707,53 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
 \vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_t_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_hyp_t_sat_l2l2}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/1_1_hyp_t_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:1_1_hyp_t_sat_l2T}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_hyp_t_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_t_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:1_1_hyp_t_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_t_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_hyp_t_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_hyp_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
-\vspace*{\fill}
 
-\newpage
 % Hyperbolic case, h.
 % p = 1, q = 1.
 
-\vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_h_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_hyp_h_sat_l2l2}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/1_1_hyp_h_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:1_1_hyp_h_sat_l2T}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_hyp_h_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \centering
+        \input{content/tikz/1_1_hyp_h_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:1_1_hyp_h_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/1_1_hyp_h_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:1_1_hyp_h_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:1_1_hyp_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 1$ and $q = 1$.}
 \end{figure}
@@ -773,56 +766,53 @@ Moreover, \Cref{sec:saturation_1,sec:saturation_2} investigate the saturation be
 \vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_t_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_hyp_t_sat_l2l2}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/2_2_hyp_t_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:2_2_hyp_t_sat_l2T}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_hyp_t_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_t_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:2_2_hyp_t_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_t_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_hyp_t_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_hyp_t_sat_linfl2}
     \end{subfigure}
     \caption{$\tau$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
-\vspace*{\fill}
 
-\newpage
 % Hyperbolic case, h.
 % p = 2, q = 2.
 
-\vspace*{\fill}
 \begin{figure}[!ht]
     \centering
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_h_sat_l2l2.tex}
-        \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_hyp_h_sat_l2l2}
-    \end{subfigure}
-    \par\bigskip
-    \begin{subfigure}[t]{0.49\textwidth}
-        \centering
-        \input{content/tikz/2_2_hyp_h_sat_l2T.tex}
-        \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
-        \label{graph:2_2_hyp_h_sat_l2T}
+        % \subcaption{$\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_hyp_h_sat_l2l2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.49\textwidth}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \centering
+        \input{content/tikz/2_2_hyp_h_sat_l2T.tex}
+        % \subcaption{$\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ error.}
+        % \label{graph:2_2_hyp_h_sat_l2T}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
         \centering
         \input{content/tikz/2_2_hyp_h_sat_linfl2.tex}
-        \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
-        \label{graph:2_2_hyp_h_sat_linfl2}
+        % \subcaption{$\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ error.}
+        % \label{graph:2_2_hyp_h_sat_linfl2}
     \end{subfigure}
     \caption{$h$ saturation, $p = 2$ and $q = 2$.}
 \end{figure}
