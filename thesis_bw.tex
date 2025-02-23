@@ -1,0 +1,37 @@
+\documentclass[12pt, oneside]{book}
+
+% Colors.
+\newcommand{\documentcolor}{black}
+\newcommand{\accentcolor}{black}
+\newcommand{\urlcolor}{black}
+
+% Includes.
+\input{./include/includes.tex}
+
+\begin{document}
+
+    %% Title.
+
+	\input{title/title.tex}
+
+    %% Dedication.
+
+    \input{extra/dedication.tex}
+
+    %% Main content.
+
+    \input{content/chapters.tex}
+
+    %% Acknowledgements.
+
+    \input{extra/acknowledgements.tex}
+
+    %% Bibliography.
+
+    \input{content/bibliography.tex}
+
+    %% End.
+
+    \input{extra/end.tex}
+    
+\end{document}
