@@ -2,7 +2,7 @@ Galërkin methods have significantly influenced numerical analysis by providing 
 
 This thesis investigates the discontinuous Galërkin method for the space-time discretization of a particular class of PDEs.
 
-After a brief review of the preliminaries, the method is first formally introduced for the broader class of parabolic problems and later specialized to the convection-diffusion-reaction problem, for which an explicit derivation and error analysis are carried out. It is shown that, under certain assumptions of mesh shape regularity and sufficient regularity of the exact solution, the errors are of order $\BigO{h^p + \tau^q}$, where $p$ and $q$ represent the orders of approximation in space and time, respectively.
+After a brief review of the preliminaries, the method is first formally introduced for the broader class of parabolic problems and later specialized to the \acrfull{cdr} problem, for which an explicit derivation and error analysis are carried out. It is shown that, under certain assumptions of mesh shape regularity and sufficient regularity of the exact solution, the errors are of order $\BigO{h^p + \tau^q}$, where $p$ and $q$ represent the orders of approximation in space and time, respectively.
 
 The algorithm is implemented from scratch in \lstinline{C++23}, requiring the development of methods and classes for handling standard algebraic objects, a polygonal mesher, and a solver for sparse linear systems, as well as tailored methods for constructing the problem based on its discretization and performing the necessary quadratures.
 
