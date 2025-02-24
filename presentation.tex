@@ -1,0 +1,40 @@
+\documentclass[8pt, compress, aspectratio=169]{beamer}
+
+% Presentation structure.
+
+% Variables.
+\input{./include/p_variables.tex}
+
+% Includes.
+\input{./include/colors.tex} % Colors.
+\input{./include/p_style.tex} % Presentation style.
+\input{./include/bibliography.tex} % Bibliography.
+
+\begin{document}
+
+    % Title.
+
+    \begin{frame}
+        \titlepage
+    \end{frame} % Negligible warning on title.
+
+    % Table of Contents.
+
+    \begin{frame}{ToC}
+        \frametitle{Contents}
+        \tableofcontents[hideallsubsections]
+    \end{frame}
+
+    % Content.
+
+    % [!]
+
+    % References.
+
+    \section*{References}
+    \begin{frame}[allowframebreaks]
+        \nocite{*}
+        \printbibliography
+    \end{frame}
+
+\end{document}
