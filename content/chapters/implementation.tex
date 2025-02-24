@@ -222,7 +222,7 @@ Even though the mesh consists of polygons, quadrature is performed over subtrian
 \newpage
 \subsection{Equation and Data}
 
-The equation, or the collection of the convection-diffusion-reaction parameters, and the initial and boundary data are all grouped in separate instances, built by the constructors of \lstinline{Equation}, \lstinline{Initial}, and \lstinline{Data}, defined as follows:
+The equation, or the collection of the \acrshort{cdr} parameters, and the initial and boundary data are all grouped in separate instances, built by the constructors of \lstinline{Equation}, \lstinline{Initial}, and \lstinline{Data}, defined as follows:
 \begin{lstlisting}[style=cpp]
 Equation(
     const 
@@ -291,7 +291,7 @@ This method, given a reference to a specific geometry, maps the reference points
 \newpage
 \subsection{Problem Solution}
 
-The function that solves the linear system associated to the convection-diffusion-reaction problem is \lstinline{solve}, defined as follows:
+The function that solves the linear system associated to the \acrshort{cdr} problem is \lstinline{solve}, defined as follows:
 \begin{lstlisting}[style=cpp]
 Vector<Real> solve(
     const Mesh21 &, 
