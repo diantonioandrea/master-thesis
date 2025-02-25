@@ -9,6 +9,7 @@
 \input{./include/p_colors.tex} % Colors.
 \input{./include/p_style.tex} % Presentation style.
 \input{./include/bibliography.tex} % Bibliography.
+\input{./include/acronyms.tex} % Acronyms.
 
 \begin{document}
 
@@ -18,16 +19,9 @@
         \titlepage
     \end{frame} % Negligible warning on title.
 
-    % Table of Contents.
+    % Main content.
 
-    \begin{frame}{ToC}
-        \frametitle{Contents}
-        \tableofcontents[hideallsubsections]
-    \end{frame}
-
-    % Content.
-
-    % [!]
+    \input{content/p_content.tex}
 
     % References.
 
