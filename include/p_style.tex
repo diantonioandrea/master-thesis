@@ -15,4 +15,14 @@
 
 \setbeamersize{text margin left=1.5cm, text margin right=1.5cm}
 
-\AtBeginSection[]{}
+\AtBeginSection[]{
+    \subsection*{Contents}
+
+    \begin{frame}{ToC}
+        \frametitle{Table of Contents}
+
+        \vspace*{\fill}
+        \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/show/hide]
+        \vspace*{\fill}
+    \end{frame}
+}
