@@ -1,0 +1,185 @@
+% Math operators and symbols.
+
+% Math packages
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{nicefrac}
+\usepackage{stmaryrd}
+
+% Units.
+\usepackage{siunitx}
+\sisetup{round-precision=2, round-mode=figures, scientific-notation=true}
+
+% References.
+\usepackage[nameinlink]{cleveref}
+
+% Tags.
+\numberwithin{equation}{section}
+
+% Sets.
+\newcommand{\NaturalNumbers}{\mathbb{N}}
+\newcommand{\IntegerNumbers}{\mathbb{Z}}
+\newcommand{\RationalNumbers}{\mathbb{Q}}
+
+\newcommand{\RealNumbers}{\mathbb{R}}
+\newcommand{\RealNumbersTo}[1]{\mathbb{R}^{#1}}
+
+% Spaces.
+\newcommand{\SpaceLp}[1]{\mathscr{L}^{#1}}
+\newcommand{\SpaceWkp}[2]{\mathscr{W}^{#1, #2}}
+\newcommand{\SpaceHk}[1]{\mathscr{H}^{#1}}
+\newcommand{\SpaceXpq}[2]{\mathscr{X}^{#1, #2}}
+\newcommand{\SpaceX}{\mathscr{X}}
+
+\newcommand{\SpaceTrial}{\mathcal{X}} % Trial space.
+\newcommand{\SpaceTest}{\mathcal{Y}} % Test space.
+
+\newcommand{\SpaceSolution}{\mathscr{S}} % Approximate solution space.
+\newcommand{\SpaceSolutionFull}{\SpaceSolution^{p, q}_{h, \tau}}
+\newcommand{\SpaceSolutionFullMO}{\SpaceSolution^{p, q - 1}_{h, \tau}}
+
+\newcommand{\SpaceSolutionReference}{\hat{\SpaceSolution}^{p, q}_{h, n}}
+\newcommand{\SpaceSolutionReferenceMO}{\hat{\SpaceSolution}^{p, q - 1}_{h, n}}
+
+\newcommand{\SpacePolynomials}[1]{\mathcal{P}_{#1}}
+
+\newcommand{\SpacePlaceholder}{\mathbb{V}}
+
+\newcommand{\SpaceRegular}{\mathcal{U}}
+
+\newcommand{\Characteristic}[1]{\mathbbm{1}_{#1}}
+
+% Approximate solution.
+\newcommand{\AppU}{U}
+\newcommand{\AppUN}{\AppU_n}
+
+% Polynomials.
+\newcommand{\Lagrange}{\mathbb{L}}
+\newcommand{\Legendre}{\mathcal{L}}
+
+% Meshes.
+\newcommand{\TimeMesh}{I_{\tau}}
+\newcommand{\ClosedTimeMesh}{\overline{I}_{\tau}}
+\newcommand{\SpaceMesh}{\Omega_{h}}
+
+% Indices.
+\newcommand{\SpaceIndices}{\mathcal{J}_h}
+\newcommand{\TimeIndices}{\mathcal{N}_{\tau}}
+
+\newcommand{\nSpaceIndices}{N_h}
+\newcommand{\nTimeIndices}{N_{\tau}}
+
+\newcommand{\hIndices}{\mathcal{H}}
+\newcommand{\tIndices}{\mathcal{T}}
+
+\newcommand{\Neighbours}[1]{\mathcal{S}_h(#1)}
+
+\newcommand{\SpaceTimeIndices}{\mathcal{J}_{h, n}}
+\newcommand{\hTimeIndices}{\mathcal{H}_n}
+\newcommand{\NeighboursTime}[1]{\mathcal{S}_{h, n}(#1)}
+
+% Projections and interpolants.
+\newcommand{\Projection}{\pi}
+\newcommand{\ProjectionOnto}[1]{\Projection_{#1}}
+
+\newcommand{\InterpolantGR}{\Projection^{\acrshort{gr}}}
+\newcommand{\InterpolantH}{\Projection_h}
+\newcommand{\InterpolantQN}{\Projection^n_q}
+\newcommand{\InterpolantQT}{\Projection^{\tau}_q}
+
+\newcommand{\InterpolantPQ}{\Projection_{h, \tau}^{p, q}}
+\newcommand{\InterpolantPQR}{\hat{\Projection}_{h, n}^{p, q}}
+\newcommand{\InterpolantPQI}{\Projection^{p, q}_n}
+
+\newcommand{\InterSol}{\Projection_{h, n}^p}
+\newcommand{\InterPoly}{\hat{\Projection}_{\SpacePolynomials{}}^q}
+\newcommand{\InterPolyN}{\Projection_{\SpacePolynomials{}}^{q, n}}
+
+% \newcommand{\InterSol}{\ProjectionOnto{\SpaceSolution^p_{h, n}}}
+% \newcommand{\InterPoly}{\ProjectionOnto{\SpacePolynomials{q}((-1, 1))}}
+% \newcommand{\InterPolyN}{\ProjectionOnto{\SpacePolynomials{q}(I_n)}}
+
+% Interpolated solution.
+\newcommand{\IntU}{\InterpolantPQ u}
+\newcommand{\IntRefU}{\InterpolantPQR u}
+
+% Error.
+\newcommand{\Error}{\varepsilon}
+
+% Vectors and operators.
+\newcommand{\Vektor}[1]{\bm{#1}}
+
+% Sigma-algebras.
+\newcommand{\SigmaAlgebraA}{\mathcal{A}}
+\newcommand{\SigmaAlgebraI}{\mathcal{I}}
+
+% Matrices and vectors.
+\newcommand{\MatrixM}{\mathcal{M}}
+\newcommand{\VectorF}{\mathcal{F}}
+
+% Differential operators.
+\newcommand{\Gradient}{\Vektor{\nabla}}
+\DeclareMathOperator*{\Divergence}{div}
+\newcommand{\Laplacian}{\Delta}
+
+% Constants.
+\newcommand{\BoundCG}{\beta} % Bounding.
+\newcommand{\BoundC}[1]{\BoundCG_{#1}} % Bounding.
+
+\newcommand{\ContC}[1]{\gamma_{#1}} % Continuity.
+\newcommand{\CoerC}[1]{\alpha_{#1}} % Coercivity.
+\newcommand{\CoCoR}[1]{\rho_{#1}} % Continuity/Coercivity.
+
+\newcommand{\BoundDeg}{\BoundC{\Gamma}}
+\newcommand{\BoundTrace}{\BoundC{\mu}}
+\newcommand{\BoundInverse}{\BoundC{\iota}}
+\newcommand{\BoundInterp}{\BoundC{\SpaceSolution}}
+\newcommand{\BoundPoly}{\BoundC{\SpacePolynomials{}}}
+\newcommand{\BoundH}{\BoundC{\SpaceHk{1}}}
+
+\newcommand{\BoundQ}{\BoundC{q}}
+\newcommand{\BoundQVariant}{\tilde{\BoundC{}}_q}
+
+\newcommand{\BoundHT}{\BoundC{h, \tau}}
+\newcommand{\BoundHTVariant}{\tilde{\BoundC{}}_{h, \tau}}
+
+% Integrals.
+\newcommand{\TimeInt}[1]{\int_I #1 ~ d t}
+\newcommand{\TimeIntN}[1]{\int_{I_n} #1 ~ d t}
+
+% Norms.
+\newcommand{\Norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\Seminorm}[1]{\left\lvert #1 \right\rvert}
+
+% Equation.
+\newcommand{\ConvectionNoVector}{C}
+\newcommand{\Convection}{\Vektor{\ConvectionNoVector}}
+\newcommand{\Diffusion}{D}
+\newcommand{\Reaction}{R}
+
+% Exact solution.
+\newcommand{\Boundary}{\nu}
+
+% Maps.
+\newcommand{\RMap}{Q_n}
+
+% Jump.
+\newcommand{\Jump}[1]{\llbracket #1 \rrbracket}
+
+% Restriction.
+\newcommand{\Restriction}{\!\!\restriction}
+
+% Others.
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand{\lambdaGR}{\lambda^{\acrshort{gr}}}
+\DeclareMathOperator*{\Diameter}{diam}
+
+\newcommand{\BigO}[1]{\mathcal{O} \left( #1 \right)}
+
+\newcommand{\Remainder}{R}
+\newcommand{\Linear}{\mathcal{L}}

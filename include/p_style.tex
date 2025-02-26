@@ -1,6 +1,23 @@
 % Style.
 \usepackage{xcolor-solarized}
 
+% Separation.
+\newcommand{\separationdistance}{1cm}
+
+%% Packages.
+
+% Multiple columns.
+\usepackage{multicol}
+
+\setlength{\columnsep}{\separationdistance}
+\setlength{\columnseprule}{1pt}
+\def\columnseprulecolor{\color{\accentcolor}}
+
+% TiKZ.
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
 %% Beamer theme.
 \usetheme{Berlin}
 
@@ -17,7 +34,20 @@
 % \setbeamercolor{title}{fg=\accentcolor}
 \setbeamercolor{text}{fg=\documentcolor}
 
-%% Other settings.
-\setbeamersize{text margin left=1.5cm, text margin right=1.5cm}
+%% Background.
+\usebackgroundtemplate{ \input{content/tikz/Bg_Square_250.tex} }
 
+%% Logo.
+\logo{ \includegraphics[width=1.5cm]{./title/logo.pdf} }
+
+%% Math font.
+\usefonttheme[onlymath]{serif}
+
+%% Margins.
+\setbeamersize{text margin left=\separationdistance, text margin right=\separationdistance}
+
+%% Navigation tools.
+\beamertemplatenavigationsymbolsempty
+
+%% Sections.
 \AtBeginSection[]{}
