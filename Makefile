@@ -8,3 +8,5 @@ clean:
 	@$(RM) -r *.acn
 	@$(RM) -r *.glo
 	@$(RM) -r *.ist
+	@$(RM) -r *.nav
+	@$(RM) -r *.snm
