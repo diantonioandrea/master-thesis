@@ -3,12 +3,110 @@
 \begin{frame}
     \frametitle{Relevance and Examples of \acrfull{pdes}}
 
+    % [!] Missing part on relevance.
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Examples}}
+    \end{center}
+
+    \begin{multicols}{3}
+
+        % Gas Flow.
+        \begin{center}
+            \begin{align*}
+                \partial_t u = \Laplacian \left( u^m \right)
+            \end{align*}
+            
+            \vspace*{0.25cm}
+            {\large \textbf{Porous Medium}} \\
+            Gas Flow
+        \end{center}
+
+        % Quantum Mechanics.
+        \begin{center}
+            \begin{align*}
+                i \hbar \partial_t u = - \frac{\hbar^2}{2 m} \Laplacian u + V u
+            \end{align*}
+            
+            \vspace*{0.25cm}
+            {\large \textbf{Schrödinger}} \\
+            Quantum Mechanics
+        \end{center}
+
+        % Fluid Dynamics.
+        \begin{center}
+            \begin{align*}
+                \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u &= g
+            \end{align*}
+
+            \vspace*{0.25cm}
+            {\large \textbf{\acrshort{cdr}}} \\
+            Fluid Dynamics
+        \end{center}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\subsection{Numerical Methods for \texorpdfstring{\acrlong{pdes}}{}}
+
+\begin{frame}
+    \frametitle{Importance of Numerical Methods for \acrshort{pdes}}
+
     % [!]
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Importance of Numerical Methods for \acrshort{pdes}}
+    \frametitle{Examples of Numerical Methods for \acrshort{pdes}}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+
+        % Finite Difference.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Finite Difference Methods}}
+            \vspace*{0.5cm}
+
+            \begin{itemize}
+                \color{\procolor}
+                \item Simplicity and ease of implementation
+                \item Computational efficiency on structured grids
+            \end{itemize}
+
+            \begin{itemize}
+                \color{\concolor}
+                \item Limited geometric flexibility
+                \item Difficulty in handling boundary conditions
+            \end{itemize}
+        \end{center}
+
+        % Finite Element.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Finite Element Methods}}
+            \vspace*{0.5cm}
+
+            \begin{itemize}
+                \color{\procolor}
+                \item Flexibility in handling complex geometries
+                \item Better handling of boundary conditions and higher-order accuracy
+            \end{itemize}
+
+            \begin{itemize}
+                \color{\concolor}
+                \item Higher computational cost and complexity
+                \item More involved implementation
+            \end{itemize}
+        \end{center}
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Finite Element Methods}
 
     % [!]
     
