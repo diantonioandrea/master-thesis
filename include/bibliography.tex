@@ -6,9 +6,11 @@
 
 \DeclareFieldFormat[article]{title}{\textit{#1}}
 \DeclareFieldFormat[book]{title}{\textit{#1}}
+\DeclareFieldFormat[inproceedings]{title}{\textit{#1}}
 
 \DeclareFieldFormat[article]{doi}{\href{https://doi.org/#1}{\textit{Article}}}
 \DeclareFieldFormat[book]{doi}{\href{https://doi.org/#1}{\textit{Book}}}
+\DeclareFieldFormat[inproceedings]{url}{\href{#1}{\textit{Conference}}}
 
 \DeclareCiteCommand{\cite}
   {}
@@ -47,5 +49,11 @@
 \DeclareBibliographyDriver{book} {%
     \noindent \textbf{\printnames{labelname}}
     (\printfield{doi}, \printfield{year})\par
+    \printfield{title}\medskip
+}
+
+\DeclareBibliographyDriver{inproceedings} {%
+    \noindent \textbf{\printnames{labelname}}
+    (\printfield{url}, \printfield{year})\par
     \printfield{title}\medskip
 }
