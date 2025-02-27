@@ -10,3 +10,4 @@ clean:
 	@$(RM) -r *.ist
 	@$(RM) -r *.nav
 	@$(RM) -r *.snm
+	@$(RM) -r *.synctex*
