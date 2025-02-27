@@ -508,8 +508,8 @@ For the derivation of error estimates, consider the following space-time interpo
     $\InterpolantPQ$ is such that:
     \begin{align}
         \InterpolantPQ u &\in \SpaceSolutionFull, \\
-        \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \\
-        \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-),
+        \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt &= 0 &\text{ for all } w \in \SpaceSolutionFullMO, \label{eq:interpolation_result} \\
+        \InterpolantPQ u(t_n^-) &= \InterSol u(t_n^-), \label{eq:interpolation_result_2}
     \end{align}
     for all $n \in \TimeIndices$, where $\InterSol$ denotes the $\SpaceLp{2}$ projection in space onto $\SpaceSolution^p_{h, n}$.
 \end{definition}
@@ -589,6 +589,14 @@ This section investigates the approximation properties of $\InterpolantPQ$ in or
         \InterpolantPQ u \Restriction_{I_n} = \InterpolantPQ \left( \InterSol u \right) \Restriction_{I_n}.
     \end{align}
 \end{lemma}
+
+\begin{proof}
+    Given that $\InterSol$ is the $\SpaceLp{2}$ projection, it follows from \cref{eq:interpolation_result} that:
+    \begin{align*}
+        \int_{I_n} \left( \InterpolantPQ u - \InterSol u, w \right)_0 ~ dt &= \int_{I_n} \left( \InterpolantPQ u - u, w \right)_0 ~ dt = 0 &\text{ for all } w \in \SpaceSolutionFullMO,
+    \end{align*}
+    which means that \cref{eq:interpolation_result} is satisfied by $\InterSol u$, while \cref{eq:interpolation_result_2} is satisfied because $\InterSol \left( \InterSol u \right) = \InterSol u$.
+\end{proof}
 
 The analysis of approximation properties of $\InterpolantPQ$ with respect to time is based on the transformation of time integrals over $I_n$ to time integrals over $\left( -1, 1 \right)$ with the aid of an affine mapping of $\left( -1, 1 \right)$ onto $I_n$ and the use of Legendre polynomials defined on $\left( -1, 1 \right)$.
 
@@ -695,10 +703,19 @@ Then, \Cref{lemma:legendre_interpolant} implies:
 \begin{lemma}
     It holds that:
     \begin{align}
-        \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}^2
+        \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)} = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}
     \end{align}
 \end{lemma}
 
+\begin{proof}
+    By $t = \RMap \left( \zeta \right)$, it follows that:
+    \begin{align*}
+        \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 &= \left\lVert \partial_t \left( \InterSol u \circ \RMap \right) \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 \\
+        &= \frac{\tau_n}{2} \int_{I_n} \Norm{ \partial_t \left( \InterSol u \right) (t) }_{\SpacePlaceholder}^2 ~ dt = \left( \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \right)^2
+    \end{align*}
+\end{proof}
+
+\newpage
 \begin{lemma}
     The following holds:
     \begin{align}
@@ -713,7 +730,6 @@ Assume, now, that the solution is sufficiently regular, that is:
     u \in \SpaceRegular = \SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega)) \cap C^0(I; \SpaceHk{p + 1}(\Omega)) &\text{ for some integers } p, q \geq 1.
 \end{align}
 
-\newpage
 \begin{lemma} % [!] Different time intervals, [!] to be fixed.
     There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $v \in \SpaceRegular$:
     \begin{align}
