@@ -75,7 +75,7 @@ Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that
 \newpage
 \subsection{Weak Solution}
 
-Set now $V = \left\{ v \in \SpaceHk{1}(\Omega) \text{ such that } v \Restriction_{\partial \Omega^-} = 0 \right\}$.
+Set now $V = \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction_{\partial \Omega^-} = 0 \right\}$.
 
 \begin{definition}[Weak solution]
     The weak solution $u$ is such that: 
@@ -127,18 +127,18 @@ Consider now the broken Sobolev space.
 \begin{definition}[$\SpaceHk{k}(\Omega, \Omega_h)$] % [!] Check v, break.
     Let $k \geq 1$ integer, then:
     \begin{align}
-        \SpaceHk{k}(\Omega, \Omega_h) = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } v \Restriction_{K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
+        \SpaceHk{k}(\Omega, \Omega_h) = \left\{ w \in \SpaceLp{2}(\Omega) \text{ such that } w \Restriction_{K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{align}
-    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\left\lvert \cdot \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $v \in \SpaceHk{k}(\Omega, \Omega_h)$:
+    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\left\lvert \cdot \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $w \in \SpaceHk{k}(\Omega, \Omega_h)$:
     \begin{align}
-        \left\lvert v \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \left\lvert v \right\rvert_{\SpaceHk{k}(K)}^2.
+        \left\lvert w \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \left\lvert w \right\rvert_{\SpaceHk{k}(K)}^2.
     \end{align}
 \end{definition}
 
-For $v \in \SpaceHk{1}(\Omega, \Omega_h)$, $v \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $v \Restriction_{K_i}$ on $\Gamma_{ij}$ while $v \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $v \Restriction_{K_j}$ on $\Gamma_{ji}$. Moreover:
+For $w \in \SpaceHk{1}(\Omega, \Omega_h)$, $w \Restriction_{\Gamma_{ij}}$ corresponds to the trace of $w \Restriction_{K_i}$ on $\Gamma_{ij}$ while $w \Restriction_{\Gamma_{ji}}$ corresponds to the trace of $w \Restriction_{K_j}$ on $\Gamma_{ji}$. Moreover:
 \begin{align}
-    \langle v \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( v \Restriction_{\Gamma_{ij}} + v \Restriction_{\Gamma_{ji}} \right), \\
-    \left[ v \right]_{\Gamma_{ij}} &= v \Restriction_{\Gamma_{ij}} - v \Restriction_{\Gamma_{ji}},
+    \langle w \rangle_{\Gamma_{ij}} &= \frac{1}{2} \left( w \Restriction_{\Gamma_{ij}} + w \Restriction_{\Gamma_{ji}} \right), \\
+    \left[ w \right]_{\Gamma_{ij}} &= w \Restriction_{\Gamma_{ij}} - w \Restriction_{\Gamma_{ji}},
 \end{align}
 and $\Vektor{n}_{ij}$ denotes the unit outer normal with respect to $\partial K_i$ on $\Gamma_{ij}$. Note that, geometrically, $\Gamma_{ji} = \Gamma_{ij}$.
 
@@ -235,7 +235,7 @@ The bilinear form $J^{\kappa}_h$ represents the interior and boundary penalty th
 
 \begin{definition}[$\SpaceSolution_h^p$]
     \begin{align}
-        \SpaceSolution_h^p = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } u \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
+        \SpaceSolution_h^p = \left\{ w \in \SpaceLp{2}(\Omega) \text{ such that } w \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{align}
 \end{definition}
 
@@ -261,15 +261,15 @@ and:
     I_n \cap I_m = \emptyset &\text{ for all } n, m \in \TimeIndices \text{ such that } n \neq m \text{ and for all } \tau \in \tIndices.
 \end{align}
 
-For a function $v$ defined on:
+For a function $w$ defined on:
 \begin{align}
     \bigcup_{n \in \TimeIndices} I_n,
 \end{align}
 consider the following notations:
 \begin{align} % [!] Check \varepsilon.
-    u_n^+ &= v(t_n^+) = \lim_{\varepsilon \rightarrow 0} v(t_n^+ + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
-    u_n^- &= v(t_n^-) = \lim_{\varepsilon \rightarrow 0} v(t_n^- + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
-    \Jump{v}_n &= u_n^+ - u_n^- &\text{ for all } n \in \TimeIndices.
+    w_n^+ &= w(t_n^+) = \lim_{\varepsilon \rightarrow 0} w(t_n^+ + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
+    w_n^- &= w(t_n^-) = \lim_{\varepsilon \rightarrow 0} w(t_n^- + \varepsilon) &\text{ for all } n \in \TimeIndices, \\
+    \Jump{w}_n &= w_n^+ - w_n^- &\text{ for all } n \in \TimeIndices.
 \end{align}
 
 Consider, in general, different families of triangulations on each $I_n$ for $n \in \TimeIndices$, that is, consider distinct $\SpaceTimeIndices$ and $\hTimeIndices$ for all $n \in \TimeIndices$, so that $\left\{ \Omega_{h, n} \right\}_{h \in \hTimeIndices}$ is the family of triangulations of $\Omega$ associated with $n \in \TimeIndices$ for all $\tau \in \tIndices$.
@@ -287,7 +287,7 @@ Furthermore, set:
 Considering different families of triangulations on each $I_n$ leads to the following modification of $\SpaceSolution_h^p$:
 \begin{definition}[$\SpaceSolution_{h, n}^p$]
     \begin{align}
-        \SpaceSolution_{h, n}^p = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } v \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_{h, n} \right\}.
+        \SpaceSolution_{h, n}^p = \left\{ w \in \SpaceLp{2}(\Omega) \text{ such that } w \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_{h, n} \right\}.
     \end{align}
 \end{definition}
 
@@ -325,8 +325,8 @@ Note that this is essentially the same definition given in \Cref{sec:space_discr
 \begin{definition}[$\SpaceSolutionFull$]
     Let $q \geq 1$ be an integer, then:
     \begin{align} % [!] To be fixed.
-        \SpaceSolutionFull = \left\{ v \in \SpaceLp{2}(I \times \Omega) \text{ such that } v \Restriction_{I_n} = \sum_{i = 0}^q t^i u_i, \right. \\ 
-        \left. \vphantom{\sum_{i = 0}^q} \text{ where } \left\{ u_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
+        \SpaceSolutionFull = \left\{ w \in \SpaceLp{2}(I \times \Omega) \text{ such that } w \Restriction_{I_n} = \sum_{i = 0}^q t^i w_i, \right. \\ 
+        \left. \vphantom{\sum_{i = 0}^q} \text{ where } \left\{ w_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p \text{ for all } n \in \TimeIndices \right\}.
     \end{align}
 \end{definition}
 
@@ -365,17 +365,17 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Multiplicative trace inequality]
     There exists $\BoundTrace > 0$ such that:
     \begin{align}
-        \left\lVert v \right\rVert_{\SpaceLp{2}(\partial K)}^2 \leq \BoundTrace \left( \left\lVert v \right\rVert_{\SpaceLp{2}(K)} \left\lvert v \right\rvert_{\SpaceHk{1}(K)} + h_K^{-1} \left\lVert v \right\rVert_{\SpaceLp{2}(K)}^2 \right),
+        \left\lVert w \right\rVert_{\SpaceLp{2}(\partial K)}^2 \leq \BoundTrace \left( \left\lVert w \right\rVert_{\SpaceLp{2}(K)} \left\lvert w \right\rvert_{\SpaceHk{1}(K)} + h_K^{-1} \left\lVert w \right\rVert_{\SpaceLp{2}(K)}^2 \right),
     \end{align}
-    for all $v \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+    for all $w \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 \begin{lemma}[Inverse inequality]
     There exists $\BoundInverse > 0$ such that:
     \begin{align}
-        \left\lvert v \right\rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \left\lVert v \right\rVert_{\SpaceLp{2}(K)},
+        \left\lvert w \right\rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \left\lVert w \right\rVert_{\SpaceLp{2}(K)},
     \end{align}
-    for all $v \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
+    for all $w \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 For what follows, fix the following notations:
@@ -733,21 +733,21 @@ Assume, now, that the solution is sufficiently regular, that is:
 \end{align}
 
 \begin{lemma} % [!] Different time intervals, [!] to be fixed.
-    There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $v \in \SpaceRegular$:
+    There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $w \in \SpaceRegular$:
     \begin{align}
-        \left\lVert v(t) - \InterSol v(t) \right\rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(K)}, \\
-        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(K)},
+        \left\lVert w(t) - \InterSol w(t) \right\rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \left\lvert w(t) \right\rvert_{\SpaceHk{p + 1}(K)}, \\
+        \left\lvert w(t) - \InterSol w(t) \right\rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \left\lvert w(t) \right\rvert_{\SpaceHk{p + 1}(K)},
     \end{align}
     for all $K \in \Omega_{h, n}$, for a.e. $t \in I_n$, and for all $n \in \TimeIndices$,
     \begin{align}
-        \left\lVert v(t) - \InterSol v(t) \right\rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
-        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
-        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)},
+        \left\lVert w(t) - \InterSol w(t) \right\rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \left\lvert w(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \left\lvert w(t) - \InterSol w(t) \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \left\lvert w(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \left\lvert w(t) - \InterSol w(t) \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \left\lvert w(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)},
     \end{align}
     for a.e. $t \in I$,
     \begin{align}
-        \left\lVert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \right\rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \left\lvert v(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)}, \\
-        \left\lvert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \right\rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \left\lvert v(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)},
+        \left\lVert w(\Vektor{x}) - \InterPolyN w(\Vektor{x}) \right\rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \left\lvert w(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)}, \\
+        \left\lvert w(\Vektor{x}) - \InterPolyN w(\Vektor{x}) \right\rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \left\lvert w(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)},
     \end{align}
     for $\omega$-a.e. $\Vektor{x} \in \Omega$.
 \end{lemma}
