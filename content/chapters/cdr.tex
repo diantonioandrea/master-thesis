@@ -62,9 +62,9 @@ Moreover, assume that:
 \end{align}
 with $\BoundC{\Convection}, \BoundC{\Reaction} > 0$ such that:
 \begin{align}
-    \lVert \Convection(t, \Vektor{x}) \rVert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_6} \\
-    \lvert \Divergence \Convection(t, \Vektor{x}) \rvert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_7} \\
-    \lvert \Reaction(t, \Vektor{x}) \rvert & \leq \BoundC{\Reaction} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega. \label{equation:ass_8}
+    \left\lVert \Convection(t, \Vektor{x}) \right\rVert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_6} \\
+    \left\lvert \Divergence \Convection(t, \Vektor{x}) \right\rvert & \leq \BoundC{\Convection} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega, \label{equation:ass_7} \\
+    \left\lvert \Reaction(t, \Vektor{x}) \right\rvert & \leq \BoundC{\Reaction} &\text{for a.e. } t, \Vektor{x} \in I \times \Omega. \label{equation:ass_8}
 \end{align}
 
 Finally, assume that there exists $\BoundC{\Reaction \Convection} > 0$ such that:
@@ -129,9 +129,9 @@ Consider now the broken Sobolev space.
     \begin{align}
         \SpaceHk{k}(\Omega, \Omega_h) = \left\{ v \in \SpaceLp{2}(\Omega) \text{ such that } v \Restriction_{K} \in \SpaceHk{k}(K) \text{ for all } K \in \Omega_h \right\}.
     \end{align}
-    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\lvert \cdot \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $v \in \SpaceHk{k}(\Omega, \Omega_h)$:
+    Moreover, $\SpaceHk{k}(\Omega, \Omega_h)$ is equipped with the seminorm $\left\lvert \cdot \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}$, such that for all \\ $v \in \SpaceHk{k}(\Omega, \Omega_h)$:
     \begin{align}
-        \lvert v \rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \lvert v \rvert_{\SpaceHk{k}(K)}^2.
+        \left\lvert v \right\rvert_{\SpaceHk{k}(\Omega, \Omega_h)}^2 = \sum_{K \in \Omega_h} \left\lvert v \right\rvert_{\SpaceHk{k}(K)}^2.
     \end{align}
 \end{definition}
 
@@ -363,7 +363,7 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Multiplicative trace inequality]
     There exists $\BoundTrace > 0$ such that:
     \begin{align}
-        \lVert v \rVert_{\SpaceLp{2}(\partial K)}^2 \leq \BoundTrace \left( \lVert v \rVert_{\SpaceLp{2}(K)} \lvert v \rvert_{\SpaceHk{1}(K)} + h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)}^2 \right),
+        \left\lVert v \right\rVert_{\SpaceLp{2}(\partial K)}^2 \leq \BoundTrace \left( \left\lVert v \right\rVert_{\SpaceLp{2}(K)} \left\lvert v \right\rvert_{\SpaceHk{1}(K)} + h_K^{-1} \left\lVert v \right\rVert_{\SpaceLp{2}(K)}^2 \right),
     \end{align}
     for all $v \in \SpaceHk{1}(K)$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
@@ -371,20 +371,20 @@ From \cite{Dolejší2002} and \cite{Ciarlet1978}, consider the following two ine
 \begin{lemma}[Inverse inequality]
     There exists $\BoundInverse > 0$ such that:
     \begin{align}
-        \lvert v \rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \lVert v \rVert_{\SpaceLp{2}(K)},
+        \left\lvert v \right\rvert_{\SpaceHk{1}(K)} \leq \BoundInverse h_K^{-1} \left\lVert v \right\rVert_{\SpaceLp{2}(K)},
     \end{align}
     for all $v \in \SpaceSolution^p_{h, n}$, for all $K \in \Omega_{h, n}$, for all $h \in \hIndices$, and for all $n \in \TimeIndices$.
 \end{lemma}
 
 For what follows, fix the following notations:
 \begin{align} % [!] To be renamed.
-    \lVert w \rVert_{T}^2 &= \frac{1}{2} \lVert u_0^+ \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \lVert \Jump{w}_n \rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \lVert u_{\nTimeIndices}^+ \rVert_{\SpaceLp{2}(\Omega)}^2, \\
-    \lVert w \rVert_{E, n}^2 &= \Diffusion \lvert w \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert w \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
-    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right), \notag
+    \left\lVert w \right\rVert_{T}^2 &= \frac{1}{2} \left\lVert u_0^+ \right\rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \Jump{w}_n \right\rVert_{\SpaceLp{2}(\Omega)}^2 + \frac{1}{2} \left\lVert u_{\nTimeIndices}^+ \right\rVert_{\SpaceLp{2}(\Omega)}^2, \\
+    \left\lVert w \right\rVert_{E, n}^2 &= \Diffusion \left\lvert w \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \left\lVert w \right\rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
+    &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \left\lVert w \right\rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \left\lVert w \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right), \notag
 \end{align}
 where:
 \begin{align}
-    \lVert w \rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \lvert \Convection \cdot \Vektor{n} \rvert w^2 ~ d \sigma(\Vektor{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
+    \left\lVert w \right\rVert_{\Convection, \Gamma}^2 &= \int_{\Gamma} \left\lvert \Convection \cdot \Vektor{n} \right\rvert w^2 ~ d \sigma(\Vektor{x}) &\text{ for all } K \in \Omega_{h, n} \text{ where } \Gamma \subset \partial K.
 \end{align}
 
 Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ and $B$:
@@ -392,7 +392,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{lemma}[Coercivity of $A_{h, n}$] \label{lemma:A_coercivity}
     The forms $A_{h, n}$ are coercive, that is:
     \begin{align}
-        A_{h, n}(w, w) &\geq \lVert w \rVert_{E, n}^2 &\text{ for all } w \in \SpaceHk{1}(\Omega, \Omega_{h, n}).
+        A_{h, n}(w, w) &\geq \left\lVert w \right\rVert_{E, n}^2 &\text{ for all } w \in \SpaceHk{1}(\Omega, \Omega_{h, n}).
     \end{align}
 \end{lemma}
 
@@ -444,9 +444,9 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
         A_{h, n}(w, w) &= a_{h, n} \left( w, w \right) + b_{h, n} \left( w, w \right) + c_{h, n} \left( w, w \right) + \Diffusion J^{\kappa}_{h, n} \left( w, w \right) \\
         &= \Diffusion \Seminorm{w}_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \int_{\Omega} \left( \Reaction - \frac12 \Divergence{\Convection} \right) w^2 ~ d \omega(\Vektor{x}) + \Diffusion J^{\kappa}_{h, n} \left( w, w \right) \\
         &+ \frac12 \sum_{i \in \SpaceTimeIndices} \left( \Norm{ w }_{\Convection, \partial K_i \cap \partial \Omega}^2 + \Norm{ w }_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
-        &\geq \Diffusion \lvert w \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert w \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
-        &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert w \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert w \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
-        &= \lVert w \rVert_{E, n}^2.
+        &\geq \Diffusion \left\lvert w \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \left\lVert w \right\rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(w, w) \\
+        &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \left\lVert w \right\rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \left\lVert w \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) \\
+        &= \left\lVert w \right\rVert_{E, n}^2.
     \end{align*}
 \end{proof}
 
@@ -471,7 +471,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
 \begin{lemma}[Coercivity of $B$]
     It holds that:
     \begin{align}
-        B(w, w) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \lVert w \rVert_{T}^2,
+        B(w, w) = \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \left\lVert w \right\rVert_{T}^2,
     \end{align}
     which, together with \Cref{lemma:A_coercivity}, implies coercivity for $B$.
 \end{lemma}
@@ -489,7 +489,7 @@ Consider, then, the following basic properties of the bilinear forms $A_{h, n}$ 
         &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} (\Jump{w}_n, \Jump{w}_n )_0 \\
         &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \frac12 \Norm{w_0^+}_{\SpaceLp{2}(\Omega)} + \frac12 \Norm{w_{\nTimeIndices}^-}_{\SpaceLp{2}(\Omega)} \\
         &+ \frac12 \sum_{n = 1}^{\nTimeIndices - 1} \frac12 \Norm{ \Jump{w}_n }_{\SpaceLp{2}(\Omega)} \\
-        &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \lVert w \rVert_{T}^2.
+        &= \sum_{n \in \TimeIndices} \int_{I_n} A_{h, n}(w, w) ~ dt + \left\lVert w \right\rVert_{T}^2.
     \end{align*}
 \end{proof}
 
@@ -540,39 +540,39 @@ and note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation 
 \begin{definition}[$\theta_n(\eta; h, \Diffusion)$] \label{def:theta}
     Define $\theta_n(\eta; h, \Diffusion)$ as:
     \begin{align} % [!] Check \eta_n^-
-        \theta_n(\eta; h, \Diffusion) &= \lVert \eta \rVert_{E, n} + \sqrt{\Diffusion} h \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
-        &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} \right)^{\nicefrac12} + \left( \sum_{i \in \SpaceTimeIndices} \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{\nicefrac12}
+        \theta_n(\eta; h, \Diffusion) &= \left\lVert \eta \right\rVert_{E, n} + \sqrt{\Diffusion} h \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
+        &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} \right)^{\nicefrac12} + \left( \sum_{i \in \SpaceTimeIndices} \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{\nicefrac12}
     \end{align}
 \end{definition}
 
 \begin{lemma}
     There exists $\ContC{A} > 0$ independent of $u, \AppU, h, \Diffusion$ such that:
     \begin{align}
-        \lvert A_{h, n}(\eta, \xi) \rvert \leq \ContC{A} \lVert \xi \rVert_{E, n} \theta_n(\eta; h, \Diffusion)
+        \left\lvert A_{h, n}(\eta, \xi) \right\rvert \leq \ContC{A} \left\lVert \xi \right\rVert_{E, n} \theta_n(\eta; h, \Diffusion)
     \end{align}
 \end{lemma}
 
 \begin{lemma}
     The following inequality holds:
     \begin{align}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \xi \rVert_{E, n}^2 ~ dt + \lVert \xi \rVert_T^2 &\leq 4 \ContC{A}^2 \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
-        &+ 8 \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \xi \right\rVert_{E, n}^2 ~ dt + \left\lVert \xi \right\rVert_T^2 &\leq 4 \ContC{A}^2 \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
+        &+ 8 \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \eta_n^- \right\rVert_{\SpaceLp{2}(\Omega)}. \notag
     \end{align}
 \end{lemma}
 
 Finally, observing that:
 \begin{align}
-    \lVert \Error \rVert_{E, n}^2 &\leq 2 \left( \lVert \xi \rVert_{E, n}^2 + \lVert \eta \rVert_{E, n}^2 \right), \\
-    \lVert \Error \rVert_T^2 &\leq 2 \left( \lVert \xi \rVert_T^2 + \lVert \eta \rVert_T^2 \right),
+    \left\lVert \Error \right\rVert_{E, n}^2 &\leq 2 \left( \left\lVert \xi \right\rVert_{E, n}^2 + \left\lVert \eta \right\rVert_{E, n}^2 \right), \\
+    \left\lVert \Error \right\rVert_T^2 &\leq 2 \left( \left\lVert \xi \right\rVert_T^2 + \left\lVert \eta \right\rVert_T^2 \right),
 \end{align}
 which leads to the following abstract error estimate:
 \begin{lemma} \label{lemma:abstract_estimates}
     The following holds:
     \begin{align}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt + \lVert \Error \rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
-        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)} + \lVert \eta \rVert_T^2, \notag \\ 
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \label{eq:abstract_estimates_2} \\
-        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}. \notag
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \Error \right\rVert_{E, n}^2 ~ dt + \left\lVert \Error \right\rVert_T^2 &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \eta_n^- \right\rVert_{\SpaceLp{2}(\Omega)} + \left\lVert \eta \right\rVert_T^2, \notag \\ 
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \Error \right\rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \label{eq:abstract_estimates_2} \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \eta_n^- \right\rVert_{\SpaceLp{2}(\Omega)}. \notag
     \end{align}
 \end{lemma}
 
@@ -666,9 +666,9 @@ Set now $\AppUN = \InterSol u \circ \RMap$, then:
 \end{align}
 which implies:
 \begin{align}
-    \lVert \eta \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} & \leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterpolantPQ \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
-    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \left( \InterpolantPQR \left( \InterSol u \circ \RMap \right) \right) \circ \RMap^{-1} \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
-    &= \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \lVert \AppUN - \InterpolantPQR \AppUN \rVert_{\SpaceLp{2}(\left( -1, 1 \right); \SpacePlaceholder)},
+    \left\lVert \eta \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} & \leq \left\lVert u - \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \left\lVert \InterSol u - \InterpolantPQ \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
+    &= \left\lVert u - \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \left\lVert \InterSol u - \left( \InterpolantPQR \left( \InterSol u \circ \RMap \right) \right) \circ \RMap^{-1} \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \notag \\
+    &= \left\lVert u - \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \sqrt{\frac{\tau_n}{2}} \left\lVert \AppUN - \InterpolantPQR \AppUN \right\rVert_{\SpaceLp{2}(\left( -1, 1 \right); \SpacePlaceholder)},
 \end{align}
 where $\SpacePlaceholder$ denotes a Banach space that is yet to be specified.
 
@@ -696,14 +696,14 @@ Then, \Cref{lemma:legendre_interpolant} implies:
 \begin{lemma}
     There exists $\BoundQ > 0$ such that:
     \begin{align}
-        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundQ \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
+        \left\lVert \sum_{i = q + 1}^{+\infty} \AppU_{n, i} \right\rVert_{\SpacePlaceholder} \leq \BoundQ \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}.
     \end{align}
 \end{lemma}
 
 \begin{lemma}
     It holds that:
     \begin{align}
-        \lVert \partial_t \AppUN \rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)} = \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}
+        \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)} = \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}
     \end{align}
 \end{lemma}
 
@@ -711,7 +711,7 @@ Then, \Cref{lemma:legendre_interpolant} implies:
     By $t = \RMap \left( \zeta \right)$, it follows that:
     \begin{align*}
         \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 &= \left\lVert \partial_t \left( \InterSol u \circ \RMap \right) \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 \\
-        &= \frac{\tau_n}{2} \int_{I_n} \Norm{ \partial_t \left( \InterSol u \right) (t) }_{\SpacePlaceholder}^2 ~ dt = \left( \sqrt{\frac{\tau_n}{2}} \lVert \partial_t \left( \InterSol u \right) \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \right)^2
+        &= \frac{\tau_n}{2} \int_{I_n} \Norm{ \partial_t \left( \InterSol u \right) (t) }_{\SpacePlaceholder}^2 ~ dt = \left( \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \right)^2
     \end{align*}
 \end{proof}
 
@@ -719,8 +719,8 @@ Then, \Cref{lemma:legendre_interpolant} implies:
 \begin{lemma}
     The following holds:
     \begin{align}
-        \lVert u - \InterpolantPQ u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \lVert u - \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \lVert \InterSol u - \InterPolyN \InterSol u \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
-        &+ \BoundQ \frac{\tau_n}{2} \lVert \partial_t \left( \InterSol u \right) - \partial_t w \rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
+        \left\lVert u - \InterpolantPQ u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} &\leq \left\lVert u - \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} + \left\lVert \InterSol u - \InterPolyN \InterSol u \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \\
+        &+ \BoundQ \frac{\tau_n}{2} \left\lVert \partial_t \left( \InterSol u \right) - \partial_t w \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}, \notag
     \end{align}
     for all $w \in \SpaceSolutionFull$, where $\InterPolyN$ denotes the $\SpaceLp{2}$ projection onto $\SpacePolynomials{q}(I_n)$.
 \end{lemma}
@@ -733,19 +733,19 @@ Assume, now, that the solution is sufficiently regular, that is:
 \begin{lemma} % [!] Different time intervals, [!] to be fixed.
     There exist $\BoundInterp, \BoundPoly > 0$ such that, for all $v \in \SpaceRegular$:
     \begin{align}
-        \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)}, \\
-        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(K)},
+        \left\lVert v(t) - \InterSol v(t) \right\rVert_{\SpaceLp{2}(K)} &\leq \BoundInterp h_n^{p + 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(K)}, \\
+        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{1}(K)} &\leq \BoundInterp h_n^{p} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(K)},
     \end{align}
     for all $K \in \Omega_{h, n}$, for a.e. $t \in I_n$, and for all $n \in \TimeIndices$,
     \begin{align}
-        \lVert v(t) - \InterSol v(t) \rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
-        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)}, \\
-        \lvert v(t) - \InterSol v(t) \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \lvert v(t) \rvert_{\SpaceHk{p + 1}(\Omega)},
+        \left\lVert v(t) - \InterSol v(t) \right\rVert_{\SpaceLp{2}(\Omega)} &\leq \BoundInterp h^{p + 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)}, \\
+        \left\lvert v(t) - \InterSol v(t) \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} &\leq \BoundInterp h^{p - 1} \left\lvert v(t) \right\rvert_{\SpaceHk{p + 1}(\Omega)},
     \end{align}
     for a.e. $t \in I$,
     \begin{align}
-        \lVert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \lvert v(\Vektor{x}) \rvert_{\SpaceHk{q + 1}(I_n)}, \\
-        \lvert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \lvert v(\Vektor{x}) \rvert_{\SpaceHk{q + 1}(I_n)},
+        \left\lVert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \right\rVert_{\SpaceLp{2}(I_n)} &\leq \BoundPoly \tau_n^{q + 1} \left\lvert v(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)}, \\
+        \left\lvert v(\Vektor{x}) - \InterPolyN v(\Vektor{x}) \right\rvert_{\SpaceHk{1}(I_n)} &\leq \BoundPoly \tau_n^{q} \left\lvert v(\Vektor{x}) \right\rvert_{\SpaceHk{q + 1}(I_n)},
     \end{align}
     for $\omega$-a.e. $\Vektor{x} \in \Omega$.
 \end{lemma}
@@ -753,8 +753,8 @@ Assume, now, that the solution is sufficiently regular, that is:
 \begin{lemma}
     There exists $\BoundH > 0$ such that:
     \begin{align}
-        \lVert \InterSol w \rVert_{\SpaceLp{2}(K)} &\leq \lVert w \rVert_{\SpaceLp{2}(K)}, \\
-        \lvert \InterSol w \rvert_{\SpaceHk{1}(K)} &\leq \BoundH \lvert w \rvert_{\SpaceHk{1}(K)},
+        \left\lVert \InterSol w \right\rVert_{\SpaceLp{2}(K)} &\leq \left\lVert w \right\rVert_{\SpaceLp{2}(K)}, \\
+        \left\lvert \InterSol w \right\rvert_{\SpaceHk{1}(K)} &\leq \BoundH \left\lvert w \right\rvert_{\SpaceHk{1}(K)},
     \end{align}
     for all $w \in \SpaceHk{1}(\Omega, \Omega_{h, n})$, for all $K \in \Omega_{h, n}$, and for all $n \in \TimeIndices$.
 \end{lemma}
@@ -767,7 +767,7 @@ Assume, now, that the solution is sufficiently regular, that is:
     \end{align}
     then:
     \begin{align}
-        \int_{I_n} \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_1} \\
+        \int_{I_n} \left\lvert \eta \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt &\leq 3 \BoundInterp^2 h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_1} \\
         &+ 3 \BoundH^2 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2, \notag \\
         \TimeIntN{\Norm{\eta}_{\SpaceLp{2}(\Omega)}^2} & \leq 3 \BoundInterp^2 h^{2p + 2} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \label{eq:bound_2} \\
         &+ 3 \BoundPoly^2 \BoundQVariant \tau_n^{2q + 2} \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2, \notag \\
@@ -805,33 +805,33 @@ This estimate holds true even for $\Diffusion = 0$.
 \begin{proof}
     From \Cref{lemma:abstract_estimates}, by \cref{eq:abstract_estimates_2}:
     \begin{align*}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
-        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \Error \right\rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \theta_n^2(\eta; h, \Diffusion) ~ dt \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \eta_n^- \right\rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
     It also follows, by \Cref{def:theta} and the \acrshort{cs} inequality, that:
     \begin{align*}
-        \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \lVert \eta \rVert_{E, n}^2 + \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
+        \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \left\lVert \eta \right\rVert_{E, n}^2 + \Diffusion h^2 \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} + \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
     \end{align*}
     where:
     \begin{align*}
-        \lVert \eta \rVert_{E, n}^2 &= \Diffusion \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \lVert \eta \rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(\eta, \eta) \\
-        &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \lVert \eta \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert \eta \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right).
+        \left\lVert \eta \right\rVert_{E, n}^2 &= \Diffusion \left\lvert \eta \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 + \BoundC{\Reaction \Convection} \left\lVert \eta \right\rVert_{\SpaceLp{2}(\Omega)}^2 + \Diffusion J^{\kappa}_{h, n}(\eta, \eta) \\
+        &+ \frac{1}{2} \sum_{i \in \SpaceTimeIndices} \left( \left\lVert \eta \right\rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \left\lVert \eta \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right).
     \end{align*}
 
     Hence:
     \begin{align*}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion \lvert \eta \rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt + C \sum_{n \in \TimeIndices} \int_{I_n} \lVert \eta \rVert_{\SpaceLp{2}(\Omega)}^2 ~ dt \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \Error \right\rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion \left\lvert \eta \right\rvert_{\SpaceHk{1}(\Omega, \Omega_{h, n})}^2 ~ dt + C \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \eta \right\rVert_{\SpaceLp{2}(\Omega)}^2 ~ dt \\
         &+ C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion J^{\kappa}_{h, n}(\eta, \eta) ~ dt \\
-        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( \lVert \eta \rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \lVert \eta \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) ~ dt \\
-        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion h^2 \lvert \eta \rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 ~ dt \\
-        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \lVert \eta \rVert_{\SpaceLp{2}(K_i)} + \lVert \eta_n^- \rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) ~ dt \\
-        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \lVert \eta_n^- \rVert_{\SpaceLp{2}(\Omega)}.
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( \left\lVert \eta \right\rVert_{\Convection, \partial K_i \cap \partial \Omega}^2 + \left\lVert \eta \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega}^2 \right) ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \Diffusion h^2 \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 ~ dt \\
+        &+ C \sum_{n \in \TimeIndices} \int_{I_n} \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} + \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) ~ dt \\
+        &+ C \sum_{n = 1}^{\nTimeIndices - 1} \left\lVert \eta_n^- \right\rVert_{\SpaceLp{2}(\Omega)}.
     \end{align*}
 
     From \Cref{lemma:bounds}, by \cref{eq:bound_1,eq:bound_2,eq:bound_3,eq:bound_4,eq:bound_5,eq:bound_6,eq:bound_7}:
     \begin{align*}
-        \sum_{n \in \TimeIndices} \int_{I_n} \lVert \Error \rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
+        \sum_{n \in \TimeIndices} \int_{I_n} \left\lVert \Error \right\rVert_{E, n}^2 ~ dt &\leq C \sum_{n \in \TimeIndices} h^{2p} \Seminorm{u}_{\SpaceLp{2}(I_n; \SpaceHk{p + 1}(\Omega))}^2 \\
         &+ C \sum_{n \in \TimeIndices} \tau_n^{2 q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I_n; \SpaceHk{1}(\Omega))}^2 \right) \\
         &+ C h^{2p + 1} \Norm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2,
     \end{align*}
