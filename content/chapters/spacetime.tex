@@ -27,7 +27,7 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
     \end{align}
 \end{definition}
 
-\begin{lemma} % [!] Ugly \left and \right with \lVert and \rVert.
+\begin{lemma} % [!] Ugly \left and \right with \left\lVert and \right\rVert.
     \begin{align}
         \left\lVert \int_I u(t) ~ d \lambda(t) \right\rVert_V &\leq \int_I \left\lVert u(t) \right\rVert_V ~ d \lambda(t) &\text{ for all simple functions } u.
     \end{align}
@@ -36,27 +36,27 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \begin{definition}[Strongly measurable function]
     A function $u\colon I \rightarrow V$ is said to be strongly measurable if there exist $\left\{ u_n \right\}_{n \in N}$ simple functions such that:
     \begin{align}
-        \lim_{n \rightarrow \infty} \lVert u(t) - u_n(t) \rVert_V &= 0 &\text{ for } \lambda \text{-a.e. } t \in I.
+        \lim_{n \rightarrow \infty} \left\lVert u(t) - u_n(t) \right\rVert_V &= 0 &\text{ for } \lambda \text{-a.e. } t \in I.
 &    \end{align}
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $\lVert u(\cdot) \rVert_V \colon I \rightarrow \RealNumbers$ is Lebesgue-measurable.
+    Let $u\colon I \rightarrow V$ be a strongly measurable function, then $\left\lVert u(\cdot) \right\rVert_V \colon I \rightarrow \RealNumbers$ is Lebesgue-measurable.
 \end{lemma}
 
 \begin{definition}[Bochner integrable function] \label{definition:bochner_integrable}
     A function $u\colon I \rightarrow V$ is said to be Bochner integrable if there exist $\left\{ u_n \right\}_{n \in N}$ simple functions such that:
     \begin{align}
-        \lim_{n \rightarrow \infty} \lVert u(t) - u_n(t) \rVert_V &= 0 &\text{ for } \lambda \text{-a.e. } t \in I,
+        \lim_{n \rightarrow \infty} \left\lVert u(t) - u_n(t) \right\rVert_V &= 0 &\text{ for } \lambda \text{-a.e. } t \in I,
 &    \end{align}
     that is  $u$ is strongly measurable, and:
     \begin{align}
-        \lim_{n \rightarrow \infty} \int_I \lVert u(t) - u_n(t) \rVert_V ~ d \lambda(t) = 0.
+        \lim_{n \rightarrow \infty} \int_I \left\lVert u(t) - u_n(t) \right\rVert_V ~ d \lambda(t) = 0.
     \end{align}
 \end{definition}
 
 \begin{lemma}
-    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \Cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda(t) \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\lVert \cdot \rVert_V$.
+    Let $u\colon I \rightarrow V$ be a Bochner integrable function and $\left\{ u_n \right\}_{n \in \NaturalNumbers}$ as in \Cref{definition:bochner_integrable}, then $\left\{ \int_I u_n(t) ~ d \lambda(t) \right\}_{n \in \NaturalNumbers}$ converges in $V$ with respect to $\left\lVert \cdot \right\rVert_V$.
 \end{lemma}
 
 \begin{definition}[Bochner integral]
@@ -69,7 +69,7 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \begin{theorem}[Bochner]
     Let $u\colon I \rightarrow V$ be a strongly measurable function, then $u$ is Bochner integrable if and only if:
     \begin{align}
-        \int_I \lVert u(t) \rVert_V ~ d \lambda(t) < + \infty.
+        \int_I \left\lVert u(t) \right\rVert_V ~ d \lambda(t) < + \infty.
     \end{align}
 \end{theorem}
 
@@ -105,12 +105,12 @@ Let $I \subset \RealNumbers$ be open, nonempty and bounded and let $V$ be a Bana
 \begin{definition}[$\SpaceLp{p}(I; V)$]
     Let $1 \leq p \leq +\infty$, then:
     \begin{align}
-        \SpaceLp{p}(I; V) = \left\{ u \colon I \rightarrow V \text{ strongly measurable such that } \lVert u \rVert_{\SpaceLp{p}(I; V)} < +\infty \right\},
+        \SpaceLp{p}(I; V) = \left\{ u \colon I \rightarrow V \text{ strongly measurable such that } \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)} < +\infty \right\},
     \end{align}
     where:
     \begin{align}
-        & \lVert u \rVert_{\SpaceLp{p}(I; V)}^p = \int_I \lVert u(t) \rVert_V^p ~ d \lambda(t) & \text{ if } p < +\infty, \\
-        & \lVert u \rVert_{\SpaceLp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \lVert u(t) \rVert_V \right\} & \text{ if } p = +\infty.
+        & \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)}^p = \int_I \left\lVert u(t) \right\rVert_V^p ~ d \lambda(t) & \text{ if } p < +\infty, \\
+        & \left\lVert u \right\rVert_{\SpaceLp{\infty}(I; V)} = \esssup_{t \in I} \left\{ \left\lVert u(t) \right\rVert_V \right\} & \text{ if } p = +\infty.
     \end{align}
 \end{definition}
 
@@ -208,13 +208,13 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
         \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } \partial_t u \in \SpaceLp{q}(I; W) \right\}
     \end{align}
 
-    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
+    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\left\lVert \cdot \right\rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
     \begin{align}
-        \lVert u \rVert_{\SpaceXpq{}{q}(I; V, W)} = \lVert u \rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \lVert \partial_t u \rVert_{\SpaceLp{q}(I; W)},
+        \left\lVert u \right\rVert_{\SpaceXpq{}{q}(I; V, W)} = \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \left\lVert \partial_t u \right\rVert_{\SpaceLp{q}(I; W)},
     \end{align}
     where:
     \begin{align}
-        \iota_{V, W} = \lVert F_{V \rightarrow W} \rVert_{\Lagrange(V;W)}.
+        \iota_{V, W} = \left\lVert F_{V \rightarrow W} \right\rVert_{\Lagrange(V;W)}.
     \end{align}
 \end{definition}
 
@@ -266,15 +266,15 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 \begin{definition}[$A$] \label{definition:A} % [!] Check instances of \ContC{a}
     Let $A \colon I \rightarrow \Lagrange(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
     \begin{align} \label{equation:a}
-        \lVert A(t)(u) \rVert_{V^*} & \leq \ContC{a} \lVert u \rVert_V &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
-        \langle A(t)(u), u \rangle_{V^*, V} & \geq \CoerC{a} \lVert u \rVert_V^2 &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
+        \left\lVert A(t)(u) \right\rVert_{V^*} & \leq \ContC{a} \left\lVert u \right\rVert_V &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
+        \langle A(t)(u), u \rangle_{V^*, V} & \geq \CoerC{a} \left\lVert u \right\rVert_V^2 &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
     \end{align}
 \end{definition}
 
 \begin{lemma}
     Let $1 \leq p \leq +\infty$ and  $A$ as in \Cref{definition:A}, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable. Moreover $A(u) \in \SpaceLp{p}(I; V^*)$ with:
     \begin{align}
-        \lVert A(u) \rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \lVert u \rVert_{\SpaceLp{p}(I; V)}.
+        \left\lVert A(u) \right\rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)}.
     \end{align}
 \end{lemma}
 
@@ -325,7 +325,7 @@ The objective of this section is to establish the well-posedness of the paraboli
 \begin{lemma}[Uniqueness and a priori estimate]
     Let $u \in \SpaceTrial$ solution of \cref{equation:weak}, then \cref{equation:weak} admits at most one solution and:
     \begin{align}
-        \CoerC{a} \lVert u \rVert_{\SpaceLp{2}(I; V)}^2 + \lVert u(T) \rVert_W^2 \leq \frac{1}{\CoerC{a}} \lVert f \rVert_{\SpaceLp{2}(I; V^*)}^2 + \lVert u_0 \rVert_W^2.
+        \CoerC{a} \left\lVert u \right\rVert_{\SpaceLp{2}(I; V)}^2 + \left\lVert u(T) \right\rVert_W^2 \leq \frac{1}{\CoerC{a}} \left\lVert f \right\rVert_{\SpaceLp{2}(I; V^*)}^2 + \left\lVert u_0 \right\rVert_W^2.
     \end{align}
 \end{lemma}
 
@@ -408,7 +408,7 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_h}
     Let $u \in \SpaceX$ be the solution of \cref{equation:model} and $u_h \in \SpaceX_h$ be the solution of \cref{equation:weak_h1}. Let $\InterpolantH$ be any approximation operator and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$. Assume that $u \in \SpaceHk{1}(I; V)$, then:
     \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \lVert \eta \rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \lVert \partial_t \eta \rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \lVert \eta(0) \rVert_W,
+        \left\lVert u - u_{h \tau} \right\rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \left\lVert \eta \right\rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \left\lVert \partial_t \eta \right\rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \left\lVert \eta(0) \right\rVert_W,
     \end{align}
     where:
     \begin{align}
@@ -515,7 +515,7 @@ are the quadrature nodes and corresponding weights on the $n$-th time interval $
 
     Moreover, there exists $C \geq 0$ such that:
     \begin{align}
-        \lVert u - \InterpolantGR_q(u) \rVert_{\SpaceLp{2}(I; Z)} \leq C \tau^{q + 1} \lvert u \rvert_{\SpaceHk{q + 1}(I; Z)}.
+        \left\lVert u - \InterpolantGR_q(u) \right\rVert_{\SpaceLp{2}(I; Z)} \leq C \tau^{q + 1} \left\lvert u \right\rvert_{\SpaceHk{q + 1}(I; Z)}.
     \end{align}
 \end{definition}
 
@@ -576,7 +576,7 @@ In \Cref{chapter:cdr}, a sufficiently accurate quadrature order will be assumed,
 
 Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity constant of the bilinear form $a$ and equip $\SpaceX_{h \tau}$ with the following norm such that for all $u_{h \tau} \in \SpaceX_{h \tau}$:
 \begin{align}
-    \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 = \lVert u_{h \tau} \rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \lVert u_{h \tau}(0) \rVert_W^2 + \lVert u_{h \tau}(T) \rVert_W^2 + \sum_{n \in \TimeIndices} \lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \rVert_W^2 \right). \label{eq:norm_ht}
+    \left\lVert u_{h \tau} \right\rVert_{\SpaceX_{h \tau}}^2 = \left\lVert u_{h \tau} \right\rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \left\lVert u_{h \tau}(0) \right\rVert_W^2 + \left\lVert u_{h \tau}(T) \right\rVert_W^2 + \sum_{n \in \TimeIndices} \left\lVert \llbracket u_{h \tau} \rrbracket_{n - 1} \right\rVert_W^2 \right). \label{eq:norm_ht}
 \end{align}
 
 \subsubsection{Stability}
@@ -584,7 +584,7 @@ Following \cite[p.~186]{Ern2021}, recall that $\CoerC{a}$ is the coercivity cons
 \begin{lemma}[Coercivity]
     The discrete problem \cref{equation:weak_ht} is well posed by:
     \begin{align}
-        b_{\tau}(u_{h \tau}, u_{h \tau}) &\geq \CoerC{a} \lVert u_{h \tau} \rVert_{\SpaceX_{h \tau}}^2 &\text{ for all } u_{h \tau} \in \SpaceX_{h \tau}. \label{eq:b_coercivity}
+        b_{\tau}(u_{h \tau}, u_{h \tau}) &\geq \CoerC{a} \left\lVert u_{h \tau} \right\rVert_{\SpaceX_{h \tau}}^2 &\text{ for all } u_{h \tau} \in \SpaceX_{h \tau}. \label{eq:b_coercivity}
     \end{align}
 \end{lemma}
 
@@ -681,12 +681,12 @@ Consider a time-independent space approximation operator $\InterpolantH$ to sepa
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_ht}
     Let $u \in \SpaceX$ be the solution of \cref{equation:model} and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of \cref{equation:weak_ht}. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
     \begin{align}
-        \lVert u - u_{h \tau} \rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \lVert u_0 - \InterpolantH \left( u_0 \right) \rVert_W + C C_1(u) \tau^{q + 1} \label{eq:estimates_ht} \\
-        & + \frac{C}{\CoerC{a}} \lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \rVert_{\SpaceLp{2}(I; V^*)} + C \CoCoR{a} C_2 \lVert u - \InterpolantH \left( u \right) \rVert_{\SpaceLp{\infty}(I; V)}, \notag
+        \left\lVert u - u_{h \tau} \right\rVert_{\SpaceX_{h \tau}} \leq & \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \left\lVert u_0 - \InterpolantH \left( u_0 \right) \right\rVert_W + C C_1(u) \tau^{q + 1} \label{eq:estimates_ht} \\
+        & + \frac{C}{\CoerC{a}} \left\lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \right\rVert_{\SpaceLp{2}(I; V^*)} + C \CoCoR{a} C_2 \left\lVert u - \InterpolantH \left( u \right) \right\rVert_{\SpaceLp{\infty}(I; V)}, \notag
     \end{align}
     where:
     \begin{align}
-        C_1(u) & = \frac{1}{\CoerC{a}} \lvert u \rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \lvert u \rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
+        C_1(u) & = \frac{1}{\CoerC{a}} \left\lvert u \right\rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \left\lvert u \right\rvert_{\SpaceWkp{q + 1}{\infty}(I; V)}, \\
         C_2^2 & = \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}.
     \end{align}
 \end{theorem}
