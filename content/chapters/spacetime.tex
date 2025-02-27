@@ -366,9 +366,9 @@ and:
 \begin{align}
     \partial_t u_h(t, \Vektor{x}) = \sum_{j \in \SpaceIndices} u_j^{\prime}(t) \varphi_j(\Vektor{x}),
 \end{align}
-with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpaceIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0h}, y_{1h})$ where $y_{0h} \in V_h$ and $y_{1h}$ is of the form of:
+with $u_j \in \SpaceHk{1}(I)$ for all $j \in \SpaceIndices$. Similarly, a generic $y_h \in \SpaceTest_h$ is a pair $(y_{0, h}, y_{1, h})$ where $y_{0, h} \in V_h$ and $y_{1, h}$ is of the form of:
 \begin{align}
-    y_{1h}(t, \Vektor{x}) = \sum_{j \in \SpaceIndices} y_j(t) \varphi_j(\Vektor{x}),
+    y_{1, h}(t, \Vektor{x}) = \sum_{j \in \SpaceIndices} y_j(t) \varphi_j(\Vektor{x}),
 \end{align}
 with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
 
@@ -458,10 +458,9 @@ Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\ha
     \end{align}
 \end{definition}
 
-% Note that every function $u_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ can be represented by the pair $(u_{\tau}(0), u_{\tau \mid (0, T]}) \in H \times \SpacePolynomials{q}^b(\TimeMesh; H)$, meaning that $\SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ is isomorphic to $H \times \SpacePolynomials{q}^b(\TimeMesh; H)$.
-
 By definition, every $u_{\tau} \in \SpacePolynomials{q}^b(\ClosedTimeMesh; H)$ is left-continuous at the discrete time nodes $t_n$.
 
+\newpage
 \begin{definition}[Time jumps] \label{def:time_jumps}
     \begin{align}
         \llbracket u_{\tau} \rrbracket_{n - 1} = u_{\tau}(t_{n - 1}^+) - u_{\tau}(t_{n - 1}),
