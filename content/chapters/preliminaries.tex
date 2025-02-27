@@ -19,18 +19,20 @@ Following \cite[p.~89]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ denot
 
 \begin{definition}[$\SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$]
     \begin{align}
-        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \lvert f(\Vektor{x}) \rvert ~ d \omega(\Vektor{x}) < \infty \right\},
+        \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \int_{\Omega} \left\lvert f(\Vektor{x}) \right\rvert ~ d \omega(\Vektor{x}) < \infty \right\},
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{1}(\Omega)} = \lVert f \rVert_{1} = \int_{\Omega} \lvert f(\Vektor{x}) \rvert ~ d \omega(\Vektor{x}).
+    \left\lVert f \right\rVert_{\SpaceLp{1}(\Omega)} = \left\lVert f \right\rVert_{1} = \int_{\Omega} \left\lvert f(\Vektor{x}) \right\rvert ~ d \omega(\Vektor{x}).
     \end{align}
 \end{definition}
 
+This space allows for the definitions presented in the following sections.
+
+Without loss of generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$ in what follows.
+
 \newpage
 \subsubsection{Known Results}
-
-Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \SigmaAlgebraA, \omega)$ in what follows.
 
 \begin{theorem}[Beppo Levi, or monotone convergence]
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ such that:
@@ -44,7 +46,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{align}
     and
     \begin{align}
-        \lim_{n \rightarrow \infty} \lVert f_n - f \rVert_1 = 0.
+        \lim_{n \rightarrow \infty} \left\lVert f_n - f \right\rVert_1 = 0.
     \end{align}
 \end{theorem}
 
@@ -52,11 +54,11 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     Let $\left\{ f_n \right\}_{n \in \NaturalNumbers} \subset \SpaceLp{1}(\Omega)$ for which there exists $g \in \SpaceLp{1}(\Omega)$ such that for $\omega$-a.e. $\Vektor{x} \in \Omega$:
     \begin{align}
         \lim_{n \rightarrow \infty} f_n(\Vektor{x}) & = f(\Vektor{x}), \\
-        \lvert f_n(\Vektor{x}) \rvert & < g(\Vektor{x}),
+        \left\lvert f_n(\Vektor{x}) \right\rvert & < g(\Vektor{x}),
     \end{align}
     then $f \in \SpaceLp{1}(\Omega)$ and:
     \begin{align}
-        \lim_{n \rightarrow \infty} \lVert f_n - f \rVert_1 = 0.
+        \lim_{n \rightarrow \infty} \left\lVert f_n - f \right\rVert_1 = 0.
     \end{align}
 \end{theorem}
 
@@ -82,27 +84,27 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{p}(\Omega)} = \lVert f \rVert_{p} = \left( \int_{\Omega} \lvert f(\Vektor{x}) \rvert^p ~ d \omega(\Vektor{x}) \right)^{1/p}.
+    \left\lVert f \right\rVert_{\SpaceLp{p}(\Omega)} = \left\lVert f \right\rVert_{p} = \left( \int_{\Omega} \left\lvert f(\Vektor{x}) \right\rvert^p ~ d \omega(\Vektor{x}) \right)^{1/p}.
     \end{align}
 \end{definition}
 
 \begin{definition}[$\SpaceLp{\infty}(\Omega)$]
     Let $C \geq 0$,
     \begin{align}
-        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \lvert f(\Vektor{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\},
+        \SpaceLp{\infty}(\Omega) = \left\{ f \colon \Omega \rightarrow \RealNumbers \text{ measurable such that } \left\lvert f(\Vektor{x}) \right\rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\},
     \end{align}
     with:
     \begin{align}
-    \lVert f \rVert_{\SpaceLp{\infty}(\Omega)} = \lVert f \rVert_{\infty} = \inf_{C \geq 0} \left\{ \lvert f(\Vektor{x}) \rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\}.
+    \left\lVert f \right\rVert_{\SpaceLp{\infty}(\Omega)} = \left\lVert f \right\rVert_{\infty} = \inf_{C \geq 0} \left\{ \left\lvert f(\Vektor{x}) \right\rvert < C \text{ for } \omega \text{-a.e. } \Vektor{x} \in \Omega \right\}.
     \end{align}
 \end{definition}
 
 \begin{theorem}
-    Let $1 \leq p \leq +\infty$, then $\SpaceLp{p}(\Omega)$ is a vector space and $\lVert \cdot \rVert_p$ is a norm.
+    Let $1 \leq p \leq +\infty$, then $\SpaceLp{p}(\Omega)$ is a vector space and $\left\lVert \cdot \right\rVert_p$ is a norm.
 \end{theorem}
 
 \begin{theorem}[Fischer-Riesz]
-    Let $1 \leq p \leq +\infty$, then $(\SpaceLp{p}(\Omega), \lVert \cdot \rVert_p)$ is a Banach space.
+    Let $1 \leq p \leq +\infty$, then $(\SpaceLp{p}(\Omega), \left\lVert \cdot \right\rVert_p)$ is a Banach space.
 \end{theorem}
 
 \begin{definition}[Conjugate exponent]
@@ -115,7 +117,7 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
 \begin{theorem}[Hölder's inequality]
     Let $1 \leq p \leq +\infty$, $f \in \SpaceLp{p}(\Omega)$, and $g \in \SpaceLp{p^{\prime}}(\Omega)$, then $fg \in \SpaceLp{1}(\Omega)$ and:
     \begin{align}
-        \lVert fg \rVert_1 \leq \lVert f \rVert_p \lVert g \rVert_{p^{\prime}}.
+        \left\lVert fg \right\rVert_1 \leq \left\lVert f \right\rVert_p \left\lVert g \right\rVert_{p^{\prime}}.
     \end{align}
 \end{theorem}
 
@@ -133,11 +135,11 @@ Without losing generality, let $\SpaceLp{1}(\Omega) = \SpaceLp{1}(\Omega, \Sigma
     \end{align}
     and:
     \begin{align}
-        \lVert u \rVert_{p^{\prime}} = \lVert \varphi \rVert_{p^*},
+        \left\lVert u \right\rVert_{p^{\prime}} = \left\lVert \varphi \right\rVert_{p^*},
     \end{align}
     where:
     \begin{align}
-        \lVert \varphi \rVert_{p^*} = \lVert \varphi \rVert_{(\SpaceLp{p})^*}.
+        \left\lVert \varphi \right\rVert_{p^*} = \left\lVert \varphi \right\rVert_{(\SpaceLp{p})^*}.
     \end{align}
 \end{theorem}
 
@@ -157,7 +159,7 @@ As a consequence of \Cref{theorem:riesz_p}, the following identification result 
     \end{align}
     and:
     \begin{align}
-        \lVert u \rVert_{\infty} = \lVert \varphi \rVert_{1^*}.
+        \left\lVert u \right\rVert_{\infty} = \left\lVert \varphi \right\rVert_{1^*}.
     \end{align}
 \end{theorem}
 
@@ -189,9 +191,9 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
         (u, u)_H & \geq 0 &\text{ for all } u \in H, \\
         (u, u)_H & \neq 0 &\text{ for all } u \in H \setminus \left\{ 0_H \right\}.
     \end{align}
-    Moreover, $\lvert \cdot \rvert_H$, defined for $u \in H$ as:
+    Moreover, $\left\lvert \cdot \right\rvert_H$, defined for $u \in H$ as:
     \begin{align} % Notation to be changed.
-        \lvert u \rvert_H = (u, u)_H^{\nicefrac12},
+        \left\lvert u \right\rvert_H = (u, u)_H^{\nicefrac12},
     \end{align}
     is a norm.
 \end{definition}
@@ -199,7 +201,7 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
 \subsubsection{Definition}
 
 \begin{definition}[Hilbert space] % [!] Better norm notation.
-    A Hilbert space is a vector space $(H, (\cdot, \cdot)_H)$ such that $H$ is complete for the norm $\lvert \cdot \rvert_H$.
+    A Hilbert space is a vector space $(H, (\cdot, \cdot)_H)$ such that $H$ is complete for the norm $\left\lvert \cdot \right\rvert_H$.
 \end{definition}
 
 \begin{remark}
@@ -209,7 +211,7 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
     \end{align}
     is a Hilbert space. Moreover, for all $u \in \SpaceLp{2}(\Omega)$:
     \begin{align}
-        (u, u)_{\SpaceLp{2}(\Omega)} = \lVert u \rVert_2^2.
+        (u, u)_{\SpaceLp{2}(\Omega)} = \left\lVert u \right\rVert_2^2.
     \end{align}
 \end{remark}
 
@@ -226,7 +228,7 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
     \end{align}
     and:
     \begin{align}
-        \lvert f \rvert_H = \lVert \varphi \rVert_{H^*}.
+        \left\lvert f \right\rvert_H = \left\lVert \varphi \right\rVert_{H^*}.
     \end{align}
 \end{theorem}
 
@@ -236,14 +238,14 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
 \begin{definition}[Continuous bilinear form]
     A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be continuous if there exists $\ContC{a} \geq 0$ such that for all $u, v \in H$:
     \begin{align}
-        \lvert a(u, v) \rvert \leq \ContC{a} \lvert u \rvert_H \lvert v \rvert_H.
+        \left\lvert a(u, v) \right\rvert \leq \ContC{a} \left\lvert u \right\rvert_H \left\lvert v \right\rvert_H.
     \end{align}
 \end{definition}
 
 \begin{definition}[Coercive bilinear form]
     A bilinear form $a \colon H \times H \rightarrow \RealNumbers$ is said to be coercive if there exists $\CoerC{a} > 0$ such that for all $u \in H$:
     \begin{align}
-        \lvert a(u, u) \rvert \geq \CoerC{a} \lvert u \rvert_H^2.
+        \left\lvert a(u, u) \right\rvert \geq \CoerC{a} \left\lvert u \right\rvert_H^2.
     \end{align}
 \end{definition}
 
@@ -300,9 +302,9 @@ Following \cite[p.~267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ deno
     \begin{align}
         \Gradient u = \left( u_{x_1}, \dots, u_{x_d} \right).
     \end{align}
-    Moreover, $\SpaceWkp{1}{p}(\Omega)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceWkp{1}{p}}$, such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
+    Moreover, $\SpaceWkp{1}{p}(\Omega)$ is equipped with the norm $\left\lVert \cdot \right\rVert_{\SpaceWkp{1}{p}}$, such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
     \begin{align}
-        \lVert u \rVert_{\SpaceWkp{1}{p}(\Omega)} = \lVert u \rVert_{1, p} = \lVert u \rVert_p + \sum_{j = 1}^d \lVert u_{x_j} \rVert_p.
+        \left\lVert u \right\rVert_{\SpaceWkp{1}{p}(\Omega)} = \left\lVert u \right\rVert_{1, p} = \left\lVert u \right\rVert_p + \sum_{j = 1}^d \left\lVert u_{x_j} \right\rVert_p.
     \end{align}
 \end{definition}
 
@@ -334,16 +336,16 @@ Following \cite[p.~267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ deno
     Alternatively:
     \begin{align} % [!] Fix align.
         \SpaceWkp{k}{p}(\Omega) = \left\{ \vphantom{\int_{\Omega}} u \in \SpaceLp{p}(\Omega) \text{ such that there exists } g_{\alpha} \in \SpaceLp{p}(\Omega) \text{ such that } \right. \notag \\ 
-        \left. \int_{\Omega} u \partial^{\alpha} \varphi = (-1)^{\lvert \alpha \rvert} \int_{\Omega} g_{\alpha} \varphi \right. \notag \\
-        \left. \text{ for all } \alpha \text{ with } \lvert \alpha \rvert \leq k \text{ and for all }\varphi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
+        \left. \int_{\Omega} u \partial^{\alpha} \varphi = (-1)^{\left\lvert \alpha \right\rvert} \int_{\Omega} g_{\alpha} \varphi \right. \notag \\
+        \left. \text{ for all } \alpha \text{ with } \left\lvert \alpha \right\rvert \leq k \text{ and for all }\varphi \in C_c^{\infty}(\Omega) \vphantom{\int_{\Omega}} \right\}.
     \end{align}
-    Define, for all $\alpha \text{ with } \lvert \alpha \rvert \leq k$:
+    Define, for all $\alpha \text{ with } \left\lvert \alpha \right\rvert \leq k$:
     \begin{align}
         \partial^{\alpha} u = g_{\alpha}.
     \end{align}
-    Moreover, $\SpaceWkp{k}{p}(\Omega)$ is equipped with the norm $\lVert \cdot \rVert_{\SpaceWkp{k}{p}}$, such that for all $u \in \SpaceWkp{k}{p}(\Omega)$:
+    Moreover, $\SpaceWkp{k}{p}(\Omega)$ is equipped with the norm $\left\lVert \cdot \right\rVert_{\SpaceWkp{k}{p}}$, such that for all $u \in \SpaceWkp{k}{p}(\Omega)$:
     \begin{align}
-        \lVert u \rVert_{\SpaceWkp{k}{p}(\Omega)} = \lVert u \rVert_{k, p} = \sum_{\lvert \alpha \rvert \leq k} \lVert \partial^{\alpha} u \rVert_p.
+        \left\lVert u \right\rVert_{\SpaceWkp{k}{p}(\Omega)} = \left\lVert u \right\rVert_{k, p} = \sum_{\left\lvert \alpha \right\rvert \leq k} \left\lVert \partial^{\alpha} u \right\rVert_p.
     \end{align}
 \end{definition}
 
@@ -354,14 +356,14 @@ Following \cite[p.~267]{Brezis2010}, let $(\Omega, \SigmaAlgebraA, \omega)$ deno
     \end{align}
     $\SpaceHk{k}(\Omega)$ is equipped with the scalar product $(\cdot, \cdot)_{\SpaceHk{k}(\Omega)}$, such that for all $u, v \in \SpaceHk{k}(\Omega)$:
     \begin{align}
-        (u, v)_{\SpaceHk{k}(\Omega)} = (u, v)_k = \sum_{\lvert \alpha \rvert \leq k} (\partial^{\alpha} u, \partial^{\alpha} v)_{\SpaceLp{2}(\Omega)}.
+        (u, v)_{\SpaceHk{k}(\Omega)} = (u, v)_k = \sum_{\left\lvert \alpha \right\rvert \leq k} (\partial^{\alpha} u, \partial^{\alpha} v)_{\SpaceLp{2}(\Omega)}.
     \end{align}
 \end{definition}
 
 Note that $(u, v)_{\SpaceLp{2}(\Omega)} = (u, v)_0$ as, formally, $\SpaceLp{2}(\Omega)$ and $\SpaceHk{0}(\Omega)$ coincide. % [!] Maybe definition.
 
 \begin{remark}
-    Let $k \geq 1$ integer and let $1 \leq p \leq +\infty$, $(\SpaceWkp{k}{p}(\Omega), \lVert \cdot \rVert_{k, p})$ is a Banach space.
+    Let $k \geq 1$ integer and let $1 \leq p \leq +\infty$, $(\SpaceWkp{k}{p}(\Omega), \left\lVert \cdot \right\rVert_{k, p})$ is a Banach space.
 \end{remark}
 
 \begin{remark}
@@ -387,12 +389,12 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
     \end{align}
     and there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\RealNumbersTo{d})$:
     \begin{align}
-        \lVert u \rVert_{p^{\star}} \leq C \lVert \Gradient u \rVert_p.
+        \left\lVert u \right\rVert_{p^{\star}} \leq C \left\lVert \Gradient u \right\rVert_p.
     \end{align}
 \end{theorem}
 
 \begin{corollary}
-    Let $1 \leq p < d$, then\footnote{$\hookrightarrow$ denotes a continuous embedding.}:
+    Let $1 \leq p < d$, then:
     \begin{align}
         \SpaceWkp{1}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) &\text{ for all } p \leq q \leq p^{\star}.
     \end{align}
@@ -412,14 +414,14 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 
     Furthermore, there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\RealNumbersTo{d})$:
     \begin{align}
-        \lvert u(\Vektor{x}) - u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\alpha} \lVert \Gradient u \rVert_p &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
+        \left\lvert u(\Vektor{x}) - u(\Vektor{y}) \right\rvert &\leq C \left\lVert \Vektor{x} - \Vektor{y} \right\rVert^{\alpha} \left\lVert \Gradient u \right\rVert_p &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
     \end{align}
     where:
     \begin{align}
         \alpha = 1 - \frac{d}{p}.
     \end{align}
 
-    In particular\footnote{Up to the choice of a continuous representative.}:
+    In particular, up to the choice of a continuous representative:
     \begin{align}
         \SpaceWkp{1}{p}(\RealNumbersTo{d}) \subset C(\RealNumbersTo{d}).
     \end{align}
@@ -438,13 +440,13 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
         & m = \left[ k - \frac{d}{p} \right], \\
         & \theta = k - \frac{d}{p} - m,
     \end{align}
-    then there exists $C \geq 0$ such that for all $u \in \SpaceWkp{k}{p}(\RealNumbersTo{d})$ for all $\alpha$ with $\lvert \alpha \rvert \leq m$:
+    then there exists $C \geq 0$ such that for all $u \in \SpaceWkp{k}{p}(\RealNumbersTo{d})$ for all $\alpha$ with $\left\lvert \alpha \right\rvert \leq m$:
     \begin{align}
-        \lVert \partial^{\alpha} u \rVert_{\infty} \leq \lVert u \rVert_{k, p},
+        \left\lVert \partial^{\alpha} u \right\rVert_{\infty} \leq \left\lVert u \right\rVert_{k, p},
     \end{align}
     and
     \begin{align}
-        \lvert \partial^{\alpha} u(\Vektor{x}) - \partial^{\alpha} u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\theta} \lVert u \rVert_{k, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d}.
+        \left\lvert \partial^{\alpha} u(\Vektor{x}) - \partial^{\alpha} u(\Vektor{y}) \right\rvert &\leq C \left\lVert \Vektor{x} - \Vektor{y} \right\rVert^{\theta} \left\lVert u \right\rVert_{k, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d}.
     \end{align}
 
     In particular:
@@ -465,7 +467,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 
     Furthermore, if $p > d$ there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}(\Omega)$:
     \begin{align}
-        \lvert u(\Vektor{x}) - u(\Vektor{y}) \rvert &\leq C \lVert \Vektor{x} - \Vektor{y} \rVert^{\alpha} \lVert u \rVert_{1, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
+        \left\lvert u(\Vektor{x}) - u(\Vektor{y}) \right\rvert &\leq C \left\lVert \Vektor{x} - \Vektor{y} \right\rVert^{\alpha} \left\lVert u \right\rVert_{1, p} &\text{ for } \omega \text{-a.e. } \Vektor{x}, \Vektor{y} \in \RealNumbersTo{d},
     \end{align}
     where:
     \begin{align}
@@ -509,7 +511,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 \begin{theorem}[Poincaré's inequality]
     Let $1 \leq p < +\infty$ and assume that $\Omega$ is a bounded open set. Then there exists $C \geq 0$ such that for all $u \in \SpaceWkp{1}{p}_0(\Omega)$:
     \begin{align}
-        \lVert u \rVert_p \leq C \lVert \Gradient u \rVert_p.
+        \left\lVert u \right\rVert_p \leq C \left\lVert \Gradient u \right\rVert_p.
     \end{align}
 \end{theorem}
 
