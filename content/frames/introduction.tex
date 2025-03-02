@@ -3,25 +3,30 @@
 \begin{frame}
     \frametitle{Relevance and Examples of \acrfull{pdes}}
 
-    % [!] Missing part on relevance.
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Relevance}}
+    \end{center}
+
+    \vspace*{0.125cm}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Description of key real-world phenomena] Mathematical backbone for describing a wide range of physical, biological, and engineering phenomena
+                \item[Predictive power and simulation] Accurate simulations of real-world systems by incorporating physical laws
+                \item[Bridging theoretical and applied mathematics] Advances in \acrshort{pdes} theory often drive innovations in numerical methods and computational techniques
+            \end{description}
+        \end{minipage}
+    \end{center}
 
     \vspace*{\fill}
+
     \begin{center}
         {\color{\accentcolor} \Large \textbf{Examples}}
     \end{center}
 
     \begin{multicols}{3}
-
-        % Gas Flow.
-        \begin{center}
-            \begin{align*}
-                \partial_t u = \Laplacian \left( u^m \right)
-            \end{align*}
-            
-            \vspace*{0.25cm}
-            {\large \textbf{Porous Medium}} \\
-            Gas Flow
-        \end{center}
 
         % Quantum Mechanics.
         \begin{center}
@@ -29,7 +34,7 @@
                 i \hbar \partial_t u = - \frac{\hbar^2}{2 m} \Laplacian u + V u
             \end{align*}
             
-            \vspace*{0.25cm}
+            \vspace*{0.125cm}
             {\large \textbf{Schrödinger}} \\
             Quantum Mechanics
         \end{center}
@@ -40,9 +45,20 @@
                 \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u &= g
             \end{align*}
 
-            \vspace*{0.25cm}
+            \vspace*{0.125cm}
             {\large \textbf{\acrshort{cdr}}} \\
             Fluid Dynamics
+        \end{center}
+
+        % Gas Flow.
+        \begin{center}
+            \begin{align*}
+                \partial_t u = \Laplacian \left( u^m \right)
+            \end{align*}
+            
+            \vspace*{0.125cm}
+            {\large \textbf{Porous Medium}} \\
+            Gas Flow
         \end{center}
 
     \end{multicols}
@@ -55,7 +71,24 @@
 \begin{frame}
     \frametitle{Importance of Numerical Methods for \acrshort{pdes}}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Challenges}}
+    \end{center}
+
+    \vspace*{0.125cm}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Complex domains] Realistic problems often involve irregular geometries and boundary conditions, where standard solution methods fail
+                \item[Coupled and multi-physics problems] Multiple interacting \acrshort{pdes} rarely have straightforward closed-form solutions
+                \item[Nonlinear complexity] Many \acrshort{pdes} are nonlinear, rendering classical analytical techniques insufficient
+            \end{description}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
     
 \end{frame}
 
@@ -70,17 +103,19 @@
             {\color{\accentcolor} \Large \textbf{Finite Difference Methods}}
             \vspace*{0.5cm}
 
-            \begin{itemize}
-                \color{\procolor}
-                \item Simplicity and ease of implementation
-                \item Computational efficiency on structured grids
-            \end{itemize}
-
-            \begin{itemize}
-                \color{\concolor}
-                \item Limited geometric flexibility
-                \item Difficulty in handling boundary conditions
-            \end{itemize}
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \color{\procolor}
+                    \item Simplicity and ease of implementation
+                    \item Computational efficiency on structured grids
+                \end{itemize}
+    
+                \begin{itemize}
+                    \color{\concolor}
+                    \item Limited geometric flexibility
+                    \item Difficulty in handling boundary conditions
+                \end{itemize}
+            \end{minipage}
         \end{center}
 
         % Finite Element.
@@ -88,17 +123,19 @@
             {\color{\accentcolor} \Large \textbf{Finite Element Methods}}
             \vspace*{0.5cm}
 
-            \begin{itemize}
-                \color{\procolor}
-                \item Flexibility in handling complex geometries
-                \item Better handling of boundary conditions and higher-order accuracy
-            \end{itemize}
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \color{\procolor}
+                    \item Flexibility in handling complex geometries
+                    \item Better handling of boundary conditions and higher-order accuracy
+                \end{itemize}
 
-            \begin{itemize}
-                \color{\concolor}
-                \item Higher computational cost and complexity
-                \item More involved implementation
-            \end{itemize}
+                \begin{itemize}
+                    \color{\concolor}
+                    \item Higher computational cost and complexity
+                    \item More involved implementation
+                \end{itemize}
+            \end{minipage}
         \end{center}
     \end{multicols}
     \vspace*{\fill}
