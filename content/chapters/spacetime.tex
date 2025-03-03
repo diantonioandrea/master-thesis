@@ -208,9 +208,9 @@ Let $V, W$ Banach spaces such that $V \hookrightarrow W$ with $F_{V \rightarrow 
         \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } \partial_t u \in \SpaceLp{q}(I; W) \right\}
     \end{align}
 
-    Moreover, $\SpaceXpq{}{q}(I; V, W)$ is equipped with the norm $\left\lVert \cdot \right\rVert_{\SpaceXpq{}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{P}{q}(I; V, W)$:
+    Moreover, $\SpaceXpq{p}{q}(I; V, W)$ is equipped with the norm $\left\lVert \cdot \right\rVert_{\SpaceXpq{p}{q}(I; V, W)}$, such that for all \\ $u \in \SpaceXpq{p}{q}(I; V, W)$:
     \begin{align}
-        \left\lVert u \right\rVert_{\SpaceXpq{}{q}(I; V, W)} = \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \left\lVert \partial_t u \right\rVert_{\SpaceLp{q}(I; W)},
+        \left\lVert u \right\rVert_{\SpaceXpq{p}{q}(I; V, W)} = \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)} + \iota_{V, W}^{-1}T^{1 + \frac{1}{p} - \frac{1}{q}} \left\lVert \partial_t u \right\rVert_{\SpaceLp{q}(I; W)},
     \end{align}
     where:
     \begin{align}
@@ -264,7 +264,7 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 \subsection{Introduction} \label{subsection:introduction}
 
 \begin{definition}[$A$] \label{definition:A} % [!] Check instances of \ContC{a}
-    Let $A \colon I \rightarrow \Lagrange(V;V^*)$ be an operator such that the map that associates $\langle A(t)(u), v \rangle_{V^*, V}$ to $t \in I$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
+    Let $A \colon I \rightarrow \Linear(V;V^*)$ be an operator such that the map that associates $t \in I$ to $\langle A(t)(u), v \rangle_{V^*, V}$ is measurable for all $u, v \in V$. Moreover there exist $\ContC{a}, \CoerC{a} > 0$ such that:
     \begin{align} \label{equation:a}
         \left\lVert A(t)(u) \right\rVert_{V^*} & \leq \ContC{a} \left\lVert u \right\rVert_V &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I, \\
         \langle A(t)(u), u \rangle_{V^*, V} & \geq \CoerC{a} \left\lVert u \right\rVert_V^2 &\text{ for all } u \in V \text{ and for } \lambda \text{-a.e. } t \in I.
@@ -306,7 +306,7 @@ Following \cite[p.~124]{Ern2021}, let $V, W$ and $\SpaceX$ as in \Cref{definitio
 \begin{definition}[Weak formulation]
     The weak formulation of \cref{equation:model} is to find $u \in \SpaceTrial$ such that:
     \begin{align}
-        b(u, y) = l(y) \text{ for all } y \in \SpaceTest. \label{equation:weak}
+        b(u, y) &= l(y) &\text{ for all } y \in \SpaceTest. \label{equation:weak}
     \end{align}
 \end{definition}
 
