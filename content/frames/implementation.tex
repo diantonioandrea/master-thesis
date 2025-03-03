@@ -16,6 +16,43 @@
     
 \end{frame}
 
+\begin{frame} % Frame -1.
+    \frametitle{Building a Polygonal Mesh}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item Generation of $\nSpaceIndices$ random points
+                    \item Evaluation of the first Voronoi diagram
+                    \item Relaxation through Lloyd's algorithm
+                    \item Postprocessing
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Square.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
 \begin{frame} % Frame 0.
     \frametitle{Building a Polygonal Mesh}
 
@@ -29,7 +66,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{enumerate}
-                    \item {\color{\accentcolor} Generation of random points}
+                    \item {\color{\accentcolor} Generation of $\nSpaceIndices$ random points}
                     \item Evaluation of the first Voronoi diagram
                     \item Relaxation through Lloyd's algorithm
                     \item Postprocessing
@@ -66,7 +103,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{enumerate}
-                    \item Generation of random points
+                    \item Generation of $\nSpaceIndices$ random points
                     \item {\color{\accentcolor} Evaluation of the first Voronoi diagram}
                     \item Relaxation through Lloyd's algorithm
                     \item Postprocessing
@@ -103,7 +140,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{enumerate}
-                    \item Generation of random points
+                    \item Generation of $\nSpaceIndices$ random points
                     \item Evaluation of the first Voronoi diagram
                     \item {\color{\accentcolor} Relaxation through Lloyd's algorithm}
                     \item Postprocessing
@@ -140,7 +177,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{enumerate}
-                    \item Generation of random points
+                    \item Generation of $\nSpaceIndices$ random points
                     \item Evaluation of the first Voronoi diagram
                     \item {\color{\accentcolor} Relaxation through Lloyd's algorithm}
                     \item Postprocessing
@@ -177,7 +214,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{enumerate}
-                    \item Generation of random points
+                    \item Generation of $\nSpaceIndices$ random points
                     \item Evaluation of the first Voronoi diagram
                     \item Relaxation through Lloyd's algorithm
                     \item {\color{\accentcolor} Postprocessing}
