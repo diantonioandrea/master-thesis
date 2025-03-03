@@ -37,3 +37,10 @@
 **/*.dvi
 **/*.acr
 **/*.synctex*
+**/*.auxlock
+
+content/tikz/*.pdf
+content/tikz/*.xml
+content/tikz/*.dpth
+content/tikz/*.log
+content/tikz/*.md5
