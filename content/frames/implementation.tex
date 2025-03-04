@@ -241,16 +241,60 @@
 \subsection{Polynomial Basis and Quadratures}
 
 \begin{frame}
-    \frametitle{Polynomial Basis}
+    \frametitle{Polynomials}
 
-    % [!]
-    
-\end{frame}
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Legendre Basis}}
+    \end{center}
 
-\begin{frame}
-    \frametitle{Quadrature Method}
+    \begin{multicols}{2}
 
-    % [!]
+        % Properties.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Properties}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item Easy to generate through an iterative formula
+                    \item Estimates of regularity of solutions from coefficients decay
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        % Generation.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Generation}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{align*}
+                    \Legendre_n(\xi) &= \sum_{j = 0}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j} \\
+                    \Legendre_n^{\prime}(\xi) &= \frac12 \sum_{j = 1}^{n} \binom{n}{j} \binom{n + j}{j} \left( \frac{\xi - 1}{2} \right)^{j - 1}
+                \end{align*}
+            \end{minipage}
+        \end{center}
+    \end{multicols}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Gauss-Legendre Quadrature}}
+    \end{center}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Sub-triangulation] 
+                \item[Arbitrary quadrature order] 
+            \end{description}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 

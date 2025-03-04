@@ -3,30 +3,433 @@
 \begin{frame}
     \frametitle{The \acrfull{dgm}}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Main Characteristics}}
+    \end{center}
+
+    \vspace*{0.125cm}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Fairly recent introduction] Introduced in \citetitle{Reed1973}
+                \item[Non-conforming method] Trial space of piecewise continuous function, thus allowing discontinuities between elements
+            \end{description}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
     
 \end{frame}
 
 \subsection{Model Parabolic Problem}
 
 \begin{frame}
-    \frametitle{Weak Formulation of the Model Parabolic Problem}
+    \frametitle{Setting of the \acrfull{mp} Problem}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        % Domains.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Domains}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{description}
+                    \item[Time domain] $I$ open interval of $\RealNumbers$
+                    \item[Space domain] $\Omega$ open subset of $\RealNumbersTo{n}$
+                \end{description}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        % Spaces.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Spaces}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                A Gelfand triple $\left( V, W \equiv W^*, V^* \right)$
+                \begin{itemize}
+                    \item $V, W$ are separable Hilbert spaces
+                    \item $V$ is dense in $W$ with $V \hookrightarrow W$
+                    \item $W \equiv W^*$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+    \end{multicols}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large $\SpaceX$ \textbf{Spaces}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $1 \leq p, q \leq +\infty$, then:
+                \begin{align*}
+                    \SpaceXpq{p}{q}(I; V, W) = \left\{ u \in \SpaceLp{p}(I; V) \text{ for which } \partial_t u \in \SpaceLp{q}(I; W) \right\}
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Discretization of the Model Parabolic Problem}
+    \frametitle{Setting of the \acrfull{mp} Problem}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operator} $A$}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $A \colon I \rightarrow \Linear(V;V^*)$ be an operator such that the map that associates $t \in I$ to $\langle A(t)(v), w \rangle_{V^*, V}$ is measurable for all $v, w \in V$, and:
+                \begin{align*}
+                    \left\lVert A(t)(v) \right\rVert_{V^*} & \leq \ContC{a} \left\lVert v \right\rVert_V &\text{ for all } v \in V \text{ and for a.e. } t \in I \\
+                    \left\langle A(t)(v), v \right\rangle_{V^*, V} & \geq \CoerC{a} \left\lVert v \right\rVert_V^2 &\text{ for all } v \in V \text{ and for a.e. } t \in I
+                \end{align*}
+            \end{definition}
+
+            \begin{lemma}
+                Let $1 \leq p \leq +\infty$, then for all $u \in \SpaceLp{p}(I; V)$ the function $A(u) \colon I \rightarrow V^*$ such that $A(u)(t) = A(t)(u(t))$ is strongly measurable, and $A(u) \in \SpaceLp{p}(I; V^*)$ with:
+                \begin{align*}
+                    \left\lVert A(u) \right\rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)}
+                \end{align*}
+            \end{lemma}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Error Analysis of the \acrshort{dgm} Applied to the Model Parabolic Problem}
+    \frametitle{Setting of the \acrfull{mp} Problem}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Problem}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $f \in \SpaceLp{2}(I; V^*)$, the \acrshort{mp} problem is to find $u \in \SpaceX(I; V, V^*)$ such that:
+                \begin{align*}
+                        \partial_t u(t) + A(u)(t) &= f(t) & \text{ in } \SpaceLp{2}(I; V^*) \\
+                        u(0) &= u_0 & \text{ in } W
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Weak Formulation of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Trial and Test Spaces}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $\SpaceTrial$ and $\SpaceTest$ be the trial and test spaces, where:
+                \begin{align*}
+                    \SpaceTrial &= \SpaceX(I; V, V^*) \\
+                    \SpaceTest &= \SpaceTest_0 \times \SpaceTest_1 = W \times \SpaceLp{2}(I; V)
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that:
+                \begin{align*}
+                    b(u, y) &= \left( u(0), y_0 \right)_W + \int_I \langle \partial_t u(t) + A(u)(t), y_1(t) \rangle_{V^*, V} ~ dt \\
+                    l(y) &= \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ dt
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Weak Formulation of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Weak Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The weak formulation of the \acrshort{mp} is to find $u \in \SpaceTrial$ such that:
+                \begin{align*}
+                    b(u, y) &= l(y) &\text{ for all } y \in \SpaceTest
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Well-Posedeness}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{lemma}
+                There exists at most one solution $u \in \SpaceTrial$ of the weak \acrshort{mp} problem with:
+                \begin{align*}
+                    \CoerC{a} \left\lVert u \right\rVert_{\SpaceLp{2}(I; V)}^2 + \left\lVert u(T) \right\rVert_W^2 \leq \frac{1}{\CoerC{a}} \left\lVert f \right\rVert_{\SpaceLp{2}(I; V^*)}^2 + \left\lVert u_0 \right\rVert_W^2
+                \end{align*}
+            \end{lemma}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Semi-Discretization of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        % Domains.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Domains}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{description}
+                    \item[Time domain] $I$ open interval of $\RealNumbers$
+                    \item[Space domain] $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ shape-regular mesh family of $\Omega$
+                \end{description}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        % Spaces.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Spaces}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $\left\{ V_h \right\}_{h \in \hIndices}$ sequence of finite-dimensional subspaces of $V$
+                    \item $\left\{ \varphi_j \right\}_{j \in \SpaceIndices}$ basis for $V_h$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+    \end{multicols}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Discrete Trial and Test Spaces}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $\SpaceTrial_{h \tau}$ and $\SpaceTest_{h \tau}$ be the semi-discrete trial and test space, where:
+                \begin{align*}
+                    \SpaceTrial_{h} &= \SpaceHk{1}(I; V_h) \\
+                    \SpaceTest_{h} &= V_h \times \SpaceLp{2}(I; V_h)
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Semi-Discretization of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $b \colon \SpaceTrial \times \SpaceTest \rightarrow \RealNumbers$ and $l \colon \SpaceTest \rightarrow \RealNumbers$ be such that:
+                \begin{align*}
+                    b(u, y) &= \left( u(0), y_0 \right)_W + \int_I \left( \langle \partial_t u(t), y_1(t) \rangle_{V^*, V} + { \color{\accentcolor} a(t; u(t), y_1(t))} \right) ~ dt \\
+                    l(y) &= \left( u_0, y_0 \right)_W + \int_I \langle f(t), y_1(t) \rangle_{V^*, V} ~ dt
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Semi-Discrete Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The semi-discrete formulation of the \acrshort{mp} problem is to find $u_h \in \SpaceTrial_h$ such that:
+                \begin{align*}
+                    b(u_h, y_h) &= l(y_h) &\text{ for all } y_h \in \SpaceTest_h.
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discretization of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        % Domains.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Domains}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{description}
+                    \item[Time domain] $ \left\{ \TimeMesh \right\}_{\tau \in \tIndices}$ partition family of $I$
+                    \item[Space domain] $\left\{ \SpaceMesh \right\}_{h \in \hIndices}$ shape-regular mesh family of $\Omega$
+                \end{description}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        % Spaces.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Spaces}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $\SpacePolynomials{q}(I_n; V_h) = \SpacePolynomials{q}(I_n; \RealNumbers) \otimes V_h$
+                    \item $\SpacePolynomials{q}^b(\TimeMesh; V_h)$ space of $V_h$-valued functions that are piecewise polynomials on $\TimeMesh$
+                    \item $\left\{ \psi_i \right\}_{i = 0}^q$ basis for $\SpacePolynomials{q}(\hat{I}; \RealNumbers)$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+    \end{multicols}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Discrete Trial and Test Spaces}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $\SpaceTrial_{h \tau}$ and $\SpaceTest_{h \tau} = \SpaceTrial_{h \tau} $ be the discrete trial and test space, where:
+                \begin{align*}
+                    \SpaceTrial_{h \tau} &= \SpacePolynomials{q}^b(\ClosedTimeMesh; V_h) = \left\{ u_{\tau} \colon \overline{I} \rightarrow V_h \text{ such that } u_{\tau} \Restriction_{(0, T]} \in \SpacePolynomials{q}^b(\TimeMesh; V_h) \right\} \\ 
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discretization of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $b_{\tau} \colon \SpaceTrial_{h \tau} \times \SpaceTest_{h \tau} \rightarrow \RealNumbers$ and $l_{\tau} \colon \SpaceTest_{h \tau} \rightarrow \RealNumbers$ be such that:
+                \begin{align*}
+                    b_{\tau}(u_{h \tau}, y_{h \tau}) & = \left( u_{h \tau}(0), y_{h \tau}(0) \right)_W + \sum_{n \in \TimeIndices} \int_{I_n} \left( \partial_t u_{h \tau}(t), y_{h \tau}(t) \right)_W ~ d \lambda_q(t) \\
+                    & + \sum_{n \in \TimeIndices} \left( \llbracket u_{h \tau} \rrbracket_{n - 1}, y_{h \tau}(t_{n - 1}^+) \right)_W + \int_I a(t; u_{h \tau}(t), y_{h \tau}(t)) ~ d \lambda_q(t) \\
+                    l_{\tau}(y_{h \tau}) & = \left( u_0, y_{h \tau}(0) \right)_W + \int_I \langle f(t), y_{h \tau}(t) \rangle_{V^*, V} ~ d \lambda_q(t)
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discretization of the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Discrete Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The discrete formulation of the \acrshort{mp} problem is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
+                \begin{align*}
+                    b_{\tau}(u_{h \tau}, y_{h \tau}) &= l_{\tau}(y_{h \tau}) &\text{ for all } y_{h \tau} \in \SpaceTest_{h \tau}.
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Error Analysis of the \acrshort{dgm} Applied to the \acrshort{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large $\SpaceLp{2}(I; V)$ \textbf{Estimates}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{theorem}
+                Let $u \in \SpaceX$ be the solution of the \acrshort{mp} problem and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of its discrete formulation. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
+                \begin{align*}
+                    \left\lVert u - u_{h \tau} \right\rVert_{\SpaceX_{h \tau}} & \leq  \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \left\lVert u_0 - \InterpolantH \left( u_0 \right) \right\rVert_W + C C_1(u) \tau^{q + 1} \label{eq:estimates_ht} \\
+                    & + \frac{C}{\CoerC{a}} \left\lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \right\rVert_{\SpaceLp{2}(I; V^*)} + C \CoCoR{a} C_2 \left\lVert u - \InterpolantH \left( u \right) \right\rVert_{\SpaceLp{\infty}(I; V)}
+                \end{align*}
+                where:
+                \begin{align*}
+                    C_1(u) & = \frac{1}{\CoerC{a}} \left\lvert u \right\rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \left\lvert u \right\rvert_{\SpaceWkp{q + 1}{\infty}(I; V)} \\
+                    C_2^2 & = \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}
+                \end{align*}
+            \end{theorem}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 

@@ -401,14 +401,10 @@ with $y_j \in \SpaceLp{2}(I)$ for all $j \in \SpaceIndices$.
 
 \subsubsection{Error Analysis}
 
-% [!] Expand here.
-
-
-
 \begin{theorem}[$\SpaceLp{2}(I; V)$-estimate] \label{theorem:estimate_h}
     Let $u \in \SpaceX$ be the solution of \cref{equation:model} and $u_h \in \SpaceX_h$ be the solution of \cref{equation:weak_h1}. Let $\InterpolantH$ be any approximation operator and set $\eta(t) = u(t) - \InterpolantH(u(t))$ for all $t \in I$. Assume that $u \in \SpaceHk{1}(I; V)$, then:
     \begin{align}
-        \left\lVert u - u_{h \tau} \right\rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \left\lVert \eta \right\rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \left\lVert \partial_t \eta \right\rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \left\lVert \eta(0) \right\rVert_W,
+        \left\lVert u - u_h \right\rVert_{\SpaceLp{2}(I; V)} \leq \left( 1 + \CoCoR{a} \right) \left\lVert \eta \right\rVert_{\SpaceLp{2}(I; V)} + \frac{1}{\CoerC{a}} \left\lVert \partial_t \eta \right\rVert_{\SpaceLp{2}(I; V^*)} + \frac{1}{\sqrt{\CoerC{a}}} \left\lVert \eta(0) \right\rVert_W,
     \end{align}
     where:
     \begin{align}
@@ -447,14 +443,14 @@ Let $\left\{ \psi_i \right\}_{i = 0}^q$ be a basis for $\SpacePolynomials{q}(\ha
 
 \begin{definition}[$\SpacePolynomials{q}^b(\TimeMesh; H)$]
     \begin{align}
-        \SpacePolynomials{q}^b(\TimeMesh; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau \mid I_n} \in \SpacePolynomials{q}(I_n; H) \text{ for all } n \in \TimeIndices \right\},
+        \SpacePolynomials{q}^b(\TimeMesh; H) = \left\{ u_{\tau} \colon I \rightarrow H \text{ such that } u_{\tau} \Restriction_{I_n} \in \SpacePolynomials{q}(I_n; H) \text{ for all } n \in \TimeIndices \right\},
     \end{align}
     that is the space of the $H$-valued functions that are piecewise polynomials of degree at most $q$ on the time mesh $\TimeMesh$.
 \end{definition}
 
 \begin{definition}[$\SpacePolynomials{q}^b(\ClosedTimeMesh; H)$]
     \begin{align}
-        \SpacePolynomials{q}^b(\ClosedTimeMesh; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau \mid (0, T]} \in \SpacePolynomials{q}^b(\TimeMesh; H) \right\}.
+        \SpacePolynomials{q}^b(\ClosedTimeMesh; H) = \left\{ u_{\tau} \colon \overline{I} \rightarrow H \text{ such that } u_{\tau} \Restriction_{(0, T]} \in \SpacePolynomials{q}^b(\TimeMesh; H) \right\}.
     \end{align}
 \end{definition}
 
