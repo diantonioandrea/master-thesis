@@ -25,6 +25,15 @@
 \usetikzlibrary{external}
 \tikzexternalize[prefix=./content/tikz/]
 
+% Tables.
+\usepackage{caption}
+\usepackage{array}
+\usepackage{subfloat}
+
+\usepackage{diagbox}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 %% Beamer theme.
 \usetheme{Berlin}
 
