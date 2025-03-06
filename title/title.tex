@@ -3,6 +3,9 @@
 
 % Title page.
 \begin{titlepage}
+    \newgeometry{left=25mm, right=25mm}
+    \afterpage{\restoregeometry}
+
     \thispagestyle{fancy}
     \fancyhf{}
     
@@ -17,7 +20,7 @@
         
     \begin{minipage}[t]{1\textwidth}
         \centering
-        \includegraphics[scale=0.1]{\logo}
+        \includegraphics[scale=1]{\logo}
     \end{minipage}
     
     \vspace{7.5mm}
