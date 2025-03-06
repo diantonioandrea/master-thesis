@@ -16,8 +16,10 @@
     
 \end{frame}
 
-\begin{frame} % Frame -1.
+\begin{frame} % Meshes.
     \frametitle{Building a Polygonal Mesh}
+
+    \setbeamercovered{transparent}
 
     \vspace*{\fill}
     \begin{multicols}{2}
@@ -28,11 +30,11 @@
             \vspace*{0.5cm}
 
             \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Generation of $\nSpaceIndices$ random points
-                    \item Evaluation of the first Voronoi diagram
-                    \item Relaxation through Lloyd's algorithm
-                    \item Postprocessing
+                \begin{enumerate}[<+>]
+                    \item<2> Generation of $\nSpaceIndices$ random points
+                    \item<3> Evaluation of the first Voronoi diagram
+                    \item<4,5> Relaxation through Lloyd's algorithm
+                    \item<6> Postprocessing
                 \end{enumerate}
             \end{minipage}
         \end{center}
@@ -42,195 +44,47 @@
         \columnbreak
 
         \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square.tex}
-        \end{figure}
-        \vspace*{\fill}
+        \only<1>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square.tex}
+            \end{figure}
+        }
 
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
+        \only<2>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square_125_0.tex}
+            \end{figure}
+        }
 
-\begin{frame} % Frame 0.
-    \frametitle{Building a Polygonal Mesh}
+        \only<3>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square_125_1.tex}
+            \end{figure}
+        }
 
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
-            \vspace*{0.5cm}
+        \only<4>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square_125_2.tex}
+            \end{figure}
+        }
 
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item {\color{\accentcolor} Generation of $\nSpaceIndices$ random points}
-                    \item Evaluation of the first Voronoi diagram
-                    \item Relaxation through Lloyd's algorithm
-                    \item Postprocessing
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
+        \only<5>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square_125_3.tex}
+            \end{figure}
+        }
 
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square_125_0.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 1.
-    \frametitle{Building a Polygonal Mesh}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Generation of $\nSpaceIndices$ random points
-                    \item {\color{\accentcolor} Evaluation of the first Voronoi diagram}
-                    \item Relaxation through Lloyd's algorithm
-                    \item Postprocessing
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square_125_1.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 2.
-    \frametitle{Building a Polygonal Mesh}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Generation of $\nSpaceIndices$ random points
-                    \item Evaluation of the first Voronoi diagram
-                    \item {\color{\accentcolor} Relaxation through Lloyd's algorithm}
-                    \item Postprocessing
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square_125_2.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 3.
-    \frametitle{Building a Polygonal Mesh}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Generation of $\nSpaceIndices$ random points
-                    \item Evaluation of the first Voronoi diagram
-                    \item {\color{\accentcolor} Relaxation through Lloyd's algorithm}
-                    \item Postprocessing
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square_125_3.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 4.
-    \frametitle{Building a Polygonal Mesh}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Mesh Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Generation of $\nSpaceIndices$ random points
-                    \item Evaluation of the first Voronoi diagram
-                    \item Relaxation through Lloyd's algorithm
-                    \item {\color{\accentcolor} Postprocessing}
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Square_125_4.tex}
-        \end{figure}
+        \only<6>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Square_125_4.tex}
+            \end{figure}
+        }
         \vspace*{\fill}
 
     \end{multicols}
@@ -289,8 +143,8 @@
     \begin{center}
         \begin{minipage}{0.75\textwidth}
             \begin{description}
-                \item[Sub-triangulation] 
-                \item[Arbitrary quadrature order] 
+                \item[Sub-triangulation] Easier handling of reference maps
+                \item[Arbitrary quadrature order] Sufficiently high quadrature order to avoid introducing quadrature errors
             \end{description}
         \end{minipage}
     \end{center}
@@ -300,8 +154,10 @@
 
 \subsection{\texorpdfstring{\acrshort{cdr}}{} Problems}
 
-\begin{frame} % Frame -1.
+\begin{frame} % Matrices.
     \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \setbeamercovered{transparent}
 
     \vspace*{\fill}
     \begin{multicols}{2}
@@ -312,11 +168,11 @@
             \vspace*{0.5cm}
 
             \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Time Volume Integrals
-                    \item Space Volume Integrals
-                    \item Space Interface Integrals
-                    \item Time Interface Integrals
+                \begin{enumerate}[<+>]
+                    \item<2> Time Volume Integrals
+                    \item<3> Space Volume Integrals
+                    \item<4> Space Interface Integrals
+                    \item<5> Time Interface Integrals
                 \end{enumerate}
             \end{minipage}
         \end{center}
@@ -326,158 +182,40 @@
         \columnbreak
 
         \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Mesh.tex}
-        \end{figure}
-        \vspace*{\fill}
+        \only<1>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Mesh.tex}
+            \end{figure}
+        }
 
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
+        \only<2>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Mesh_0.tex}
+            \end{figure}
+        }
 
-\begin{frame} % Frame 0.
-    \frametitle{Assembly of a \acrshort{cdr} Problem}
+        \only<3>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Mesh_1.tex}
+            \end{figure}
+        }
 
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
-            \vspace*{0.5cm}
+        \only<4>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Mesh_2.tex}
+            \end{figure}
+        }
 
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item {\color{\accentcolor} Time Volume Integrals}
-                    \item Space Volume Integrals
-                    \item Space Interface Integrals
-                    \item Time Interface Integrals
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Mesh_0.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 1.
-    \frametitle{Assembly of a \acrshort{cdr} Problem}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Time Volume Integrals
-                    \item {\color{\accentcolor} Space Volume Integrals}
-                    \item Space Interface Integrals
-                    \item Time Interface Integrals
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Mesh_1.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 2.
-    \frametitle{Assembly of a \acrshort{cdr} Problem}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Time Volume Integrals
-                    \item Space Volume Integrals
-                    \item {\color{\accentcolor} Space Interface Integrals}
-                    \item Time Interface Integrals
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Mesh_2.tex}
-        \end{figure}
-        \vspace*{\fill}
-
-    \end{multicols}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame} % Frame 3.
-    \frametitle{Assembly of a \acrshort{cdr} Problem}
-
-    \vspace*{\fill}
-    \begin{multicols}{2}
-        
-        \vspace*{\fill}
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{enumerate}
-                    \item Time Volume Integrals
-                    \item Space Volume Integrals
-                    \item Space Interface Integrals
-                    \item {\color{\accentcolor} Time Interface Integrals}
-                \end{enumerate}
-            \end{minipage}
-        \end{center}
-        \vspace*{\fill}
-
-        \vfill\null
-        \columnbreak
-
-        \vspace*{\fill}
-        \begin{figure}[!ht]
-            \centering
-            \input{content/tikz/Mesh_3.tex}
-        \end{figure}
+        \only<5>{
+            \begin{figure}[!ht]
+                \centering
+                \input{content/tikz/Mesh_3.tex}
+            \end{figure}
+        }
         \vspace*{\fill}
 
     \end{multicols}
@@ -604,11 +342,19 @@
     \frametitle{Numerical Results in Literature Norms}
 
     \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Parabolic Case, $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ Norm}}
+    \end{center}
+
+    \vspace*{\fill}
+
     \begin{multicols}{2}
 
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 1, 1  \right)$}
+                    \label{fig:p_1_1_par_l2l2}
                     \input{content/tikz/p_1_1_par_l2l2.tex}
                 \end{figure}
             \end{minipage}
@@ -620,6 +366,8 @@
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 2  \right)$}
+                    \label{fig:p_2_2_par_l2l2}
                     \input{content/tikz/p_2_2_par_l2l2.tex}
                 \end{figure}
             \end{minipage}
@@ -634,11 +382,19 @@
     \frametitle{Numerical Results in Literature Norms}
 
     \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Parabolic Case, $\SpaceLp{2}(I; \SpaceHk{1}(\Omega))$ Norm}}
+    \end{center}
+
+    \vspace*{\fill}
+
     \begin{multicols}{2}
 
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 1, 1  \right)$}
+                    \label{fig:p_1_1_par_l2h1}
                     \input{content/tikz/p_1_1_par_l2h1.tex}
                 \end{figure}
             \end{minipage}
@@ -650,6 +406,8 @@
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 1, 1  \right)$}
+                    \label{fig:p_2_2_par_l2h1}
                     \input{content/tikz/p_2_2_par_l2h1.tex}
                 \end{figure}
             \end{minipage}
@@ -664,11 +422,19 @@
     \frametitle{Numerical Results in Literature Norms}
 
     \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Hyperbolic Case, $\SpaceLp{2}(I; \SpaceLp{2}(\Omega))$ Norm}}
+    \end{center}
+
+    \vspace*{\fill}
+
     \begin{multicols}{2}
 
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 1, 1  \right)$}
+                    \label{fig:p_1_1_hyp_l2l2}
                     \input{content/tikz/p_1_1_hyp_l2l2.tex}
                 \end{figure}
             \end{minipage}
@@ -680,6 +446,8 @@
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 2  \right)$}
+                    \label{fig:p_2_2_hyp_l2l2}
                     \input{content/tikz/p_2_2_hyp_l2l2.tex}
                 \end{figure}
             \end{minipage}
@@ -696,11 +464,19 @@
     \frametitle{Numerical Results in New Norms}
 
     \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Parabolic Case, $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ Norms}}
+    \end{center}
+
+    \vspace*{\fill}
+
     \begin{multicols}{2}
 
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 1  \right)$}
+                    \label{fig:p_2_1_par_l2T}
                     \input{content/tikz/p_2_1_par_l2T.tex}
                 \end{figure}
             \end{minipage}
@@ -712,6 +488,8 @@
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 1  \right)$}
+                    \label{fig:p_2_1_par_linfl2}
                     \input{content/tikz/p_2_1_par_linfl2.tex}
                 \end{figure}
             \end{minipage}
@@ -726,11 +504,19 @@
     \frametitle{Numerical Results in New Norms}
 
     \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Hyperbolic Case, $\SpaceLp{2}(\left\{ T \right\} \times \Omega)$ and $\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))$ Norms}}
+    \end{center}
+
+    \vspace*{\fill}
+
     \begin{multicols}{2}
 
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 1  \right)$}
+                    \label{fig:p_2_1_hyp_l2T}
                     \input{content/tikz/p_2_1_hyp_l2T.tex}
                 \end{figure}
             \end{minipage}
@@ -742,6 +528,8 @@
         \begin{center}
             \begin{minipage}{0.4\textwidth}
                 \begin{figure}[!ht]
+                    \caption{$\left( p, q  \right) = \left( 2, 1  \right)$}
+                    \label{fig:p_2_1_hyp_linfl2}
                     \input{content/tikz/p_2_1_hyp_linfl2.tex}
                 \end{figure}
             \end{minipage}
