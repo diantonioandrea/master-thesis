@@ -367,7 +367,7 @@
 
     \vspace*{\fill}
     \begin{center}
-        {\color{\accentcolor} \Large \textbf{Operators}}
+        {\color{\accentcolor} \Large \textbf{Operators and Discrete Formulation}}
         \vspace*{0.25cm}
 
         \begin{minipage}{0.75\textwidth}
@@ -381,23 +381,15 @@
             \end{definition}
         \end{minipage}
     \end{center}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame}
-    \frametitle{Discretization of the \acrshort{mp} Problem}
 
     \vspace*{\fill}
+
     \begin{center}
-        {\color{\accentcolor} \Large \textbf{Discrete Formulation}}
-        \vspace*{0.25cm}
-
         \begin{minipage}{0.75\textwidth}
             \begin{definition}
                 The discrete formulation of the \acrshort{mp} problem is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
                 \begin{align*}
-                    b_{\tau}(u_{h \tau}, y_{h \tau}) &= l_{\tau}(y_{h \tau}) &\text{ for all } y_{h \tau} \in \SpaceTest_{h \tau}.
+                    b_{\tau}(u_{h \tau}, y_{h \tau}) &= l_{\tau}(y_{h \tau}) &\text{ for all } y_{h \tau} \in \SpaceTest_{h \tau}
                 \end{align*}
             \end{definition}
         \end{minipage}
@@ -415,16 +407,24 @@
         \vspace*{0.25cm}
 
         \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Equip $\SpaceX_{h \tau}$ with the following norm:
+                \begin{align*}
+                    \left\lVert v \right\rVert_{\SpaceX}^2 = \left\lVert v \right\rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \left\lVert v(0) \right\rVert_W^2 + \left\lVert v(T) \right\rVert_W^2 + \sum_{n \in \TimeIndices} \left\lVert \llbracket v \rrbracket_{n - 1} \right\rVert_W^2 \right)
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
             \begin{theorem}
                 Let $u \in \SpaceX$ be the solution of the \acrshort{mp} problem and $u_{h \tau} \in \SpaceX_{h \tau}$ be the solution of its discrete formulation. Assume that $u \in \SpaceHk{q + 2}(I; V^*) \cap \SpaceWkp{q + 1}{\infty}(I; V)$, then there exists $C \geq 0$ such that for all $h \in \hIndices$ and $T > 0$:
                 \begin{align*}
-                    \left\lVert u - u_{h \tau} \right\rVert_{\SpaceX_{h \tau}} & \leq  \frac{\sqrt{2}}{\sqrt{\CoerC{a}}} \left\lVert u_0 - \InterpolantH \left( u_0 \right) \right\rVert_W + C C_1(u) \tau^{q + 1} \label{eq:estimates_ht} \\
-                    & + \frac{C}{\CoerC{a}} \left\lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \right\rVert_{\SpaceLp{2}(I; V^*)} + C \CoCoR{a} C_2 \left\lVert u - \InterpolantH \left( u \right) \right\rVert_{\SpaceLp{\infty}(I; V)}
-                \end{align*}
-                where:
-                \begin{align*}
-                    C_1(u) & = \frac{1}{\CoerC{a}} \left\lvert u \right\rvert_{\SpaceHk{q + 2}(I; V^*)} + \CoCoR{a} \sqrt{T} \left\lvert u \right\rvert_{\SpaceWkp{q + 1}{\infty}(I; V)} \\
-                    C_2^2 & = \max \left\{ 2 \frac{\iota_{V, W}^2}{\CoerC{a}}, T \right\}
+                    \left\lVert u - u_{h \tau} \right\rVert_{\SpaceX_{h \tau}} & \leq C \left\lVert u_0 - \InterpolantH \left( u_0 \right) \right\rVert_W + C \tau^{q + 1} \\
+                    & + C \left\lVert \partial_t u - \InterpolantH \left( \partial_t u \right) \right\rVert_{\SpaceLp{2}(I; V^*)} + C \left\lVert u - \InterpolantH \left( u \right) \right\rVert_{\SpaceLp{\infty}(I; V)}
                 \end{align*}
             \end{theorem}
         \end{minipage}
@@ -436,22 +436,290 @@
 \subsection{\texorpdfstring{\acrlong{cdr}}{} Problems}
 
 \begin{frame}
-    \frametitle{Weak Formulation of a \acrfull{cdr} Problem}
+    \frametitle{Setting of \acrshort{cdr} Problems}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Problem}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The \acrshort{cdr} problem is to find $u$ such that:
+                \begin{align*}
+                    \partial_t u + \Convection \cdot \Gradient u - \Diffusion \Laplacian u + \Reaction u &= g &\text{ in } I \times \Omega \\ 
+                    u(t, \Vektor{x}) &= u_D(t, \Vektor{x}) &\text{for all } t, \Vektor{x} \in I \times \partial \Omega^- \\
+                    \Diffusion \partial_{\Vektor{n}} u(t, \Vektor{x}) &= u_N(t, \Vektor{x}) &\text{for all } t, \Vektor{x} \in I \times \partial \Omega^+ \\
+                    u(0, \Vektor{x}) &= u_0(\Vektor{x}) &\text{for all } \Vektor{x} \in \Omega
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                $\partial \Omega^-$ and $\partial \Omega^+$ are defined as follows: 
+                \begin{align*}
+                    \partial \Omega^- = \left\{ \Vektor{x} \in \partial \Omega \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}(\Vektor{x}) < 0 \text{ for all } t \in \overline{I} \right\} \\
+                    \partial \Omega^+ = \left\{ \Vektor{x} \in \partial \Omega \text{ such that } \Convection(t, \Vektor{x}) \cdot \Vektor{n}(\Vektor{x}) \geq 0 \text{ for all } t \in \overline{I} \right\}
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 
 \begin{frame}
-    \frametitle{Discretization of a \acrshort{cdr} Problem}
+    \frametitle{Setting of \acrshort{cdr} Problems}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Assumptions}}
+    \end{center}
+
+    \begin{multicols}{2}
+
+        % Regularity.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Regularity}}
+            \vspace*{0.5cm}
+            
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $g \in C^0(\overline{I}; \SpaceLp{2}(\Omega))$
+                    \item $u_0 \in \SpaceLp{2}(\Omega)$
+                    \item $u_N \in C^0(\overline{I}; \SpaceLp{2}(\partial \Omega^+))$
+                    \item { \color{\accentcolor} $u^* \in C^0(\overline{I}; \SpaceHk{1}(\Omega)) \cap \SpaceLp{\infty}(I \times \Omega)$}
+                    \item $\Convection \in \left[ C^0(\overline{I}; \SpaceWkp{1}{\infty}(\Omega)) \right]^2$
+                    \item $\Reaction \in C^0(\overline{I}; \SpaceLp{\infty}(\Omega))$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Bounds}}
+            \vspace*{0.5cm}
+            
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $\left\lVert \Convection(t, \Vektor{x}) \right\rVert \leq \BoundC{\Convection}$
+                    \item $\left\lvert \Divergence \Convection(t, \Vektor{x}) \right\rvert \leq \BoundC{\Convection}$
+                    \item $\left\lvert \Reaction(t, \Vektor{x}) \right\rvert \leq \BoundC{\Reaction}$
+                    \item $\Reaction(t, \Vektor{x}) - \frac{1}{2} \Divergence \Convection(t, \Vektor{x}) \geq \BoundC{\Reaction \Convection}$
+                    \item $\Diffusion \geq 0$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Weak Formulation of \acrshort{cdr} Problems}
+
+    \vspace*{\fill}
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The weak solution $u$ of the \acrshort{cdr} problem is such that:
+                \begin{align*}
+                    u &\in \SpaceLp{\infty}(I \times \Omega) \\
+                    u - u^* &\in \SpaceLp{2}(I; V) \\
+                    u(0) &= u_0 &\text{in } \Omega
+                \end{align*}
+
+                Moreover, for all $w \in V =  \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction_{\partial \Omega^-} = 0 \right\}$:
+                \begin{align*}
+                    \partial_t & \int_{\Omega} u w ~ d \omega(\Vektor{x}) + \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vektor{n} \right) u w ~ d \sigma(\Vektor{x}) \\ 
+                    &- \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) + \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x})
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Semi-Discretization of \acrshort{cdr} Problems}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Under some regularity assumptions, the exact solution $u$ satisfies what follows for all $w \in \SpaceHk{2}(\Omega, \Omega_h)$ and for a.e. $t \in I$:
+                \begin{align*}
+                    \left( \partial_t u(t), w \right)_0 &+ A_h(u(t), w) = l_h \left( w \right) (t)
+                \end{align*}
+                where:
+                \begin{align*}
+                    A_h(u, w) = a_h \left( u(t), w \right) + b_h \left( u(t), w \right) + c_h \left( u(t), w \right) + \Diffusion J^{\kappa}_h \left( u(t), w \right)
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Semi-Discretization of \acrshort{cdr} Problems}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Solution Space and Semi-Discrete Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The approximate solution space $\SpaceSolution_h^p$ is defined as follows:
+                \begin{align*}
+                    \SpaceSolution_h^p = \left\{ w \in \SpaceLp{2}(\Omega) \text{ such that } w \Restriction_{K} \in \SpacePolynomials{p}(K) \text{ for all } K \in \Omega_h \right\}
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The semi-discrete \acrshort{cdr} problem is to find $u_h \in C^1(I; \SpaceSolution_h^p)$ such that:
+                \begin{align*}
+                    \left( \partial_t u_h(t), w_h \right)_0 + A_h(u_h(t), w_h) &= l_h(w_h) &\text{ for all } w_h \in \SpaceSolution_h^p \text{ and for all } t \in I \\
+                    \left( u_h(0), w_h \right)_0 &= \left( u_0, w_h \right)_0 &\text{ for all } w_h \in \SpaceSolution_h^p
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $B$ and $L$ be such that:
+                \begin{align*}
+                    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt \\
+                    &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0\\
+                    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Semi-Discretization of \acrshort{cdr} Problems}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Solution Space and Discrete Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The approximate solution space $\SpaceSolutionFull$ is defined as follows:
+                \begin{align*}
+                    \SpaceSolutionFull = \left\{ w \in \SpaceLp{2}(I \times \Omega) \text{ such that } w \Restriction_{I_n} = \sum_{i = 0}^q t^i w_i \right\}
+                \end{align*}
+                with $\left\{ w_i \right\}_{i = 0}^q \subset \SpaceSolution_{h, n}^p$.
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The discrete formulation of the \acrshort{cdr} problem is to find $u_{h \tau}$ such that:
+                \begin{align*}
+                    B(u_{h, \tau}, w) &= L(w) &\text{ for all } w \in \SpaceSolutionFull
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators and Discrete Formulation}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $B$ and $L$ be such that:
+                \begin{align*}
+                    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt \\
+                    &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0\\
+                    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                The discrete formulation of the \acrshort{cdr} problem is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
+                \begin{align*}
+                    B(u_{h, \tau}, w) &= L(w) &\text{ for all } w \in \SpaceSolutionFull
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
 
 \begin{frame}
     \frametitle{Error Analysis of the \acrshort{dgm} Applied to \acrshort{cdr} Problems}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Error Estimates}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{theorem} \label{theorem:estimates_ht}
+                Let the assumptions presented be satisfied, let $u$ be the solution to the \acrshort{cdr} problem, and let $\AppU$ be the solution to the discrete \acrshort{cdr} problem, then there exists $C > 0$, independent of $h, \tau, \Diffusion$, such that $\Error = \AppU - u$ satisfies what follows:
+                \begin{align*}
+                    \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
+                    &+ C \tau^{2q} \left( \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceLp{2}(\Omega))}^2 + \Seminorm{u}_{\SpaceHk{q + 1}(I; \SpaceHk{1}(\Omega))}^2 \right)
+                \end{align*}
+            \end{theorem}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
 \end{frame}
