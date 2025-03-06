@@ -7,6 +7,20 @@
 \newcommand{\accentcolor}{black}
 \newcommand{\urlcolor}{black}
 
+% Geometry.
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
+    includehead,
+    includefoot
+}
+
+\setlength{\headheight}{15pt}
+
 % Includes.
 \input{./include/includes.tex}
 
@@ -16,17 +30,9 @@
 
 	\input{title/title.tex}
 
-    %% Dedication.
-
-    \input{extra/dedication.tex}
-
     %% Main content.
 
     \input{content/content.tex}
-
-    %% Acknowledgements.
-
-    \input{extra/acknowledgements.tex}
 
     %% Bibliography.
 
