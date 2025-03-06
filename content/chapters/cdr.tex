@@ -1,4 +1,4 @@
-This chapter presents an application of the \acrshort{dgm} developed in \Cref{chapter:dg} to \acrshort{cdr} problems.
+This chapter presents an application of the \acrshort{dgm} developed in \Cref{chapter:dg} to the solution of \acrshort{cdr} problems.
 
 \Cref{sec:cdr_introduction} specializes the setting presented in \Cref{chapter:dg} and introduces the \acrshort{cdr} problem, for which the weak formulation is provided in \Cref{sec:cdr_weak}. \Cref{sec:cdr_discretization} is primarily concerned with the space and time discretization of the problem, formulating the discrete problem whose implementation is presented in \Cref{chapter:implementation}. Finally, \Cref{sec:cdr_error_analysis} provides the error analysis of the method, with estimates that serve as the main justification for the tests discussed in \Cref{chapter:results}.
 
@@ -7,7 +7,7 @@ Only the relevant proofs are included, while the remaining ones can be found in 
 \newpage
 \section{Setting and Strong Formulation} \label{sec:cdr_introduction}
 
-Following \cite{Feistauer2004} and \cite{Feistauer2007}, let $\Omega \in \RealNumbersTo{d}$ be a bounded domain and $T > 0$ so that $I = \left( 0, T\right)$.
+Following \cite{Feistauer2004} and \cite{Feistauer2007}, let $\Omega \subset \RealNumbersTo{d}$ be a bounded domain and $T > 0$ so that $I = \left( 0, T\right)$.
 
 Consider, in what follows, the case where $d \in \left\{ 2, 3 \right\}$ and $\Omega$ is a bounded polytopal domain.
 
@@ -81,7 +81,7 @@ Set now $V = \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction
     The weak solution $u$ is such that: 
     \begin{align}
         u &\in \SpaceLp{\infty}(I \times \Omega), \\
-        u - u^* &\in \SpaceLp{2}(I; V), 
+        u - u^* &\in \SpaceLp{2}(I; V), \\
         u(0) &= u_0 &\text{in } \Omega.
     \end{align}
     Moreover:
