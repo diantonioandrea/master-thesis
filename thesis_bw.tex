@@ -1,45 +1,14 @@
-% Full printed version.
+% Printed version.
 
-\documentclass[12pt, oneside]{book}
-
-% Colors.
-\newcommand{\documentcolor}{black}
-\newcommand{\accentcolor}{black}
-\newcommand{\urlcolor}{black}
-
-% Geometry.
-\usepackage{geometry}
-\geometry{
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=25mm,
-    bottom=25mm,
-    includehead,
-    includefoot
-}
-
-\setlength{\headheight}{15pt}
+\documentclass[12pt]{book}
 
 % Includes.
-\input{./include/includes.tex}
+\input{include/bw_includes.tex}
 
 \begin{document}
 
-    %% Title.
+    %% Structure.
 
-	\input{title/title.tex}
-
-    %% Main content.
-
-    \input{content/content.tex}
-
-    %% Bibliography.
-
-    \input{content/bibliography.tex}
-
-    %% End.
-
-    \input{extra/end.tex}
+    \input{content/structure.tex}
     
 \end{document}

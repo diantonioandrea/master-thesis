@@ -1,0 +1,72 @@
+% Style.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+
+\fancyhead[OL]{\textit{\leftmark, \rightmark}}
+\fancyhead[OR]{\textit{\thepage}}
+
+\fancyhead[ER]{\textit{\leftmark, \rightmark}}
+\fancyhead[EL]{\textit{\thepage}}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[OL]{\textit{\documentauthor, \documenttitle}}
+    \fancyhead[OR]{\textit{\thepage}}
+
+    \fancyhead[ER]{\textit{\documentauthor, \documenttitle}}
+    \fancyhead[EL]{\textit{\thepage}}
+}
+
+% Empty pages.
+\usepackage{emptypage}
+
+% Colours.
+\usepackage{xcolor}
+
+\color{\documentcolor}
+
+% Plots.
+\usepackage{subcaption}
+
+% TikZ.
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Chapters styling.
+\usepackage[Bjarne]{fncychap}
+
+% Epigraph.
+\usepackage{epigraph}
+
+% Name references.
+\usepackage{nameref}
+
+% Multiple columns.
+\usepackage{multicol}
+
+% Alternative section titles.
+\usepackage{titlesec}
+
+% Enumerates.
+\usepackage{enumerate}
+
+% Paragraph spacing.
+\usepackage{parskip}
+
+% Table of contents.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% Tables.
+\usepackage{caption}
+\usepackage{array}
+\usepackage{subfloat}
+
+\usepackage{diagbox}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
