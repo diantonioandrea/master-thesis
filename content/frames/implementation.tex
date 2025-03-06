@@ -300,6 +300,191 @@
 
 \subsection{\texorpdfstring{\acrshort{cdr}}{} Problems}
 
+\begin{frame} % Frame -1.
+    \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item Time Volume Integrals
+                    \item Space Volume Integrals
+                    \item Space Interface Integrals
+                    \item Time Interface Integrals
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Mesh.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame} % Frame 0.
+    \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item {\color{\accentcolor} Time Volume Integrals}
+                    \item Space Volume Integrals
+                    \item Space Interface Integrals
+                    \item Time Interface Integrals
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Mesh_0.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame} % Frame 1.
+    \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item Time Volume Integrals
+                    \item {\color{\accentcolor} Space Volume Integrals}
+                    \item Space Interface Integrals
+                    \item Time Interface Integrals
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Mesh_1.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame} % Frame 2.
+    \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item Time Volume Integrals
+                    \item Space Volume Integrals
+                    \item {\color{\accentcolor} Space Interface Integrals}
+                    \item Time Interface Integrals
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Mesh_2.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame} % Frame 3.
+    \frametitle{Assembly of a \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{multicols}{2}
+        
+        \vspace*{\fill}
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Matrix Building Steps}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{enumerate}
+                    \item Time Volume Integrals
+                    \item Space Volume Integrals
+                    \item Space Interface Integrals
+                    \item {\color{\accentcolor} Time Interface Integrals}
+                \end{enumerate}
+            \end{minipage}
+        \end{center}
+        \vspace*{\fill}
+
+        \vfill\null
+        \columnbreak
+
+        \vspace*{\fill}
+        \begin{figure}[!ht]
+            \centering
+            \input{content/tikz/Mesh_3.tex}
+        \end{figure}
+        \vspace*{\fill}
+
+    \end{multicols}
+    \vspace*{\fill}
+    
+\end{frame}
+
 \begin{frame}
     \frametitle{Assembly of a \acrshort{cdr} Problem}
 
@@ -319,7 +504,102 @@
 \begin{frame}
     \frametitle{Overview of the Testing Conditions}
 
-    % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Exact Solution}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{align*}
+                u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right)
+            \end{align*}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Meshes}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{table}[!ht]
+                \def\arraystretch{1.25}
+                \begin{tabular}{ | C{0.75cm} || C{1.75cm} | C{1.75cm} | C{1.75cm} | C{1.75cm} | }
+                    \hline
+                     & $\nSpaceIndices$ & $\nTimeIndices$ & $h$ & $\tau$ \\
+                    \hline
+                    \hline
+                    1 & $125$ & $7$ & $\num{0.136}$ & $\num{0.143}$ \\
+                    2 & $250$ & $10$ & $\num{0.093}$ & $\num{0.100}$ \\
+                    3 & $500$ & $14$ & $\num{0.069}$ & $\num{0.071}$ \\
+                    4 & $1000$ & $20$ & $\num{0.049}$ & $\num{0.050}$ \\
+                    5 & $2000$ & $28$ & $\num{0.038}$ & $\num{0.036}$ \\
+                    \hline
+                \end{tabular}
+            \end{table}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Overview of the Testing Conditions}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Coefficients}}
+        \vspace*{0.5cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Convection] $\ConvectionNoVector_1(t, \Vektor{x}) = 1$ and $\ConvectionNoVector_2(t, \Vektor{x}) = 1$
+                \item[Reaction] $\Reaction(t, \Vektor{x}) = 0.5$ 
+                \item[Diffusion, parabolic] $\Diffusion = 0.005$
+                \item[Diffusion, hyperbolic] $\Diffusion = 0$
+            \end{description}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Norms}}
+    \end{center}
+
+    \begin{multicols}{2}
+
+        % Literature Norms.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Literature Norms}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$
+                    \item {\color{\accentcolor} $\Norm{\sqrt{\Diffusion} \Error}_{\SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$}
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+
+        \vfill\null
+        \columnbreak
+
+        % New Norms.
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{New Norms}}
+            \vspace*{0.5cm}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{itemize}
+                    \item $\Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)}$
+                    \item $\Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))}$
+                \end{itemize}
+            \end{minipage}
+        \end{center}
+    \end{multicols}
+    \vspace*{\fill}
     
 \end{frame}
 
