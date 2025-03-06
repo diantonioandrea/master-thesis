@@ -259,7 +259,7 @@ Following \cite[p.~131]{Brezis2010}, let $H$ be a vector space.
 The following results concerning bilinear forms defined on Hilbert spaces are central to the development of the methods that will be introduced and applied in \Cref{chapter:dg} and \Cref{chapter:cdr}, particularly \Cref{theorem:lm}, which provides existence and uniqueness for the problems to be studied.
 
 \begin{theorem}[Stampacchia]
-    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\varphi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
+    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous and coercive bilinear form on $H$ and let $K \subset H$ be a nonempty closed and convex subset, then, for all $\varphi \in H^*$, there exists a unique $u \in K$ such that, for all $v \in H$:
     \begin{align}
         a(u, v - u) \geq \langle u - v, \varphi \rangle.
     \end{align}
@@ -270,7 +270,7 @@ The following results concerning bilinear forms defined on Hilbert spaces are ce
 \end{theorem}
 
 \begin{corollary}[Lax-Milgram] \label{theorem:lm}
-    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous a coercive bilinear form on $H$, for all $\varphi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
+    Let $a \colon H \times H \rightarrow \RealNumbers$ be a continuous and coercive bilinear form on $H$, for all $\varphi \in H^*$, there exists a unique $u \in H$ such that, for all $v \in H$:
     \begin{align}
         a(u, v) = \langle v, \varphi \rangle.
     \end{align}
@@ -396,13 +396,13 @@ Consider the case in which $\Omega = \RealNumbersTo{d}$.
 \begin{corollary}
     Let $1 \leq p < d$, then:
     \begin{align}
-        \SpaceWkp{1}{p}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) &\text{ for all } p \leq q \leq p^{\star}.
+        \SpaceWkp{1}{p}(\RealNumbersTo{d}) &\hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) &\text{ for all } p \leq q \leq p^{\star}.
     \end{align}
 \end{corollary}
 
 \begin{corollary}
     \begin{align}
-        \SpaceWkp{1}{d}(\RealNumbersTo{d}) \hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) &\text{ for all } N \leq q < +\infty.
+        \SpaceWkp{1}{d}(\RealNumbersTo{d}) &\hookrightarrow \SpaceLp{q}(\RealNumbersTo{d}) &\text{ for all } d \leq q < +\infty.
     \end{align}
 \end{corollary}
 
@@ -494,7 +494,7 @@ Consider now the case in which $\Omega \subset \RealNumbersTo{d}$.
 
     In particular:
     \begin{align}
-        \SpaceWkp{1}{p}(\Omega) \hookrightarrow \SpaceLp{p}(\Omega).
+        \SpaceWkp{1}{p}(\Omega) \hookrightarrow \hookrightarrow \SpaceLp{p}(\Omega).
     \end{align}
 \end{theorem}
 
