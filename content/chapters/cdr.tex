@@ -86,8 +86,8 @@ Set now $V = \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction
     \end{align}
     Moreover:
     \begin{align}
-        \partial_t \int_{\Omega} u w ~ d \omega(\Vektor{x}) &+ \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vektor{n} \right) u w ~ d \sigma(\Vektor{x}) - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) \notag \\
-        &+ \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x}),
+        \partial_t & \int_{\Omega} u w ~ d \omega(\Vektor{x}) + \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vektor{n} \right) u w ~ d \sigma(\Vektor{x}) \notag \\
+        & - \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) + \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x}),
     \end{align}
     for all $w \in V$.
 \end{definition}
@@ -339,7 +339,8 @@ for all $w \in \SpaceSolutionFull$
 
 By the following notation:
 \begin{align}
-    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0, \label{equation:cdr_B} \\
+    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt + \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 \label{equation:cdr_B} \\
+    &+ (u_0^+, w_0^+ )_0, \notag \\
     L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0 \label{equation:cdr_L},
 \end{align}
 it is possibile to rewrite \cref{equation:cdr_discrete} as:
@@ -543,14 +544,14 @@ and note that $\xi \in \SpaceSolutionFull$ and $\eta$ denotes the interpolation 
     Define $\theta_n(\eta; h, \Diffusion)$ as:
     \begin{align} % [!] Check \eta_n^-
         \theta_n(\eta; h, \Diffusion) &= \left\lVert \eta \right\rVert_{E, n} + \sqrt{\Diffusion} h \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})} \\
-        &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} \right)^{\nicefrac12} + \left( \sum_{i \in \SpaceTimeIndices} \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{\nicefrac12}
+        &+ \left( \sum_{i \in \SpaceTimeIndices} h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} \right)^{\nicefrac12} + \left( \sum_{i \in \SpaceTimeIndices} \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right)^{\nicefrac12}.
     \end{align}
 \end{definition}
 
 \begin{lemma}
     There exists $\ContC{A} > 0$ independent of $u, \AppU, h, \Diffusion$ such that:
     \begin{align}
-        \left\lvert A_{h, n}(\eta, \xi) \right\rvert \leq \ContC{A} \left\lVert \xi \right\rVert_{E, n} \theta_n(\eta; h, \Diffusion)
+        \left\lvert A_{h, n}(\eta, \xi) \right\rvert \leq \ContC{A} \left\lVert \xi \right\rVert_{E, n} \theta_n(\eta; h, \Diffusion).
     \end{align}
 \end{lemma}
 
@@ -705,7 +706,7 @@ Then, \Cref{lemma:legendre_interpolant} implies:
 \begin{lemma}
     It holds that:
     \begin{align}
-        \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)} = \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}
+        \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)} = \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)}.
     \end{align}
 \end{lemma}
 
@@ -713,7 +714,7 @@ Then, \Cref{lemma:legendre_interpolant} implies:
     By $t = \RMap \left( \zeta \right)$, it follows that:
     \begin{align*}
         \left\lVert \partial_t \AppUN \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 &= \left\lVert \partial_t \left( \InterSol u \circ \RMap \right) \right\rVert_{\SpaceLp{2}((-1, 1); \SpacePlaceholder)}^2 \\
-        &= \frac{\tau_n}{2} \int_{I_n} \Norm{ \partial_t \left( \InterSol u \right) (t) }_{\SpacePlaceholder}^2 ~ dt = \left( \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \right)^2
+        &= \frac{\tau_n}{2} \int_{I_n} \Norm{ \partial_t \left( \InterSol u \right) (t) }_{\SpacePlaceholder}^2 ~ dt = \left( \sqrt{\frac{\tau_n}{2}} \left\lVert \partial_t \left( \InterSol u \right) \right\rVert_{\SpaceLp{2}(I_n; \SpacePlaceholder)} \right)^2.
     \end{align*}
 \end{proof}
 
@@ -813,7 +814,8 @@ This estimate holds true even for $\Diffusion = 0$.
 
     It also follows, by \Cref{def:theta} and the \acrshort{cs} inequality, that:
     \begin{align*}
-        \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \left\lVert \eta \right\rVert_{E, n}^2 + \Diffusion h^2 \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} + \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
+        \theta_n^2(\eta; h, \Diffusion) &\leq 4 \left( \left\lVert \eta \right\rVert_{E, n}^2 + \Diffusion h^2 \left\lvert \eta \right\rvert_{\SpaceHk{2}(\Omega, \Omega_{h, n})}^2 \vphantom{\sum_{i \in \SpaceTimeIndices}} \right. \\
+        & \left. + \sum_{i \in \SpaceTimeIndices} \left( h_{K_i}^{-2} \left\lVert \eta \right\rVert_{\SpaceLp{2}(K_i)} + \left\lVert \eta_n^- \right\rVert_{\Convection, \partial K_i^- \setminus \partial \Omega} \right) \right),
     \end{align*}
     where:
     \begin{align*}
