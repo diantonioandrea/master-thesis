@@ -5,7 +5,6 @@
 **/output/
 
 # LaTeX.
-*.pdf
 **/*.aux
 **/*.lof
 **/*.log
@@ -38,6 +37,10 @@
 **/*.acr
 **/*.synctex*
 **/*.auxlock
+
+presentation.pdf
+thesis.pdf
+thesis_bw.pdf
 
 content/tikz/*.pdf
 content/tikz/*.xml
