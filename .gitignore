@@ -5,7 +5,7 @@
 **/output/
 
 # LaTeX.
-**/*.pdf
+*.pdf
 **/*.aux
 **/*.lof
 **/*.log
