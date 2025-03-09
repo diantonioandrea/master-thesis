@@ -306,7 +306,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Discretization of the \acrshort{mp} Problem}
+    \frametitle{Full Discretization of the \acrshort{mp} Problem}
 
     \vspace*{\fill}
     \begin{multicols}{2}
@@ -363,7 +363,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Discretization of the \acrshort{mp} Problem}
+    \frametitle{Full Discretization of the \acrshort{mp} Problem}
 
     \vspace*{\fill}
     \begin{center}
@@ -609,7 +609,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Discretization of the \acrshort{cdr} Problem}
+    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
 
     \vspace*{\fill}
     \begin{center}
@@ -632,7 +632,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Semi-Discretization of \acrshort{cdr} Problems}
+    \frametitle{Full Discretization of \acrshort{cdr} Problems}
 
     \vspace*{\fill}
     \begin{center}
@@ -655,43 +655,7 @@
     \begin{center}
         \begin{minipage}{0.75\textwidth}
             \begin{definition}
-                The discrete formulation of the \acrshort{cdr} problem is to find $u_{h \tau}$ such that:
-                \begin{align*}
-                    B(u_{h, \tau}, w) &= L(w) &\text{ for all } w \in \SpaceSolutionFull
-                \end{align*}
-            \end{definition}
-        \end{minipage}
-    \end{center}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame}
-    \frametitle{Discretization of the \acrshort{cdr} Problem}
-
-    \vspace*{\fill}
-    \begin{center}
-        {\color{\accentcolor} \Large \textbf{Operators and Discrete Formulation}}
-        \vspace*{0.25cm}
-
-        \begin{minipage}{0.75\textwidth}
-            \begin{definition}
-                Let $B$ and $L$ be such that:
-                \begin{align*}
-                    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt \\
-                    &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0\\
-                    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0
-                \end{align*}
-            \end{definition}
-        \end{minipage}
-    \end{center}
-
-    \vspace*{\fill}
-
-    \begin{center}
-        \begin{minipage}{0.75\textwidth}
-            \begin{definition}
-                The discrete formulation of the \acrshort{cdr} problem is to find $u_{h \tau} \in \SpaceTrial_{h \tau}$ such that:
+                The discrete formulation of the \acrshort{cdr} problem is to find $u_{h \tau} \in \SpaceSolutionFull$ such that:
                 \begin{align*}
                     B(u_{h, \tau}, w) &= L(w) &\text{ for all } w \in \SpaceSolutionFull
                 \end{align*}
