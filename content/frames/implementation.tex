@@ -12,7 +12,7 @@
 
             \begin{minipage}{0.4\textwidth}
                 \begin{description}
-                    \item[Meshes] Prismatic and polygonal meshers
+                    \item[Discretization] Prismatic meshes
                     \item[Polynomial basis] Polynomial basis functions
                     \item[Quadrature] Quadrature methods with arbitrary order
                     \item[Problem] Assembly and solution of discretized problems
@@ -302,9 +302,12 @@
         \vspace*{0.25cm}
 
         \begin{minipage}{0.75\textwidth}
-            \begin{align*}
-                u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right)
-            \end{align*}
+            \begin{definition}
+                The exact solution $u$ for the tests is defined as follows:
+                \begin{align*}
+                    u(t, \Vektor{x}) &= \left( 1 - e^{-t} \right) \left( 2 x_1 + 2 x_2 - x_1 x_2 + 2 \left( 1 - e^{\frac{\ConvectionNoVector_1 \left( x_1 - 1 \right) }{\Boundary}} \right) \left( 1 - e^{\frac{\ConvectionNoVector_2 \left( x_2 - 1 \right) }{\Boundary}} \right) \right)
+                \end{align*}
+            \end{definition}
         \end{minipage}
     \end{center}
 
@@ -344,7 +347,7 @@
         {\color{\accentcolor} \Large \textbf{Coefficients}}
         \vspace*{0.5cm}
 
-        \begin{minipage}{0.75\textwidth}
+        \begin{minipage}{0.5\textwidth}
             \begin{description}
                 \item[Convection] $\ConvectionNoVector_1(t, \Vektor{x}) = 1$ and $\ConvectionNoVector_2(t, \Vektor{x}) = 1$
                 \item[Reaction] $\Reaction(t, \Vektor{x}) = 0.5$ 
@@ -367,7 +370,7 @@
             {\color{\accentcolor} \Large \textbf{Literature Norms}}
             \vspace*{0.5cm}
 
-            \begin{minipage}{0.4\textwidth}
+            \begin{minipage}{0.25\textwidth}
                 \begin{itemize}
                     \item $\Norm{\Error}_{\SpaceLp{2}(I; \SpaceLp{2}(\Omega))}$
                     \item {\color{\accentcolor} $\Norm{\sqrt{\Diffusion} \Error}_{\SpaceLp{2}(I; \SpaceHk{1}(\Omega))}$}
@@ -383,13 +386,14 @@
             {\color{\accentcolor} \Large \textbf{New Norms}}
             \vspace*{0.5cm}
 
-            \begin{minipage}{0.4\textwidth}
+            \begin{minipage}{0.25\textwidth}
                 \begin{itemize}
                     \item $\Norm{\Error}_{\SpaceLp{2}(\left\{ T \right\} \times \Omega)}$
                     \item $\Norm{\Error}_{\SpaceLp{\infty}(I; \SpaceLp{2}(\Omega))}$
                 \end{itemize}
             \end{minipage}
         \end{center}
+        
     \end{multicols}
     \vspace*{\fill}
     
