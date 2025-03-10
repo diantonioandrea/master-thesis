@@ -41,6 +41,7 @@
 presentation.pdf
 thesis.pdf
 thesis_bw.pdf
+summary.pdf
 
 content/tikz/*.pdf
 content/tikz/*.xml
