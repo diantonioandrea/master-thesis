@@ -68,4 +68,12 @@
 \beamertemplatenavigationsymbolsempty
 
 %% Sections.
-\AtBeginSection[]{}
+\AtBeginSection[]{
+    \begin{frame}{ToC}
+        \frametitle{Table of Contents}
+    
+        \vspace*{\fill}
+        \tableofcontents[currentsection]
+        \vspace*{\fill}
+    \end{frame}
+}

@@ -51,13 +51,26 @@
         \vspace*{\fill}
         \begin{center}
             {\color{\accentcolor} \Large \textbf{Motivation}}
-            \vspace*{0.5cm}
+            \vspace*{0.25cm}
 
             \begin{minipage}{0.4\textwidth}
                 \begin{description}
                     \item[Space] Spatial discretization using polygonal meshes of the spatial domain
                     \item[Time] Temporal discretization using partitions of the time domain
                 \end{description}
+            \end{minipage}
+        \end{center}
+
+        \vspace*{\fill}
+
+        \begin{center}
+            {\color{\accentcolor} \Large \textbf{Example}}
+
+            \begin{minipage}{0.4\textwidth}
+                \begin{align*}
+                    \Omega &= \left[ -1, 1 \right]^2 & \nSpaceIndices &= 10 \\
+                    I &= \left[ -1, 1 \right] & \nTimeIndices &= 3
+                \end{align*}
             \end{minipage}
         \end{center}
         \vspace*{\fill}
@@ -232,8 +245,8 @@
                 \begin{enumerate}[<+>]
                     \item<2> Time Volume Integrals
                     \item<3> Space Volume Integrals
-                    \item<4> Space Interface Integrals
-                    \item<5> Time Interface Integrals
+                    \item<4> Time Interface Integrals
+                    \item<5> Space Interface Integrals
                 \end{enumerate}
             \end{minipage}
         \end{center}
@@ -267,14 +280,14 @@
         \only<4>{
             \begin{figure}[!ht]
                 \centering
-                \input{content/tikz/Mesh_2.tex}
+                \input{content/tikz/Mesh_3.tex}
             \end{figure}
         }
 
         \only<5>{
             \begin{figure}[!ht]
                 \centering
-                \input{content/tikz/Mesh_3.tex}
+                \input{content/tikz/Mesh_2.tex}
             \end{figure}
         }
         \vspace*{\fill}
@@ -284,12 +297,28 @@
     
 \end{frame}
 
-% \begin{frame}
-%     \frametitle{Solution of a \acrshort{cdr} Problem}
+\begin{frame}
+    \frametitle{Solution of a \acrshort{cdr} Problem}
 
-%     % [!]
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Solution Details}}
+    \end{center}
+
+    \vspace*{0.125cm}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{description}
+                \item[Quadratures] Final quadrature evaluations performed during the solution phase to compute numerical integrals accurately
+                \item[Procedure] Sequential solution of the discretized linear systems corresponding to each subsequent time slab
+                \item[Method] Solution of non-symmetric linear systems using the \lstinline{GMRES} iterative solver without preconditioning
+            \end{description}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
     
-% \end{frame}
+\end{frame}
 
 \subsection{Testing the Implementation}
 
@@ -393,7 +422,7 @@
                 \end{itemize}
             \end{minipage}
         \end{center}
-        
+
     \end{multicols}
     \vspace*{\fill}
     

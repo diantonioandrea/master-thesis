@@ -1,0 +1,85 @@
+\subsection*{\texorpdfstring{\acrlong{cdr}}{} Problems}
+
+\begin{frame}
+    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $a_{h, n}$ and $b_{h, n}$ be such that:
+                \begin{align*}
+                    a_{h, n} \left( u, w \right) &= \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{K_i} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) \\
+                    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \sum_{\substack{j \in \NeighboursTime{i} \\ j < i}} \int_{\Gamma_{ij}} \left( \left\langle \Gradient u \right\rangle \cdot \Vektor{n}_{ij} \left[ w \right] - \left\langle \Gradient w \right\rangle \cdot \Vektor{n}_{ij} \left[ u \right] \right) ~ d \sigma(\Vektor{x}) \\
+                    &- \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \left( \Gradient u \cdot \Vektor{n}_i \right) w - \left( \Gradient w \cdot \Vektor{n}_i \right) u \right) ~ d \sigma(\Vektor{x}) \\
+                    b_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \int_{K_i} \left( \Convection \cdot \Gradient u \right) w ~ d \omega(\Vektor{x}) - \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u w ~ d \sigma(\Vektor{x}) \\
+                    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \setminus \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) \left[ u \right] w ~ d \sigma(\Vektor{x})
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $c_{h, n}$ and $J^{\kappa}_{h, n}$ be such that:
+                \begin{align*}
+                    c_{h, n} \left( u, w \right) &= \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) \\
+                    J^{\kappa}_{h, n} \left( u, w \right) &= \sum_{i \in \SpaceTimeIndices} \sum_{j \in \NeighboursTime{i}} \int_{\Gamma_{ij}} \kappa \left[ u \right] \left[ w \right] ~ d \sigma(\Vektor{x}) + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u w ~ d \sigma(\Vektor{x})
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $\kappa$ be such that:
+                \begin{align*}
+                    \kappa \Restriction_{\Gamma_{ij}} = \left( \Diameter \Gamma_{ij} \right)^{-1}
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $l_{h, n}$ be such that:
+                \begin{align*}
+                    l_{h, n} \left( w \right)  &= \left( g, w \right)_0 + \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^+ \cap \partial \Omega} u_N w ~ d \sigma(\Vektor{x}) \\
+                    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \kappa u_D w ~ d \sigma(\Vektor{x}) \\
+                    &+ \Diffusion \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} u_D \left( \Gradient w \cdot \Vektor{n}_i \right) ~ d \sigma(\Vektor{x}) \\
+                    &- \sum_{i \in \SpaceTimeIndices} \int_{\partial K_i^- \cap \partial \Omega} \left( \Convection \cdot \Vektor{n}_i \right) u_D w ~ d \sigma(\Vektor{x})
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}

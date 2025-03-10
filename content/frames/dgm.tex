@@ -8,22 +8,30 @@
         {\color{\accentcolor} \Large \textbf{Main Characteristics}}
     \end{center}
 
-    \vspace*{0.125cm}
+    \vspace*{0.25cm}
 
     \begin{center}
         \begin{minipage}{0.75\textwidth}
             \begin{description}
-                \item[Fairly recent introduction] Introduced in \citetitle{Reed1973}
-                \item[Non-conforming method] Trial space of piecewise continuous function, thus allowing discontinuities between elements
+                \item[Element-wise Discontinuity] Piecewise-defined trial space allowing discontinuities at element boundaries
+                \item[High-Order Accuracy] Supports high-order polynomial approximations within elements
+                \item[Geometric Flexibility] Effective handling of complex geometries and unstructured meshes
+                \item[Flexible Time Integration] Compatible with explicit, implicit, and space-time formulations
             \end{description}
         \end{minipage}
     \end{center}
 
     \vspace*{\fill}
-    
+
+    \begin{flushleft}
+        \begin{minipage}{0.75\textwidth}
+            {\footnotesize Introduced in \citetitle{Reed1973}}
+        \end{minipage}
+    \end{flushleft}
+
 \end{frame}
 
-\subsection{Model Parabolic Problem}
+\subsection{The Model Parabolic Problem}
 
 \begin{frame}
     \frametitle{Setting of the \acrfull{mp} Problem}
@@ -88,6 +96,35 @@
 
     \vspace*{\fill}
     \begin{center}
+        {\color{\accentcolor} \Large \textbf{Problem}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $f \in \SpaceLp{2}(I; V^*)$, the \acrshort{mp} problem is to find $u \in \SpaceX(I; V, V^*)$ such that:
+                \begin{align*}
+                        \partial_t u(t) + A(u)(t) &= f(t) & \text{ in } \SpaceLp{2}(I; V^*) \\
+                        u(0) &= u_0 & \text{ in } W
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+
+    \vspace*{\fill}
+
+    \begin{flushleft}
+        \begin{minipage}{0.75\textwidth}
+            {\footnotesize $\SpaceX(I; V, V^*)$ refers to $\SpaceXpq{2}{2}(I; V, V^*)$ }
+        \end{minipage}
+    \end{flushleft}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Setting of the \acrfull{mp} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
         {\color{\accentcolor} \Large \textbf{Operator} $A$}
         \vspace*{0.25cm}
 
@@ -106,28 +143,6 @@
                     \left\lVert A(u) \right\rVert_{\SpaceLp{p}(I; V^*)} \leq \ContC{a} \left\lVert u \right\rVert_{\SpaceLp{p}(I; V)}
                 \end{align*}
             \end{lemma}
-        \end{minipage}
-    \end{center}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame}
-    \frametitle{Setting of the \acrfull{mp} Problem}
-
-    \vspace*{\fill}
-    \begin{center}
-        {\color{\accentcolor} \Large \textbf{Problem}}
-        \vspace*{0.25cm}
-
-        \begin{minipage}{0.75\textwidth}
-            \begin{definition}
-                Let $f \in \SpaceLp{2}(I; V^*)$, the \acrshort{mp} problem is to find $u \in \SpaceX(I; V, V^*)$ such that:
-                \begin{align*}
-                        \partial_t u(t) + A(u)(t) &= f(t) & \text{ in } \SpaceLp{2}(I; V^*) \\
-                        u(0) &= u_0 & \text{ in } W
-                \end{align*}
-            \end{definition}
         \end{minipage}
     \end{center}
     \vspace*{\fill}
@@ -436,7 +451,7 @@
 \subsection{\texorpdfstring{\acrlong{cdr}}{} Problems}
 
 \begin{frame}
-    \frametitle{Setting of the \acrshort{cdr} Problem}
+    \frametitle{Setting of the \acrlong{cdr} Problem}
 
     \vspace*{\fill}
     \begin{center}
@@ -474,7 +489,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Setting of the \acrshort{cdr} Problem}
+    \frametitle{Setting of the \acrlong{cdr} Problem}
 
     \vspace*{\fill}
     \begin{center}
@@ -533,7 +548,7 @@
                 \begin{align*}
                     u &\in \SpaceLp{\infty}(I \times \Omega) \\
                     u - u^* &\in \SpaceLp{2}(I; V) \\
-                    u(0) &= u_0 &\text{in } \Omega
+                    u(0) &= u_0 % &\text{in } \Omega
                 \end{align*}
 
                 Moreover, for all $w \in V =  \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction_{\partial \Omega^-} = 0 \right\}$:
@@ -569,7 +584,14 @@
             \end{definition}
         \end{minipage}
     \end{center}
+
     \vspace*{\fill}
+
+    \begin{flushleft}
+        \begin{minipage}{0.75\textwidth}
+            {\footnotesize Obtained by multiplying the \acrshort{cdr} equation by an arbitrary function $w \in \SpaceHk{2}(\Omega, \Omega_h)$, integrating over each element $K \in \Omega_h$, applying Green's theorem, summing contributions over all elements $K$, adding and subtracting appropriate terms, and finally utilizing the given boundary conditions}
+        \end{minipage}
+    \end{flushleft}
     
 \end{frame}
 
@@ -600,29 +622,6 @@
                 \begin{align*}
                     \left( \partial_t u_h(t), w_h \right)_0 + A_h(u_h(t), w_h) &= l_h(w_h) &\text{ for all } w_h \in \SpaceSolution_h^p \text{ and for all } t \in I \\
                     \left( u_h(0), w_h \right)_0 &= \left( u_0, w_h \right)_0 &\text{ for all } w_h \in \SpaceSolution_h^p
-                \end{align*}
-            \end{definition}
-        \end{minipage}
-    \end{center}
-    \vspace*{\fill}
-    
-\end{frame}
-
-\begin{frame}
-    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
-
-    \vspace*{\fill}
-    \begin{center}
-        {\color{\accentcolor} \Large \textbf{Operators}}
-        \vspace*{0.25cm}
-
-        \begin{minipage}{0.75\textwidth}
-            \begin{definition}
-                Let $B$ and $L$ be such that:
-                \begin{align*}
-                    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt \\
-                    &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0\\
-                    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0
                 \end{align*}
             \end{definition}
         \end{minipage}
@@ -667,6 +666,29 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Full Discretization of the \acrshort{cdr} Problem}
+
+    \vspace*{\fill}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Operators}}
+        \vspace*{0.25cm}
+
+        \begin{minipage}{0.75\textwidth}
+            \begin{definition}
+                Let $B$ and $L$ be such that:
+                \begin{align*}
+                    B(u, w) &= \sum_{n \in \TimeIndices} \int_{I_n} \left( (\partial_t u, w )_0 + A_{h, n}(u, w) \right) ~ dt \\
+                    &+ \sum_{n = 2}^{\nTimeIndices} (\Jump{u}_{n - 1}, w_{n - 1}^+ )_0 + (u_0^+, w_0^+ )_0\\
+                    L(w) &= \sum_{n \in \TimeIndices} \int_{I_n} l_{h, n}(w) ~ dt + (u_0, w_0^+ )_0
+                \end{align*}
+            \end{definition}
+        \end{minipage}
+    \end{center}
+    \vspace*{\fill}
+    
+\end{frame}
+
+\begin{frame}
     \frametitle{Error Analysis of the \acrshort{dgm} Applied to \acrshort{cdr} Problems}
 
     \vspace*{\fill}
@@ -675,7 +697,7 @@
         \vspace*{0.25cm}
 
         \begin{minipage}{0.75\textwidth}
-            \begin{theorem} \label{theorem:estimates_ht}
+            \begin{theorem}
                 Let the assumptions presented be satisfied, let $u$ be the solution to the \acrshort{cdr} problem, and let $\AppU$ be the solution to the discrete \acrshort{cdr} problem, then there exists $C > 0$, independent of $h, \tau, \Diffusion$, such that $\Error = \AppU - u$ satisfies what follows:
                 \begin{align*}
                     \sum_{n \in \TimeIndices} \TimeIntN{ \Norm{\Error}_{E, n}^2 } &\leq C h^{2p} \left( \Seminorm{u}_{\SpaceLp{2}(I; \SpaceHk{p + 1}(\Omega))}^2 + \Seminorm{u}_{C^0(\overline{I}; \SpaceHk{p + 1}(\Omega))}^2 \right) \\
@@ -684,6 +706,13 @@
             \end{theorem}
         \end{minipage}
     \end{center}
+
     \vspace*{\fill}
+
+    \begin{flushleft}
+        \begin{minipage}{0.75\textwidth}
+            {\footnotesize Error estimates obtained by first establishing the well-posedness of the weak formulation and subsequently analyzing the approximation properties of the discretization method}
+        \end{minipage}
+    \end{flushleft}
     
 \end{frame}

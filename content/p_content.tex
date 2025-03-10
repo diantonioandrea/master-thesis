@@ -1,12 +1,12 @@
-%% Table of Contents.
+% %% Table of Contents.
 
-\begin{frame}{ToC}
-    \frametitle{Table of Contents}
+% \begin{frame}{ToC}
+%     \frametitle{Table of Contents}
 
-    \vspace*{\fill}
-    \tableofcontents[hideallsubsections]
-    \vspace*{\fill}
-\end{frame}
+%     \vspace*{\fill}
+%     \tableofcontents[hideallsubsections]
+%     \vspace*{\fill}
+% \end{frame}
 
 %% Sections.
 
@@ -33,3 +33,16 @@
 \section{Conclusions}
 
 \input{content/frames/conclusions.tex}
+
+% References.
+
+\begin{frame}[allowframebreaks]
+    \nocite{*}
+    \printbibliography
+\end{frame}
+
+% Appendix.
+
+\section*{Appendix}
+
+\input{content/frames/appendix.tex}
