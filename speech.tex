@@ -36,170 +36,170 @@
 
     \subsection{Titolo, Slide 1}
 
-    Buongiorno a tutti, sono Andrea Di Antonio e oggi presento la mia tesi dal titolo \textit{The Space-Time Discontinuous Galërkin Method}, la quale presenta il metodo di Galërkin discontinuo e la sua applicazione ai problemi di Convezione-Diffusione-Reazione.
+    Buongiorno a tutti, sono Andrea Di Antonio e oggi presenterò la mia tesi dal titolo \textit{The Space-Time Discontinuous Galërkin Method}, in cui viene esposto il metodo di Galërkin discontinuo e la sua applicazione ai problemi di Convezione-Diffusione-Reazione.
 
     \subsection{Tavola dei Contenuti, Slide 2}
 
-    Partirei con un'introduzione il cui scopo è quello di fornire un contesto alla tesi tramite una breve discussione sull'importanza nei vari campi delle scienze delle equazioni alle derivate parziali, delle sfide che si incontrano nella loro risoluzione a livello analitico, e come si possono superare queste difficoltà tramite l'uso di metodi numerici.
+    Inizierò con un'introduzione, il cui scopo è fornire un contesto generale al lavoro tramite una breve discussione sull'importanza delle equazioni alle derivate parziali nei vari campi delle scienze, evidenziando le difficoltà incontrate nella loro risoluzione analitica e mostrando come tali difficoltà possano essere superate attraverso l'uso di metodi numerici.
 
     \subsection{Equazioni alle Derivate Parziali, Slide 3-5}
 
-    Le equazioni alle derivate parziali rappresentano un oggetto matematico di grande rilevanza in varie branche delle scienze, essendo queste in grado di fornire uno strumento di modellazione e predizione per fenonemi e sistemi fisici, biologi, o ingegneristici. Sviluppi nella teoria delle equazioni alle derivate parziali motivano sviluppi nelle applicazioni e viceversa.
+    Le equazioni alle derivate parziali rappresentano uno strumento matematico fondamentale in numerose discipline scientifiche, poiché permettono di modellare e prevedere fenomeni e sistemi di natura fisica, biologica o ingegneristica. Progressi nella teoria di queste equazioni motivano sviluppi applicativi e viceversa.
 
-    Sono presenti in questa slide alcuni esempi di equazioni differenziali da diversi campi della fisica, dalla meccanica quantistica alla dinamica dei fluidi.
+    In questa slide sono riportati alcuni esempi di equazioni differenziali provenienti da diversi ambiti della fisica, dalla meccanica quantistica alla dinamica dei fluidi.
 
-    A livello analitico, la risoluzione di alcune equazioni differenziali è ostacolata da vari elementi come domini e condizioni complessi, presenza di termini non lineari e sistemi in cui sono presenti varie equazioni tra di loro interagenti. Questo porta alla necessità di sviluppare metodi numerici per la loro risoluzione.
+    Dal punto di vista analitico, la risoluzione di alcune equazioni differenziali risulta spesso ostacolata da elementi quali domini e condizioni al contorno complessi, presenza di termini non lineari o interazioni tra più equazioni simultanee. Ciò rende necessario lo sviluppo di metodi numerici specifici.
 
-    Due esempi, tra tanti, di metodi numerici per equazioni differenziali alle derivate parziali sono il \textit{Metodo alle Differenze Finite} e il \textit{Metodo agli Elementi Finiti}. Il primo, approssimando gli operatori differenziali tramite delle differenze e lavorando su griglie di punti, permette di scriver semplici implementazioni per la risoluzione di queste equazioni a scapito di una limitata capacità di gestire geometrie e condizioni complesse. Il secondo, invece, lavorando con una discretizzazione del dominio in componenti geometriche più semplici sulle quali sono definite basi di funzioni solitamente polinomiali, permette di gestire tutte le difficoltà incontrate dal primo metodo a scapito di un'implementazione più complessa e un più alto costo computazionale.
+    Due esempi significativi di metodi numerici per equazioni differenziali alle derivate parziali sono il \textit{Metodo alle Differenze Finite} e il \textit{Metodo agli Elementi Finiti}. Il primo, basato sull'approssimazione degli operatori differenziali tramite differenze finite definite su griglie di punti, permette implementazioni relativamente semplici ma risulta limitato nella gestione di geometrie e condizioni complesse. Il secondo, invece, discretizzando il dominio in componenti geometriche più semplici, sulle quali vengono definite basi di funzioni generalmente polinomiali, consente di superare le limitazioni del primo metodo, pur richiedendo una maggiore complessità implementativa e un costo computazionale superiore.
 
     \newpage
     \section{Metodo di Galërkin Discontinuo}
 
     \subsection{Tavola dei Contenuti, Slide 6}
 
-    Il metodo di Galërkin discontinuo, oggetto principale di questa tesi, fa parte della famiglia dei metodi agli elementi finiti.
+    Il metodo di Galërkin discontinuo, oggetto centrale di questa tesi, appartiene alla famiglia dei metodi agli elementi finiti.
 
-    In questa parte della presentazione vorrei quindi presentare questo metodo prima in una sua forma più generale, tramite lo studio di un problema modello, e poi valutando la sua applicazione al problema di Convezione-Diffusione-Reazione. 
+    In questa parte della presentazione introdurrò inizialmente questo metodo nella sua forma generale, tramite lo studio di un problema modello, per poi considerare nello specifico la sua applicazione ai problemi di Convezione-Diffusione-Reazione.
 
-    Il procedimento adottato in entrambi i casi è il medesimo, partendo da un'introduzione del problema e dalle sue caratteristiche principali, si procede tramite una prima discretizzazione spaziale del problema per poi valutare la sua discretizzazione completa, considerando quindi anche la componente temporale, per infine considerare una stima dell'errore del metodo.
+    In entrambi i casi, il procedimento adottato è il medesimo: partendo da un'introduzione del problema e delle sue caratteristiche principali, si procede dapprima con una discretizzazione spaziale e poi con la completa discretizzazione spazio-temporale, concludendo infine con una stima dell'errore del metodo.
 
     \subsection{Caratteristiche del Metodo, Slide 7}
 
-    il metodo di Galërkin discontinuo, introdotto nel '73 nell'ambito di equazioni circa il trasporto di neutroni, si distingue per la sua caratteristica di considerare funzioni continue a tratti, ammettendo quindi discontinuità tra gli elementi. Questo consente dunque di poter considerare approssimazioni polinomiali ad alto ordine e di avere elevata flessibilità in termini delle geometrie e degli elementi considerati.
+    Il metodo di Galërkin discontinuo, introdotto nel 1973 nell'ambito delle equazioni relative al trasporto di neutroni, si distingue per l'utilizzo di funzioni continue a tratti, ammettendo quindi discontinuità tra gli elementi. Questa caratteristica consente di adottare approssimazioni polinomiali di ordine elevato e offre una grande flessibilità nella scelta delle geometrie e degli elementi utilizzati.
 
     \subsection{Contesto del Problema Modello Parabolico, Slide 8-10}
 
-    L'introduzione del problema modello parabolico, in funzione della presentazione del metodo $dG$, parte dalla sua contestualizzazione, ovvero dalla scelta di un dominio spaziale $\Omega$ e un dominio temporale $I$, nonché dall'introduzione di queste terne di insiemi, dette triple di Gelfand e aventi le proprietà qui elencate, e di questi spazi $\SpaceX$, caratterizzanti le funzioni considerate e le loro derivate, necessari allo sviluppo dei risultati principali legati a questo problema modello.
+    L'introduzione del problema modello parabolico, necessaria alla presentazione del metodo $dG$, parte dalla sua contestualizzazione, ovvero dalla scelta di un dominio spaziale $\Omega$ e di un intervallo temporale $I$. Vengono quindi introdotte le cosiddette triple di Gelfand, caratterizzate dalle proprietà qui elencate, e gli spazi $\SpaceX$, che descrivono le funzioni e le loro derivate, fondamentali per la formulazione e l'analisi dei risultati principali relativi al problema modello.
 
-    È possibile quindi enunciare il problema parabolico fissando una funzione $f$, una condizione iniziale $u_0$, e cercando una funzione $u \in \SpaceX(I; V; V^*)$ tale per cui siano soddisfatte queste due relazioni.
+    È possibile quindi enunciare il problema parabolico scegliendo una funzione $f$, una condizione iniziale $u_0$, e cercando una funzione $u \in \SpaceX(I; V; V^*)$ tale per cui siano soddisfatte le due relazioni indicate.
 
-    Affinché questa definizione abbia senso è necessario introdurre l'operatore A, noto anche come operatore parabolico, avente le seguenti proprietà. In breve, è necessario che questo operatore mappi ogni tempo $t \in I$ a un operatore lineare da $V$ al suo duale e che quest'ultimo sia, sostanzialmente, continuo e coercivo; richieste fondamentali nell'ambito delle formulazioni deboli di problemi di questa tipologia.
+    Affinché questa definizione sia ben posta, è necessario introdurre l'operatore $A$, noto anche come operatore parabolico, avente le seguenti proprietà. In particolare, è richiesto che tale operatore associ ad ogni tempo $t \in I$ un operatore lineare da $V$ al suo duale che sia continuo e coercivo, condizioni indispensabili per la corretta definizione delle formulazioni deboli in problemi di questa natura.
 
     \subsection{Formulazione Debole del Problema Modello Parabolico, Slide 11-12}
 
-    Sempre in ottica di voler sviluppare una formulazione $dG$ del problema modello parabolico, è necessario considerare ora una sua formulazione debole.
+    Per sviluppare una formulazione $dG$ del problema modello parabolico, occorre ora introdurre una sua formulazione debole.
 
-    Si introducono, quindi, gli spazi $\SpaceTrial$ e $\SpaceTest$, noti come spazi \textit{Trial} e \textit{Test}, così definiti e gli operatori $b$ e $l$ ottenuti tramite il prodotto per una funzione di test delle equazioni precedenti facenti parte della definizione del problema parabolico e la successiva integrazione lungo il dominio del problema.
+    Si definiscono pertanto gli spazi $\SpaceTrial$ e $\SpaceTest$, noti rispettivamente come spazi \textit{Trial} e \textit{Test}, e gli operatori $b$ e $l$, ottenuti moltiplicando le equazioni precedenti per una funzione di test e integrando successivamente lungo il dominio del problema.
 
-    Ciò consente, quindi, di valutare la formulazione debole del problema parabolico in funzione degli operatori appena introdotti e di considerare già un risultato il quale riassume la buona positura del problema, fornendo risultati di esistenza, unicità, e stabilità per la soluzione.
+    Ciò permette di considerare la formulazione debole del problema parabolico in funzione degli operatori appena introdotti e di citare un risultato che riassume la buona positura del problema, garantendo esistenza, unicità e stabilità della soluzione.
 
     \subsection{Semi-Discretizzazione del Problema Modello Parabolico, Slide 13-14}
 
-    La prima discretizzazione di questo problema è introducibile considerando, per quanto riguarda la componente spaziale, una famiglia di mesh $\Omega_h$, indicizzate da $h$, e una sequenza di sottospazi $V_h$, ognuno fornito di una sua base. A questo segue l'introduzione degli spazi semi-discreti $\SpaceTrial_h$ e $\SpaceTest_h$.
+    La prima discretizzazione introdotta riguarda la componente spaziale e avviene considerando una famiglia di mesh $\Omega_h$, indicizzata dal parametro $h$, e una sequenza di sottospazi $V_h$, ciascuno dotato di una propria base. Da qui deriva la definizione degli spazi semi-discreti $\SpaceTrial_h$ e $\SpaceTest_h$.
 
-    Sfruttando una versione analoga degli operatori introdotti nell'ambito della formulazione debole di questo problema è possibile, riscrivendo l'operatore $A$ sotto forma di, fissato il tempo, operatore bilineare, enunciare la formulazione semi-discreta del problema modello, ovvero cercando ora una funzione in $\SpaceTrial_h$ tale per cui sia rispettata la seguente relazione per ogni funzione test in $\SpaceTest_h$.
+    Sfruttando versioni analoghe degli operatori introdotti nella formulazione debole, e riscrivendo l'operatore $A$ come operatore bilineare a tempo fissato, si ottiene la formulazione semi-discreta del problema modello, che consiste nel cercare una funzione in $\SpaceTrial_h$ tale che sia soddisfatta la relazione indicata per ogni funzione test appartenente a $\SpaceTest_h$.
 
     \subsection{Discretizzazione del Problema Modello Parabolico, Slide 15-16}
 
-    Analogamente si può ora considerare una famiglia di partizioni $I_{\tau}$ dell'intervallo temporale, con indice $\tau$, e spazi polinomiali a valori in $V_h$ tali per cui si ha una nuova definizione dello spazio $\SpaceTrial$, ora $\SpaceTrial_{h \tau}$, dato dalle funzioni polinomiali a tratti; definizione condivisa, in questo caso, dallo spazio delle funzioni test.
+    Analogamente, si considera una famiglia di partizioni $I_{\tau}$ dell'intervallo temporale, con indice $\tau$, e si definiscono spazi polinomiali a valori in $V_h$. Ciò porta a una nuova definizione dello spazio $\SpaceTrial$, ora indicato come $\SpaceTrial_{h \tau}$, costituito da funzioni polinomiali a tratti, definizione condivisa anche dagli spazi delle funzioni test.
 
-    Questo permette di ridefinire gli operatori $b$ e $l$ tenendo in considerazione ora le eventuali discontinuità introdotte nel problema e di scrivere finalmente la formulazione discreta del problema modello, presente in basso.
+    Questo consente di ridefinire gli operatori $b$ e $l$ tenendo conto delle eventuali discontinuità introdotte e di formulare la versione completamente discreta del problema modello, riportata nella parte inferiore della slide.
 
     \subsection{Analisi dell'Errore del Problema Modello Parabolico, Slide 17}
 
-    Una volta ottenuta la formulazione discreta del problema è possibile, e viene fatto in tesi, formulare vari risultati i quali sono volti alla caratterizzazione di questa formulazione. In particolare, il risultato principale riguarda l'analisi dell'errore del metodo $dG$ applicato al problema modello, risultato che che, sotto determinate ipotesi di regolarità della soluzione esatta, fornisce una stima dell'errore.
+    Ottenuta la formulazione discreta, vengono formulati diversi risultati volti alla sua caratterizzazione. In particolare, il risultato principale riguarda l'analisi dell'errore del metodo $dG$ applicato al problema modello che, sotto ipotesi adeguate sulla regolarità della soluzione esatta, fornisce una stima dell'errore stesso.
 
-    Da notare come questa stima sia, tra virgolette, incompleta in quanto dipendente in realtà dall'operatore di interpolazione spaziale. Infatti in questa formulazione non si sono spesi troppi dettagli nella discretizzazione spaziale, cosa che viene fatta, invece, per quanto riguarda i problemi di Convezione-Diffusione-Reazione.
+    È importante notare come questa stima risulti in un certo senso incompleta, poiché dipende dall'operatore di interpolazione spaziale. Infatti, nella formulazione appena illustrata non sono stati approfonditi dettagliatamente gli aspetti della discretizzazione spaziale, approfondimento invece effettuato nella trattazione dei problemi di Convezione-Diffusione-Reazione.
 
     \subsection{Contesto del Problema di CDR, Slide 18-19}
 
-    Il problema di Convezione-Diffusione-Reazione, problema rilevante, per esempio, nell'ambito della dinamica dei fluidi si presenta tramite la seguente equazione e le seguenti condizioni al bordo, differenziate in funzione del coefficiente di convezione al bordo del dominio $\Omega$.
+    Il problema di Convezione-Diffusione-Reazione, rilevante ad esempio nell'ambito della dinamica dei fluidi, è definito tramite la seguente equazione e le rispettive condizioni al bordo, distinte in funzione del coefficiente di convezione sul bordo del dominio $\Omega$.
 
-    Il problema è accompagnato, inoltre, dalle seguenti assunzioni. Da una parte delle assunzioni standard di regolarità, riguardanti i dati iniziali e al bordo e i coefficienti dell'equazione, con lo scopo di garantire la buona positura del problema così come presentato mentre, dall'altra delle stime sui coefficienti dell'equazione utilizzate all'interno della tesi per garantire l'applicabilità dei risultati di esistenza e unicità alla formulazione debole del problema.
+    Tale problema è accompagnato da specifiche assunzioni: da un lato, ipotesi standard di regolarità sui dati iniziali, sulle condizioni al bordo e sui coefficienti dell'equazione, necessarie per garantire la buona positura del problema; dall'altro, stime sui coefficienti che assicurano l'applicabilità dei risultati di esistenza e unicità alla formulazione debole considerata nella tesi.
 
     \subsection{Formulazione Debole del Problema di CDR, Slide 20}
 
-    Per questo problema è possibile ottenere una caratterizzazione più completa della soluzione e formulazione debole, ottenendo dei risultati di regolarità e una relazione che fornisce le fondamenta del processo di discretizzazione di questo problema.
+    Per questo problema è possibile fornire una caratterizzazione più completa della soluzione attraverso la formulazione debole, ottenendo risultati sulla regolarità e una relazione che costituisce il fondamento del successivo processo di discretizzazione.
 
     \subsection{Semi-Discretizzazione del Problema di CDR, Slide 21-22}
 
-    La discretizzazione, infatti, come visto anche per il problema modello precedente, ha come punto di partenza la formulazione debole appena introdotta.
+    Analogamente al problema modello già discusso, anche per il problema di CDR il punto di partenza della discretizzazione è la formulazione debole appena introdotta.
 
-    Per ottenere la relazione qui presentata si procede tramite il prodotto della CDR, ovvero l'equazione di Convezione-Diffusione-Reazione in breve, per una funzione di test e la successiva integrazione lungo ogni elemento della mesh spaziale, introducendo termini appropriati volti a comporre le forme bilineari qui presentate in maniera non esplicita le quali rappresentano la discretizzazione rispettivamente dei termini di diffusione, convezione, e reazione e un ulteriore termine di stabilizzazione.
+    Per ottenere la relazione presentata, si procede moltiplicando l'equazione CDR per una funzione di test e integrando successivamente lungo ciascun elemento della mesh spaziale, aggiungendo opportuni termini volti a comporre implicitamente le forme bilineari qui riportate. Queste ultime rappresentano rispettivamente la discretizzazione dei termini di diffusione, convezione e reazione, oltre a un ulteriore termine di stabilizzazione.
 
-    Tramite, quindi, l'introduzione del seguente spazio discreto è possibile enunciare la formulazione semi-discreta per questa classe di problemi.
+    L'introduzione del seguente spazio discreto permette, quindi, di enunciare formalmente la formulazione semi-discreta del problema.
 
     \subsection{Discretizzazione del Problema di CDR, Slide 23-24}
 
-    La formulazione discreta del problema, inoltre, segue analogamente da quanto fatto prima. Introducendo ora il seguente spazio discreto, composto da funzioni polinomiali a tratti, ora in spazio e in tempo, è possibile considerare la seguente formulazione discreta.
+    La formulazione completamente discreta segue un procedimento simile a quello illustrato in precedenza. Definendo ora il seguente spazio discreto, costituito da funzioni polinomiali a tratti sia nello spazio che nel tempo, si ottiene la seguente formulazione discreta.
 
-    Gli operatori $B$ e $L$ sono ottenuti dalla discretizzazione precedente tenendo in considerazione le eventuali discontinuità. Vi è da tenere presente una riscrittura della forma bilineare $A$, alla quale si aggiunge un indice $n$, indice dei vari livelli temporali della discretizzazione, per includere, all'interno di questa definizione, la possibilità di considerare differenti mesh per ogni livello temporale.
+    Gli operatori $B$ e $L$ derivano direttamente dalla discretizzazione precedente, considerando esplicitamente eventuali discontinuità. È opportuno notare che la forma bilineare $A$ viene qui riscritta con l'aggiunta di un indice temporale $n$, che permette di includere nella definizione la possibilità di adottare mesh differenti per ogni livello temporale.
 
     \subsection{Analisi dell'Errore del Problema di CDR, Slide 25}
 
-    Diversamente da quanto fatto per il problema modello, è necessario, in questo caso, prima di sviluppare un'analisi dell'errore di questo problema, fornire dei risultati, non inclusi in queste slide, che stabiliscano la buona positura della formulazione discreta e che analizzino le proprietà di approssimazione delle basi scelte, in questo caso è stata utilizzata la base dei polinomi di Legendre.
+    A differenza del problema modello, prima di procedere all'analisi dell'errore è necessario dimostrare alcuni risultati preliminari, non riportati in queste slide, che stabiliscono la buona positura della formulazione discreta e analizzano le proprietà di approssimazione delle basi utilizzate, nello specifico quella dei polinomi di Legendre.
 
-    In funzione di questi risultati si enuncia dunque questo teorema il quale fornisce la principale stima dell'errore del metodo applicato a questa famiglia di problemi, la quale risulta essere poi la base dei test numerici condotti.
+    Basandosi su tali risultati, si enuncia dunque il seguente teorema che fornisce la principale stima dell'errore del metodo applicato al problema CDR. Questa stima costituisce poi il punto di partenza per i test numerici effettuati nella tesi.
 
     \newpage
     \section{Implementazione e Risultati}
 
     \subsection{Tavola dei Contenuti, Slide 26}
 
-    Seguono ora i dettagli dell'implementazione del metodo e i risultati ottenuti testando questa implementazione, descrivendo un po' più nel dettagli i componenti più, per così dire, interessanti dell'implementazione.
+    Seguono ora i dettagli relativi all'implementazione del metodo e ai risultati ottenuti tramite i test numerici svolti. Verranno descritti più approfonditamente gli aspetti più significativi e interessanti dell'implementazione stessa.
 
     \subsection{Caratteristiche dell'Implementazione, Slide 27}
 
-    Ho implementato l'algoritmo in \lstinline{C++23} da zero, sviluppando quindi tutti i componenti, tra cui il mesher e le funzioni che costruiscono e risolvono il problema, che compongono un codice con la struttura di una libreria il cui scopo è proprio quello di definire e risolvere problemi di CDR.
+    Ho implementato l'algoritmo utilizzando \lstinline{C++23}, sviluppando interamente da zero tutti i componenti necessari, tra cui il generatore della mesh e le funzioni dedicate alla costruzione e alla risoluzione del problema. Il risultato è un codice strutturato come una libreria, il cui obiettivo principale è definire e risolvere problemi di CDR.
 
     \subsection{Mesh Prismatiche e Poligonali, Slide 28-34}
 
-    Una delle parti principali dell'implementazione è sicuramente data dalla discretizzazione del dominio, ottenuta tramite mesh poligonali in spazio e semplici partizioni a intervalli in tempo, le quali combinate danno luogo a mesh cosiddette a prisma, dalla forma dei singoli elementi; in figura è presente un esempio di una mesh con questa struttura.
+    Una delle parti fondamentali dell'implementazione riguarda la discretizzazione del dominio spaziale, realizzata tramite mesh poligonali spaziali e semplici partizioni temporali intervallari, la cui combinazione genera le cosiddette mesh prismatiche. Un esempio grafico di tale mesh è riportato in figura.
 
-    Il processo di costruzione di una mesh ha luogo tramite la generazione casuale di un numero di punti lungo il dominio spaziale pari al numero di elementi da generare e la successiva valutazione del primo diagramma di Voronoi di questi punti, ottenuto per bisettrici.
+    Il processo di costruzione della mesh prevede inizialmente la generazione casuale di un insieme di punti nel dominio spaziale, in numero pari agli elementi desiderati, seguito dalla determinazione del primo diagramma di Voronoi generato da tali punti tramite le bisettrici.
 
-    Questo diagramma viene iterativamente "rilassato" tramite un algoritmo, il quale prende il nome di \textit{Algoritmo di Lloyd}, che agisce valutando il baricentro di ogni cella generata tramite il diagramma di Voronoi e generando successivamente un nuovo diagramma a partire da questi punti. Questo avviene fino al raggiungimento di una determinata tolleranza posta sullo spostamento dei punti.
+    Questo diagramma è successivamente perfezionato applicando iterativamente l'algoritmo di \textit{Lloyd}, che consiste nel ricalcolare il baricentro di ogni cella del diagramma di Voronoi e generare nuovi punti a partire da questi baricentri. Tale procedura prosegue fino al raggiungimento di una tolleranza prefissata sullo spostamento dei punti.
 
-    Infine il diagramma subisce una fase di post-elaborazione in cui vengono rimossi i lati troppo piccoli i quali andrebbero a introdurre errori nei calcoli.
+    Infine, il diagramma subisce una fase di post-elaborazione, in cui vengono rimossi i lati troppo piccoli, che potrebbero introdurre errori numerici nei calcoli.
 
     \subsection{Funzioni Polinomiali e Quadrature, Slide 35}
 
-    Per quanto riguarda le basi di polinomi, così come nella teoria, la scelta ricade sulla base dei polinomi di Legendre i quali sono facili da generare con le relazioni qui presenti; mentre per quanto concerne l'algoritmo di quadratura, questa scelta ricade sulla quadratura di Gauss-Legendre in quanto è necessario scegliere uno schema di quadratura il cui ordine sia sufficientemente alto per evitare l'introduzione di errori nell'algoritmo dovuti a un'approssimazione insufficiente.
+    Per quanto riguarda le basi polinomiali, la scelta adottata, coerentemente con la teoria sviluppata, è quella dei polinomi di Legendre, facilmente generabili tramite le relazioni qui illustrate. Per l'algoritmo di quadratura, la scelta è caduta sulla quadratura di Gauss-Legendre, in virtù della necessità di uno schema di quadratura con ordine sufficientemente alto da evitare errori dovuti ad approssimazioni numeriche insufficienti.
 
-    La quadratura sugli elementi, così come indicato, avviene su una sotto-triangolazione del dominio per facilitare la gestione delle mappe di riferimento.
+    La quadratura sugli elementi viene effettuata su una sotto-triangolazione del dominio per semplificare la gestione delle mappe di riferimento.
 
     \subsection{Costruzione e Soluzione del Problema, Slide 36-41}
 
-    Nei metodi agli elementi finiti, il problema discretizzato viene risolto valutando gli operatori visti in precedenza, $B$ e $L$, sulle funzioni di base. Questa valutazione comporta la costruzione di una matrice, detta matrice di stiffness, e di un vettore; questi due elementi compongono dunque il sistema lineare associato al problema.
+    Nei metodi agli elementi finiti, il problema discretizzato viene risolto valutando gli operatori precedentemente definiti, $B$ e $L$, sulle funzioni di base scelte. Questa valutazione conduce alla costruzione di una matrice, detta matrice di stiffness, e di un vettore, che compongono il sistema lineare associato al problema. La risoluzione di tale sistema consente di determinare i coefficienti relativi alle funzioni di base della soluzione del problema discreto.
 
-    Le quadrature viste in precedenza, divise in quadrature di volume e di interfaccia, e di spazio  e di tempo, compongono gli elementi di matrice indicati in questa slide.
+    Le quadrature presentate in precedenza, distinte in quadrature di volume e di interfaccia, spaziali e temporali, definiscono gli elementi della matrice indicati in questa slide.
 
-    La costruzione avviene quindi eseguendo le quadrature necessarie e riportando il risultato nel corrispettivo elemento di matrice, e analogamente avviene lo stesso per il vettore del sistema lineare.
+    La costruzione avviene effettuando le quadrature necessarie e inserendo i risultati negli elementi corrispondenti della matrice. Analogamente si procede per la costruzione del vettore del sistema lineare.
 
-    Il sistema lineare viene risolto a blocchi, un blocco per ogni livello temporale, e in fase di soluzione si concludono le quadrature che legano ogni intervallo temporale al precedente, o al dato iniziale, e si risolve il sotto-sistema lineare tramite \lstinline{GMRES}.
+    Il sistema lineare viene poi risolto a blocchi, ciascuno corrispondente a un intervallo temporale. Durante questa fase vengono completate le quadrature che legano ciascun intervallo temporale al precedente o al dato iniziale, risolvendo infine i sottosistemi lineari risultanti tramite \lstinline{GMRES}.
 
     \subsection{Caratteristiche dei Test, Slide 42-43}
 
-    Tra i vari test eseguiti nell'ambito della tesi, ho scelto di riportare il test di convergenza dell'algoritmo, sicuramente più significativo.
+    Tra i vari test effettuati nella tesi, ho scelto di illustrare in dettaglio il test di convergenza dell'algoritmo, in quanto particolarmente significativo.
 
-    I test si strutturano considerando una particolare soluzione esatta, in questo caso una soluzione regolare ma presentante un fenomeno di boundary layers, e i coefficienti dell'equazione qui elencati. I dati iniziali e al bordo per il problema si ottengono direttamente da quanto qui presente, mentre i due valori differenti del coefficiente di diffusione distinguono i due regimi testati: il caso parabolico e il caso iperbolico.
+    I test sono strutturati scegliendo una soluzione esatta particolare, in questo caso una soluzione regolare ma caratterizzata dalla presenza di boundary layers, insieme ai coefficienti dell'equazione qui riportati. I dati iniziali e al bordo vengono direttamente dedotti dalla soluzione scelta, mentre due diversi valori per il coefficiente di diffusione consentono di distinguere due regimi: il caso parabolico e quello iperbolico.
 
-    Il test di convergenza si configura valutando l'errore dell'algoritmo nelle seguenti norme attraverso la seguente successione di mesh, avente parametri strutturali spaziale e temporale confrontabili.
+    Il test di convergenza consiste nel valutare l'errore dell'algoritmo utilizzando le norme elencate, applicandole a una successione di mesh aventi parametri spaziali e temporali confrontabili.
 
-    Ho deciso di includere risultati sia in norme per così dire classiche, ovvero norme che si riscontrano nella letteratura, che considerare due norme le quali potrebbero fornire un nuovo punto di vista sull'algoritmo.
+    Sono stati inclusi sia risultati ottenuti con norme classiche, già utilizzate nella letteratura considerata, sia risultati relativi a due norme aggiuntive, che possono offrire una diversa prospettiva sull'analisi dell'errore.
 
     \subsection{Risultati in Norme Classiche, Slide 44-46}
 
-    I seguenti grafici illustrano il corretto andamento dell'errore per le seguenti scelte del grado polinomiale, sia per la norma $l2l2$ che per la norma $l2h1$, mantenendo la correttezza del risultato anche nel caso iperbolico.
+    I grafici riportati evidenziano il corretto andamento dell'errore nelle due scelte del grado polinomiale, sia nella norma $l2l2$ che nella norma $l2h1$, confermando la validità dei risultati ottenuti anche nel regime iperbolico.
 
     \subsection{Risultati in Norme Nuove, Slide 47-48}
 
-    Per quanto riguarda le altre due norme considerate, ho scelto di valutare un caso in cui il grado polinomiale non fosse omogeneo, ma che potesse quindi evidenziare il differente comportamento delle due norme: da una parte, la norma $l2T$ rappresenta un indicatore locale dell'errore caratterizzando maggiornamente il potere approssimativo spaziale dell'algoritmo, mentre dall'altra, la norma $linfl2$ rappresenta un indicatore globale dell'errore caratterizzando correttamente l'approssimazione a minore ordine dell'algoritmo.
+    Per quanto riguarda le ulteriori norme introdotte, ho considerato un caso con grado polinomiale non omogeneo, utile a evidenziare la differente natura di queste due norme: la norma $l2T$, da un lato, fornisce un indicatore locale dell'errore, sottolineando il potere approssimativo spaziale dell'algoritmo; dall'altro, la norma $linfl2$ costituisce un indicatore globale dell'errore, descrivendo correttamente le caratteristiche dell'approssimazione di ordine inferiore dell'algoritmo.
 
-    Gli stessi risultati si riportano anche nel caso iperbolico.
+    Gli stessi risultati vengono riportati anche per il caso iperbolico.
 
     \newpage
     \section{Conclusioni}
 
     \subsection{Tavola dei Contenuti, Slide 49}
 
-    Per concludere, giusto qualche considerazione finale ed eventuale sviluppo futuro.
+    Per concludere, seguono alcune considerazioni finali e possibili sviluppi futuri.
 
     \subsection{Considerazioni Finali, Slide 50}
 
-    Come osservato dai grafici dei risultati, e dai risultati non inclusi in questa presentazione, i test mettono in evidenza il corretto funzionamento del metodo evidenziando i risultati attesi e, inoltre, il fatto che i risultati rimangano consistenti nel passaggio dal caso parabolico al caso iperbolico.
+    Come evidenziato dai grafici mostrati e da ulteriori risultati non inclusi in questa presentazione, i test effettuati confermano il corretto funzionamento del metodo, mostrando risultati coerenti con le attese. In particolare, è da sottolineare la consistenza dei risultati ottenuti nel passaggio dal regime parabolico a quello iperbolico.
 
-    Come possibile sviluppo di questo lavoro, oltre a eventuali migliorie applicabili all'implementazione che in questo caso rimane legata a un ambito accademico, vi è sicuramente la direzione dell'adattività, sia rispetto agli ordini di approssimazione, sia rispetto a un eventuale raffinamento adattivo delle mesh, spaziali e temporali, e sicuramente l'introduzione di tecniche specifiche di preconditioning e stabilizzazioni volte dunque all'introduzione di approssimazioni ad alto ordine, le quali necessitano delle precedenti per dare risultati attendibili.
+    Tra i possibili sviluppi futuri di questo lavoro, oltre a migliorie riguardanti l'implementazione che al momento rimane confinata all'ambito accademico, vi è certamente la direzione dell'adattività, sia rispetto agli ordini di approssimazione che a un raffinamento adattivo delle mesh, sia spaziali che temporali. Un ulteriore sviluppo importante è costituito dall'introduzione di tecniche specifiche di precondizionamento e stabilizzazione, necessarie per garantire l'affidabilità dei risultati quando si adottano approssimazioni polinomiali ad alto ordine.
 
     \subsection{Ringraziamenti, Slide 51}
 
