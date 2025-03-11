@@ -114,7 +114,7 @@
 
     \begin{flushleft}
         \begin{minipage}{0.75\textwidth}
-            {\footnotesize $\SpaceX(I; V, V^*)$ refers to $\SpaceXpq{2}{2}(I; V, V^*)$ }
+            {\footnotesize In general, $\SpaceX(I; V, V^*)$ refers to $\SpaceXpq{2}{2}(I; V, V^*)$ }
         \end{minipage}
     \end{flushleft}
     
@@ -270,7 +270,7 @@
 
         \begin{minipage}{0.75\textwidth}
             \begin{definition}
-                Let $\SpaceTrial_{h \tau}$ and $\SpaceTest_{h \tau}$ be the semi-discrete trial and test space, where:
+                Let $\SpaceTrial_{h}$ and $\SpaceTest_{h}$ be the semi-discrete trial and test space, where:
                 \begin{align*}
                     \SpaceTrial_{h} &= \SpaceHk{1}(I; V_h) \\
                     \SpaceTest_{h} &= V_h \times \SpaceLp{2}(I; V_h)
@@ -425,7 +425,7 @@
             \begin{definition}
                 Equip $\SpaceX_{h \tau}$ with the following norm:
                 \begin{align*}
-                    \left\lVert v \right\rVert_{\SpaceX}^2 = \left\lVert v \right\rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \left\lVert v(0) \right\rVert_W^2 + \left\lVert v(T) \right\rVert_W^2 + \sum_{n \in \TimeIndices} \left\lVert \llbracket v \rrbracket_{n - 1} \right\rVert_W^2 \right)
+                    \left\lVert v \right\rVert_{\SpaceX_{h \tau}}^2 = \left\lVert v \right\rVert_{\SpaceLp{2}(I; V)}^2 + \frac{1}{2 \CoerC{a}} \left( \left\lVert v(0) \right\rVert_W^2 + \left\lVert v(T) \right\rVert_W^2 + \sum_{n \in \TimeIndices} \left\lVert \llbracket v \rrbracket_{n - 1} \right\rVert_W^2 \right)
                 \end{align*}
             \end{definition}
         \end{minipage}
@@ -554,7 +554,7 @@
                 Moreover, for all $w \in V =  \left\{ w \in \SpaceHk{1}(\Omega) \text{ such that } w \Restriction_{\partial \Omega^-} = 0 \right\}$:
                 \begin{align*}
                     \partial_t & \int_{\Omega} u w ~ d \omega(\Vektor{x}) + \Diffusion \int_{\Omega} \Gradient u \cdot \Gradient w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} \left( \Convection \cdot \Vektor{n} \right) u w ~ d \sigma(\Vektor{x}) \\ 
-                    &- \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) + \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x})
+                    - & \int_{\Omega} u \Divergence \left( \Convection w \right) ~ d \omega(\Vektor{x}) + \int_{\Omega} \Reaction u w ~ d \omega(\Vektor{x}) = \int_{\Omega} g w ~ d \omega(\Vektor{x}) + \int_{\partial \Omega^+} u_N w ~ d \sigma(\Vektor{x})
                 \end{align*}
             \end{definition}
         \end{minipage}
