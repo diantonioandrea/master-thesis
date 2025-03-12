@@ -32,7 +32,7 @@
     \pagenumbering{arabic}
     
     \newpage
-    \section{Introduzione}
+    \section{Introduzione, Slide 1-5}
 
     \subsection{Titolo, Slide 1}
 
@@ -40,7 +40,9 @@
 
     \subsection{Tavola dei Contenuti, Slide 2}
 
-    Inizierò con un'introduzione, il cui scopo è fornire un contesto generale al lavoro tramite una breve discussione sull'importanza delle equazioni alle derivate parziali nei vari campi delle scienze, evidenziando le difficoltà incontrate nella loro risoluzione analitica e mostrando come tali difficoltà possano essere superate attraverso l'uso di metodi numerici.
+    Inizierò con un'introduzione, il cui scopo è fornire un contesto generale al lavoro. 
+    
+    {\color{gray} Questo viene fatto tramite una breve discussione sull'importanza delle equazioni alle derivate parziali nei vari campi delle scienze, evidenziando le difficoltà incontrate nella loro risoluzione analitica e mostrando come tali difficoltà possano essere superate attraverso l'uso di metodi numerici.}
 
     \subsection{Equazioni alle Derivate Parziali, Slide 3-5}
 
@@ -50,34 +52,36 @@
 
     Dal punto di vista analitico, la risoluzione di alcune equazioni differenziali risulta spesso ostacolata da elementi quali domini e condizioni al contorno complessi, presenza di termini non lineari o interazioni tra più equazioni simultanee. Ciò rende necessario lo sviluppo di metodi numerici specifici.
 
-    Due esempi significativi di metodi numerici per equazioni differenziali alle derivate parziali sono il \textit{Metodo alle Differenze Finite} e il \textit{Metodo agli Elementi Finiti}. Il primo, basato sull'approssimazione degli operatori differenziali tramite differenze finite definite su griglie di punti, permette implementazioni relativamente semplici ma risulta limitato nella gestione di geometrie e condizioni complesse. Il secondo, invece, discretizzando il dominio in componenti geometriche più semplici, sulle quali vengono definite basi di funzioni generalmente polinomiali, consente di superare le limitazioni del primo metodo, pur richiedendo una maggiore complessità implementativa e un costo computazionale superiore.
+    Un esempio significativo di metodo numerico per equazioni differenziali alle derivate parziali è il \textit{Metodo agli Elementi Finiti} che, discretizzando il dominio in componenti geometriche più semplici, sulle quali vengono definite basi di funzioni generalmente polinomiali, consente di superare le limitazioni di altri metodi quali \textit{Metodi alle Differenze Finite} o \textit{Metodi a Volume Finito}, pur richiedendo una maggiore complessità implementativa e un costo computazionale superiore.
+
+    % Due esempi significativi di metodi numerici per equazioni differenziali alle derivate parziali sono il \textit{Metodo alle Differenze Finite} e il \textit{Metodo agli Elementi Finiti}. Il primo, basato sull'approssimazione degli operatori differenziali tramite differenze finite definite su griglie di punti, permette implementazioni relativamente semplici ma risulta limitato nella gestione di geometrie e condizioni complesse. Il secondo, invece, discretizzando il dominio in componenti geometriche più semplici, sulle quali vengono definite basi di funzioni generalmente polinomiali, consente di superare le limitazioni del primo metodo, pur richiedendo una maggiore complessità implementativa e un costo computazionale superiore.
 
     \newpage
-    \section{Metodo di Galërkin Discontinuo}
+    \section{Metodo di Galërkin Discontinuo, Slide 6-25}
 
     \subsection{Tavola dei Contenuti, Slide 6}
 
     Il metodo di Galërkin discontinuo, oggetto centrale di questa tesi, appartiene alla famiglia dei metodi agli elementi finiti.
 
-    In questa parte della presentazione introdurrò inizialmente questo metodo nella sua forma generale, tramite lo studio di un problema modello, per poi considerare nello specifico la sua applicazione ai problemi di Convezione-Diffusione-Reazione.
+    {\color{gray} In questa parte della presentazione introdurrò inizialmente questo metodo nella sua forma generale, tramite lo studio di un problema modello, per poi considerare nello specifico la sua applicazione ai problemi di Convezione-Diffusione-Reazione.
 
-    In entrambi i casi, il procedimento adottato è il medesimo: partendo da un'introduzione del problema e delle sue caratteristiche principali, si procede dapprima con una discretizzazione spaziale e poi con la completa discretizzazione spazio-temporale, concludendo infine con una stima dell'errore del metodo.
+    In entrambi i casi, il procedimento adottato è il medesimo: partendo da un'introduzione del problema e delle sue caratteristiche principali, si procede dapprima con una discretizzazione spaziale e poi con la completa discretizzazione spazio-temporale, concludendo infine con una stima dell'errore del metodo.}
 
     \subsection{Caratteristiche del Metodo, Slide 7}
 
-    Il metodo di Galërkin discontinuo, introdotto nel 1973 nell'ambito delle equazioni relative al trasporto di neutroni, si distingue per l'utilizzo di funzioni continue a tratti, ammettendo quindi discontinuità tra gli elementi. Questa caratteristica consente di adottare approssimazioni polinomiali di ordine elevato e offre una grande flessibilità nella scelta delle geometrie e degli elementi utilizzati.
+    Introdotto nel 1973 relativamente all'ambito delle equazioni di trasporto di neutroni, questo metodo si distingue per l'utilizzo di funzioni continue a tratti, ammettendo quindi discontinuità tra gli elementi, a differenza dei classici \textit{Metodi agli Elementi Finiti} conformi. Questa caratteristica consente di adottare approssimazioni polinomiali di ordine elevato e offre una grande flessibilità nella scelta delle geometrie e degli elementi utilizzati.
 
     \subsection{Contesto del Problema Modello Parabolico, Slide 8-10}
 
-    L'introduzione del problema modello parabolico, necessaria alla presentazione del metodo $dG$, parte dalla sua contestualizzazione, ovvero dalla scelta di un dominio spaziale $\Omega$ e di un intervallo temporale $I$. Vengono quindi introdotte le cosiddette triple di Gelfand, caratterizzate dalle proprietà qui elencate, e gli spazi $\SpaceX$, che descrivono le funzioni e le loro derivate, fondamentali per la formulazione e l'analisi dei risultati principali relativi al problema modello.
+    L'introduzione del problema modello parabolico, necessaria alla presentazione del metodo $dG$, parte dalla sua contestualizzazione, ovvero dalla scelta di un dominio spaziale $\Omega$ e di un intervallo temporale $I$. Vengono quindi introdotte le cosiddette triple di Gelfand, caratterizzate dalle proprietà qui elencate, e gli spazi $\SpaceX$, che caratterizzano le funzioni considerate in questa sezione.
 
     È possibile quindi enunciare il problema parabolico scegliendo una funzione $f$, una condizione iniziale $u_0$, e cercando una funzione $u \in \SpaceX(I; V; V^*)$ tale per cui siano soddisfatte le due relazioni indicate.
 
-    Affinché questa definizione sia ben posta, è necessario introdurre l'operatore $A$, noto anche come operatore parabolico, avente le seguenti proprietà. In particolare, è richiesto che tale operatore associ ad ogni tempo $t \in I$ un operatore lineare da $V$ al suo duale che sia continuo e coercivo, condizioni indispensabili per la corretta definizione delle formulazioni deboli in problemi di questa natura.
+    Affinché questa definizione sia ben posta, è necessario introdurre l'operatore $A$, noto anche come operatore parabolico, avente le seguenti proprietà. In sostanza, è richiesto che tale operatore associ ad ogni tempo $t \in I$ un operatore lineare da $V$ al suo duale e che questo sia continuo e coercivo, condizioni indispensabili per la corretta definizione delle formulazioni deboli in problemi di questa natura, e che questa mappa sia misurabile.
 
     \subsection{Formulazione Debole del Problema Modello Parabolico, Slide 11-12}
 
-    Per sviluppare una formulazione $dG$ del problema modello parabolico, occorre ora introdurre una sua formulazione debole.
+    Al fine di sviluppare una formulazione $dG$ del problema modello parabolico, occorre ora introdurre la sua formulazione debole.
 
     Si definiscono pertanto gli spazi $\SpaceTrial$ e $\SpaceTest$, noti rispettivamente come spazi \textit{Trial} e \textit{Test}, e gli operatori $b$ e $l$, ottenuti moltiplicando le equazioni precedenti per una funzione di test e integrando successivamente lungo il dominio del problema.
 
@@ -132,7 +136,7 @@
     Basandosi su tali risultati, si enuncia dunque il seguente teorema che fornisce la principale stima dell'errore del metodo applicato al problema CDR. Questa stima costituisce poi il punto di partenza per i test numerici effettuati nella tesi.
 
     \newpage
-    \section{Implementazione e Risultati}
+    \section{Implementazione e Risultati, Slide 26-48}
 
     \subsection{Tavola dei Contenuti, Slide 26}
 
@@ -172,7 +176,7 @@
 
     Tra i vari test effettuati nella tesi, ho scelto di illustrare in dettaglio il test di convergenza dell'algoritmo, in quanto particolarmente significativo.
 
-    I test sono strutturati scegliendo una soluzione esatta particolare, in questo caso una soluzione regolare ma caratterizzata dalla presenza di boundary layers, insieme ai coefficienti dell'equazione qui riportati. I dati iniziali e al bordo vengono direttamente dedotti dalla soluzione scelta, mentre due diversi valori per il coefficiente di diffusione consentono di distinguere due regimi: il caso parabolico e quello iperbolico.
+    I test sono strutturati scegliendo una soluzione esatta particolare, in questo caso una soluzione regolare ma caratterizzata dalla presenza di boundary layers, o strati limite, insieme ai coefficienti dell'equazione qui riportati. I dati iniziali e al bordo vengono direttamente dedotti dalla soluzione scelta, mentre due diversi valori per il coefficiente di diffusione consentono di distinguere due regimi: il caso parabolico e quello iperbolico.
 
     Il test di convergenza consiste nel valutare l'errore dell'algoritmo utilizzando le norme elencate, applicandole a una successione di mesh aventi parametri spaziali e temporali confrontabili.
 
@@ -189,7 +193,7 @@
     Gli stessi risultati vengono riportati anche per il caso iperbolico.
 
     \newpage
-    \section{Conclusioni}
+    \section{Conclusioni, Slide 49-51}
 
     \subsection{Tavola dei Contenuti, Slide 49}
 
