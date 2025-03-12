@@ -1,6 +1,20 @@
 \tdplotsetmaincoords{75}{120}
 \begin{tikzpicture}[tdplot_main_coords, scale=3.5, line join=round]
 
+    % Domains.
+        
+    % Space.
+    \draw[very thick, color=\accentcolor, fill=\accentcolor]
+        (0,0,-0.125) -- (1,0,-0.125) -- (1,1,-0.125) -- (0,1,-0.125) -- cycle;
+
+    \node[color=\accentcolor, rotate=-7.5] at (1.25, 0.625, -0.125) {\textbf{Space}};
+
+    % Time.
+    \draw[very thick, color=\accentcolor, -stealth] 
+        (-0.0625,1.0625,0) -- (-0.0625,1.0625,1);
+
+    \node[color=\accentcolor, rotate=-7.5] at (-0.1875, 1.1875, 0.5) {\textbf{Time}};
+
     % Background(s), filled.
     \draw[thick, color=\documentcolor, fill=white]
         (0,0,0) -- (1,0,0) -- (1,1,0) -- (0,1,0) -- cycle;

@@ -91,55 +91,86 @@
     
 \end{frame}
 
+% \begin{frame}
+%     \frametitle{Two Examples of Numerical Methods for \acrshort{pdes}}
+
+%     \vspace*{\fill}
+%     \begin{multicols}{2}
+
+%         % Finite Difference.
+%         \begin{center}
+%             {\color{\accentcolor} \Large \textbf{Finite Difference Methods}}
+%             \vspace*{0.5cm}
+
+%             \begin{minipage}{0.4\textwidth}
+%                 \begin{itemize}
+%                     \color{\procolor}
+%                     \item Simplicity and ease of implementation
+%                     \item Computational efficiency on structured grids
+%                 \end{itemize}
+    
+%                 \begin{itemize}
+%                     \color{\concolor}
+%                     \item Limited geometric flexibility
+%                     \item Difficulty in handling boundary conditions
+%                 \end{itemize}
+%             \end{minipage}
+%         \end{center}
+
+%         \vfill\null
+%         \columnbreak
+
+%         % Finite Element.
+%         \begin{center}
+%             {\color{\accentcolor} \Large \textbf{Finite Element Methods}}
+%             \vspace*{0.5cm}
+
+%             \begin{minipage}{0.4\textwidth}
+%                 \begin{itemize}
+%                     \color{\procolor}
+%                     \item Flexibility in handling complex geometries
+%                     \item Better handling of boundary conditions and higher-order accuracy
+%                 \end{itemize}
+
+%                 \begin{itemize}
+%                     \color{\concolor}
+%                     \item Higher computational cost and complexity
+%                     \item More involved implementation
+%                 \end{itemize}
+%             \end{minipage}
+%         \end{center}
+%     \end{multicols}
+%     \vspace*{\fill}
+    
+% \end{frame}
+
 \begin{frame}
-    \frametitle{Two Examples of Numerical Methods for \acrshort{pdes}}
+    \frametitle{An Example of a Numerical Method for \acrshort{pdes}}
 
     \vspace*{\fill}
-    \begin{multicols}{2}
+    \begin{center}
+        {\color{\accentcolor} \Large \textbf{Finite Element Method}}
+    \end{center}
 
-        % Finite Difference.
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Finite Difference Methods}}
-            \vspace*{0.5cm}
+    \vspace*{0.125cm}
 
-            \begin{minipage}{0.4\textwidth}
-                \begin{itemize}
-                    \color{\procolor}
-                    \item Simplicity and ease of implementation
-                    \item Computational efficiency on structured grids
-                \end{itemize}
-    
-                \begin{itemize}
-                    \color{\concolor}
-                    \item Limited geometric flexibility
-                    \item Difficulty in handling boundary conditions
-                \end{itemize}
-            \end{minipage}
-        \end{center}
+    \begin{center}
+        \begin{minipage}{0.75\textwidth}
+            \begin{itemize}
+                \color{\procolor}
+                \item Flexibility in handling complex geometries and boundary conditions
+                \item Adaptivity through mesh refinement and higher-order basis functions
+                \item Naturally suited for variational formulations and weak solutions
+            \end{itemize}
 
-        \vfill\null
-        \columnbreak
-
-        % Finite Element.
-        \begin{center}
-            {\color{\accentcolor} \Large \textbf{Finite Element Methods}}
-            \vspace*{0.5cm}
-
-            \begin{minipage}{0.4\textwidth}
-                \begin{itemize}
-                    \color{\procolor}
-                    \item Flexibility in handling complex geometries
-                    \item Better handling of boundary conditions and higher-order accuracy
-                \end{itemize}
-
-                \begin{itemize}
-                    \color{\concolor}
-                    \item Higher computational cost and complexity
-                    \item More involved implementation
-                \end{itemize}
-            \end{minipage}
-        \end{center}
-    \end{multicols}
+            \begin{itemize}
+                \color{\concolor}
+                \item Higher computational cost and memory requirements
+                \item Complex mesh generation, especially in three dimensions
+                \item More involved implementation, requiring variational analysis and numerical integration
+            \end{itemize}
+        \end{minipage}
+    \end{center}
     \vspace*{\fill}
     
 \end{frame}
